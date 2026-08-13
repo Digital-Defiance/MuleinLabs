@@ -1,0 +1,74 @@
+{
+  "id": "ep02-torus-fhe",
+  "compositionId": "Episode02",
+  "title": "Pillar II — Torus FHE",
+  "youtubeTitle": "HELUT Pillar II: Torus FHE — Blind-Rotate Yosys LUTs on Metal",
+  "description": "How HELUT encrypts circuit wires as LWE/GLWE samples and evaluates each Yosys $lut with GGSW blind-rotate on Metal — certificates, SING, covering Track A, PicoRV lut6 extract-KS C64–C68. Epoch C68. Reproduce: REPRODUCE.md.",
+  "claimEpoch": "2026-08-14 / C69",
+  "fps": 30,
+  "width": 1920,
+  "height": 1080,
+  "scenes": [
+    {
+      "kind": "title",
+      "id": "title",
+      "eyebrow": "HELUT · Pillar II",
+      "headline": "Torus FHE graduation",
+      "subhead": "Same netlist. Encrypted wires. Blind-rotate per look-up table.",
+      "voiceover": "Pillar two graduates the cleartext datapath into torus fully homomorphic encryption. Values labeled encrypted are LWE or GLWE samples. Each Yosys look-up table is evaluated with a GGSW bootstrap key via blind-rotate — on CPU or on Metal.",
+      "durationHintSec": 16
+    },
+    {
+      "kind": "concept",
+      "id": "blind-rotate",
+      "kicker": "Encrypted tick",
+      "headline": "Blind-rotate is the LUT",
+      "subhead": "Public modulus-switch or secret re-encrypt between tables.",
+      "voiceover": "In the encrypted path, a look-up table is not a clear truth table multiply. It is a blind-rotate against a bootstrap key, then a public modulus-switch or a secret re-encrypt into the next wire. The netlist scheduler decides which look-ups can run in a wavefront together. Metal owns the heavy kernels; the host owns the clock.",
+      "durationHintSec": 20
+    },
+    {
+      "kind": "narration",
+      "id": "certificates",
+      "headline": "Certificates, not vibes",
+      "bullets": [
+        "Decision-LWE → IND-CPA binding with calibrated hardness",
+        "Gaussian ε budgets and discrete-inject proofs",
+        "C52: covering-b1 N=1024 σ=128 k=7 → ε≈2^-170; Metal SING PASS",
+        "C57: covering-b2 k=7 → ε≈2^-111; regex Metal SING 26.7 s/1"
+      ],
+      "voiceover": "HELUT ships certificates beside the benches. Decision-LWE hardness binds to IND-CPA at calibrated parameter rows. Gaussian epsilon budgets and discrete-inject proofs sit on encrypted ticks. Claim C52 is the Track A torus-scale receipt: covering base-log one at production degree, torus sigma 128, boolean spacing k equals 7, eight-trial epsilon about 2 to the minus 170, and Metal SING PASSes on both secret refresh and public modulus-switch. Claim C57 is the cheaper covering-b2 gadget at the same k and sigma: four-trial epsilon about 2 to the minus 111, Metal public-ms SING on the adder and on a 23-LUT regex. Native k equals 1 is still claim C37. Crypto public-MS with noise is still C26. The claim sheet IDs the receipt.",
+      "durationHintSec": 32
+    },
+    {
+      "kind": "concept",
+      "id": "sing",
+      "kicker": "Correctness",
+      "headline": "Encrypted ≡ clear SING",
+      "subhead": "Same inputs. Same bit answers. Adder, counter, toy ISA, PicoRV 1-tick, frozen E256 round.",
+      "voiceover": "Correctness is graded by SING checks: encrypted evaluation must match cleartext on the same vectors. Full adders have receipts at production degree; regex covering is claim C57; trees remain demo N. Claim C65 is covering noisy BK on the PicoRV lut6 core at polynomial N=1024 with extract then key-switch to LWE n=64: about 114 seconds per tick. Claim C66 is a 10-tick reset boot. Claim C68 is an 8-tick NOP fetch: two instruction addresses, about 911 seconds. Claims C60 and C61 remain fails at n equals N with k=7. That is not 176-bit security at n=64. Not Linux. If SING fails, the claim does not ship.",
+      "durationHintSec": 16
+    },
+    {
+      "kind": "narration",
+      "id": "honest-limits",
+      "headline": "Open hedges stay printed",
+      "bullets": [
+        "C23: Sage estimator filled — H1 merge-tolerance asterisk remains",
+        "Campaign fitness is cleartext Metal, not encrypted tick rate",
+        "H4: C69 covering KS n=256 PASS n=512 SING FAIL; C68 NOP; C37 at n=N"
+      ],
+      "voiceover": "Open hedges stay printed. Claim C23 filled the native Sage lattice-estimator JSON — production 175.7 versus estimator 180.2 — but H1 still warns that four of eight anchors exceed the 16-bit merge tolerance. Campaign fitness is cleartext Metal, not encrypted tick rate. PicoRV covering NOP-fetch is C68 at LWE n=64. Claim C69 is the n ladder after capping identity trials: n=256 covering SING PASSes, n=512 SING fails. The old C67 trap was four identity blind-rotates, not key-switch. Native spacing at n equals N is still C37. Crypto public-MS with noise is still C26. We do not claim side-channel measurements or quantum analysis. Non-claims are part of the science.",
+      "durationHintSec": 30
+    },
+    {
+      "kind": "outro",
+      "id": "outro",
+      "headline": "Next: TensorLUT",
+      "subhead": "When the INIT tables themselves are the search space.",
+      "nextEpisode": "Pillar III — TensorLUT",
+      "voiceover": "Next is Pillar three: TensorLUT — continuous INIT tensors, Metal multilinear evaluation, and a formal bridge back to discrete Verilog when the elite snaps clean.",
+      "durationHintSec": 12
+    }
+  ]
+}

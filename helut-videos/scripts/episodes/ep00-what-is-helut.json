@@ -1,0 +1,76 @@
+{
+  "id": "ep00-what-is-helut",
+  "compositionId": "Episode00",
+  "title": "What is HELUT?",
+  "youtubeTitle": "What is HELUT? — Homomorphic Edge Look-Up Tensors on Apple Silicon",
+  "description": "A short intro to HELUT: Yosys netlists → Metal tensor datapaths, three research pillars (cleartext batch, torus FHE, TensorLUT), and what the project does — and does not — claim. Epoch C51. Site: https://helut.digitaldefiance.org · Source: https://github.com/Digital-Defiance/HELUT",
+  "claimEpoch": "2026-08-14 / C69",
+  "fps": 30,
+  "width": 1920,
+  "height": 1080,
+  "scenes": [
+    {
+      "kind": "title",
+      "id": "title",
+      "eyebrow": "HELUT · Concept series",
+      "headline": "What is HELUT?",
+      "subhead": "Homomorphic Edge Look-Up Tensors — a Metal datapath for circuit-shaped evaluation on Apple Silicon.",
+      "voiceover": "HELUT stands for Homomorphic Edge Look-Up Tensors. It is a Swift and Metal systems prototype that turns Yosys gate-level netlists into a single Metal Performance Shaders Graph, and evaluates every look-up table as a dense tensor product on Apple Silicon.",
+      "durationHintSec": 18
+    },
+    {
+      "kind": "narration",
+      "id": "not-just-enigma",
+      "headline": "Not “Enigma only”",
+      "bullets": [
+        "Enigma is one application of a general datapath",
+        "Combinational LUTs, sequential DFFs, batch parallelism",
+        "CPU-scale nets — PicoRV32 lw sees 1 (C50); Metal NOP-fetch (C51)"
+      ],
+      "voiceover": "The point is not Enigma only. Enigma is one application. The stack is a datapath for encrypted-shaped circuit evaluation: combinational look-up tables, sequential flip-flops, a batch axis for many machines at once, and a PicoRV32 RISC-V core that executes addi, store, and load under torus FHE. Claim C50 is an encrypted addi then store then load of one at demo N equals 8, about 79 milliseconds per tick on CPU. Claim C51 is the same core on Metal for a NOP fetch — two instruction addresses, about eight seconds per tick, tiled blind-rotate. Not a production-key CPU, and not Linux.",
+      "durationHintSec": 18
+    },
+    {
+      "kind": "concept",
+      "id": "three-pillars",
+      "kicker": "Three pillars",
+      "headline": "Cleartext Metal · Torus FHE · TensorLUT",
+      "subhead": "Same netlist substrate. Different jobs. Different claim bars.",
+      "voiceover": "HELUT has three pillars that share the same netlist substrate. Pillar one is campaign-scale cleartext Metal — boolean-faithful batch search. Pillar two is graduated torus FHE — LWE and GLWE samples with blind-rotate per Yosys look-up table. Pillar three is TensorLUT — when the INIT tables themselves become the search space. Same silicon story. Different honesty bars.",
+      "durationHintSec": 22
+    },
+    {
+      "kind": "narration",
+      "id": "what-runs",
+      "headline": "What actually runs today",
+      "bullets": [
+        "Yosys JSON → MPSGraph compile and tick",
+        "Encrypted path with certificates and SING checks",
+        "Public claim sheet + reproduce commands — no lecture-voice invents"
+      ],
+      "voiceover": "What runs today is reproducible from the repo. Cleartext Metal evaluates Yosys look-up tables and flip-flops. The encrypted path encrypts those wires as lattice samples and blind-rotates per look-up table, with certificates for noise, hardness calibration, and measured bootstrap-key residual. Every public claim sits in a living claim sheet with a reproduce command. If it is not reproducible, we do not say it.",
+      "durationHintSec": 24
+    },
+    {
+      "kind": "narration",
+      "id": "non-claims",
+      "headline": "What this is not",
+      "bullets": [
+        "Not “we invented TFHE”",
+        "Not a decrypt of the live P1030680 campaign ciphertext",
+        "Estimator filled (C23) — H1: 4 of 8 anchors still exceed 16-bit merge tolerance"
+      ],
+      "voiceover": "Honesty matters as much as speed. HELUT is not a claim that we invented torus FHE. The P1030680 campaign path has not published a decrypt of that live ciphertext. The native Sage lattice-estimator cross-check is filled — claim C23. At the production row, HELUT quotes about 175.7 calibrated bits against the estimator's 180.2. The asterisk that stays printed is H1: four of the eight anchors still exceed the 16-bit merge tolerance, so do not quote 176 as estimator cost on every row. Discovery continues after any disclosure — the claim sheet moves when the evidence moves.",
+      "durationHintSec": 28
+    },
+    {
+      "kind": "outro",
+      "id": "outro",
+      "headline": "Next: the Metal compiler",
+      "subhead": "How Yosys gates become a single GPU graph.",
+      "nextEpisode": "Pillar I — Metal compiler",
+      "voiceover": "Next we open Pillar one: how a Yosys netlist becomes one Metal graph, and why the batch axis is the campaign engine. Source and reproduce commands live at helut.digitaldefiance.org and on GitHub under Digital Defiance.",
+      "durationHintSec": 14
+    }
+  ]
+}

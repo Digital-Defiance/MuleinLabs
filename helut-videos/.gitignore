@@ -1,0 +1,10 @@
+node_modules/
+out/*.mp4
+out/*.webm
+# TTS clips + alignment sidecars (regenerate with `npm run tts`)
+public/audio/**/*.mp3
+public/audio/**/*.alignment.json
+public/audio/**/plan.json
+# Pronunciation dictionary cache (machine-local ElevenLabs ids)
+scripts/tts/.dictionary-ids.json
+.DS_Store

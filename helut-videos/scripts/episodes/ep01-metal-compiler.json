@@ -1,0 +1,82 @@
+{
+  "id": "ep01-metal-compiler",
+  "compositionId": "Episode01",
+  "title": "Pillar I — Metal compiler",
+  "youtubeTitle": "HELUT Pillar I: Yosys Netlists → Metal MPSGraph (Cleartext Batch)",
+  "description": "How HELUT compiles Yosys $lut / DFF netlists into a single Metal Performance Shaders Graph, evaluates LUTs as dense tensors, and uses the batch axis for campaign-scale cleartext search. Wavefront scheduler C20. Epoch C51. Not encrypted tick rate — boolean fitness on the GPU.",
+  "claimEpoch": "2026-08-14 / C69",
+  "fps": 30,
+  "width": 1920,
+  "height": 1080,
+  "scenes": [
+    {
+      "kind": "title",
+      "id": "title",
+      "eyebrow": "HELUT · Pillar I",
+      "headline": "The Metal compiler",
+      "subhead": "Yosys gate-level JSON → one MPSGraph → tick the circuit on Apple Silicon.",
+      "voiceover": "Pillar one is the Metal compiler. HELUT reads Yosys JSON, lowers every look-up table and flip-flop into a Metal Performance Shaders Graph, and ticks the circuit on Apple Silicon. This is the cleartext path — boolean-faithful, batch-parallel, and fast enough for campaign search.",
+      "durationHintSec": 18
+    },
+    {
+      "kind": "concept",
+      "id": "negacyclic",
+      "kicker": "Kernel",
+      "headline": "Negacyclic matvec on Z mod 2 to the 32",
+      "subhead": "N equals 1024 Toeplitz products with native UInt32 wraparound.",
+      "voiceover": "Under the hood, the Phase-one kernel is a negacyclic matrix-vector product over the integers modulo 2 to the 32. Degree N equals 1024. Native unsigned 32-bit wraparound is the modular arithmetic. That dense product is the shared muscle under mock programmable bootstrapping and under later encrypted blind-rotate schools.",
+      "durationHintSec": 20
+    },
+    {
+      "kind": "narration",
+      "id": "lut-dff",
+      "headline": "Look-up tables and flip-flops",
+      "bullets": [
+        "Each Yosys $lut → multilinear truth-table expansion",
+        "$_DFF* / $_SDFF* with enable and sync-reset",
+        "Host clock loop + ping-pong state buffers"
+      ],
+      "voiceover": "Each Yosys look-up table becomes a multilinear expansion of its truth table over trivial torus encodings — boolean-safe mock programmable bootstrapping. Sequential cells — D flip-flops with enable and synchronous reset — tick under a host clock loop with ping-pong state buffers. Combinational depth and sequential retention share one compiled graph.",
+      "durationHintSec": 20
+    },
+    {
+      "kind": "concept",
+      "id": "batch-axis",
+      "kicker": "Batch axis B",
+      "headline": "Many machines, one graph.run",
+      "subhead": "Search, scoring, and parallel Enigma hypotheses ride the same kernel.",
+      "voiceover": "The batch axis is why this matters for cryptanalysis. Many independent instances of the same circuit ride one graph run. That is how the campaign path scores millions of Enigma settings per second on cleartext Metal — boolean elimination, not encrypted tick rate. Fitness is cleartext. The encrypted pillar is a different clock.",
+      "durationHintSec": 18
+    },
+    {
+      "kind": "concept",
+      "id": "wavefront",
+      "kicker": "C20 · scheduler",
+      "headline": "Wavefront-parallel look-up tables",
+      "subhead": "Boolean SING 10.6 seconds over 8 rows — the scheduler beat a faster NTT alone.",
+      "voiceover": "The same Metal graph is not only a static math engine. Claim C20 is the wavefront-parallel scheduler: independent Yosys look-up tables blind-rotate together, and boolean SING at N equals 1024 lands at 10.6 seconds over eight rows — beating the earlier persist-schoolbook times. The win is scheduling on the MPSGraph, not only a faster number-theoretic transform.",
+      "durationHintSec": 20
+    },
+    {
+      "kind": "narration",
+      "id": "apps",
+      "headline": "What the compiler already eats",
+      "bullets": [
+        "PicoRV32 — Metal NOP-fetch C51 (~8 s/tick at demo N)",
+        "Regex matcher and decision tree demos",
+        "Enigma M4 / Enigma256 cores for the campaign"
+      ],
+      "voiceover": "The same compiler eats small demos and capstone nets. PicoRV32 is the large sequential stress test. Regex and decision-tree nets exercise batch classify. Enigma M4 and Enigma 256 are the campaign circuits. If Yosys can emit the JSON, HELUT can schedule the graph. Encrypted PicoRV on Metal is claim C51: a NOP fetch at demo N, tiled blind-rotate, about eight seconds per tick — campaign fitness is still the other clock.",
+      "durationHintSec": 16
+    },
+    {
+      "kind": "outro",
+      "id": "outro",
+      "headline": "Next: torus FHE",
+      "subhead": "Encrypt the same wires. Blind-rotate each look-up table.",
+      "nextEpisode": "Pillar II — Torus FHE",
+      "voiceover": "Next we graduate the same datapath into torus FHE: LWE and GLWE samples, GGSW bootstrap keys, and blind-rotate per Yosys look-up table — with certificates that say what the noise actually did.",
+      "durationHintSec": 14
+    }
+  ]
+}

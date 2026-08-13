@@ -1,0 +1,33 @@
+{
+  "name": "@helut/videos",
+  "version": "0.0.1",
+  "private": true,
+  "type": "module",
+  "description": "Remotion YouTube series — HELUT concept intros (ElevenLabs TTS)",
+  "scripts": {
+    "studio": "remotion studio src/index.ts",
+    "render": "remotion render src/index.ts",
+    "render:ep00": "remotion render src/index.ts Episode00 out/ep00-what-is-helut.mp4",
+    "render:ep01": "remotion render src/index.ts Episode01 out/ep01-metal-compiler.mp4",
+    "render:ep02": "remotion render src/index.ts Episode02 out/ep02-torus-fhe.mp4",
+    "render:ep03": "remotion render src/index.ts Episode03 out/ep03-tensorlut.mp4",
+    "tts": "node scripts/generate-tts.mjs",
+    "sync:check": "node scripts/sync-check.mjs",
+    "typecheck": "tsc --noEmit -p tsconfig.json"
+  },
+  "dependencies": {
+    "@remotion/cli": "^4",
+    "@remotion/google-fonts": "^4.0.509",
+    "@remotion/media-utils": "^4",
+    "@remotion/player": "^4",
+    "react": "^19.2.7",
+    "react-dom": "^19.2.7",
+    "remotion": "^4",
+    "zod": "^4.3.6"
+  },
+  "devDependencies": {
+    "@types/react": "^19.2.17",
+    "@types/react-dom": "^19.2.3",
+    "typescript": "~5.9.2"
+  }
+}

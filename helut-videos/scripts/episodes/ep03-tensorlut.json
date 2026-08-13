@@ -1,0 +1,72 @@
+{
+  "id": "ep03-tensorlut",
+  "compositionId": "Episode03",
+  "title": "Pillar III — TensorLUT",
+  "youtubeTitle": "HELUT Pillar III: TensorLUT — Differentiable Hardware Cryptanalysis",
+  "description": "TensorLUT turns Yosys LUT6 INIT tables into continuous tensors, evaluates them on Metal, and emits discrete Verilog when λ freezes the elite. Melt-freeze-snap C44; 2-LUT cascade emit C48. Parallel research to the P1030680 campaign — not a decrypt claim. Epoch C51.",
+  "claimEpoch": "2026-08-14 / C69",
+  "fps": 30,
+  "width": 1920,
+  "height": 1080,
+  "scenes": [
+    {
+      "kind": "title",
+      "id": "title",
+      "eyebrow": "HELUT · Pillar III",
+      "headline": "TensorLUT",
+      "subhead": "When the look-up tables themselves become the genotype.",
+      "voiceover": "Pillar three is TensorLUT. Instead of fixing the circuit and searching keys, we let the INIT tables of Yosys LUT6 cells become continuous tensors — and search the silicon genotype on Metal.",
+      "durationHintSec": 14
+    },
+    {
+      "kind": "concept",
+      "id": "melt",
+      "kicker": "Melt",
+      "headline": "64-wide floats · multilinear kernel",
+      "subhead": "Inject → forward → clock → sample, with a rising λ toward binary.",
+      "voiceover": "Yosys LUT6 cells become 64-wide floating-point INIT tensors. Metal evaluates them with a multilinear kernel and ticks flip-flops in a streaming contract: inject, forward, clock, sample. Soft ciphertext-times-plaintext mean-square error is the fitness. A rising lambda penalty squeezes fractions toward binary. When the elite snaps clean, an emitter writes gate-level Verilog with frozen INIT literals.",
+      "durationHintSec": 24
+    },
+    {
+      "kind": "narration",
+      "id": "what-worked",
+      "headline": "What the laboratory proved",
+      "bullets": [
+        "M4 TensorLUT baseline locks at F-crypto equals zero",
+        "Full INIT melt and stecker-cone melt shattered under λ",
+        "Involution sandwich: freeze core, evolve ≤10-pair stecker"
+      ],
+      "voiceover": "The laboratory grades are public. A TensorLUT baseline on Enigma M4 locks the unmutated netlist at crypto fitness zero. Full INIT melt and stecker-cone melt shattered under lambda — diagnosed dead ends. The live arm freezes the known-good TensorLUT core and evolves a stecker involution of at most ten pairs, sandwiched around that frozen silicon. Blind three-pair rediscovery on a short crib already passed. That is structural reciprocity — not a free-form plugboard fantasy.",
+      "durationHintSec": 26
+    },
+    {
+      "kind": "concept",
+      "id": "theorem",
+      "kicker": "Formal bridge",
+      "headline": "Continuous → discrete Theorem 1",
+      "subhead": "Six lemmas plus melt-freeze-snap on a 1-LUT interpolant (C44).",
+      "voiceover": "TensorLUT is not only a melt trick. A formal certificate packs six lemmas — projection, mean-square error, fitness, emitter, involution, and freeze — so continuous search can graduate back to discrete hardware without hand-waving. Claim C44 is melt-freeze-snap for a fully observed look-up table. Claim C48 is a two-LUT cascade: AND into XOR, melted from one-half, snapped, emitted as Verilog, matching all eight Boolean corners — even when the elite finds a dual interpolant like NAND plus XNOR. That is still not completeness for arbitrary netlists. The theorem lives beside the code; the test filter is the receipt.",
+      "durationHintSec": 16
+    },
+    {
+      "kind": "narration",
+      "id": "parallel",
+      "headline": "Parallel to the campaign — not a crib",
+      "bullets": [
+        "TensorLUT ≠ P1030680 plaintext",
+        "Not a substitute for catalog ring coverage",
+        "Evidence room grades shatter and involution separately"
+      ],
+      "voiceover": "TensorLUT is parallel research. It is not a Thetis crib and it is not a claim that U-534 message P1030680 is broken. Catalog ring coverage and Welchman negatives stay on their own ledger. Differentiable hardware is a method for auditing genotypes — not a shortcut past clean negatives.",
+      "durationHintSec": 16
+    },
+    {
+      "kind": "outro",
+      "id": "outro",
+      "headline": "Keep the claim sheet honest",
+      "subhead": "Reproduce commands · living textbook · open hedges printed.",
+      "voiceover": "That is the three-pillar intro. Cleartext Metal for campaign search. Torus FHE for encrypted ticks with certificates. TensorLUT for differentiable hardware. Everything public is reproducible. Everything open stays printed. Start at helut.digitaldefiance.org — and read the claim sheet before you trust a sentence.",
+      "durationHintSec": 16
+    }
+  ]
+}
