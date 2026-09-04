@@ -1,0 +1,119 @@
+{
+  "id": "ep08-encrypted-picorv32",
+  "compositionId": "Episode08",
+  "title": "The Encrypted Processor",
+  "youtubeTitle": "Running a RISC-V Core Under Encryption: One Tick at a Time",
+  "description": "HELUT's deepest result: a PicoRV32 RISC-V core evaluated under torus FHE. The demo-size ladder from one tick to a store-then-load program, the two levers that cut the cost, one encrypted tick at production polynomial size, the extract-and-key-switch route, and the bounded non-claims. Not Linux, not a production encrypted CPU. Epoch C69.",
+  "claimEpoch": "2026-08-20 / C69",
+  "fps": 30,
+  "width": 1920,
+  "height": 1080,
+  "scenes": [
+    {
+      "kind": "title",
+      "id": "title",
+      "eyebrow": "HELUT · Torus FHE at depth",
+      "headline": "The encrypted processor",
+      "subhead": "A circuit that runs a program it cannot see.",
+      "backgroundAsset": "01-title.svg",
+      "voiceover": "A processor is just a circuit. So if HELUT can evaluate circuits under encryption, it should be able to run a processor under encryption. It can. This episode is the ladder from a single encrypted clock cycle to a small program that stores a value in memory and reads it back, without the machine ever seeing that value in the clear.",
+      "durationHintSec": 28
+    },
+    {
+      "kind": "concept",
+      "id": "the-netlist",
+      "kicker": "The circuit under test",
+      "headline": "A real RISC-V core",
+      "subhead": "2,006 look-up tables and 1,565 flip-flops.",
+      "backgroundAsset": "02-netlist.svg",
+      "voiceover": "The processor is PicoRV32, a compact RISC-V core that other people use in real designs. Synthesized down to two-input look-up tables it becomes 4,785 tables and 1,565 flip-flops. Re-synthesized to six-input tables it drops to 2,006 tables, a 58 percent cut, with the same flip-flop count. Those flip-flops are the interesting part. They hold state between clock ticks, which means the encrypted circuit has memory.",
+      "durationHintSec": 36
+    },
+    {
+      "kind": "concept",
+      "id": "first-tick",
+      "kicker": "Demonstration size first",
+      "headline": "One tick, 76 milliseconds",
+      "subhead": "Four bits of hardness is a functional test.",
+      "backgroundAsset": "03-demo-ladder.svg",
+      "voiceover": "One encrypted clock tick at demonstration size took 76 milliseconds. That number comes with a hard caveat. At that size the encryption parameters carry about four bits of hardness, and four bits is not security. It is a functional test. The point of a demonstration size is to prove the semantics are right, cheaply, before paying for production parameters.",
+      "durationHintSec": 29
+    },
+    {
+      "kind": "concept",
+      "id": "real-program",
+      "kicker": "Boot · fetch · store · load",
+      "headline": "It executed a program it could not read",
+      "subhead": "The store wrote a 1. The later load read a 1.",
+      "backgroundAsset": "04-real-program.svg",
+      "voiceover": "Then it stops being a single tick. A scripted reset holds the core low for three cycles and releases it, and the encrypted core boots across ten ticks. Given a read-only memory full of no-op instructions, the program counter walks: ten fetches, at addresses zero, four, eight, and on up to hexadecimal twenty-four. Then a real program. Load the number one into a register, store that register to memory, and load it back. The store writes with all four byte-enables set and a value of one. The later load reads one. The circuit executed a program it could not see.",
+      "durationHintSec": 47
+    },
+    {
+      "kind": "narration",
+      "id": "flip-flop-fixes",
+      "headline": "Most of the work was flip-flop semantics",
+      "bullets": [
+        "91 cells refreshed data they should not have",
+        "Clock enable gates the reset—model it exactly",
+        "Read data must be held for the sampled cycle"
+      ],
+      "backgroundAsset": "05-flip-flop-fixes.svg",
+      "voiceover": "Most of the work here was not cryptography. It was flip-flop semantics. A plain D flip-flop must not refresh its incoming data the way a look-up table output does, and 91 cells were doing exactly that. The synthesis tool emits flip-flops where the clock enable gates the reset, and that has to be modelled exactly or the boot sequence diverges. Read data has to be held for the cycle the core actually samples it. This is the unglamorous half of making an encrypted circuit agree with a cleartext one.",
+      "durationHintSec": 41
+    },
+    {
+      "kind": "concept",
+      "id": "two-levers",
+      "kicker": "What actually moved the cost",
+      "headline": "Fewer tables, and a smarter schedule",
+      "subhead": "58% fewer tables, then ~8x faster.",
+      "backgroundAsset": "06-two-levers.svg",
+      "voiceover": "Two changes moved the cost more than any parameter tuning. Re-synthesizing to six-input look-up tables cut the table count by 58 percent. Then the scheduler learned to evaluate every ready table in a tick concurrently, even when the circuit contains flip-flops, and to skip tables that are only an identity or a constant. On this core that was about an eight-fold speed-up: 1.35 seconds down to 0.165.",
+      "durationHintSec": 33
+    },
+    {
+      "kind": "concept",
+      "id": "production-size",
+      "kicker": "Production polynomial size",
+      "headline": "Six minutes for one clock cycle",
+      "subhead": "373.89 seconds, stable to two tenths of a percent.",
+      "backgroundAsset": "07-production-size.svg",
+      "voiceover": "With those levers, one encrypted tick of the whole processor ran at production polynomial size: 373.89 seconds, just over six minutes, for a single clock cycle. Re-measured three times, the spread was two tenths of one percent. The hardness figure printed for that configuration is about 176 bits, and it carries its own caveat: it agrees with the reference estimator on some parameter sets and disagrees on others, so it is not a blanket security level.",
+      "durationHintSec": 38
+    },
+    {
+      "kind": "concept",
+      "id": "covering-route",
+      "kicker": "The detour that worked",
+      "headline": "Shrink the wire",
+      "subhead": "One tick in 114 s. A boot in ~19 minutes.",
+      "backgroundAsset": "08-covering-route.svg",
+      "voiceover": "There is a catch. Under the noisier encoding needed for deeper work, the direct route at full native dimension fails. Every combinational table completes, and then a single flip-flop disagrees. The fix was not a bigger machine. Extracting the sample and switching it down to a much smaller wire dimension first, sixty-four instead of 1,024, makes it pass: one tick in 114 seconds, the ten-tick boot in about nineteen minutes, and the instruction fetch in about fifteen. Truncating that extraction instead of properly key-switching it would be unsound, which is exactly why the honest route is the slower one.",
+      "durationHintSec": 50
+    },
+    {
+      "kind": "narration",
+      "id": "not-linux",
+      "headline": "What this is not",
+      "bullets": [
+        "Not Linux · not a production encrypted CPU",
+        "Demo-size results carry 4 bits of hardness",
+        "Single ticks and short runs, not workloads"
+      ],
+      "backgroundAsset": "09-not-linux.svg",
+      "voiceover": "What this is not. It is not Linux, and it is not a production encrypted processor. The demonstration-size results carry four bits of hardness, which is a functional check and nothing more. The production-size results are single ticks and short tick counts, not workloads. A load instruction under the noisier encoding at full native dimension is still open. Every one of those sentences sits in the ledger, directly beside the results.",
+      "durationHintSec": 36
+    },
+    {
+      "kind": "outro",
+      "id": "outro",
+      "headline": "The gap is the frontier",
+      "subhead": "114 s per encrypted tick vs 37.4M settings/s.",
+      "nextEpisode": "The application gallery",
+      "backgroundAsset": "09-not-linux.svg",
+      "voiceover": "An encrypted processor tick costs about 114 seconds. The cleartext search campaign in this series runs 37.4 million circuit settings per second. Those two numbers come from the same compiler and must never be mixed. The distance between them is the real research frontier, and it is where the next levers have to come from. Next, the wider set of problems this substrate has actually been pointed at.",
+      "durationHintSec": 34
+    }
+  ]
+}

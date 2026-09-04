@@ -9,6 +9,11 @@ import ep00 from '../scripts/episodes/ep00-what-is-helut.json';
 import ep01 from '../scripts/episodes/ep01-metal-compiler.json';
 import ep02 from '../scripts/episodes/ep02-torus-fhe.json';
 import ep03 from '../scripts/episodes/ep03-tensorlut.json';
+import ep04 from '../scripts/episodes/ep04-p1030680-bombe.json';
+import ep05 from '../scripts/episodes/ep05-enigma256-architecture.json';
+import ep06 from '../scripts/episodes/ep06-e256-evolution-audit.json';
+import ep07 from '../scripts/episodes/ep07-almost-near-misses.json';
+import ep08 from '../scripts/episodes/ep08-encrypted-picorv32.json';
 
 // Block Studio/render until Fraunces + Outfit are registered.
 void ensureHelutFonts();
@@ -17,7 +22,17 @@ function load(raw: unknown): EpisodeScript {
   return EpisodeScriptSchema.parse(raw);
 }
 
-const episodes = [load(ep00), load(ep01), load(ep02), load(ep03)];
+const episodes = [
+  load(ep00),
+  load(ep01),
+  load(ep02),
+  load(ep03),
+  load(ep04),
+  load(ep05),
+  load(ep06),
+  load(ep07),
+  load(ep08),
+];
 
 export const RemotionRoot: React.FC = () => {
   return (

@@ -1,10 +1,10 @@
 {
   "id": "ep01-metal-compiler",
   "compositionId": "Episode01",
-  "title": "Pillar I — Metal compiler",
-  "youtubeTitle": "HELUT Pillar I: Yosys Netlists → Metal MPSGraph (Cleartext Batch)",
-  "description": "How HELUT compiles Yosys $lut / DFF netlists into a single Metal Performance Shaders Graph, evaluates LUTs as dense tensors, and uses the batch axis for campaign-scale cleartext search. Wavefront scheduler C20. Epoch C51. Not encrypted tick rate — boolean fitness on the GPU.",
-  "claimEpoch": "2026-08-14 / C69",
+  "title": "The compiler substrate",
+  "youtubeTitle": "How HELUT Compiles Yosys Circuits into One Metal Graph",
+  "description": "How HELUT parses supported Yosys LUT and flip-flop cells, lowers dependency waves into a Metal Performance Shaders Graph, and uses a batch dimension for independent circuit evaluation and later application experiments. Epoch C69. Cleartext fitness is not encrypted throughput.",
+  "claimEpoch": "2026-08-20 / C69",
   "fps": 30,
   "width": 1920,
   "height": 1080,
@@ -12,71 +12,65 @@
     {
       "kind": "title",
       "id": "title",
-      "eyebrow": "HELUT · Pillar I",
-      "headline": "The Metal compiler",
-      "subhead": "Yosys gate-level JSON → one MPSGraph → tick the circuit on Apple Silicon.",
-      "voiceover": "Pillar one is the Metal compiler. HELUT reads Yosys JSON, lowers every look-up table and flip-flop into a Metal Performance Shaders Graph, and ticks the circuit on Apple Silicon. This is the cleartext path — boolean-faithful, batch-parallel, and fast enough for campaign search.",
-      "durationHintSec": 18
+      "eyebrow": "HELUT · Shared substrate",
+      "headline": "The compiler substrate",
+      "subhead": "Yosys JSON → supported cells → one reusable Metal graph",
+      "backgroundAsset": "01-compiler-flow.svg",
+      "voiceover": "HELUT begins with a supported Yosys circuit. It turns each look-up table and flip-flop into tensor operations, then builds one Metal Performance Shaders Graph. A batch dimension lets that graph evaluate many independent circuit states in parallel.",
+      "durationHintSec": 21
     },
     {
       "kind": "concept",
-      "id": "negacyclic",
-      "kicker": "Kernel",
-      "headline": "Negacyclic matvec on Z mod 2 to the 32",
-      "subhead": "N equals 1024 Toeplitz products with native UInt32 wraparound.",
-      "voiceover": "Under the hood, the Phase-one kernel is a negacyclic matrix-vector product over the integers modulo 2 to the 32. Degree N equals 1024. Native unsigned 32-bit wraparound is the modular arithmetic. That dense product is the shared muscle under mock programmable bootstrapping and under later encrypted blind-rotate schools.",
-      "durationHintSec": 20
+      "id": "compiler-flow",
+      "kicker": "Parse · lower · schedule · build · tick",
+      "headline": "A circuit becomes a graph",
+      "subhead": "Dependencies determine waves; the host advances sequential state.",
+      "backgroundAsset": "01-compiler-flow.svg",
+      "voiceover": "A Yosys JSON netlist names wires, look-up-table truth tables, and flip-flops. HELUT parses the supported cells and groups independent look-up tables by dependency. It lowers each group into tensor operations and builds one reusable graph. A host loop supplies inputs, advances the clock, and carries state into the next tick.",
+      "durationHintSec": 28
     },
     {
       "kind": "narration",
       "id": "lut-dff",
-      "headline": "Look-up tables and flip-flops",
+      "headline": "Truth tables and state",
       "bullets": [
-        "Each Yosys $lut → multilinear truth-table expansion",
-        "$_DFF* / $_SDFF* with enable and sync-reset",
-        "Host clock loop + ping-pong state buffers"
+        "Each LUT → multilinear truth-table expansion",
+        "D flip-flops preserve state across ticks",
+        "Enable, reset, and clock behavior stay explicit"
       ],
-      "voiceover": "Each Yosys look-up table becomes a multilinear expansion of its truth table over trivial torus encodings — boolean-safe mock programmable bootstrapping. Sequential cells — D flip-flops with enable and synchronous reset — tick under a host clock loop with ping-pong state buffers. Combinational depth and sequential retention share one compiled graph.",
-      "durationHintSec": 20
+      "voiceover": "A look-up table stores a small truth table. HELUT expands that table into a multilinear tensor operation. A D flip-flop preserves one state bit between ticks; enable and synchronous-reset behavior remain explicit. Alternating state buffers keep combinational evaluation separate from the clock edge.",
+      "durationHintSec": 25
     },
     {
       "kind": "concept",
       "id": "batch-axis",
-      "kicker": "Batch axis B",
-      "headline": "Many machines, one graph.run",
-      "subhead": "Search, scoring, and parallel Enigma hypotheses ride the same kernel.",
-      "voiceover": "The batch axis is why this matters for cryptanalysis. Many independent instances of the same circuit ride one graph run. That is how the campaign path scores millions of Enigma settings per second on cleartext Metal — boolean elimination, not encrypted tick rate. Fitness is cleartext. The encrypted pillar is a different clock.",
-      "durationHintSec": 18
-    },
-    {
-      "kind": "concept",
-      "id": "wavefront",
-      "kicker": "C20 · scheduler",
-      "headline": "Wavefront-parallel look-up tables",
-      "subhead": "Boolean SING 10.6 seconds over 8 rows — the scheduler beat a faster NTT alone.",
-      "voiceover": "The same Metal graph is not only a static math engine. Claim C20 is the wavefront-parallel scheduler: independent Yosys look-up tables blind-rotate together, and boolean SING at N equals 1024 lands at 10.6 seconds over eight rows — beating the earlier persist-schoolbook times. The win is scheduling on the MPSGraph, not only a faster number-theoretic transform.",
-      "durationHintSec": 20
+      "kicker": "Batch dimension B",
+      "headline": "Many machines, one graph run",
+      "subhead": "Independent rows share the schedule without sharing state.",
+      "backgroundAsset": "02-batch-axis.svg",
+      "voiceover": "B is the batch dimension. Each row carries an independent circuit state through the same compiled graph. That batching is application-agnostic. I later used it to test and score many historical Enigma hypotheses at once. The blind-control campaign averaged 37.4 million settings per second. Hold on to that number: it is a cleartext rate, and an encrypted tick costs roughly a hundred seconds. Those two figures must never be mixed.",
+      "durationHintSec": 33
     },
     {
       "kind": "narration",
       "id": "apps",
-      "headline": "What the compiler already eats",
+      "headline": "What the supported-cell path has run",
       "bullets": [
-        "PicoRV32 — Metal NOP-fetch C51 (~8 s/tick at demo N)",
-        "Regex matcher and decision tree demos",
-        "Enigma M4 / Enigma256 cores for the campaign"
+        "PicoRV32 processor stress tests",
+        "Regular-expression and decision-tree demos",
+        "Historical M4 application and later E256 offshoot"
       ],
-      "voiceover": "The same compiler eats small demos and capstone nets. PicoRV32 is the large sequential stress test. Regex and decision-tree nets exercise batch classify. Enigma M4 and Enigma 256 are the campaign circuits. If Yosys can emit the JSON, HELUT can schedule the graph. Encrypted PicoRV on Metal is claim C51: a NOP fetch at demo N, tiled blind-rotate, about eight seconds per tick — campaign fitness is still the other clock.",
-      "durationHintSec": 16
+      "voiceover": "The supported-cell path has run PicoRV32 processor cores, regular-expression and decision-tree demos, a radio receiver matching bytes off the air, and a historical M4 search application. E256 is a later experimental offshoot, not another compiler capability. These examples test compiler breadth; they do not share one security level. The encrypted processor work is real but narrow: a ten-tick boot and an instruction fetch, at reduced wire dimension. That is a functional check, not Linux and not a production encrypted CPU.",
+      "durationHintSec": 39
     },
     {
       "kind": "outro",
       "id": "outro",
       "headline": "Next: torus FHE",
-      "subhead": "Encrypt the same wires. Blind-rotate each look-up table.",
-      "nextEpisode": "Pillar II — Torus FHE",
-      "voiceover": "Next we graduate the same datapath into torus FHE: LWE and GLWE samples, GGSW bootstrap keys, and blind-rotate per Yosys look-up table — with certificates that say what the noise actually did.",
-      "durationHintSec": 14
+      "subhead": "Keep the schedule. Replace Boolean wires with encrypted samples.",
+      "nextEpisode": "Torus FHE",
+      "voiceover": "Next, we keep the circuit schedule but replace clear Boolean wires with encrypted lattice samples. We will define each sample type before showing how blind rotation evaluates a look-up table.",
+      "durationHintSec": 17
     }
   ]
 }

@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" role="img" aria-labelledby="t d">
+  <title id="t">Extract and key-switch instead of a bigger machine</title>
+  <desc id="d">The direct route at full native dimension fails at one flip-flop. Extracting the sample and key-switching to a smaller wire dimension passes: one tick in 114 seconds, a ten-tick boot in about nineteen minutes, an instruction fetch in about fifteen.</desc>
+  <rect width="1920" height="1080" fill="#091522"/>
+  <g transform="translate(1000 155)" font-family="Arial,sans-serif">
+    <text x="415" y="16" text-anchor="middle" fill="#9aa8b8" font-size="16" letter-spacing="3">NOISIER ENCODING · DEEPER WORK</text>
+
+    <g transform="translate(20 42)">
+      <rect width="790" height="72" rx="14" fill="#33161b" stroke="#e0574c" stroke-width="2"/>
+      <text x="22" y="30" fill="#e0574c" font-size="15" letter-spacing="2">DIRECT ROUTE · FULL NATIVE DIMENSION</text>
+      <text x="22" y="58" fill="#fff" font-size="20">all tables complete, then 1 flip-flop disagrees</text>
+      <text x="768" y="48" text-anchor="end" fill="#e0574c" font-size="22" font-weight="700">✗</text>
+    </g>
+
+    <path d="M415 116v32" stroke="#66758a" stroke-width="3" stroke-dasharray="8 8"/>
+    <path d="M407 140l8 10 8-10" fill="none" stroke="#66758a" stroke-width="3"/>
+
+    <rect x="20" y="152" width="790" height="60" rx="14" fill="#142738" stroke="#22a89c" stroke-width="2"/>
+    <text x="415" y="178" text-anchor="middle" fill="#22a89c" font-size="15" letter-spacing="2">EXTRACT → KEY-SWITCH</text>
+    <text x="415" y="200" text-anchor="middle" fill="#fff" font-size="20" font-weight="700">wire dimension 1,024 → 64</text>
+
+    <g transform="translate(20 232)">
+      <rect width="253" height="86" rx="14" fill="#122b35" stroke="#22a89c"/>
+      <text x="126" y="28" text-anchor="middle" fill="#22a89c" font-size="14" letter-spacing="1">1 TICK</text>
+      <text x="126" y="60" text-anchor="middle" fill="#fff" font-size="24" font-weight="700">114 s</text>
+      <text x="126" y="80" text-anchor="middle" fill="#9aa8b8" font-size="16">PASS</text>
+    </g>
+    <g transform="translate(288 232)">
+      <rect width="253" height="86" rx="14" fill="#122b35" stroke="#22a89c"/>
+      <text x="126" y="28" text-anchor="middle" fill="#22a89c" font-size="14" letter-spacing="1">10-TICK BOOT</text>
+      <text x="126" y="60" text-anchor="middle" fill="#fff" font-size="24" font-weight="700">≈19 min</text>
+      <text x="126" y="80" text-anchor="middle" fill="#9aa8b8" font-size="16">PASS</text>
+    </g>
+    <g transform="translate(556 232)">
+      <rect width="254" height="86" rx="14" fill="#122b35" stroke="#22a89c"/>
+      <text x="127" y="28" text-anchor="middle" fill="#22a89c" font-size="14" letter-spacing="1">FETCH</text>
+      <text x="127" y="60" text-anchor="middle" fill="#fff" font-size="24" font-weight="700">≈15 min</text>
+      <text x="127" y="80" text-anchor="middle" fill="#9aa8b8" font-size="16">PASS · 2 fetches</text>
+    </g>
+
+    <text x="415" y="360" text-anchor="middle" fill="#d4833f" font-size="20" font-weight="700">Truncating the extraction instead would be unsound.</text>
+    <text x="415" y="392" text-anchor="middle" fill="#9aa8b8" font-size="19">That is why the honest route is the slower one.</text>
+  </g>
+</svg>

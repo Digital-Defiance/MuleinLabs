@@ -1,10 +1,10 @@
 {
   "id": "ep02-torus-fhe",
   "compositionId": "Episode02",
-  "title": "Pillar II — Torus FHE",
-  "youtubeTitle": "HELUT Pillar II: Torus FHE — Blind-Rotate Yosys LUTs on Metal",
-  "description": "How HELUT encrypts circuit wires as LWE/GLWE samples and evaluates each Yosys $lut with GGSW blind-rotate on Metal — certificates, SING, covering Track A, PicoRV lut6 extract-KS C64–C68. Epoch C68. Reproduce: REPRODUCE.md.",
-  "claimEpoch": "2026-08-14 / C69",
+  "title": "Torus FHE",
+  "youtubeTitle": "HELUT Torus FHE: From Encrypted Wires to Blind Rotation",
+  "description": "A term-first tour of HELUT's torus fully homomorphic encryption path: encrypted sample types, blind rotation, negacyclic kernels, the SING correctness gate (Stimuli In, Golden out), wavefront scheduling, configuration-specific receipts, and open limits. Epoch C69.",
+  "claimEpoch": "2026-08-20 / C69",
   "fps": 30,
   "width": 1920,
   "height": 1080,
@@ -12,63 +12,96 @@
     {
       "kind": "title",
       "id": "title",
-      "eyebrow": "HELUT · Pillar II",
-      "headline": "Torus FHE graduation",
-      "subhead": "Same netlist. Encrypted wires. Blind-rotate per look-up table.",
-      "voiceover": "Pillar two graduates the cleartext datapath into torus fully homomorphic encryption. Values labeled encrypted are LWE or GLWE samples. Each Yosys look-up table is evaluated with a GGSW bootstrap key via blind-rotate — on CPU or on Metal.",
-      "durationHintSec": 16
-    },
-    {
-      "kind": "concept",
-      "id": "blind-rotate",
-      "kicker": "Encrypted tick",
-      "headline": "Blind-rotate is the LUT",
-      "subhead": "Public modulus-switch or secret re-encrypt between tables.",
-      "voiceover": "In the encrypted path, a look-up table is not a clear truth table multiply. It is a blind-rotate against a bootstrap key, then a public modulus-switch or a secret re-encrypt into the next wire. The netlist scheduler decides which look-ups can run in a wavefront together. Metal owns the heavy kernels; the host owns the clock.",
-      "durationHintSec": 20
-    },
-    {
-      "kind": "narration",
-      "id": "certificates",
-      "headline": "Certificates, not vibes",
-      "bullets": [
-        "Decision-LWE → IND-CPA binding with calibrated hardness",
-        "Gaussian ε budgets and discrete-inject proofs",
-        "C52: covering-b1 N=1024 σ=128 k=7 → ε≈2^-170; Metal SING PASS",
-        "C57: covering-b2 k=7 → ε≈2^-111; regex Metal SING 26.7 s/1"
-      ],
-      "voiceover": "HELUT ships certificates beside the benches. Decision-LWE hardness binds to IND-CPA at calibrated parameter rows. Gaussian epsilon budgets and discrete-inject proofs sit on encrypted ticks. Claim C52 is the Track A torus-scale receipt: covering base-log one at production degree, torus sigma 128, boolean spacing k equals 7, eight-trial epsilon about 2 to the minus 170, and Metal SING PASSes on both secret refresh and public modulus-switch. Claim C57 is the cheaper covering-b2 gadget at the same k and sigma: four-trial epsilon about 2 to the minus 111, Metal public-ms SING on the adder and on a 23-LUT regex. Native k equals 1 is still claim C37. Crypto public-MS with noise is still C26. The claim sheet IDs the receipt.",
+      "eyebrow": "HELUT · Encrypted evaluation",
+      "headline": "Torus FHE",
+      "subhead": "Operate on encrypted circuit wires without first revealing their bits.",
+      "backgroundAsset": "01-sample-stack.svg",
+      "voiceover": "One HELUT research path explores torus fully homomorphic encryption, or FHE. In FHE, a circuit can operate on ciphertexts without first revealing the underlying bits. The torus here means values sit on a wrapped number circle, so arithmetic runs around the circle instead of overflowing. HELUT keeps the supported Yosys schedule, but replaces clear Boolean wires with encrypted samples built on lattices: hard problems over regular grids of points.",
       "durationHintSec": 32
     },
     {
       "kind": "concept",
+      "id": "sample-types",
+      "kicker": "Three jobs · three structures",
+      "headline": "Wire · accumulator · bootstrap key",
+      "subhead": "LWE carries a scalar wire; GLWE carries a polynomial; GGSW controls rotation.",
+      "backgroundAsset": "01-sample-stack.svg",
+      "voiceover": "A learning-with-errors sample, shortened to L W E, carries one encrypted scalar wire. A polynomial form called G L W E supplies the rotating accumulator. A G G S W bootstrap key lets the circuit choose a rotation without exposing the control bit. These are different data structures, not three security grades. The errors in that first name are the point: every sample carries deliberate random noise, and that noise is what hides the value. Each operation makes the noise grow, which is why this episode keeps measuring it.",
+      "durationHintSec": 38
+    },
+    {
+      "kind": "concept",
+      "id": "blind-rotate",
+      "kicker": "Encrypted look-up table",
+      "headline": "Blind rotation selects the answer",
+      "subhead": "The public path continues without a secret-key refresh.",
+      "backgroundAsset": "02-blind-rotate.svg",
+      "voiceover": "Blind rotation turns an encrypted input into a look-up-table result without decrypting the wire. In the public path, modulus switching prepares that result for the next stage. HELUT also has a secret-key refresh mode for experiments. That mode is not an end-to-end public FHE path. The scheduler runs independent look-up tables together, while the host advances sequential state.",
+      "durationHintSec": 32
+    },
+    {
+      "kind": "concept",
+      "id": "negacyclic",
+      "kicker": "Heavy kernel",
+      "headline": "Wrap around with a sign change",
+      "subhead": "A negacyclic matrix-vector product supplies the blind-rotation muscle.",
+      "backgroundAsset": "02-blind-rotate.svg",
+      "voiceover": "The heavy kernel is a negacyclic matrix-vector product. Coefficients that run off the end of the polynomial wrap back to the front with their sign flipped. At degree 1024, native unsigned 32-bit wraparound supplies the modular arithmetic for free.",
+      "durationHintSec": 24
+    },
+    {
+      "kind": "concept",
       "id": "sing",
-      "kicker": "Correctness",
-      "headline": "Encrypted ≡ clear SING",
-      "subhead": "Same inputs. Same bit answers. Adder, counter, toy ISA, PicoRV 1-tick, frozen E256 round.",
-      "voiceover": "Correctness is graded by SING checks: encrypted evaluation must match cleartext on the same vectors. Full adders have receipts at production degree; regex covering is claim C57; trees remain demo N. Claim C65 is covering noisy BK on the PicoRV lut6 core at polynomial N=1024 with extract then key-switch to LWE n=64: about 114 seconds per tick. Claim C66 is a 10-tick reset boot. Claim C68 is an 8-tick NOP fetch: two instruction addresses, about 911 seconds. Claims C60 and C61 remain fails at n equals N with k=7. That is not 176-bit security at n=64. Not Linux. If SING fails, the claim does not ship.",
-      "durationHintSec": 16
+      "kicker": "The correctness gate",
+      "headline": "Stimuli In, Golden out",
+      "subhead": "The golden model is the cleartext netlist.",
+      "voiceover": "SING is the correctness gate everything else depends on, and the name spells out the method: Stimuli In, Golden out. In hardware verification, a golden model is the trusted reference implementation. Here that reference is the cleartext netlist simulator. So one set of input vectors runs twice. Through the clear circuit, they produce golden bits. Encrypted, evaluated under blind rotation, then decrypted, they must reproduce those same bits exactly. It is the encrypted equivalent of a scan chain. Three published configurations already clear this gate: the adder, the regular-expression matcher, and the processor at reduced wire dimension. And the rule that follows is deliberately harsh: if SING fails, timing is not discussed at all. A fast wrong answer is not a result.",
+      "durationHintSec": 50,
+      "backgroundAsset": "04-sing-gate.svg"
+    },
+    {
+      "kind": "concept",
+      "id": "wavefront",
+      "kicker": "Claim C20 · scheduling",
+      "headline": "Independent LUTs share a wave",
+      "subhead": "Scheduling and kernels are measured together; campaign throughput is separate.",
+      "voiceover": "Look-up tables with no dependency between them can blind-rotate in the same scheduler wave. In one logged configuration, eight SING rows took 10.6 seconds at degree 1024. That number measures the scheduler and the kernels together. It is not the cleartext campaign's settings-per-second rate.",
+      "durationHintSec": 26
+    },
+    {
+      "kind": "narration",
+      "id": "certificates",
+      "headline": "Three questions, three receipts",
+      "bullets": [
+        "Correctness: did encrypted output match clear output?",
+        "Noise: did the measured bound clear its stated bar?",
+        "Hardness: which exact dimensions were estimated?"
+      ],
+      "backgroundAsset": "03-three-receipts.svg",
+      "voiceover": "Each published configuration needs three separate answers. Did encrypted output match clear output? Did measured noise stay inside the stated bound? What hardness estimate applies to these exact dimensions? The bar for that noise bound is an error probability of two to the minus sixty-four. One logged configuration clears it with room to spare. A neighbouring one shows why parameters matter: at spacing seven it falls short, and only at spacing fourteen does it clear. Neither result becomes a universal guarantee.",
+      "durationHintSec": 39
     },
     {
       "kind": "narration",
       "id": "honest-limits",
-      "headline": "Open hedges stay printed",
+      "headline": "Open limits stay visible",
       "bullets": [
-        "C23: Sage estimator filled — H1 merge-tolerance asterisk remains",
-        "Campaign fitness is cleartext Metal, not encrypted tick rate",
-        "H4: C69 covering KS n=256 PASS n=512 SING FAIL; C68 NOP; C37 at n=N"
+        "Campaign fitness is cleartext, not FHE throughput",
+        "Native-dimension processor checks still fail",
+        "No side-channel or quantum-resistance claim"
       ],
-      "voiceover": "Open hedges stay printed. Claim C23 filled the native Sage lattice-estimator JSON — production 175.7 versus estimator 180.2 — but H1 still warns that four of eight anchors exceed the 16-bit merge tolerance. Campaign fitness is cleartext Metal, not encrypted tick rate. PicoRV covering NOP-fetch is C68 at LWE n=64. Claim C69 is the n ladder after capping identity trials: n=256 covering SING PASSes, n=512 SING fails. The old C67 trap was four identity blind-rotates, not key-switch. Native spacing at n equals N is still C37. Crypto public-MS with noise is still C26. We do not claim side-channel measurements or quantum analysis. Non-claims are part of the science.",
-      "durationHintSec": 30
+      "backgroundAsset": "03-three-receipts.svg",
+      "voiceover": "Limits remain. Campaign fitness is cleartext, not FHE throughput. The adder ladder now passes at wire dimensions 256 and 512, because a determinism defect was found and fixed; the earlier failure at 512 was withdrawn, not explained away. Separate checks at full native dimension still fail. The hardness comparison only agrees on some parameter sets, so no single bit-count describes the system. HELUT has not established side-channel or quantum resistance.",
+      "durationHintSec": 36
     },
     {
       "kind": "outro",
       "id": "outro",
       "headline": "Next: TensorLUT",
-      "subhead": "When the INIT tables themselves are the search space.",
-      "nextEpisode": "Pillar III — TensorLUT",
-      "voiceover": "Next is Pillar three: TensorLUT — continuous INIT tensors, Metal multilinear evaluation, and a formal bridge back to discrete Verilog when the elite snaps clean.",
-      "durationHintSec": 12
+      "subhead": "Keep the circuit clear, but make its truth tables searchable.",
+      "nextEpisode": "TensorLUT",
+      "voiceover": "Next, the circuit returns to cleartext, but its look-up-table contents become variables. TensorLUT relaxes those truth tables to continuous values, searches them on Metal, and checks whether a binary circuit can be emitted.",
+      "durationHintSec": 19
     }
   ]
 }

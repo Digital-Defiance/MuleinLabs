@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" role="img" aria-labelledby="title desc">
+  <title id="title">Bounded Phase 51.16 search coverage</title>
+  <desc id="desc">Only settings zero through 255 are filled in a strip of 456,976 settings for one shell, followed by candidate and zero-gate receipt cards.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" x2="1"><stop stop-color="#08111f"/><stop offset="1" stop-color="#172532"/></linearGradient>
+    <linearGradient id="stripe" x1="0" x2="1"><stop stop-color="#22a89c"/><stop offset="1" stop-color="#d4833f"/></linearGradient>
+  </defs>
+  <rect width="1920" height="1080" fill="url(#bg)"/>
+  <g transform="translate(1045 280)" font-family="Arial, sans-serif">
+    <rect width="730" height="580" rx="28" fill="#101a2b" stroke="#33445a" stroke-width="2"/>
+    <text x="36" y="55" fill="#f4f6f8" font-size="27" font-weight="700">ONE SHELL · B / β / IV–III–VIII / AAAA</text>
+    <text x="36" y="98" fill="#9aa8b8" font-size="20" letter-spacing="2">MESSAGE SETTINGS</text>
+    <g transform="translate(36 126)">
+      <rect width="658" height="58" rx="12" fill="#273142"/>
+      <rect width="18" height="58" rx="12" fill="url(#stripe)"/>
+      <path d="M18 70v25" stroke="#22a89c" stroke-width="2"/>
+      <text x="0" y="126" fill="#22a89c" font-size="20">0…255 tested</text>
+      <text x="658" y="126" text-anchor="end" fill="#9aa8b8" font-size="20">456,975</text>
+      <text x="329" y="39" text-anchor="middle" fill="#9aa8b8" font-size="18">most settings remain open</text>
+    </g>
+    <g transform="translate(36 310)">
+      <rect width="205" height="154" rx="18" fill="#142737" stroke="#22a89c"/>
+      <text x="22" y="34" fill="#22a89c" font-size="14" letter-spacing="1.4">PRODUCTION · 1…255</text>
+      <text x="22" y="83" fill="#f4f6f8" font-size="32" font-weight="700">4,163,640</text>
+      <text x="22" y="116" fill="#9aa8b8" font-size="19">receipt projections</text>
+      <text x="22" y="141" fill="#9aa8b8" font-size="17">10,048 chunks</text>
+    </g>
+    <g transform="translate(260 310)">
+      <rect width="205" height="154" rx="18" fill="#1a2534" stroke="#d4833f"/>
+      <text x="22" y="34" fill="#d4833f" font-size="14" letter-spacing="1.4">RETAINED · 1…255</text>
+      <text x="22" y="83" fill="#f4f6f8" font-size="40" font-weight="700">4,184</text>
+      <text x="22" y="116" fill="#9aa8b8" font-size="19">physical candidates</text>
+      <text x="22" y="141" fill="#9aa8b8" font-size="17">host replay verified</text>
+    </g>
+    <g transform="translate(484 310)">
+      <rect width="210" height="154" rx="18" fill="#321b23" stroke="#d4833f" stroke-width="2"/>
+      <text x="22" y="34" fill="#d4833f" font-size="16" letter-spacing="2">BREAK GATES</text>
+      <text x="22" y="91" fill="#f4f6f8" font-size="54" font-weight="700">0</text>
+      <text x="22" y="126" fill="#9aa8b8" font-size="19">no key · no plaintext</text>
+    </g>
+    <g transform="translate(36 498)" fill="#9aa8b8" font-size="18"><text>40 exact identity → killed by completion</text><text x="340">41 exact post-gap → replay next</text><text y="34">4,103 one-edge repairs → correction replay required</text></g>
+  </g>
+</svg>

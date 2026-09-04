@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" role="img" aria-labelledby="t d">
+  <title id="t">Every near miss has a margin and a lever</title>
+  <desc id="d">A measured shortfall against a target bar, paired with the named dial that would close it.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#08111f"/><stop offset="1" stop-color="#1a2b38"/></linearGradient>
+  </defs>
+  <rect width="1920" height="1080" fill="url(#bg)"/>
+  <g transform="translate(1010 170)" font-family="Arial,sans-serif">
+    <text x="410" y="20" text-anchor="middle" fill="#9aa8b8" font-size="16" letter-spacing="3">A LIMIT YOU CAN MEASURE IS A TARGET</text>
+
+    <rect x="30" y="60" width="760" height="4" fill="#22a89c"/>
+    <text x="30" y="48" fill="#22a89c" font-size="17" letter-spacing="2">TARGET BAR</text>
+
+    <g transform="translate(70 110)">
+      <rect width="200" height="130" rx="16" fill="#142738" stroke="#22a89c" stroke-width="2"/>
+      <text x="100" y="34" text-anchor="middle" fill="#22a89c" font-size="15" letter-spacing="1">CLEARS</text>
+      <text x="100" y="76" text-anchor="middle" fill="#fff" font-size="34" font-weight="700">✓</text>
+      <text x="100" y="110" text-anchor="middle" fill="#9aa8b8" font-size="17">with headroom</text>
+    </g>
+    <g transform="translate(300 110)">
+      <rect width="200" height="130" rx="16" fill="#282235" stroke="#d4833f" stroke-width="2"/>
+      <text x="100" y="34" text-anchor="middle" fill="#d4833f" font-size="15" letter-spacing="1">SHORT BY</text>
+      <text x="100" y="80" text-anchor="middle" fill="#fff" font-size="30" font-weight="700">a hair</text>
+      <text x="100" y="110" text-anchor="middle" fill="#9aa8b8" font-size="17">named dial</text>
+    </g>
+    <g transform="translate(530 110)">
+      <rect width="200" height="130" rx="16" fill="#2c2024" stroke="#66758a" stroke-width="2"/>
+      <text x="100" y="34" text-anchor="middle" fill="#9aa8b8" font-size="15" letter-spacing="1">NOWHERE NEAR</text>
+      <text x="100" y="80" text-anchor="middle" fill="#fff" font-size="30" font-weight="700">a wall</text>
+      <text x="100" y="110" text-anchor="middle" fill="#9aa8b8" font-size="17">reported anyway</text>
+    </g>
+
+    <path d="M170 240v56M400 240v56M630 240v56" stroke="#66758a" stroke-width="3" stroke-dasharray="7 7"/>
+
+    <rect x="30" y="296" width="760" height="78" rx="16" fill="#101a2b" stroke="#d4833f" stroke-width="2"/>
+    <text x="410" y="326" text-anchor="middle" fill="#d4833f" font-size="16" letter-spacing="3">THE LEVER</text>
+    <text x="410" y="357" text-anchor="middle" fill="#fff" font-size="23" font-weight="700">encoding · spacing · dimension · sample count</text>
+
+    <text x="410" y="424" text-anchor="middle" fill="#9aa8b8" font-size="20">A limit you cannot measure is just a story.</text>
+  </g>
+</svg>

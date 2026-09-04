@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" role="img" aria-labelledby="t d">
+  <title id="t">Clearing a bar costs less than resolving a value</title>
+  <desc id="d">Demonstrating that an error figure clears the bar needs about two dozen trials; resolving the same figure to within one order of magnitude needs tens of thousands.</desc>
+  <rect width="1920" height="1080" fill="#091522"/>
+  <g transform="translate(1010 165)" font-family="Arial,sans-serif">
+    <text x="405" y="18" text-anchor="middle" fill="#9aa8b8" font-size="16" letter-spacing="3">TWO DIFFERENT QUESTIONS</text>
+
+    <g transform="translate(20 52)">
+      <rect width="770" height="128" rx="18" fill="#122b35" stroke="#22a89c" stroke-width="2"/>
+      <text x="24" y="34" fill="#22a89c" font-size="15" letter-spacing="2">DOES IT CLEAR THE BAR?</text>
+      <text x="24" y="80" fill="#fff" font-size="34" font-weight="700">≈ 24 trials</text>
+      <text x="24" y="110" fill="#9aa8b8" font-size="18">answerable in under an hour</text>
+      <rect x="470" y="52" width="276" height="24" rx="6" fill="#22a89c"/>
+    </g>
+
+    <g transform="translate(20 208)">
+      <rect width="770" height="128" rx="18" fill="#2b2025" stroke="#d4833f" stroke-width="2"/>
+      <text x="24" y="34" fill="#d4833f" font-size="15" letter-spacing="2">WHAT EXACTLY IS THE VALUE?</text>
+      <text x="24" y="80" fill="#fff" font-size="34" font-weight="700">≈ 35,000 trials</text>
+      <text x="24" y="110" fill="#9aa8b8" font-size="18">about 8 days of continuous compute</text>
+      <rect x="470" y="52" width="276" height="24" rx="6" fill="#d4833f"/>
+      <text x="746" y="46" text-anchor="end" fill="#d4833f" font-size="16">×1,450 the cost</text>
+    </g>
+
+    <text x="405" y="392" text-anchor="middle" fill="#d4833f" font-size="21" font-weight="700">The capability was never in doubt. The affordable evidence was.</text>
+    <text x="405" y="428" text-anchor="middle" fill="#9aa8b8" font-size="19">Noticing this was worth more than a hardware upgrade.</text>
+  </g>
+</svg>

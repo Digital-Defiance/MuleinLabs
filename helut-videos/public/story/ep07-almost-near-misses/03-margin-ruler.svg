@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" role="img" aria-labelledby="t d">
+  <title id="t">Margins against the error bar</title>
+  <desc id="d">Configurations measured against an error probability bar of two to the minus sixty-four: one clears narrowly, one falls short, one slides off as dimension grows, and one is nowhere near.</desc>
+  <rect width="1920" height="1080" fill="#091522"/>
+  <g transform="translate(1000 150)" font-family="Arial,sans-serif">
+    <text x="420" y="16" text-anchor="middle" fill="#9aa8b8" font-size="16" letter-spacing="3">GRADED AGAINST ONE BAR</text>
+
+    <rect x="30" y="44" width="780" height="46" rx="10" fill="#14283a" stroke="#22a89c" stroke-width="2"/>
+    <text x="420" y="74" text-anchor="middle" fill="#22a89c" font-size="21" font-weight="700">error probability ≤ 2⁻⁶⁴</text>
+
+    <g transform="translate(30 116)">
+      <rect width="780" height="66" rx="12" fill="#122b35" stroke="#22a89c"/>
+      <text x="20" y="28" fill="#22a89c" font-size="15" letter-spacing="2">CLEARS — NARROWLY</text>
+      <text x="20" y="54" fill="#fff" font-size="20">about 1.5 orders of margin</text>
+      <text x="760" y="44" text-anchor="end" fill="#22a89c" font-size="26" font-weight="700">✓</text>
+    </g>
+
+    <g transform="translate(30 196)">
+      <rect width="780" height="66" rx="12" fill="#282235" stroke="#d4833f"/>
+      <text x="20" y="28" fill="#d4833f" font-size="15" letter-spacing="2">SHORT — RECOVERED AT WIDER SPACING</text>
+      <text x="20" y="54" fill="#fff" font-size="20">misses by roughly 4 orders</text>
+      <text x="760" y="44" text-anchor="end" fill="#d4833f" font-size="24" font-weight="700">→ ✓</text>
+    </g>
+
+    <g transform="translate(30 276)">
+      <rect width="780" height="86" rx="12" fill="#2b2025" stroke="#d4833f"/>
+      <text x="20" y="28" fill="#d4833f" font-size="15" letter-spacing="2">SLIDES OFF AS DIMENSION GROWS</text>
+      <text x="20" y="56" fill="#fff" font-size="19">decodable → marginal → 1 failed decode</text>
+      <text x="20" y="78" fill="#9aa8b8" font-size="17">no rung meets the bar</text>
+    </g>
+
+    <g transform="translate(30 376)">
+      <rect width="780" height="66" rx="12" fill="#33161b" stroke="#e0574c"/>
+      <text x="20" y="28" fill="#e0574c" font-size="15" letter-spacing="2">NOWHERE NEAR — REPORTED ANYWAY</text>
+      <text x="20" y="54" fill="#fff" font-size="20">~14,000 values refuse to settle</text>
+      <text x="760" y="44" text-anchor="end" fill="#e0574c" font-size="24" font-weight="700">✗</text>
+    </g>
+
+    <text x="420" y="486" text-anchor="middle" fill="#9aa8b8" font-size="20">Dials with known positions — not mysteries.</text>
+  </g>
+</svg>

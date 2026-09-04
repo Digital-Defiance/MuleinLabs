@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" role="img" aria-labelledby="t d">
+  <title id="t">Living research, living silicon</title>
+  <desc id="d">Claims are dated because they are expected to move: measured, corrected, withdrawn, recovered by a better route, and reopened by new levers and applications.</desc>
+  <defs>
+    <linearGradient id="lg2" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#08111f"/><stop offset="1" stop-color="#16323d"/></linearGradient>
+  </defs>
+  <rect width="1920" height="1080" fill="url(#lg2)"/>
+  <g transform="translate(1010 170)" font-family="Arial,sans-serif">
+    <rect x="30" width="760" height="90" rx="18" fill="#14283a" stroke="#22a89c" stroke-width="2"/>
+    <text x="410" y="34" text-anchor="middle" fill="#22a89c" font-size="16" letter-spacing="3">WHY EVERY EPISODE IS DATED</text>
+    <text x="410" y="70" text-anchor="middle" fill="#f4f6f8" font-size="27" font-weight="700">The ledger is expected to move</text>
+
+    <g transform="translate(30 122)">
+      <rect width="245" height="72" rx="14" fill="#122b35" stroke="#22a89c"/>
+      <text x="122" y="30" text-anchor="middle" fill="#22a89c" font-size="15" letter-spacing="1">NEW LEVERS</text>
+      <text x="122" y="56" text-anchor="middle" fill="#fff" font-size="19">encoding · dimension</text>
+    </g>
+    <g transform="translate(287 122)">
+      <rect width="245" height="72" rx="14" fill="#282235" stroke="#d4833f"/>
+      <text x="122" y="30" text-anchor="middle" fill="#d4833f" font-size="15" letter-spacing="1">NEW APPLICATIONS</text>
+      <text x="122" y="56" text-anchor="middle" fill="#fff" font-size="19">worth trying</text>
+    </g>
+    <g transform="translate(544 122)">
+      <rect width="246" height="72" rx="14" fill="#122b35" stroke="#22a89c"/>
+      <text x="123" y="30" text-anchor="middle" fill="#22a89c" font-size="15" letter-spacing="1">BROKEN CLAIMS</text>
+      <text x="123" y="56" text-anchor="middle" fill="#fff" font-size="19">fixed in public</text>
+    </g>
+
+    <rect x="30" y="222" width="760" height="86" rx="16" fill="#101a2b" stroke="#66758a"/>
+    <text x="410" y="252" text-anchor="middle" fill="#9aa8b8" font-size="15" letter-spacing="2">PUBLIC BY DEFAULT</text>
+    <text x="410" y="286" text-anchor="middle" fill="#fff" font-size="22" font-weight="700">claim sheet · logs · reproduce commands</text>
+
+    <text x="410" y="368" text-anchor="middle" fill="#d4833f" font-size="24" font-weight="700">The most valuable contribution is a receipt that disagrees.</text>
+    <text x="410" y="412" text-anchor="middle" fill="#9aa8b8" font-size="19">helut.digitaldefiance.org</text>
+  </g>
+</svg>

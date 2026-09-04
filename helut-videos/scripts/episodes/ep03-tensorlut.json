@@ -1,10 +1,10 @@
 {
   "id": "ep03-tensorlut",
   "compositionId": "Episode03",
-  "title": "Pillar III — TensorLUT",
-  "youtubeTitle": "HELUT Pillar III: TensorLUT — Differentiable Hardware Cryptanalysis",
-  "description": "TensorLUT turns Yosys LUT6 INIT tables into continuous tensors, evaluates them on Metal, and emits discrete Verilog when λ freezes the elite. Melt-freeze-snap C44; 2-LUT cascade emit C48. Parallel research to the P1030680 campaign — not a decrypt claim. Epoch C51.",
-  "claimEpoch": "2026-08-14 / C69",
+  "title": "TensorLUT",
+  "youtubeTitle": "HELUT TensorLUT: Searching and Emitting Truth Tables",
+  "description": "TensorLUT turns supported Yosys LUT truth tables into continuous search variables, evaluates them on Metal, and emits discrete Verilog only when bounded checks pass. C44 and C48 stay scoped; this is not a P1030680 decrypt. Epoch C69.",
+  "claimEpoch": "2026-08-20 / C69",
   "fps": 30,
   "width": 1920,
   "height": 1080,
@@ -12,61 +12,65 @@
     {
       "kind": "title",
       "id": "title",
-      "eyebrow": "HELUT · Pillar III",
+      "eyebrow": "HELUT · Circuit search",
       "headline": "TensorLUT",
-      "subhead": "When the look-up tables themselves become the genotype.",
-      "voiceover": "Pillar three is TensorLUT. Instead of fixing the circuit and searching keys, we let the INIT tables of Yosys LUT6 cells become continuous tensors — and search the silicon genotype on Metal.",
-      "durationHintSec": 14
+      "subhead": "Search the truth tables, then demand discrete hardware.",
+      "backgroundAsset": "01-melt-freeze-snap.svg",
+      "voiceover": "Another HELUT research path is TensorLUT. A look-up table normally has a fixed truth table, stored in a value called INIT. TensorLUT treats those entries as search variables, relaxes them to continuous values, and optimizes the circuit on Metal.",
+      "durationHintSec": 22
     },
     {
       "kind": "concept",
       "id": "melt",
-      "kicker": "Melt",
-      "headline": "64-wide floats · multilinear kernel",
-      "subhead": "Inject → forward → clock → sample, with a rising λ toward binary.",
-      "voiceover": "Yosys LUT6 cells become 64-wide floating-point INIT tensors. Metal evaluates them with a multilinear kernel and ticks flip-flops in a streaming contract: inject, forward, clock, sample. Soft ciphertext-times-plaintext mean-square error is the fitness. A rising lambda penalty squeezes fractions toward binary. When the elite snaps clean, an emitter writes gate-level Verilog with frozen INIT literals.",
-      "durationHintSec": 24
+      "kicker": "Melt · score · freeze · snap",
+      "headline": "Continuous search, binary destination",
+      "subhead": "A six-input LUT has 64 truth-table entries.",
+      "backgroundAsset": "01-melt-freeze-snap.svg",
+      "voiceover": "The cycle has four stages: melt, score, freeze, and snap. Melting means taking the 64 truth-table entries of a six-input look-up table and letting them hold fractional values, blending between entries instead of choosing. Scoring compares circuit output against target behavior. Freezing holds the parts that must not move. Snapping raises a penalty that pushes every entry back to zero or one, and only then does the emitter write a discrete Verilog circuit.",
+      "durationHintSec": 35
     },
     {
       "kind": "narration",
       "id": "what-worked",
-      "headline": "What the laboratory proved",
+      "headline": "What worked—and what did not",
       "bullets": [
-        "M4 TensorLUT baseline locks at F-crypto equals zero",
-        "Full INIT melt and stecker-cone melt shattered under λ",
-        "Involution sandwich: freeze core, evolve ≤10-pair stecker"
+        "Unmodified M4 netlist: zero-error baseline",
+        "Full-INIT and plugboard-cone melts: unstable",
+        "Frozen core + ≤10-pair involution: bounded success"
       ],
-      "voiceover": "The laboratory grades are public. A TensorLUT baseline on Enigma M4 locks the unmutated netlist at crypto fitness zero. Full INIT melt and stecker-cone melt shattered under lambda — diagnosed dead ends. The live arm freezes the known-good TensorLUT core and evolves a stecker involution of at most ten pairs, sandwiched around that frozen silicon. Blind three-pair rediscovery on a short crib already passed. That is structural reciprocity — not a free-form plugboard fantasy.",
-      "durationHintSec": 26
+      "voiceover": "To test this search on a real stateful circuit, I used an unmodified historical Enigma M4 netlist as one benchmark. It first serves as a zero-error baseline. Attempts to melt every entry, or only the plugboard cone, shattered: thousands of values refused to settle to zero or one. The current bounded experiment freezes the known circuit and searches only an involutive plugboard, meaning one that undoes itself, of at most ten swapped pairs. A blind three-pair recovery passed on a short crib.",
+      "durationHintSec": 38
     },
     {
       "kind": "concept",
       "id": "theorem",
-      "kicker": "Formal bridge",
-      "headline": "Continuous → discrete Theorem 1",
-      "subhead": "Six lemmas plus melt-freeze-snap on a 1-LUT interpolant (C44).",
-      "voiceover": "TensorLUT is not only a melt trick. A formal certificate packs six lemmas — projection, mean-square error, fitness, emitter, involution, and freeze — so continuous search can graduate back to discrete hardware without hand-waving. Claim C44 is melt-freeze-snap for a fully observed look-up table. Claim C48 is a two-LUT cascade: AND into XOR, melted from one-half, snapped, emitted as Verilog, matching all eight Boolean corners — even when the elite finds a dual interpolant like NAND plus XNOR. That is still not completeness for arbitrary netlists. The theorem lives beside the code; the test filter is the receipt.",
-      "durationHintSec": 16
+      "kicker": "Bounded bridge",
+      "headline": "Continuous does not automatically mean discrete",
+      "subhead": "C44 covers one observed LUT; C48 demonstrates a two-LUT cascade.",
+      "backgroundAsset": "02-bounded-bridge.svg",
+      "voiceover": "The formal result is bounded, and the boundary is precise. For one fully observed look-up table, there is a proof that it returns to its target truth table from anywhere inside the snap basin: the region where every entry is already nearer its goal than its opposite. A second certificate extends that to a two-table cascade and emits Verilog. The ladder currently stops at two tables. Arbitrary multi-table netlists are the open frontier, not a solved case.",
+      "durationHintSec": 37
     },
     {
       "kind": "narration",
       "id": "parallel",
-      "headline": "Parallel to the campaign — not a crib",
+      "headline": "Related experiments are not interchangeable",
       "bullets": [
-        "TensorLUT ≠ P1030680 plaintext",
-        "Not a substitute for catalog ring coverage",
-        "Evidence room grades shatter and involution separately"
+        "TensorLUT does not supply a P1030680 crib",
+        "M4 application and E256 offshoot are distinct",
+        "No live cipher mutates without review"
       ],
-      "voiceover": "TensorLUT is parallel research. It is not a Thetis crib and it is not a claim that U-534 message P1030680 is broken. Catalog ring coverage and Welchman negatives stay on their own ledger. Differentiable hardware is a method for auditing genotypes — not a shortcut past clean negatives.",
-      "durationHintSec": 16
+      "voiceover": "That M4 benchmark does not turn TensorLUT into an Enigma project, and it is not evidence that P1030680 is broken. TensorLUT supplies no guessed plaintext, key, or decrypt. Searching a look-up-table genotype, searching historical M4 settings in a chosen application, and proposing a new E256 profile in a later offshoot are related experiments, but they are not the same process. None should mutate a live cipher without review.",
+      "durationHintSec": 36
     },
     {
       "kind": "outro",
       "id": "outro",
-      "headline": "Keep the claim sheet honest",
-      "subhead": "Reproduce commands · living textbook · open hedges printed.",
-      "voiceover": "That is the three-pillar intro. Cleartext Metal for campaign search. Torus FHE for encrypted ticks with certificates. TensorLUT for differentiable hardware. Everything public is reproducible. Everything open stays printed. Start at helut.digitaldefiance.org — and read the claim sheet before you trust a sentence.",
-      "durationHintSec": 16
+      "headline": "Next: one application—the P1030680 Bombe",
+      "subhead": "Why choose Enigma? Then define cribs, inspect the machine, and bound the result.",
+      "nextEpisode": "The P1030680 Bombe",
+      "voiceover": "One separate application combined HELUT's cleartext compiler and TensorLUT machinery with a historical Enigma target. Next, I explain why I chose that problem, define the attack terms, and follow each stop through the candidate and break gates. The FHE work remains a separate research path.",
+      "durationHintSec": 26
     }
   ]
 }

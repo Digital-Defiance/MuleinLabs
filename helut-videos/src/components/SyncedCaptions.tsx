@@ -37,15 +37,26 @@ function splitSentences(text: string): string[] {
   return out;
 }
 
+function sentenceWeight(text: string): number {
+  return Math.max(1, text.match(/[\p{L}\p{N}]+(?:[-'][\p{L}\p{N}]+)*/gu)?.length ?? 1);
+}
+
 function evenPace(text: string, durationSec: number): CaptionSentence[] {
   const parts = splitSentences(text);
   if (parts.length === 0) return [];
-  const slice = Math.max(0.01, durationSec / parts.length);
-  return parts.map((sentence, i) => ({
-    text: sentence,
-    startSec: i * slice,
-    endSec: (i + 1) * slice,
-  }));
+  const weights = parts.map(sentenceWeight);
+  const totalWeight = weights.reduce((sum, weight) => sum + weight, 0);
+  const usableDuration = Math.max(0.01, durationSec);
+  let cursor = 0;
+  return parts.map((sentence, i) => {
+    const startSec = cursor;
+    cursor += (usableDuration * weights[i]!) / totalWeight;
+    return {
+      text: sentence,
+      startSec,
+      endSec: i === parts.length - 1 ? usableDuration : cursor,
+    };
+  });
 }
 
 function activeIndex(sentences: CaptionSentence[], t: number): number {
@@ -59,8 +70,9 @@ function activeIndex(sentences: CaptionSentence[], t: number): number {
 }
 
 /**
- * Time-synced VO captions (no box): current sentence + next if any.
- * Prefers ElevenLabs alignment sidecar; falls back to even pacing.
+ * Time-synced voice-over captions. Only the active sentence is shown so a
+ * second sentence cannot obscure the lower portion of technical diagrams.
+ * ElevenLabs alignment is preferred; silent previews use word-weighted pacing.
  */
 export const SyncedCaptions: React.FC<{
   episodeId: string;
@@ -112,10 +124,6 @@ export const SyncedCaptions: React.FC<{
   const idx = activeIndex(sentences, t);
   if (idx < 0) return null;
   const activeText = displayParts[idx] ?? sentences[idx]!.text;
-  const upcomingText =
-    idx + 1 < sentences.length
-      ? (displayParts[idx + 1] ?? sentences[idx + 1]!.text)
-      : null;
 
   const fade = interpolate(
     frame,
@@ -128,44 +136,28 @@ export const SyncedCaptions: React.FC<{
     <AbsoluteFill
       style={{
         justifyContent: 'flex-end',
-        padding: '0 100px 64px',
+        padding: '0 100px 56px',
         pointerEvents: 'none',
         opacity: fade,
       }}
     >
       <div
         style={{
+          width: 'fit-content',
           maxWidth: 1500,
+          padding: '14px 20px 16px',
+          borderRadius: 14,
+          border: '1px solid rgba(148,163,184,0.22)',
+          background: 'rgba(6,10,18,0.76)',
           fontFamily: FONT_BODY,
+          fontSize: 34,
+          fontWeight: 650,
+          lineHeight: 1.35,
+          color: '#f8fafc',
+          textShadow: '0 2px 4px rgba(0,0,0,0.85)',
         }}
       >
-        <div
-          style={{
-            fontSize: 34,
-            fontWeight: 650,
-            lineHeight: 1.35,
-            color: '#f8fafc',
-            textShadow:
-              '0 2px 4px rgba(0,0,0,0.85), 0 0 22px rgba(0,0,0,0.55)',
-          }}
-        >
-          {activeText}
-        </div>
-        {upcomingText && (
-          <div
-            style={{
-              marginTop: 14,
-              fontSize: 26,
-              fontWeight: 500,
-              lineHeight: 1.35,
-              color: 'rgba(226,232,240,0.55)',
-              textShadow:
-                '0 2px 4px rgba(0,0,0,0.75), 0 0 18px rgba(0,0,0,0.45)',
-            }}
-          >
-            {upcomingText}
-          </div>
-        )}
+        {activeText}
       </div>
     </AbsoluteFill>
   );

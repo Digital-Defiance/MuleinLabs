@@ -11,9 +11,18 @@
     "render:ep01": "remotion render src/index.ts Episode01 out/ep01-metal-compiler.mp4",
     "render:ep02": "remotion render src/index.ts Episode02 out/ep02-torus-fhe.mp4",
     "render:ep03": "remotion render src/index.ts Episode03 out/ep03-tensorlut.mp4",
+    "render:ep04": "remotion render src/index.ts Episode04 out/ep04-p1030680-bombe.mp4",
+    "render:ep05": "remotion render src/index.ts Episode05 out/ep05-enigma256-architecture.mp4",
+    "render:ep06": "remotion render src/index.ts Episode06 out/ep06-e256-evolution-audit.mp4",
+    "render:ep07": "remotion render src/index.ts Episode07 out/ep07-almost-near-misses.mp4",
+    "render:ep08": "remotion render src/index.ts Episode08 out/ep08-encrypted-picorv32.mp4",
+    "pretts": "npm run check",
     "tts": "node scripts/generate-tts.mjs",
+    "tts:pending": "node scripts/tts-pending.mjs",
+    "episodes:check": "node scripts/validate-episodes.mjs",
     "sync:check": "node scripts/sync-check.mjs",
-    "typecheck": "tsc --noEmit -p tsconfig.json"
+    "typecheck": "tsc --noEmit -p tsconfig.json",
+    "check": "npm run typecheck && npm run sync:check && npm run episodes:check"
   },
   "dependencies": {
     "@remotion/cli": "^4",

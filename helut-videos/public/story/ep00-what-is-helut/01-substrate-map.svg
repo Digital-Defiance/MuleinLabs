@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" role="img" aria-labelledby="t d">
+  <title id="t">HELUT substrate, core paths, and applications</title>
+  <desc id="d">A supported Yosys netlist feeds a shared compiler, then two core research paths and concrete applications. One chosen Enigma application later inspires a separate E256 offshoot.</desc>
+  <defs>
+    <linearGradient id="b"><stop stop-color="#08111f"/><stop offset="1" stop-color="#173440"/></linearGradient>
+  </defs>
+  <rect width="1920" height="1080" fill="url(#b)"/>
+  <g transform="translate(1040 150)" font-family="Arial,sans-serif">
+    <rect x="100" width="560" height="95" rx="20" fill="#14283a" stroke="#22a89c" stroke-width="2"/>
+    <text x="380" y="38" text-anchor="middle" fill="#22a89c" font-size="17" letter-spacing="3">SUPPORTED INPUT</text>
+    <text x="380" y="72" text-anchor="middle" fill="#f4f6f8" font-size="27" font-weight="700">Yosys LUT + flip-flop netlist</text>
+    <path d="M380 95v65" stroke="#22a89c" stroke-width="4"/>
+
+    <rect x="70" y="160" width="620" height="112" rx="24" fill="#1b2637" stroke="#d4833f" stroke-width="3"/>
+    <text x="380" y="204" text-anchor="middle" fill="#d4833f" font-size="17" letter-spacing="3">SHARED SUBSTRATE</text>
+    <text x="380" y="244" text-anchor="middle" fill="#f4f6f8" font-size="30" font-weight="700">Parse · schedule · Metal graph</text>
+    <path d="M380 272v70M110 342h540M110 342v45M380 342v45M650 342v45" fill="none" stroke="#66758a" stroke-width="3"/>
+
+    <g transform="translate(0 387)">
+      <rect width="220" height="165" rx="20" fill="#122b35" stroke="#22a89c"/>
+      <text x="110" y="42" text-anchor="middle" fill="#22a89c" font-size="17">CORE PATH</text>
+      <text x="110" y="82" text-anchor="middle" fill="#fff" font-size="27" font-weight="700">Torus FHE</text>
+      <text x="110" y="122" text-anchor="middle" fill="#9aa8b8" font-size="18">encrypted wires</text>
+    </g>
+    <g transform="translate(270 387)">
+      <rect width="220" height="165" rx="20" fill="#282235" stroke="#d4833f"/>
+      <text x="110" y="42" text-anchor="middle" fill="#d4833f" font-size="17">CORE PATH</text>
+      <text x="110" y="82" text-anchor="middle" fill="#fff" font-size="27" font-weight="700">TensorLUT</text>
+      <text x="110" y="122" text-anchor="middle" fill="#9aa8b8" font-size="18">search truth tables</text>
+    </g>
+    <g transform="translate(540 387)">
+      <rect width="220" height="165" rx="20" fill="#2c2024" stroke="#d4833f"/>
+      <text x="110" y="42" text-anchor="middle" fill="#d4833f" font-size="17">APPLICATIONS</text>
+      <text x="110" y="82" text-anchor="middle" fill="#fff" font-size="25" font-weight="700">Concrete cases</text>
+      <text x="110" y="122" text-anchor="middle" fill="#9aa8b8" font-size="18">use the substrate</text>
+    </g>
+
+    <path d="M650 552v28H515v27" fill="none" stroke="#66758a" stroke-width="3" stroke-dasharray="8 8"/>
+    <rect x="270" y="607" width="490" height="92" rx="18" fill="#101a2b" stroke="#66758a"/>
+    <text x="515" y="644" text-anchor="middle" fill="#9aa8b8" font-size="16" letter-spacing="2">ONE CHOSEN LINEAGE</text>
+    <text x="515" y="678" text-anchor="middle" fill="#fff" font-size="25" font-weight="700">Enigma search → E256 offshoot</text>
+    <text x="380" y="730" text-anchor="middle" fill="#d4833f" font-size="19">Applications use HELUT; they do not redefine it.</text>
+  </g>
+</svg>

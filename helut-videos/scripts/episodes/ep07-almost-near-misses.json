@@ -1,0 +1,126 @@
+{
+  "id": "ep07-almost-near-misses",
+  "compositionId": "Episode07",
+  "title": "Almost — The Near Misses",
+  "youtubeTitle": "Almost: What HELUT Nearly Does, and the Exact Margin It Misses By",
+  "description": "The most useful episode: HELUT's capability near misses, sorted by the kind of margin they miss by. One flip-flop short, a few bits short, a pass with no headroom, correct but unproven, one decode short, and two failures that turned out to be measurement bugs. Living research, stated as levers rather than limits. Epoch C69.",
+  "claimEpoch": "2026-08-20 / C69",
+  "fps": 30,
+  "width": 1920,
+  "height": 1080,
+  "scenes": [
+    {
+      "kind": "title",
+      "id": "title",
+      "eyebrow": "Living research · living silicon",
+      "headline": "Almost",
+      "subhead": "Every failure has a margin and a lever.",
+      "backgroundAsset": "01-title.svg",
+      "voiceover": "The interesting part of a research project is not the list of things that worked. It is the list of things that almost worked, and by exactly how much. This episode walks through HELUT's near misses. Each one is a measured margin with a named lever, because a limit you can measure is a target, and a limit you cannot is just a story.",
+      "durationHintSec": 27
+    },
+    {
+      "kind": "concept",
+      "id": "one-cell",
+      "kicker": "One flip-flop short",
+      "headline": "2,006 agree. One doesn't.",
+      "subhead": "It fails at a single named cell.",
+      "backgroundAsset": "02-one-cell.svg",
+      "voiceover": "The sharpest near miss is an encrypted processor tick at full production size. Every one of roughly two thousand encrypted look-up-table evaluations completes. It takes about half an hour. Then a single flip-flop disagrees with the cleartext answer: it wanted zero and got one. Using a finer encoding did not fix it, and the log names the exact cell that failed. Two other results box it in. The same circuit passes at small size in under two seconds, and a route that shrinks the wire dimension first passes at full size in 114 seconds. So the capability exists. The direct road has one broken cell on it.",
+      "durationHintSec": 48
+    },
+    {
+      "kind": "concept",
+      "id": "margin-ruler",
+      "kicker": "A few bits short",
+      "headline": "Thin margins, both ways",
+      "subhead": "Some configurations clear it by a hair. Others miss by a hair.",
+      "backgroundAsset": "03-margin-ruler.svg",
+      "voiceover": "Most encrypted results are graded against one bar: an error probability of two to the minus sixty-four. Measured against that bar, the margins are thin in both directions. One configuration clears it with about one and a half orders to spare. Another falls short by roughly four, and only a wider spacing recovers it. A third slides off gradually as the wire dimension grows, from comfortably decodable, to marginal, to a single failed decode. None of those are mysteries. They are dials with known positions.",
+      "durationHintSec": 40
+    },
+    {
+      "kind": "concept",
+      "id": "no-headroom",
+      "kicker": "A pass with no headroom",
+      "headline": "Technically true, not yet trustworthy",
+      "subhead": "It clears the bar, but not the noise.",
+      "backgroundAsset": "04-no-headroom.svg",
+      "voiceover": "One result is stranger than a failure. A configuration cleared the bar, but its bound tolerated only about five percent growth in measured spread, and the spread actually observed across similar runs was closer to fifty percent. So the result was true as recorded and would not survive ordinary variance. Rather than bank it, the project moved to a wider spacing with more than double the headroom. A pass you cannot lean on is treated here as a near miss, not a win.",
+      "durationHintSec": 37
+    },
+    {
+      "kind": "concept",
+      "id": "correct-unproven",
+      "kicker": "Correct but unproven",
+      "headline": "Right, but not proven.",
+      "subhead": "Parity passes. The bound stays unstable.",
+      "backgroundAsset": "05-correct-unproven.svg",
+      "voiceover": "There is a category where the machine gives the right answer and the mathematics has not caught up. At one spacing, encrypted output matched cleartext output on every tested path, while the error estimate swung wildly between trial counts. Correctness passed; the bound was unstable. These are not the same achievement, and collapsing them is how projects start overclaiming. The honest description is that it computes correctly at a setting we cannot yet certify.",
+      "durationHintSec": 36
+    },
+    {
+      "kind": "concept",
+      "id": "sibling-paths",
+      "kicker": "Right on one path, wrong on its sibling",
+      "headline": "Same circuit, adjacent encoding, different verdict",
+      "subhead": "One route passes. Its neighbour fails.",
+      "backgroundAsset": "05-correct-unproven.svg",
+      "voiceover": "Some near misses are not about size at all. A 58-gate encrypted slice of the E256 cipher passes at full production size on one encoding path, in about 23 seconds. On the neighbouring encoding it fails outright. The same is true of an adder at one particular setting. Nothing about the circuit changed. Only the numerical route did. That tells you the boundary lives in the encoding, which is a much more useful thing to know than a general shrug about scale.",
+      "durationHintSec": 38
+    },
+    {
+      "kind": "concept",
+      "id": "evidence-cost",
+      "kicker": "The proof you cannot afford",
+      "headline": "Clearing a bar is cheaper than measuring a value",
+      "subhead": "Clear it: ~24 trials. Resolve it: ~35,000.",
+      "backgroundAsset": "06-evidence-cost.svg",
+      "voiceover": "One near miss is purely economic. To pin down one error figure to within a single order of magnitude would take tens of thousands of trials, roughly a week and a half of continuous compute. To demonstrate that the same figure clears the bar takes about two dozen. Those are different questions with wildly different prices, and noticing that was worth more than any hardware upgrade. The capability was never in doubt. The affordable evidence was.",
+      "durationHintSec": 36
+    },
+    {
+      "kind": "concept",
+      "id": "ladder-stopped",
+      "kicker": "The ladder stopped at two",
+      "headline": "One table proved. Two tables proved. Then open.",
+      "subhead": "The threshold was published in 1969.",
+      "backgroundAsset": "07-proof-ladder.svg",
+      "voiceover": "On the TensorLUT side, the proof ladder is short and honest. One fully observed look-up table is proved. A two-table cascade is proved and emits hardware. Arbitrary networks are open. The penalty strength needed to force values binary was measured at about three point seven three on the small case, bracketing a crossover observed between two and four. Then came the useful embarrassment: that threshold is a known result from nineteen sixty-nine, rediscovered. What genuinely remains open is how it scales with depth and fan-out.",
+      "durationHintSec": 41
+    },
+    {
+      "kind": "narration",
+      "id": "failure-that-wasnt",
+      "headline": "Two failures that were measurement bugs",
+      "bullets": [
+        "A withdrawn encrypted failure: randomized iteration order",
+        "A flaky row that became four-for-four after the fix",
+        "Seven timing rows that had understated the code by ~2×"
+      ],
+      "backgroundAsset": "08-failure-that-wasnt.svg",
+      "voiceover": "Two entries were not near misses at all. A clean-looking encrypted failure was traced to encrypting inputs in randomized dictionary order while drawing from one shared random stream, so different wires received mismatched masks. Sorting the loops fixed it, the failure was withdrawn, and a guard now protects it. A plausible physical explanation had already been written down before the real cause surfaced. The same bug had made another row flaky; it now passes four times out of four. And going the other way, seven timing rows had understated the code by about a factor of two. The ledger was wrong in both directions.",
+      "durationHintSec": 49
+    },
+    {
+      "kind": "concept",
+      "id": "shatter",
+      "kicker": "The honest blowout",
+      "headline": "Not everything is close",
+      "subhead": "A cold-start melt of 925 gates shatters.",
+      "backgroundAsset": "03-margin-ruler.svg",
+      "voiceover": "One result belongs here precisely because it is nowhere near. Melting an entire 925-gate sequential cipher from a cold start shatters: around fourteen thousand values refuse to settle, and a related attempt on a live cipher cone ends with more than twelve hundred still stuck between zero and one. That is not a margin, it is a wall. Including it is what makes the thin margins credible. A project where everything is almost working is not reporting carefully.",
+      "durationHintSec": 38
+    },
+    {
+      "kind": "outro",
+      "id": "outro",
+      "headline": "Living research, living silicon",
+      "subhead": "The ledger is dated because it is expected to change.",
+      "backgroundAsset": "09-living-ledger.svg",
+      "nextEpisode": "The encrypted processor",
+      "voiceover": "Every episode here carries a date for one reason: this is living research on living silicon, and the ledger is expected to move. Claims get re-measured, corrected, withdrawn, and sometimes recovered by a better route. New levers appear, and with them new applications worth trying. If you want to check any of it, the claim sheet, the logs, and the reproduce commands are public. The most valuable contribution is not agreement. It is a receipt that disagrees. Next, the deepest thing this substrate has run: a processor, under encryption.",
+      "durationHintSec": 43
+    }
+  ]
+}

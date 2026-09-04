@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" role="img" aria-labelledby="t d">
+  <title id="t">The PicoRV32 netlist at two synthesis targets</title>
+  <desc id="d">Synthesized to two-input look-up tables the core is 4,785 tables; to six-input tables it is 2,006, a 58 percent cut, with 1,565 flip-flops either way.</desc>
+  <rect width="1920" height="1080" fill="#091522"/>
+  <g transform="translate(1005 165)" font-family="Arial,sans-serif">
+    <text x="410" y="16" text-anchor="middle" fill="#9aa8b8" font-size="16" letter-spacing="3">SAME CORE · TWO SYNTHESIS TARGETS</text>
+
+    <g transform="translate(20 46)">
+      <rect width="780" height="86" rx="14" fill="#2b2025" stroke="#d4833f" stroke-width="2"/>
+      <text x="22" y="32" fill="#d4833f" font-size="15" letter-spacing="2">2-INPUT TABLES</text>
+      <text x="22" y="66" fill="#fff" font-size="27" font-weight="700">4,785 look-up tables</text>
+      <rect x="430" y="40" width="330" height="22" rx="6" fill="#d4833f"/>
+    </g>
+
+    <g transform="translate(20 152)">
+      <rect width="780" height="86" rx="14" fill="#122b35" stroke="#22a89c" stroke-width="2"/>
+      <text x="22" y="32" fill="#22a89c" font-size="15" letter-spacing="2">6-INPUT TABLES</text>
+      <text x="22" y="66" fill="#fff" font-size="27" font-weight="700">2,006 look-up tables</text>
+      <rect x="430" y="40" width="138" height="22" rx="6" fill="#22a89c"/>
+      <text x="760" y="58" text-anchor="end" fill="#22a89c" font-size="19" font-weight="700">−58%</text>
+    </g>
+
+    <rect x="20" y="264" width="780" height="76" rx="16" fill="#101a2b" stroke="#66758a"/>
+    <text x="410" y="292" text-anchor="middle" fill="#9aa8b8" font-size="15" letter-spacing="2">UNCHANGED EITHER WAY</text>
+    <text x="410" y="324" text-anchor="middle" fill="#fff" font-size="23" font-weight="700">1,565 flip-flops — the state</text>
+
+    <text x="410" y="392" text-anchor="middle" fill="#d4833f" font-size="20">Flip-flops are why this is a processor and not a formula.</text>
+  </g>
+</svg>

@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" role="img" aria-labelledby="t d">
+  <title id="t">The demonstration-size ladder</title>
+  <desc id="d">One tick, a ten-tick boot, a thirty-two tick instruction fetch, and a store-then-load program, all at demonstration size carrying about four bits of hardness.</desc>
+  <rect width="1920" height="1080" fill="#091522"/>
+  <g transform="translate(1005 150)" font-family="Arial,sans-serif">
+    <text x="410" y="16" text-anchor="middle" fill="#9aa8b8" font-size="16" letter-spacing="3">DEMONSTRATION SIZE · PROVE THE SEMANTICS</text>
+
+    <g transform="translate(20 44)">
+      <rect width="780" height="60" rx="12" fill="#122b35" stroke="#22a89c"/>
+      <text x="22" y="26" fill="#22a89c" font-size="14" letter-spacing="2">1 TICK</text>
+      <text x="22" y="49" fill="#fff" font-size="20">one clock cycle · 76 ms</text>
+      <text x="758" y="40" text-anchor="end" fill="#22a89c" font-size="20" font-weight="700">✓</text>
+    </g>
+    <g transform="translate(20 116)">
+      <rect width="780" height="60" rx="12" fill="#122b35" stroke="#22a89c"/>
+      <text x="22" y="26" fill="#22a89c" font-size="14" letter-spacing="2">10 TICKS · RESET BOOT</text>
+      <text x="22" y="49" fill="#fff" font-size="20">0.473 s total · 47 ms per tick</text>
+      <text x="758" y="40" text-anchor="end" fill="#22a89c" font-size="20" font-weight="700">✓</text>
+    </g>
+    <g transform="translate(20 188)">
+      <rect width="780" height="60" rx="12" fill="#122b35" stroke="#22a89c"/>
+      <text x="22" y="26" fill="#22a89c" font-size="14" letter-spacing="2">32 TICKS · INSTRUCTION FETCH</text>
+      <text x="22" y="49" fill="#fff" font-size="20">10 fetches · PC walks 0x0 → 0x24</text>
+      <text x="758" y="40" text-anchor="end" fill="#22a89c" font-size="20" font-weight="700">✓</text>
+    </g>
+    <g transform="translate(20 260)">
+      <rect width="780" height="60" rx="12" fill="#122b35" stroke="#22a89c"/>
+      <text x="22" y="26" fill="#22a89c" font-size="14" letter-spacing="2">48 TICKS · STORE THEN LOAD</text>
+      <text x="22" y="49" fill="#fff" font-size="20">14 fetches · writes 1 · reads 1 back</text>
+      <text x="758" y="40" text-anchor="end" fill="#22a89c" font-size="20" font-weight="700">✓</text>
+    </g>
+
+    <rect x="20" y="344" width="780" height="66" rx="14" fill="#2b2025" stroke="#d4833f" stroke-width="2"/>
+    <text x="410" y="372" text-anchor="middle" fill="#d4833f" font-size="15" letter-spacing="2">THE CAVEAT ON EVERY ROW ABOVE</text>
+    <text x="410" y="398" text-anchor="middle" fill="#fff" font-size="21" font-weight="700">≈4 bits of hardness — a functional test</text>
+
+    <text x="410" y="462" text-anchor="middle" fill="#9aa8b8" font-size="20">Cheap first. Production parameters cost real time.</text>
+  </g>
+</svg>

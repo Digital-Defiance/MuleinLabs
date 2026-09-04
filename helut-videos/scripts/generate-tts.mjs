@@ -18,7 +18,7 @@
  */
 import { createHash } from 'node:crypto';
 import { existsSync } from 'node:fs';
-import { mkdir, readFile, rename, writeFile, readdir } from 'node:fs/promises';
+import { copyFile, mkdir, readFile, rename, writeFile, readdir } from 'node:fs/promises';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { spawn } from 'node:child_process';
@@ -30,6 +30,22 @@ const EP_DIR = path.join(ROOT, 'scripts', 'episodes');
 const OUT_DIR = path.join(ROOT, 'public', 'audio');
 const PLS_PATH = path.join(ROOT, 'scripts', 'tts', 'helut-academy.pls');
 const DICT_CACHE_PATH = path.join(ROOT, 'scripts', 'tts', '.dictionary-ids.json');
+
+/**
+ * Untouched ElevenLabs audio, kept so normalization is idempotent.
+ *
+ * Normalizing a clip in place re-encodes lossy audio, and every re-run
+ * compounds that loss and the codec's peak overshoot. Normalizing *from* a
+ * preserved original instead keeps the generation count constant no matter how
+ * often `--normalize` runs. Lives outside `public/` so it is never bundled into
+ * a render, and is gitignored like the delivery clips.
+ */
+const RAW_DIR = path.join(ROOT, 'scripts', 'tts', 'raw');
+
+/** public/audio/<ep>/<scene>.mp3 → scripts/tts/raw/<ep>/<scene>.mp3 */
+function rawPathFor(deliveryPath) {
+  return path.join(RAW_DIR, path.relative(OUT_DIR, deliveryPath));
+}
 
 const apiKey = process.env.ELEVENLABS_API_KEY;
 // Same default as Subspace Lattice academy-videos (`NtS6nEHDYMQC9QczMQuq`).
@@ -46,39 +62,100 @@ const staleOnly = process.argv.includes('--stale');
 const syncDictionary = process.argv.includes('--sync-dictionary');
 const normalizeOnly = process.argv.includes('--normalize');
 
-async function loudnormMp3(filePath) {
-  const tmp = `${filePath}.loudnorm-tmp.mp3`;
-  await new Promise((resolve, reject) => {
-    const child = spawn(
-      'ffmpeg',
-      [
-        '-y',
-        '-hide_banner',
-        '-loglevel',
-        'error',
-        '-i',
-        filePath,
-        '-af',
-        'loudnorm=I=-16:TP=-1.5:LRA=11',
-        '-ar',
-        '44100',
-        '-ac',
-        '1',
-        tmp,
-      ],
-      { stdio: ['ignore', 'ignore', 'pipe'] },
-    );
+// TP is targeted at -3.0 rather than the -1.5 dBTP delivery ceiling on purpose:
+// the MP3 encode after loudnorm adds its own peak overshoot, so aiming straight
+// at -1.5 lands hot. The -1.5 dB of pre-compensation leaves measured true peak
+// under the ceiling with margin for YouTube's re-encode.
+const LOUDNESS_TARGET = 'I=-16:TP=-3.0:LRA=11';
+
+function runFfmpeg(args) {
+  return new Promise((resolve, reject) => {
+    const child = spawn('ffmpeg', ['-nostdin', '-hide_banner', ...args], {
+      stdio: ['ignore', 'ignore', 'pipe'],
+    });
     let err = '';
     child.stderr?.on('data', (chunk) => {
       err += String(chunk);
     });
     child.on('error', reject);
     child.on('close', (code) => {
-      if (code === 0) resolve();
-      else reject(new Error(`ffmpeg loudnorm failed (${code}): ${err}`));
+      if (code === 0) resolve(err);
+      else reject(new Error(`ffmpeg failed (${code}): ${err}`));
     });
   });
-  await rename(tmp, filePath);
+}
+
+/**
+ * Two-pass EBU R128 normalization.
+ *
+ * Single-pass `loudnorm` streams its estimate, so it lands roughly 0.75 dB shy
+ * of target and cannot honour the true-peak ceiling — measured across this
+ * series it left an 11-clip peak overshoot and a 1.7 dB spread. Measuring
+ * first, then applying the measured values with `linear=true`, converges to
+ * about 0.1 dB and respects TP. Gain-only: durations and alignments are
+ * unaffected.
+ */
+async function normalizeFrom(sourcePath, deliveryPath) {
+  const analysis = await runFfmpeg([
+    '-i', sourcePath,
+    '-af', `loudnorm=${LOUDNESS_TARGET}:print_format=json`,
+    '-f', 'null', '-',
+  ]);
+  const parsed = analysis.match(/\{[^{}]*"input_i"[\s\S]*?\}/);
+  if (!parsed) throw new Error(`loudnorm analysis produced no JSON for ${sourcePath}`);
+  const m = JSON.parse(parsed[0]);
+
+  // Digital silence measures as -inf and cannot be normalized.
+  if (!Number.isFinite(Number(m.input_i))) {
+    if (sourcePath !== deliveryPath) await copyFile(sourcePath, deliveryPath);
+    return;
+  }
+
+  const measured = [
+    `measured_I=${m.input_i}`,
+    `measured_LRA=${m.input_lra}`,
+    `measured_TP=${m.input_tp}`,
+    `measured_thresh=${m.input_thresh}`,
+    `offset=${m.target_offset}`,
+    'linear=true',
+  ].join(':');
+
+  // Deliberately no limiter here. `alimiter` defaults to level=enabled, which
+  // normalizes the signal *up* to its ceiling — that produced +1.33 dBTP and a
+  // 1.6 dB loudness jump. Peak control belongs in the loudnorm TP target above.
+  const tmp = `${deliveryPath}.loudnorm-tmp.mp3`;
+  await mkdir(path.dirname(deliveryPath), { recursive: true });
+  // Encode well above the ElevenLabs source rate so this gain-only pass is close
+  // to transparent. Without an explicit -b:a, libmp3lame defaults to 64 kbps at
+  // -ac 1, which silently halved the 128 kbps API output on every clip.
+  await runFfmpeg([
+    '-y', '-loglevel', 'error',
+    '-i', sourcePath,
+    '-af', `loudnorm=${LOUDNESS_TARGET}:${measured}`,
+    '-ar', '44100',
+    '-ac', '1',
+    '-b:a', '192k',
+    tmp,
+  ]);
+  await rename(tmp, deliveryPath);
+}
+
+/**
+ * Ensure a preserved original exists, then normalize from it.
+ *
+ * Clips generated before originals were kept have no pristine source, so the
+ * current delivery file is adopted as the baseline. That baseline is already
+ * normalized, which is not ideal, but it freezes the generation count instead
+ * of adding one on every future run.
+ */
+async function normalizeClip(deliveryPath, label) {
+  const sourcePath = rawPathFor(deliveryPath);
+  if (!existsSync(sourcePath)) {
+    await mkdir(path.dirname(sourcePath), { recursive: true });
+    await copyFile(deliveryPath, sourcePath);
+    console.log(`  adopted current clip as source baseline (${label})`);
+  }
+  await normalizeFrom(sourcePath, deliveryPath);
 }
 
 async function plsSha256() {
@@ -214,7 +291,7 @@ async function ensurePronunciationDictionary() {
   return locator;
 }
 
-async function synthesize(text, outPath, dictionary) {
+async function synthesize(text, outPath, dictionary, speed) {
   const modelId =
     modelIdDefault ??
     (dictionary ? 'eleven_flash_v2' : 'eleven_multilingual_v2');
@@ -223,6 +300,11 @@ async function synthesize(text, outPath, dictionary) {
     text,
     model_id: modelId,
   };
+  // Only send voice_settings when a scene asks for a non-default rate, so
+  // untouched clips keep byte-identical request shape.
+  if (speed != null) {
+    payload.voice_settings = { speed };
+  }
   if (dictionary) {
     payload.pronunciation_dictionary_locators = [
       {
@@ -251,9 +333,14 @@ async function synthesize(text, outPath, dictionary) {
   if (!body?.audio_base64) {
     throw new Error('ElevenLabs response missing audio_base64');
   }
+  // Preserve the untouched ElevenLabs audio, then normalize from it. This is
+  // the only point where a pristine original exists, so it must be kept before
+  // any filtering happens.
   const buf = Buffer.from(body.audio_base64, 'base64');
-  await writeFile(outPath, buf);
-  await loudnormMp3(outPath);
+  const sourcePath = rawPathFor(outPath);
+  await mkdir(path.dirname(sourcePath), { recursive: true });
+  await writeFile(sourcePath, buf);
+  await normalizeFrom(sourcePath, outPath);
 
   const alignment = body.alignment ?? body.normalized_alignment ?? null;
   const sentences = sentencesFromAlignment(text, alignment);
@@ -267,7 +354,9 @@ async function synthesize(text, outPath, dictionary) {
 
 async function main() {
   if (normalizeOnly) {
-    const files = (await readdir(EP_DIR)).filter((f) => f.endsWith('.json'));
+    const files = (await readdir(EP_DIR))
+    .filter((f) => f.endsWith('.json'))
+    .sort();
     let n = 0;
     for (const file of files) {
       const raw = JSON.parse(await readFile(path.join(EP_DIR, file), 'utf8'));
@@ -279,7 +368,7 @@ async function main() {
         const out = path.join(dir, `${scene.id}.mp3`);
         if (!existsSync(out)) continue;
         console.log(`loudnorm ${raw.id}/${scene.id}…`);
-        await loudnormMp3(out);
+        await normalizeClip(out, `${raw.id}/${scene.id}`);
         n++;
       }
     }
@@ -291,16 +380,22 @@ async function main() {
   const resolvedModel =
     modelIdDefault ??
     (dictionary ? 'eleven_flash_v2' : 'eleven_multilingual_v2');
-  const spokenKey = (spoken) =>
+  // `#speed:` is appended only when a scene overrides the rate. Clips without
+  // an override keep their existing fingerprint, so adding this field does not
+  // invalidate the rest of the series.
+  const spokenKey = (spoken, speed) =>
     [
       spoken,
       `#voice:${voiceId}`,
       `#model:${resolvedModel}`,
       `#dict:${dictionary?.versionId ?? 'none'}`,
       '#align:v1',
+      ...(speed != null ? [`#speed:${speed}`] : []),
     ].join('\n');
 
-  const files = (await readdir(EP_DIR)).filter((f) => f.endsWith('.json'));
+  const files = (await readdir(EP_DIR))
+    .filter((f) => f.endsWith('.json'))
+    .sort();
   for (const file of files) {
     const raw = JSON.parse(await readFile(path.join(EP_DIR, file), 'utf8'));
     if (episodeFilter && raw.id !== episodeFilter) continue;
@@ -326,7 +421,7 @@ async function main() {
       const out = path.join(dir, `${scene.id}.mp3`);
       const alignOut = out.replace(/\.mp3$/i, '.alignment.json');
       const spoken = speakable(scene.voiceover);
-      const planSpoken = spokenKey(spoken);
+      const planSpoken = spokenKey(spoken, scene.speed);
       const fresh =
         staleOnly &&
         prevSpoken.get(scene.id) === planSpoken &&
@@ -346,8 +441,10 @@ async function main() {
         if (staleOnly) console.log(`stale ${raw.id}/${scene.id}`);
         continue;
       }
-      console.log(`tts ${raw.id}/${scene.id}…`);
-      await synthesize(spoken, out, dictionary);
+      console.log(
+        `tts ${raw.id}/${scene.id}…${scene.speed != null ? ` (speed ${scene.speed})` : ''}`,
+      );
+      await synthesize(spoken, out, dictionary, scene.speed);
       synthesized++;
     }
     if (sceneFilter && plan.length === 0) {

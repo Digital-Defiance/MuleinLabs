@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" role="img" aria-labelledby="t d">
+  <title id="t">What the encrypted processor result is not</title>
+  <desc id="d">Not Linux, not a production encrypted CPU, demonstration results carry four bits of hardness, results are single ticks and short runs, and a load under the noisier encoding at full native dimension is still open.</desc>
+  <rect width="1920" height="1080" fill="#091522"/>
+  <g transform="translate(1005 165)" font-family="Arial,sans-serif">
+    <text x="410" y="16" text-anchor="middle" fill="#9aa8b8" font-size="16" letter-spacing="3">STATED BESIDE EVERY RESULT</text>
+
+    <g transform="translate(20 46)">
+      <rect width="780" height="58" rx="12" fill="#2b2025" stroke="#d4833f"/>
+      <text x="22" y="36" fill="#fff" font-size="20">not Linux · not a production encrypted CPU</text>
+      <text x="758" y="36" text-anchor="end" fill="#d4833f" font-size="19" font-weight="700">✗</text>
+    </g>
+    <g transform="translate(20 114)">
+      <rect width="780" height="58" rx="12" fill="#2b2025" stroke="#d4833f"/>
+      <text x="22" y="36" fill="#fff" font-size="20">demo-size rows carry ≈4 bits of hardness</text>
+      <text x="758" y="36" text-anchor="end" fill="#d4833f" font-size="19" font-weight="700">✗</text>
+    </g>
+    <g transform="translate(20 182)">
+      <rect width="780" height="58" rx="12" fill="#2b2025" stroke="#d4833f"/>
+      <text x="22" y="36" fill="#fff" font-size="20">single ticks and short runs, not workloads</text>
+      <text x="758" y="36" text-anchor="end" fill="#d4833f" font-size="19" font-weight="700">✗</text>
+    </g>
+    <g transform="translate(20 250)">
+      <rect width="780" height="58" rx="12" fill="#2b2025" stroke="#d4833f"/>
+      <text x="22" y="36" fill="#fff" font-size="20">a load at full native dimension is still open</text>
+      <text x="758" y="36" text-anchor="end" fill="#d4833f" font-size="19" font-weight="700">?</text>
+    </g>
+
+    <rect x="20" y="336" width="780" height="80" rx="16" fill="#101a2b" stroke="#22a89c" stroke-width="2"/>
+    <text x="410" y="366" text-anchor="middle" fill="#22a89c" font-size="15" letter-spacing="2">THE REAL FRONTIER</text>
+    <text x="410" y="398" text-anchor="middle" fill="#fff" font-size="21" font-weight="700">114 s per encrypted tick · 37.4M cleartext settings/s</text>
+
+    <text x="410" y="462" text-anchor="middle" fill="#d4833f" font-size="20">Same compiler. Never mix the two numbers.</text>
+  </g>
+</svg>

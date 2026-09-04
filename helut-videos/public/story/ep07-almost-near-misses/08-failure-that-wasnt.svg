@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" role="img" aria-labelledby="t d">
+  <title id="t">Two failures that were measurement bugs</title>
+  <desc id="d">Randomized iteration order against one shared random stream gave mismatched masks to different wires, manufacturing a clean-looking failure. Sorting the loops withdrew the failure and unflaked another row.</desc>
+  <rect width="1920" height="1080" fill="#091522"/>
+  <g transform="translate(1000 150)" font-family="Arial,sans-serif">
+    <text x="415" y="16" text-anchor="middle" fill="#9aa8b8" font-size="16" letter-spacing="3">THE BUG WAS IN THE MEASUREMENT</text>
+
+    <rect x="20" y="46" width="790" height="96" rx="16" fill="#33161b" stroke="#e0574c" stroke-width="2"/>
+    <text x="415" y="76" text-anchor="middle" fill="#e0574c" font-size="15" letter-spacing="2">ROOT CAUSE</text>
+    <text x="415" y="104" text-anchor="middle" fill="#fff" font-size="21" font-weight="700">randomized iteration order + one shared random stream</text>
+    <text x="415" y="130" text-anchor="middle" fill="#9aa8b8" font-size="18">different wires received mismatched masks</text>
+
+    <path d="M415 142v34" stroke="#66758a" stroke-width="3"/>
+
+    <g transform="translate(20 176)">
+      <rect width="250" height="112" rx="14" fill="#2b2025" stroke="#d4833f"/>
+      <text x="125" y="32" text-anchor="middle" fill="#d4833f" font-size="15" letter-spacing="1">BEFORE</text>
+      <text x="125" y="66" text-anchor="middle" fill="#fff" font-size="21" font-weight="700">clean FAIL</text>
+      <text x="125" y="94" text-anchor="middle" fill="#9aa8b8" font-size="17">looked physical</text>
+    </g>
+    <g transform="translate(290 176)">
+      <rect width="250" height="112" rx="14" fill="#142738" stroke="#66758a"/>
+      <text x="125" y="32" text-anchor="middle" fill="#9aa8b8" font-size="15" letter-spacing="1">FIX</text>
+      <text x="125" y="66" text-anchor="middle" fill="#fff" font-size="21" font-weight="700">sort both loops</text>
+      <text x="125" y="94" text-anchor="middle" fill="#9aa8b8" font-size="17">guard added</text>
+    </g>
+    <g transform="translate(560 176)">
+      <rect width="250" height="112" rx="14" fill="#122b35" stroke="#22a89c"/>
+      <text x="125" y="32" text-anchor="middle" fill="#22a89c" font-size="15" letter-spacing="1">AFTER</text>
+      <text x="125" y="66" text-anchor="middle" fill="#fff" font-size="21" font-weight="700">WITHDRAWN</text>
+      <text x="125" y="94" text-anchor="middle" fill="#9aa8b8" font-size="17">flaky row now 4 / 4</text>
+    </g>
+
+    <rect x="20" y="316" width="790" height="82" rx="16" fill="#101a2b" stroke="#22a89c" stroke-width="2"/>
+    <text x="415" y="346" text-anchor="middle" fill="#22a89c" font-size="15" letter-spacing="2">WRONG IN THE OTHER DIRECTION TOO</text>
+    <text x="415" y="378" text-anchor="middle" fill="#fff" font-size="22" font-weight="700">7 timing rows had understated the code by ≈2×</text>
+
+    <text x="415" y="444" text-anchor="middle" fill="#d4833f" font-size="20">A physical explanation had already been written down first.</text>
+  </g>
+</svg>

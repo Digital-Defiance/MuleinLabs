@@ -25,6 +25,19 @@ export const BgmFieldSchema = z.union([BgmSpecSchema, z.null()]);
 const atmosphereFields = {
   backgroundAsset: z.string().min(1).optional(),
   bgm: BgmFieldSchema.optional(),
+  /**
+   * ElevenLabs speech-rate multiplier for this scene only. 1.0 is the default;
+   * below 1.0 should slow delivery.
+   *
+   * MEASURED CAVEAT: `eleven_flash_v2` appears to ignore this. Setting 0.92 on
+   * a clip moved it from 15.43 to 15.33 chars/s — a 0.6% change where 8.7% was
+   * expected, inside normal generation variance. Verify with a measurement
+   * before relying on it; on flash_v2 the effective lever for pacing is
+   * sentence structure, not this field.
+   *
+   * Setting it changes only that scene's fingerprint, so one clip regenerates.
+   */
+  speed: z.number().min(0.7).max(1.2).optional(),
 };
 
 export const SceneSchema = z.discriminatedUnion('kind', [

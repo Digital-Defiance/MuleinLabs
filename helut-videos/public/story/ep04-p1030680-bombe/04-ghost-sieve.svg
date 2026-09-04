@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" role="img" aria-labelledby="title desc">
+  <title id="title">Split-menu ghost and physical completion sieve</title>
+  <desc id="desc">Disconnected menu components produce a local stop that is rejected by the at-most-ten-pair plugboard completion sieve.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#08111f"/><stop offset="1" stop-color="#1b2230"/></linearGradient>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M0 0l10 5-10 5z" fill="#9aa8b8"/></marker>
+  </defs>
+  <rect width="1920" height="1080" fill="url(#bg)"/>
+  <g transform="translate(1030 315)" font-family="Arial, sans-serif">
+    <rect width="720" height="385" rx="26" fill="#101a2b" stroke="#33445a" stroke-width="2"/>
+    <text x="34" y="48" fill="#9aa8b8" font-size="18" letter-spacing="3">SPLIT MENU · THREE COMPONENTS</text>
+    <g stroke="#22a89c" stroke-width="4" fill="#153d3c">
+      <path d="M95 145l90-45 88 70-105 76z" fill="none"/><circle cx="95" cy="145" r="22"/><circle cx="185" cy="100" r="22"/><circle cx="273" cy="170" r="22"/><circle cx="168" cy="246" r="22"/>
+      <path d="M385 125l100 70-112 75z" fill="none"/><circle cx="385" cy="125" r="22"/><circle cx="485" cy="195" r="22"/><circle cx="373" cy="270" r="22"/>
+      <path d="M590 150l70 105" fill="none"/><circle cx="590" cy="150" r="22"/><circle cx="660" cy="255" r="22"/>
+    </g>
+    <g fill="#f4f6f8" font-size="20" text-anchor="middle"><text x="95" y="152">A</text><text x="185" y="107">C</text><text x="273" y="177">G</text><text x="168" y="253">R</text><text x="385" y="132">B</text><text x="485" y="202">T</text><text x="373" y="277">V</text><text x="590" y="157">L</text><text x="660" y="262">X</text></g>
+    <path d="M55 324h610" stroke="#d4833f" stroke-width="3" stroke-dasharray="9 10"/>
+    <text x="360" y="358" text-anchor="middle" fill="#d4833f" font-size="21">one seeded component can stop while the others remain untested</text>
+  </g>
+  <g transform="translate(970 680)" font-family="Arial, sans-serif">
+    <path d="M0 66h150" stroke="#9aa8b8" stroke-width="4" marker-end="url(#arrow)"/>
+    <rect x="170" width="390" height="132" rx="22" fill="#17243a" stroke="#d4833f" stroke-width="2"/>
+    <text x="365" y="46" text-anchor="middle" fill="#f4f6f8" font-size="25" font-weight="700">GLOBAL PLUGBOARD COMPLETION</text>
+    <text x="365" y="84" text-anchor="middle" fill="#9aa8b8" font-size="22">involution · at most 10 pairs</text>
+    <text x="365" y="113" text-anchor="middle" fill="#9aa8b8" font-size="19">all components together</text>
+    <path d="M580 66h110" stroke="#9aa8b8" stroke-width="4" marker-end="url(#arrow)"/>
+    <g transform="translate(720)"><rect width="180" height="132" rx="22" fill="#351a22" stroke="#d4833f" stroke-width="3"/><path d="M55 36l70 62M125 36L55 98" stroke="#d4833f" stroke-width="10" stroke-linecap="round"/><text x="90" y="160" text-anchor="middle" fill="#d4833f" font-size="22" font-weight="700">GHOST</text></g>
+  </g>
+</svg>

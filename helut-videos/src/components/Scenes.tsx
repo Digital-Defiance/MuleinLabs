@@ -13,7 +13,6 @@ import { SyncedCaptions } from './SyncedCaptions';
 /** HELUT site palette — dark panel with copper + teal signal. */
 const COLORS = {
   bg: '#0d1322',
-  panel: '#121a2b',
   accent: '#d4833f',
   signal: '#22a89c',
   text: '#f4f6f8',
@@ -53,7 +52,7 @@ export const HelutChrome: React.FC<{
           <AbsoluteFill
             style={{
               background:
-                'linear-gradient(180deg, rgba(13,19,34,0.62) 0%, rgba(13,19,34,0.28) 42%, rgba(13,19,34,0.82) 100%)',
+                'linear-gradient(180deg, rgba(13,19,34,0.64) 0%, rgba(13,19,34,0.24) 44%, rgba(13,19,34,0.86) 100%)',
             }}
           />
         </>
@@ -70,95 +69,96 @@ export const HelutChrome: React.FC<{
   );
 };
 
-export const CaptionBar: React.FC<{ text: string }> = ({ text }) => (
-  <div
-    style={{
-      position: 'absolute',
-      left: 80,
-      right: 80,
-      bottom: 56,
-      padding: '22px 28px',
-      background: 'rgba(13, 19, 34, 0.88)',
-      border: '1px solid rgba(154,168,184,0.28)',
-      borderRadius: 12,
-      fontSize: 28,
-      lineHeight: 1.4,
-      fontFamily: FONT_BODY,
-      fontWeight: 400,
-      color: COLORS.text,
-      boxShadow: '0 8px 32px rgba(0,0,0,0.5)',
-    }}
-  >
-    {text}
-  </div>
+const SceneCaptions: React.FC<{
+  episodeId: string;
+  sceneId: string;
+  text: string;
+}> = ({ episodeId, sceneId, text }) => (
+  <SyncedCaptions
+    episodeId={episodeId}
+    sceneId={sceneId}
+    fallbackText={text}
+  />
 );
 
 export const TitleCard: React.FC<{
   eyebrow?: string;
   headline: string;
   subhead?: string;
-  caption?: string;
-  episodeId?: string;
+  caption: string;
+  episodeId: string;
+  sceneId: string;
   backgroundAsset?: string;
-}> = ({ eyebrow, headline, subhead, caption, episodeId, backgroundAsset }) => {
+}> = ({
+  eyebrow,
+  headline,
+  subhead,
+  caption,
+  episodeId,
+  sceneId,
+  backgroundAsset,
+}) => {
   const frame = useCurrentFrame();
   const opacity = interpolate(frame, [0, 12], [0, 1], {
     extrapolateRight: 'clamp',
   });
+  const copyWidth = backgroundAsset ? 980 : 1500;
+
   return (
     <HelutChrome episodeId={episodeId} backgroundAsset={backgroundAsset}>
       <AbsoluteFill
         style={{
           justifyContent: 'center',
-          padding: '0 120px',
+          padding: '0 120px 180px',
           opacity,
         }}
       >
-        {eyebrow && (
+        <div style={{ maxWidth: copyWidth }}>
+          {eyebrow && (
+            <div
+              style={{
+                color: COLORS.signal,
+                letterSpacing: '0.18em',
+                textTransform: 'uppercase',
+                fontFamily: FONT_BODY,
+                fontSize: 28,
+                fontWeight: 600,
+                marginBottom: 24,
+                textShadow: '0 2px 18px rgba(0,0,0,0.65)',
+              }}
+            >
+              {eyebrow}
+            </div>
+          )}
           <div
             style={{
-              color: COLORS.signal,
-              letterSpacing: '0.18em',
-              textTransform: 'uppercase',
-              fontFamily: FONT_BODY,
-              fontSize: 28,
-              fontWeight: 600,
-              marginBottom: 24,
-              textShadow: '0 2px 18px rgba(0,0,0,0.65)',
+              fontFamily: FONT_DISPLAY,
+              fontSize: 84,
+              fontWeight: 700,
+              lineHeight: 1.05,
+              textShadow: '0 4px 28px rgba(0,0,0,0.75)',
             }}
           >
-            {eyebrow}
+            {headline}
           </div>
-        )}
-        <div
-          style={{
-            fontFamily: FONT_DISPLAY,
-            fontSize: 84,
-            fontWeight: 700,
-            lineHeight: 1.05,
-            textShadow: '0 4px 28px rgba(0,0,0,0.75)',
-          }}
-        >
-          {headline}
+          {subhead && (
+            <div
+              style={{
+                marginTop: 28,
+                fontFamily: FONT_BODY,
+                fontSize: 36,
+                fontWeight: 400,
+                color: COLORS.muted,
+                lineHeight: 1.35,
+                textShadow: '0 2px 16px rgba(0,0,0,0.65)',
+              }}
+            >
+              {subhead}
+            </div>
+          )}
         </div>
-        {subhead && (
-          <div
-            style={{
-              marginTop: 28,
-              fontFamily: FONT_BODY,
-              fontSize: 36,
-              fontWeight: 400,
-              color: COLORS.muted,
-              maxWidth: 1400,
-              lineHeight: 1.35,
-              textShadow: '0 2px 16px rgba(0,0,0,0.65)',
-            }}
-          >
-            {subhead}
-          </div>
-        )}
-        {caption && <CaptionBar text={caption} />}
       </AbsoluteFill>
+      <SceneCaptions episodeId={episodeId} sceneId={sceneId} text={caption} />
     </HelutChrome>
   );
 };
@@ -167,47 +167,62 @@ export const NarrationCard: React.FC<{
   headline?: string;
   bullets?: string[];
   caption: string;
-  episodeId?: string;
+  episodeId: string;
+  sceneId: string;
   backgroundAsset?: string;
-}> = ({ headline, bullets, caption, episodeId, backgroundAsset }) => (
-  <HelutChrome episodeId={episodeId} backgroundAsset={backgroundAsset}>
-    <AbsoluteFill style={{ padding: '100px 120px' }}>
-      {headline && (
-        <div
-          style={{
-            fontFamily: FONT_DISPLAY,
-            fontSize: 56,
-            fontWeight: 700,
-            marginBottom: 36,
-            textShadow: '0 3px 22px rgba(0,0,0,0.6)',
-          }}
-        >
-          {headline}
+}> = ({
+  headline,
+  bullets,
+  caption,
+  episodeId,
+  sceneId,
+  backgroundAsset,
+}) => {
+  const copyWidth = backgroundAsset ? 940 : 1600;
+
+  return (
+    <HelutChrome episodeId={episodeId} backgroundAsset={backgroundAsset}>
+      <AbsoluteFill style={{ padding: '92px 120px 280px' }}>
+        <div style={{ maxWidth: copyWidth }}>
+          {headline && (
+            <div
+              style={{
+                fontFamily: FONT_DISPLAY,
+                fontSize: 56,
+                fontWeight: 700,
+                marginBottom: 36,
+                lineHeight: 1.08,
+                textShadow: '0 3px 22px rgba(0,0,0,0.6)',
+              }}
+            >
+              {headline}
+            </div>
+          )}
+          {bullets && (
+            <ul
+              style={{
+                fontFamily: FONT_BODY,
+                fontSize: 31,
+                fontWeight: 400,
+                lineHeight: 1.45,
+                margin: 0,
+                paddingLeft: 40,
+                textShadow: '0 2px 14px rgba(0,0,0,0.55)',
+              }}
+            >
+              {bullets.map((bullet) => (
+                <li key={bullet} style={{ marginBottom: 16 }}>
+                  {bullet}
+                </li>
+              ))}
+            </ul>
+          )}
         </div>
-      )}
-      {bullets && (
-        <ul
-          style={{
-            fontFamily: FONT_BODY,
-            fontSize: 34,
-            fontWeight: 400,
-            lineHeight: 1.55,
-            margin: 0,
-            paddingLeft: 40,
-            textShadow: '0 2px 14px rgba(0,0,0,0.55)',
-          }}
-        >
-          {bullets.map((b) => (
-            <li key={b} style={{ marginBottom: 16 }}>
-              {b}
-            </li>
-          ))}
-        </ul>
-      )}
-      <CaptionBar text={caption} />
-    </AbsoluteFill>
-  </HelutChrome>
-);
+      </AbsoluteFill>
+      <SceneCaptions episodeId={episodeId} sceneId={sceneId} text={caption} />
+    </HelutChrome>
+  );
+};
 
 export const ConceptCard: React.FC<{
   headline: string;
@@ -230,65 +245,63 @@ export const ConceptCard: React.FC<{
   const opacity = interpolate(frame, [0, 12], [0, 1], {
     extrapolateRight: 'clamp',
   });
+  const copyWidth = backgroundAsset ? 980 : 1400;
+
   return (
     <HelutChrome episodeId={episodeId} backgroundAsset={backgroundAsset}>
       <AbsoluteFill
         style={{
           justifyContent: 'flex-start',
-          padding: '120px 100px 0',
+          padding: '112px 100px 260px',
           opacity,
         }}
       >
-        {kicker && (
+        <div style={{ maxWidth: copyWidth }}>
+          {kicker && (
+            <div
+              style={{
+                color: COLORS.accent,
+                letterSpacing: '0.16em',
+                textTransform: 'uppercase',
+                fontFamily: FONT_BODY,
+                fontSize: 24,
+                fontWeight: 600,
+                marginBottom: 20,
+                textShadow: '0 2px 14px rgba(0,0,0,0.65)',
+              }}
+            >
+              {kicker}
+            </div>
+          )}
           <div
             style={{
-              color: COLORS.accent,
-              letterSpacing: '0.16em',
-              textTransform: 'uppercase',
-              fontFamily: FONT_BODY,
-              fontSize: 24,
-              fontWeight: 600,
-              marginBottom: 20,
-              textShadow: '0 2px 14px rgba(0,0,0,0.65)',
+              fontFamily: FONT_DISPLAY,
+              fontSize: 64,
+              fontWeight: 700,
+              lineHeight: 1.08,
+              textShadow: '0 4px 28px rgba(0,0,0,0.8)',
             }}
           >
-            {kicker}
+            {headline}
           </div>
-        )}
-        <div
-          style={{
-            fontFamily: FONT_DISPLAY,
-            fontSize: 64,
-            fontWeight: 700,
-            lineHeight: 1.08,
-            maxWidth: 1400,
-            textShadow: '0 4px 28px rgba(0,0,0,0.8)',
-          }}
-        >
-          {headline}
+          {subhead && (
+            <div
+              style={{
+                marginTop: 22,
+                fontFamily: FONT_BODY,
+                fontSize: 32,
+                fontWeight: 400,
+                color: COLORS.muted,
+                lineHeight: 1.38,
+                textShadow: '0 2px 16px rgba(0,0,0,0.7)',
+              }}
+            >
+              {subhead}
+            </div>
+          )}
         </div>
-        {subhead && (
-          <div
-            style={{
-              marginTop: 22,
-              fontFamily: FONT_BODY,
-              fontSize: 34,
-              fontWeight: 400,
-              color: COLORS.muted,
-              maxWidth: 1200,
-              lineHeight: 1.4,
-              textShadow: '0 2px 16px rgba(0,0,0,0.7)',
-            }}
-          >
-            {subhead}
-          </div>
-        )}
       </AbsoluteFill>
-      <SyncedCaptions
-        episodeId={episodeId}
-        sceneId={sceneId}
-        fallbackText={caption}
-      />
+      <SceneCaptions episodeId={episodeId} sceneId={sceneId} text={caption} />
     </HelutChrome>
   );
 };
@@ -298,7 +311,8 @@ export const OutroCard: React.FC<{
   subhead?: string;
   nextEpisode?: string;
   caption: string;
-  episodeId?: string;
+  episodeId: string;
+  sceneId: string;
   backgroundAsset?: string;
 }> = ({
   headline,
@@ -306,57 +320,63 @@ export const OutroCard: React.FC<{
   nextEpisode,
   caption,
   episodeId,
+  sceneId,
   backgroundAsset,
-}) => (
-  <HelutChrome episodeId={episodeId} backgroundAsset={backgroundAsset}>
-    <AbsoluteFill
-      style={{
-        justifyContent: 'center',
-        padding: '0 120px',
-      }}
-    >
-      <div
+}) => {
+  const copyWidth = backgroundAsset ? 980 : 1400;
+
+  return (
+    <HelutChrome episodeId={episodeId} backgroundAsset={backgroundAsset}>
+      <AbsoluteFill
         style={{
-          fontFamily: FONT_DISPLAY,
-          fontSize: 64,
-          fontWeight: 700,
-          lineHeight: 1.1,
-          textShadow: '0 4px 28px rgba(0,0,0,0.75)',
+          justifyContent: 'center',
+          padding: '0 120px 180px',
         }}
       >
-        {headline}
-      </div>
-      {subhead && (
-        <div
-          style={{
-            marginTop: 24,
-            fontFamily: FONT_BODY,
-            fontSize: 34,
-            fontWeight: 400,
-            color: COLORS.muted,
-            maxWidth: 1300,
-            lineHeight: 1.4,
-          }}
-        >
-          {subhead}
+        <div style={{ maxWidth: copyWidth }}>
+          <div
+            style={{
+              fontFamily: FONT_DISPLAY,
+              fontSize: 64,
+              fontWeight: 700,
+              lineHeight: 1.1,
+              textShadow: '0 4px 28px rgba(0,0,0,0.75)',
+            }}
+          >
+            {headline}
+          </div>
+          {subhead && (
+            <div
+              style={{
+                marginTop: 24,
+                fontFamily: FONT_BODY,
+                fontSize: 34,
+                fontWeight: 400,
+                color: COLORS.muted,
+                lineHeight: 1.4,
+              }}
+            >
+              {subhead}
+            </div>
+          )}
+          {nextEpisode && (
+            <div
+              style={{
+                marginTop: 40,
+                color: COLORS.signal,
+                fontFamily: FONT_BODY,
+                fontSize: 28,
+                fontWeight: 600,
+                letterSpacing: '0.08em',
+                textTransform: 'uppercase',
+              }}
+            >
+              Next · {nextEpisode}
+            </div>
+          )}
         </div>
-      )}
-      {nextEpisode && (
-        <div
-          style={{
-            marginTop: 40,
-            color: COLORS.signal,
-            fontFamily: FONT_BODY,
-            fontSize: 28,
-            fontWeight: 600,
-            letterSpacing: '0.08em',
-            textTransform: 'uppercase',
-          }}
-        >
-          Next · {nextEpisode}
-        </div>
-      )}
-      <CaptionBar text={caption} />
-    </AbsoluteFill>
-  </HelutChrome>
-);
+      </AbsoluteFill>
+      <SceneCaptions episodeId={episodeId} sceneId={sceneId} text={caption} />
+    </HelutChrome>
+  );
+};

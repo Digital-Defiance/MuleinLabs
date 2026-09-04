@@ -1,0 +1,97 @@
+{
+  "id": "ep06-e256-evolution-audit",
+  "compositionId": "Episode06",
+  "title": "E256 — Evolution Without Hype",
+  "youtubeTitle": "E256 Evolution Without Hype: Autopsy, Offline Promotion, Open Audit",
+  "description": "The honest E256 offshoot story: three related but distinct search roles, quarantined v1 failures, immutable runtime profiles, deterministic offline candidate promotion, bounded parity evidence, open threats, and the long-lived-algorithm thought experiment. Experimental; not for real secrets. Epoch C69.",
+  "claimEpoch": "2026-08-20 / C69",
+  "fps": 30,
+  "width": 1920,
+  "height": 1080,
+  "scenes": [
+    {
+      "kind": "title",
+      "id": "title",
+      "eyebrow": "E256 · Experimental offshoot",
+      "headline": "Evolution without hype",
+      "subhead": "The research ledger changes. The running cipher does not mutate itself.",
+      "backgroundAsset": "01-title.svg",
+      "voiceover": "Could a cipher lineage improve after each disclosed weakness? E256 treats that as a research question, not a promise of immortality. The running profile is immutable. Candidate changes happen offline, keep their failed ancestors visible, and require explicit promotion.",
+      "durationHintSec": 23
+    },
+    {
+      "kind": "concept",
+      "id": "three-evolutions",
+      "kicker": "Different roles · different outputs",
+      "headline": "Core path, application, offshoot",
+      "subhead": "TensorLUT genotype · M4 hypothesis · E256 profile",
+      "backgroundAsset": "02-three-evolutions.svg",
+      "voiceover": "Three related projects use search for different jobs. In HELUT's core TensorLUT path, search adjusts continuous truth-table values and may emit a discrete circuit. In the Enigma application, the Bombe searches historical M4 hypotheses and never changes that cipher. In the separate E256 offshoot, profile search proposes a new, versioned construction for later review. Shared optimization tools do not make them one system.",
+      "durationHintSec": 35
+    },
+    {
+      "kind": "concept",
+      "id": "v1-autopsy",
+      "kicker": "Quarantined history",
+      "headline": "Passing tests hid a collapsing machine",
+      "subhead": "Thirty-five checks passed while the old recurrence lost almost all rank.",
+      "backgroundAsset": "03-v1-autopsy.svg",
+      "voiceover": "Earlier E256 generations passed 35 of 35 tests while hiding structural failures. Their state transition lost rank; after 59 clocks, only rank five remained. About one in 32 sampled seeds locked at zero. One nonlinear formula also correlated with a linear input. Those profiles and their grades are quarantined. The lesson is not that evolution saved the cipher. It is that implementations can agree while testing the wrong invariant.",
+      "durationHintSec": 36
+    },
+    {
+      "kind": "concept",
+      "id": "offline-promotion",
+      "kicker": "Fail closed",
+      "headline": "No mutation in the live stream",
+      "subhead": "Record pressure → search offline → holdout → validate → human promotion",
+      "backgroundAsset": "04-offline-promotion.svg",
+      "voiceover": "The live fixture-v4 profile cannot breed or apply mutations at runtime. Red-team pressure is recorded. A deterministic offline search may propose candidates, and it may return no acceptable candidate. Separate holdout attacks and receipt validation come next. Only an explicit human promotion can create a new compatibility identity. Silent fallback to an older profile is forbidden.",
+      "durationHintSec": 32
+    },
+    {
+      "kind": "concept",
+      "id": "evidence-ladder",
+      "kicker": "Parity is not security",
+      "headline": "Strong engineering receipts, open cryptography",
+      "subhead": "1,024 bytes · 9 tables · 10 traces · 25 artifacts · same repository boundary",
+      "backgroundAsset": "05-evidence-ladder.svg",
+      "voiceover": "The live fixture covers 1,024 payload bytes, nine tables, ten traces, and 25 artifacts. Swift, direct RTL, two bus paths, and an internal Rust consumer agree on that fixture. The publication suite reports 49 passing checks, plus one bounded five-part certificate. This is useful implementation evidence. It is not independent cryptanalysis, a confidentiality proof, or an external known-answer test.",
+      "durationHintSec": 35
+    },
+    {
+      "kind": "narration",
+      "id": "open-threats",
+      "headline": "The security case is still open",
+      "bullets": [
+        "Construction and human acceptance",
+        "Protocol, parser, replay, and lifecycle",
+        "RTL buses, table loading, faults, and side channels",
+        "Independent attacks and external implementations"
+      ],
+      "backgroundAsset": "06-open-threats.svg",
+      "voiceover": "The active audit still carries open construction, protocol, parser, lifecycle, RTL, fault, and side-channel findings. Human acceptance of the center construction remains open. The bus wrappers and table loader need adversarial hardening. No calibrated matrix of standard attacks or independent external implementation exists. Optional timing jitter is not side-channel protection. E256 remains a laboratory, not a product.",
+      "durationHintSec": 33
+    },
+    {
+      "kind": "concept",
+      "id": "living-lineage",
+      "kicker": "The thought experiment",
+      "headline": "Long-lived lineage—not an immortal cipher",
+      "subhead": "A failure can inform a future profile; it cannot protect yesterday's message.",
+      "backgroundAsset": "07-living-lineage.svg",
+      "voiceover": "A compromised message cannot be unsent, and a failed profile cannot retroactively protect old traffic. But a disclosed weakness can become evidence for a new, incompatible profile and better future experiments. The question is whether a versioned lineage can survive repeated criticism without hiding its dead ends. That could make the research long-lived. It would not make the algorithm immortal, autonomous, or unbreakable.",
+      "durationHintSec": 34
+    },
+    {
+      "kind": "outro",
+      "id": "outro",
+      "headline": "The living part is the ledger",
+      "subhead": "fixture-v4 is live and bounded · fixture-v5 is staging · no profile is production-approved",
+      "backgroundAsset": "07-living-lineage.svg",
+      "nextEpisode": "Almost — the near misses",
+      "voiceover": "Today, fixture-v4 is the only live public profile. A fixture-v5 lane records staged engineering progress, but it has not been promoted and inherits no security claim. Failed profiles remain visible. Open findings remain open. The living part is the research ledger, not the running cipher. For real secrets, use standardized, reviewed authenticated encryption. Next, the most useful episode in this series: everything that almost worked.",
+      "durationHintSec": 36
+    }
+  ]
+}

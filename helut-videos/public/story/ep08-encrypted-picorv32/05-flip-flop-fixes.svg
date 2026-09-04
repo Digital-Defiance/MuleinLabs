@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" role="img" aria-labelledby="t d">
+  <title id="t">The work was flip-flop semantics</title>
+  <desc id="d">Three modelling defects: ninety-one flip-flops refreshed data they should not have, clock enable gating the reset, and read data not held for the sampled cycle.</desc>
+  <rect width="1920" height="1080" fill="#091522"/>
+  <g transform="translate(1005 170)" font-family="Arial,sans-serif">
+    <text x="410" y="16" text-anchor="middle" fill="#9aa8b8" font-size="16" letter-spacing="3">NOT CRYPTOGRAPHY · CIRCUIT SEMANTICS</text>
+
+    <g transform="translate(20 48)">
+      <rect width="780" height="76" rx="14" fill="#33161b" stroke="#e0574c" stroke-width="2"/>
+      <text x="22" y="30" fill="#e0574c" font-size="15" letter-spacing="2">DEFECT 1</text>
+      <text x="22" y="60" fill="#fff" font-size="21">91 flip-flops refreshed their incoming data</text>
+    </g>
+    <g transform="translate(20 140)">
+      <rect width="780" height="76" rx="14" fill="#33161b" stroke="#e0574c" stroke-width="2"/>
+      <text x="22" y="30" fill="#e0574c" font-size="15" letter-spacing="2">DEFECT 2</text>
+      <text x="22" y="60" fill="#fff" font-size="21">clock enable gates the reset — model it exactly</text>
+    </g>
+    <g transform="translate(20 232)">
+      <rect width="780" height="76" rx="14" fill="#33161b" stroke="#e0574c" stroke-width="2"/>
+      <text x="22" y="30" fill="#e0574c" font-size="15" letter-spacing="2">DEFECT 3</text>
+      <text x="22" y="60" fill="#fff" font-size="21">read data must hold for the sampled cycle</text>
+    </g>
+
+    <rect x="20" y="332" width="780" height="70" rx="16" fill="#122b35" stroke="#22a89c" stroke-width="2"/>
+    <text x="410" y="360" text-anchor="middle" fill="#22a89c" font-size="15" letter-spacing="2">ONLY THEN</text>
+    <text x="410" y="388" text-anchor="middle" fill="#fff" font-size="22" font-weight="700">encrypted state ≡ cleartext state</text>
+
+    <text x="410" y="452" text-anchor="middle" fill="#9aa8b8" font-size="20">The unglamorous half of an encrypted processor.</text>
+  </g>
+</svg>

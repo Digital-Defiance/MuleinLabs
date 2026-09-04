@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" role="img" aria-labelledby="title desc">
+  <title id="title">Blind P1030684 positive-control pipeline</title>
+  <desc id="desc">A five-stage pipeline flows from a held-out crib through Welchman search to two surviving stops and a recovered key and plaintext.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" x2="1"><stop stop-color="#08111f"/><stop offset="0.55" stop-color="#111d31"/><stop offset="1" stop-color="#0d2730"/></linearGradient>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M0 0l10 5-10 5z" fill="#22a89c"/></marker>
+    <filter id="shadow"><feDropShadow dx="0" dy="10" stdDeviation="14" flood-opacity="0.45"/></filter>
+  </defs>
+  <rect width="1920" height="1080" fill="url(#bg)"/>
+  <g transform="translate(110 430)" font-family="Arial, sans-serif" filter="url(#shadow)">
+    <g><rect width="280" height="210" rx="24" fill="#121d30" stroke="#22a89c" stroke-width="2"/><text x="28" y="48" fill="#22a89c" font-size="18" letter-spacing="3">BLIND INPUT</text><text x="28" y="95" fill="#f4f6f8" font-size="30" font-weight="700">P1030684</text><text x="28" y="137" fill="#9aa8b8" font-size="22">held-out control</text><text x="28" y="174" fill="#9aa8b8" font-size="22">crib + ciphertext</text></g>
+    <path d="M300 105h92" stroke="#22a89c" stroke-width="5" marker-end="url(#arrow)"/>
+    <g transform="translate(410)"><rect width="300" height="210" rx="24" fill="#121d30" stroke="#33445a" stroke-width="2"/><text x="28" y="48" fill="#d4833f" font-size="18" letter-spacing="3">WELCHMAN</text><text x="28" y="95" fill="#f4f6f8" font-size="30" font-weight="700">menu closure</text><text x="28" y="137" fill="#9aa8b8" font-size="22">rings × positions</text><text x="28" y="174" fill="#9aa8b8" font-size="22">physical completion</text></g>
+    <path d="M730 105h92" stroke="#22a89c" stroke-width="5" marker-end="url(#arrow)"/>
+    <g transform="translate(840)"><rect width="310" height="210" rx="24" fill="#121d30" stroke="#33445a" stroke-width="2"/><text x="28" y="48" fill="#d4833f" font-size="18" letter-spacing="3">SEARCHED</text><text x="28" y="100" fill="#f4f6f8" font-size="34" font-weight="700">15.97 billion</text><text x="28" y="143" fill="#9aa8b8" font-size="22">settings</text><text x="28" y="180" fill="#9aa8b8" font-size="22">37.4 M/s mean</text></g>
+    <path d="M1170 105h92" stroke="#22a89c" stroke-width="5" marker-end="url(#arrow)"/>
+    <g transform="translate(1280)"><rect width="210" height="210" rx="24" fill="#1d2430" stroke="#d4833f" stroke-width="2"/><text x="28" y="48" fill="#d4833f" font-size="18" letter-spacing="3">SURVIVED</text><text x="28" y="116" fill="#f4f6f8" font-size="62" font-weight="700">2</text><text x="28" y="166" fill="#9aa8b8" font-size="22">stops</text></g>
+    <path d="M1510 105h70" stroke="#22a89c" stroke-width="5" marker-end="url(#arrow)"/>
+    <g transform="translate(1598 -22)"><circle cx="92" cy="126" r="92" fill="#123a38" stroke="#22a89c" stroke-width="4"/><path d="M46 126l30 31 60-72" fill="none" stroke="#22a89c" stroke-width="13" stroke-linecap="round" stroke-linejoin="round"/><text x="92" y="254" text-anchor="middle" fill="#f4f6f8" font-size="23" font-weight="700">KEY + 10 PLUGS</text><text x="92" y="286" text-anchor="middle" fill="#9aa8b8" font-size="20">German plaintext</text></g>
+  </g>
+  <text x="110" y="725" fill="#9aa8b8" font-family="Arial, sans-serif" font-size="24">Positive control: proves the path can recover a true crib. It does not validate a target crib.</text>
+</svg>

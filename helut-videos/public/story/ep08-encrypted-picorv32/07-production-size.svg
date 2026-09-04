@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" role="img" aria-labelledby="t d">
+  <title id="t">One encrypted tick at production size</title>
+  <desc id="d">A single clock cycle of the whole core at production polynomial size took 373.89 seconds, re-measured three times with a spread of two tenths of one percent.</desc>
+  <rect width="1920" height="1080" fill="#091522"/>
+  <g transform="translate(1010 170)" font-family="Arial,sans-serif">
+    <text x="405" y="16" text-anchor="middle" fill="#9aa8b8" font-size="16" letter-spacing="3">PRODUCTION POLYNOMIAL SIZE</text>
+
+    <rect x="20" y="46" width="770" height="130" rx="18" fill="#142738" stroke="#22a89c" stroke-width="3"/>
+    <text x="405" y="80" text-anchor="middle" fill="#22a89c" font-size="15" letter-spacing="2">ONE CLOCK CYCLE · WHOLE CORE</text>
+    <text x="405" y="130" text-anchor="middle" fill="#fff" font-size="46" font-weight="700">373.89 s</text>
+    <text x="405" y="160" text-anchor="middle" fill="#9aa8b8" font-size="19">just over six minutes · Q matched cleartext</text>
+
+    <g transform="translate(20 198)">
+      <rect width="375" height="80" rx="14" fill="#122b35" stroke="#22a89c"/>
+      <text x="187" y="30" text-anchor="middle" fill="#22a89c" font-size="15" letter-spacing="2">REPRODUCIBILITY</text>
+      <text x="187" y="62" text-anchor="middle" fill="#fff" font-size="22" font-weight="700">spread 0.2% over 3 runs</text>
+    </g>
+    <g transform="translate(415 198)">
+      <rect width="375" height="80" rx="14" fill="#2b2025" stroke="#d4833f"/>
+      <text x="187" y="30" text-anchor="middle" fill="#d4833f" font-size="15" letter-spacing="2">HARDNESS PRINTED</text>
+      <text x="187" y="62" text-anchor="middle" fill="#fff" font-size="22" font-weight="700">≈176 bits — with a caveat</text>
+    </g>
+
+    <rect x="20" y="300" width="770" height="72" rx="14" fill="#101a2b" stroke="#66758a"/>
+    <text x="405" y="328" text-anchor="middle" fill="#9aa8b8" font-size="15" letter-spacing="2">WHY THE CAVEAT</text>
+    <text x="405" y="356" text-anchor="middle" fill="#fff" font-size="20">agrees with the reference estimator on some parameter sets, not all</text>
+
+    <text x="405" y="420" text-anchor="middle" fill="#d4833f" font-size="20">Not a blanket security level. One configuration.</text>
+  </g>
+</svg>

@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" role="img" aria-labelledby="t d">
+  <title id="t">A pass with no headroom</title>
+  <desc id="d">A bound that tolerates only about five percent growth in measured spread, while the spread observed across similar runs is closer to fifty percent.</desc>
+  <rect width="1920" height="1080" fill="#091522"/>
+  <g transform="translate(1010 170)" font-family="Arial,sans-serif">
+    <text x="410" y="18" text-anchor="middle" fill="#9aa8b8" font-size="16" letter-spacing="3">TRUE AS RECORDED · NOT ROBUST</text>
+
+    <g transform="translate(30 56)">
+      <text x="0" y="20" fill="#22a89c" font-size="16" letter-spacing="2">WHAT THE BOUND TOLERATES</text>
+      <rect x="0" y="34" width="760" height="42" rx="8" fill="#101a2b" stroke="#66758a"/>
+      <rect x="2" y="36" width="53" height="38" rx="6" fill="#22a89c"/>
+      <text x="76" y="62" fill="#fff" font-size="21" font-weight="700">≈ 5% growth in spread</text>
+    </g>
+
+    <g transform="translate(30 166)">
+      <text x="0" y="20" fill="#d4833f" font-size="16" letter-spacing="2">WHAT WAS ACTUALLY OBSERVED</text>
+      <rect x="0" y="34" width="760" height="42" rx="8" fill="#101a2b" stroke="#66758a"/>
+      <rect x="2" y="36" width="530" height="38" rx="6" fill="#d4833f"/>
+      <text x="552" y="62" fill="#fff" font-size="21" font-weight="700">≈ 50% across runs</text>
+    </g>
+
+    <rect x="30" y="278" width="760" height="76" rx="16" fill="#282235" stroke="#d4833f" stroke-width="2"/>
+    <text x="410" y="306" text-anchor="middle" fill="#d4833f" font-size="16" letter-spacing="2">DECISION</text>
+    <text x="410" y="337" text-anchor="middle" fill="#fff" font-size="22" font-weight="700">move to wider spacing · 2.3× headroom</text>
+
+    <text x="410" y="400" text-anchor="middle" fill="#9aa8b8" font-size="20">A pass you cannot lean on is treated as a near miss.</text>
+  </g>
+</svg>

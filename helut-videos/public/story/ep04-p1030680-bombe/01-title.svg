@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" role="img" aria-labelledby="title desc">
+  <title id="title">P1030680 target overview</title>
+  <desc id="desc">Four translucent Enigma rotor rings beside a ciphertext ribbon and a missing Grund table card.</desc>
+  <defs>
+    <radialGradient id="bg" cx="78%" cy="38%" r="72%">
+      <stop offset="0" stop-color="#173f4a"/>
+      <stop offset="0.52" stop-color="#101c31"/>
+      <stop offset="1" stop-color="#08111f"/>
+    </radialGradient>
+    <linearGradient id="copper" x1="0" x2="1">
+      <stop stop-color="#d4833f" stop-opacity="0.9"/>
+      <stop offset="1" stop-color="#f0b36f" stop-opacity="0.35"/>
+    </linearGradient>
+    <filter id="glow"><feGaussianBlur stdDeviation="10" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+  </defs>
+  <rect width="1920" height="1080" fill="url(#bg)"/>
+  <g opacity="0.84" transform="translate(1435 470)" fill="none" filter="url(#glow)">
+    <circle r="270" stroke="#22a89c" stroke-width="3" stroke-dasharray="7 16"/>
+    <circle r="212" stroke="#d4833f" stroke-width="5" stroke-dasharray="18 9" transform="rotate(18)"/>
+    <circle r="154" stroke="#22a89c" stroke-width="4" stroke-dasharray="4 12" transform="rotate(-12)"/>
+    <circle r="94" stroke="#f4f6f8" stroke-opacity="0.6" stroke-width="2" stroke-dasharray="2 10"/>
+    <circle r="22" fill="#d4833f" fill-opacity="0.75" stroke="none"/>
+    <path d="M-330 0H330M0-330V330" stroke="#9aa8b8" stroke-opacity="0.18" stroke-width="2"/>
+  </g>
+  <g transform="translate(1020 720)">
+    <rect width="760" height="112" rx="18" fill="#0d1322" fill-opacity="0.92" stroke="#22a89c" stroke-opacity="0.55"/>
+    <text x="28" y="40" fill="#9aa8b8" font-family="Arial, sans-serif" font-size="18" letter-spacing="4">CIPHERTEXT · 72 LETTERS</text>
+    <text x="28" y="80" fill="#f4f6f8" font-family="monospace" font-size="28" letter-spacing="6">JCRSA ··············· HVGF</text>
+  </g>
+  <g transform="translate(1170 620)" opacity="0.86">
+    <rect width="480" height="82" rx="14" fill="#2b1720" stroke="url(#copper)" stroke-width="2"/>
+    <text x="26" y="34" fill="#d4833f" font-family="Arial, sans-serif" font-size="17" letter-spacing="3">GRUND TABLE</text>
+    <text x="26" y="64" fill="#f4f6f8" font-family="Arial, sans-serif" font-size="24">MISSING · SEARCH OPEN</text>
+  </g>
+</svg>

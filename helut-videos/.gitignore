@@ -1,10 +1,14 @@
 node_modules/
 out/*.mp4
 out/*.webm
+out/*.png
 # TTS clips + alignment sidecars (regenerate with `npm run tts`)
 public/audio/**/*.mp3
 public/audio/**/*.alignment.json
 public/audio/**/plan.json
 # Pronunciation dictionary cache (machine-local ElevenLabs ids)
 scripts/tts/.dictionary-ids.json
+# Untouched ElevenLabs originals; normalization reads these so repeated
+# --normalize runs never compound lossy re-encoding.
+scripts/tts/raw/
 .DS_Store

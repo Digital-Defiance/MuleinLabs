@@ -1,10 +1,5 @@
 import React, { useMemo } from 'react';
 import { AbsoluteFill, Audio, Sequence, staticFile } from 'remotion';
-import type { EpisodeScript } from '../lib/schema';
-import { sceneAudioStaticPath } from '../lib/audio-paths';
-import { buildBgmSpans } from '../lib/bgm';
-import type { AudioSeconds } from '../lib/timing';
-import { FPS, sceneDurationFrames, sceneStarts } from '../lib/timing';
 import { SmartBgm } from '../components/SmartBgm';
 import {
   ConceptCard,
@@ -12,6 +7,11 @@ import {
   OutroCard,
   TitleCard,
 } from '../components/Scenes';
+import { sceneAudioStaticPath } from '../lib/audio-paths';
+import { buildBgmSpans } from '../lib/bgm';
+import type { EpisodeScript } from '../lib/schema';
+import type { AudioSeconds } from '../lib/timing';
+import { FPS, sceneDurationFrames, sceneStarts } from '../lib/timing';
 
 export type EpisodeProps = {
   script: EpisodeScript;
@@ -60,15 +60,18 @@ export const Episode: React.FC<EpisodeProps> = ({ script, audioSeconds }) => {
             {scene.kind === 'title' && (
               <TitleCard
                 episodeId={script.id}
+                sceneId={scene.id}
                 backgroundAsset={scene.backgroundAsset}
                 eyebrow={scene.eyebrow}
                 headline={scene.headline}
                 subhead={scene.subhead}
+                caption={scene.voiceover}
               />
             )}
             {scene.kind === 'narration' && (
               <NarrationCard
                 episodeId={script.id}
+                sceneId={scene.id}
                 backgroundAsset={scene.backgroundAsset}
                 headline={scene.headline}
                 bullets={scene.bullets}
@@ -89,6 +92,7 @@ export const Episode: React.FC<EpisodeProps> = ({ script, audioSeconds }) => {
             {scene.kind === 'outro' && (
               <OutroCard
                 episodeId={script.id}
+                sceneId={scene.id}
                 backgroundAsset={scene.backgroundAsset}
                 headline={scene.headline}
                 subhead={scene.subhead}

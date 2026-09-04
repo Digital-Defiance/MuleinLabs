@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" role="img" aria-labelledby="t d">
+  <title id="t">A store-then-load program under encryption</title>
+  <desc id="d">The core loads one into a register, stores it to memory with all four byte enables set, and a later load reads the value one back, all while encrypted.</desc>
+  <rect width="1920" height="1080" fill="#091522"/>
+  <g transform="translate(1005 160)" font-family="Arial,sans-serif">
+    <text x="410" y="16" text-anchor="middle" fill="#9aa8b8" font-size="16" letter-spacing="3">THE PROGRAM IT COULD NOT SEE</text>
+
+    <g transform="translate(20 44)">
+      <rect width="780" height="58" rx="12" fill="#142738" stroke="#22a89c"/>
+      <text x="22" y="36" fill="#22a89c" font-size="17" font-family="Courier,monospace">addi x1, x0, 1</text>
+      <text x="758" y="36" text-anchor="end" fill="#9aa8b8" font-size="18">put 1 in a register</text>
+    </g>
+    <g transform="translate(20 112)">
+      <rect width="780" height="58" rx="12" fill="#142738" stroke="#22a89c"/>
+      <text x="22" y="36" fill="#22a89c" font-size="17" font-family="Courier,monospace">sw x1, 0(x0)</text>
+      <text x="758" y="36" text-anchor="end" fill="#9aa8b8" font-size="18">store it to memory</text>
+    </g>
+    <g transform="translate(20 180)">
+      <rect width="780" height="58" rx="12" fill="#142738" stroke="#22a89c"/>
+      <text x="22" y="36" fill="#22a89c" font-size="17" font-family="Courier,monospace">lw  x2, 0(x0)</text>
+      <text x="758" y="36" text-anchor="end" fill="#9aa8b8" font-size="18">load it back</text>
+    </g>
+
+    <g transform="translate(20 262)">
+      <rect width="380" height="90" rx="14" fill="#122b35" stroke="#22a89c" stroke-width="2"/>
+      <text x="190" y="30" text-anchor="middle" fill="#22a89c" font-size="15" letter-spacing="2">STORE OBSERVED</text>
+      <text x="190" y="62" text-anchor="middle" fill="#fff" font-size="21" font-weight="700">wstrb = 0xf</text>
+      <text x="190" y="82" text-anchor="middle" fill="#9aa8b8" font-size="18">wdata = 1</text>
+    </g>
+    <g transform="translate(420 262)">
+      <rect width="380" height="90" rx="14" fill="#122b35" stroke="#22a89c" stroke-width="2"/>
+      <text x="190" y="30" text-anchor="middle" fill="#22a89c" font-size="15" letter-spacing="2">LOAD OBSERVED</text>
+      <text x="190" y="62" text-anchor="middle" fill="#fff" font-size="21" font-weight="700">rdata = 1</text>
+      <text x="190" y="82" text-anchor="middle" fill="#9aa8b8" font-size="18">14 fetches · PC walks</text>
+    </g>
+
+    <text x="410" y="404" text-anchor="middle" fill="#d4833f" font-size="21" font-weight="700">Decrypted state matched the cleartext core exactly.</text>
+  </g>
+</svg>

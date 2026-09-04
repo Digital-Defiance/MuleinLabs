@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" role="img" aria-labelledby="t d">
+  <title id="t">SING — Stimuli In, Golden out</title>
+  <desc id="d">One set of input vectors runs twice: through the cleartext netlist simulator to produce golden bits, and through encryption, blind rotation and decryption. The two results must agree bit for bit or no timing number is reported.</desc>
+  <rect width="1920" height="1080" fill="#091522"/>
+  <g transform="translate(1000 150)" font-family="Arial,sans-serif">
+    <text x="415" y="16" text-anchor="middle" fill="#9aa8b8" font-size="16" letter-spacing="3">ONE SET OF VECTORS · TWO PATHS</text>
+
+    <rect x="20" y="42" width="200" height="66" rx="14" fill="#142738" stroke="#22a89c" stroke-width="2"/>
+    <text x="120" y="68" text-anchor="middle" fill="#22a89c" font-size="14" letter-spacing="2">STIMULI</text>
+    <text x="120" y="92" text-anchor="middle" fill="#fff" font-size="19" font-weight="700">same vectors</text>
+
+    <path d="M220 62h40M220 88h40M260 62v-8M260 88v8" fill="none" stroke="#66758a" stroke-width="3"/>
+
+    <g transform="translate(268 20)">
+      <rect width="542" height="58" rx="12" fill="#122b35" stroke="#22a89c"/>
+      <text x="16" y="24" fill="#22a89c" font-size="13" letter-spacing="2">GOLDEN MODEL</text>
+      <text x="16" y="46" fill="#fff" font-size="18">cleartext netlist simulator → golden bits</text>
+    </g>
+
+    <g transform="translate(268 96)">
+      <rect width="542" height="58" rx="12" fill="#282235" stroke="#d4833f"/>
+      <text x="16" y="24" fill="#d4833f" font-size="13" letter-spacing="2">ENCRYPTED PATH</text>
+      <text x="16" y="46" fill="#fff" font-size="18">encrypt → blind rotate → decrypt</text>
+    </g>
+
+    <path d="M810 49h26v78h-26" fill="none" stroke="#66758a" stroke-width="3"/>
+    <path d="M539 154v34" stroke="#66758a" stroke-width="3"/>
+
+    <rect x="268" y="188" width="542" height="62" rx="14" fill="#14283a" stroke="#22a89c" stroke-width="3"/>
+    <text x="539" y="214" text-anchor="middle" fill="#22a89c" font-size="14" letter-spacing="2">THE GATE</text>
+    <text x="539" y="238" text-anchor="middle" fill="#fff" font-size="20" font-weight="700">must agree bit for bit</text>
+
+    <g transform="translate(20 272)">
+      <rect width="380" height="70" rx="14" fill="#122b35" stroke="#22a89c"/>
+      <text x="190" y="28" text-anchor="middle" fill="#22a89c" font-size="14" letter-spacing="1">PASS</text>
+      <text x="190" y="53" text-anchor="middle" fill="#fff" font-size="18">now the receipts are graded</text>
+    </g>
+    <g transform="translate(430 272)">
+      <rect width="380" height="70" rx="14" fill="#33161b" stroke="#e0574c"/>
+      <text x="190" y="28" text-anchor="middle" fill="#e0574c" font-size="14" letter-spacing="1">FAIL</text>
+      <text x="190" y="53" text-anchor="middle" fill="#fff" font-size="18">timing is not discussed</text>
+    </g>
+
+    <text x="415" y="392" text-anchor="middle" fill="#d4833f" font-size="21" font-weight="700">A fast wrong answer is not a result.</text>
+    <text x="415" y="426" text-anchor="middle" fill="#9aa8b8" font-size="18">The encrypted equivalent of a scan chain.</text>
+  </g>
+</svg>

@@ -1,0 +1,103 @@
+{
+  "id": "ep05-enigma256-architecture",
+  "compositionId": "Episode05",
+  "title": "E256 — Turning Enigma Inside Out",
+  "youtubeTitle": "E256 Architecture: Turning Enigma's Weaknesses into a Design Brief",
+  "description": "How one HELUT application led to E256, a separate experimental crypto offshoot; what its anti-fascist counter-history means to its author; and how the byte-wide reciprocal machine is built. Covers base 256, the attack-response matrix, ten-access byte path, state schedule, and host/RTL boundary. Experimental; not for real secrets. Epoch C69.",
+  "claimEpoch": "2026-08-20 / C69",
+  "fps": 30,
+  "width": 1920,
+  "height": 1080,
+  "scenes": [
+    {
+      "kind": "title",
+      "id": "title",
+      "eyebrow": "From application to offshoot",
+      "headline": "E256",
+      "subhead": "A byte-wide reciprocal machine inspired by rotor structure—not a repaired M4.",
+      "backgroundAsset": "01-title.svg",
+      "voiceover": "E256 is not a third HELUT pillar. It is a separate experimental crypto offshoot inspired by the Enigma application. After using HELUT to study historical M4 search, I turned selected attack lessons into a new design brief. E256 is a byte-wide stream construction inspired by rotor machines. It is not a repaired M4, and it is not compatible with historical Enigma.",
+      "durationHintSec": 31
+    },
+    {
+      "kind": "concept",
+      "id": "counter-history",
+      "kicker": "Motivation · not evidence",
+      "headline": "Counter-history, not a security claim",
+      "subhead": "Remember the full history. Reverse the symbolism. Build defensively.",
+      "backgroundAsset": "01-title.svg",
+      "voiceover": "Foundational Polish cryptanalysis, then work by Turing, Welchman, operators, engineers, and captured intelligence made historical breaks possible. As a trans engineer, I also read Turing's persecution as a warning about state power against queer people. Reversing the symbolism matters to me: study a fascist war machine, publish its weaknesses, and build defensive tools against modern neo-Nazi and authoritarian threats. That ethical frame is personal. It does not prove E256 secure or make past and present identical.",
+      "durationHintSec": 41
+    },
+    {
+      "kind": "concept",
+      "id": "what-256-means",
+      "kicker": "Name the width honestly",
+      "headline": "256 byte values—not 256 bits of security",
+      "subhead": "The alphabet is 00 through FF; the security level is unknown.",
+      "backgroundAsset": "02-what-256-means.svg",
+      "voiceover": "The number 256 describes the byte alphabet, from hexadecimal zero-zero through F F. It is a base-256 datapath, not a claim of 256-bit security. The design replaces a 26-letter alphabet, a ten-pair plugboard, a reflector, paper day keys, and odometer stepping. Replacing those features changes the attack surface. It does not measure the new one.",
+      "durationHintSec": 31
+    },
+    {
+      "kind": "concept",
+      "id": "attack-response",
+      "kicker": "M4 wound → E256 response → unknown",
+      "headline": "Patch specific attack conveniences",
+      "subhead": "Architecture can answer a requirement; only cryptanalysis can grade the answer.",
+      "backgroundAsset": "03-attack-response.svg",
+      "voiceover": "Historical attacks used a small alphabet, the reflector's self-encipherment rule, predictable rotor motion, a thin plugboard, and operational key procedures. E256 responds with full-byte permutations, no reflector, four independently enabled rotors, a full 256-entry plugboard, and software-derived message state. These are architectural responses to specific weaknesses. There is no proof that adapted statistical, algebraic, protocol, or physical attacks will fail.",
+      "durationHintSec": 35
+    },
+    {
+      "kind": "concept",
+      "id": "byte-path",
+      "kicker": "Reciprocal byte path",
+      "headline": "Ten accesses across nine tables",
+      "subhead": "Plugboard → four rotors → center mask → four inverse rotors → plugboard",
+      "backgroundAsset": "04-byte-path.svg",
+      "voiceover": "One byte enters a full 256-entry involutive plugboard and passes forward through four selected rotors. It then combines with a host-derived center-mask byte using exclusive OR. The byte returns through the four inverse rotors and the same plugboard. For one frozen state, the same path decrypts what it encrypted. Nine unique tables require ten serial accesses because the plugboard is visited twice. Reciprocity is a functional invariant, not confidentiality evidence.",
+      "durationHintSec": 38
+    },
+    {
+      "kind": "concept",
+      "id": "day-and-message-state",
+      "kicker": "Day material · message state",
+      "headline": "Sixteen rotors in the pool; four active",
+      "subhead": "A nonce selects rotors, offsets, state seed, and the center schedule.",
+      "backgroundAsset": "05-day-message-state.svg",
+      "voiceover": "Day material contains one full plugboard and 16 forward-and-reverse rotor pairs. A message nonce selects four active rotors, four starting offsets, a 64-bit state seed, and a center-mask key. Hardware loads only the active plugboard and four rotor pairs: nine tables, or 2,304 bytes. After each accepted byte, a shift register with linear feedback feeds a nonlinear filter. That filter decides independently which of the four rotors step.",
+      "durationHintSec": 38
+    },
+    {
+      "kind": "concept",
+      "id": "trust-boundary",
+      "kicker": "Host / RTL boundary",
+      "headline": "The hardware trusts a supplied mask",
+      "subhead": "The host authenticates and derives; RTL checks the counter and transforms.",
+      "backgroundAsset": "06-host-rtl-boundary.svg",
+      "voiceover": "The host owns the handshake, key derivation, container authentication, nonce discipline, and center-mask schedule. For each byte, it sends one atomic tuple: payload, center mask, and absolute byte counter. The RTL checks that counter before transforming or advancing state. It does not store the message-authentication key, and it does not derive or validate the mask itself. That trust boundary is explicit and still under audit.",
+      "durationHintSec": 37
+    },
+    {
+      "kind": "concept",
+      "id": "one-byte-in-time",
+      "kicker": "One accepted byte",
+      "headline": "Validate, transform, emit, then step",
+      "subhead": "A counter mismatch raises an error and must not advance the stream.",
+      "backgroundAsset": "07-one-byte.svg",
+      "voiceover": "The update order is part of the cipher identity. First snapshot the tuple and compare its counter. Then transform under the current offsets and emit the output. Only after acceptance does the machine apply the captured four-bit step mask, clock its state register, and increment the counter. A counter mismatch raises an error and must not advance the stream.",
+      "durationHintSec": 31
+    },
+    {
+      "kind": "outro",
+      "id": "outro",
+      "headline": "A response matrix is not a security proof",
+      "subhead": "E256 removes selected M4 conveniences; comparative strength remains unknown.",
+      "backgroundAsset": "08-architecture-not-proof.svg",
+      "nextEpisode": "E256 — Evolution Without Hype",
+      "voiceover": "E256 removes or changes several conveniences used against M4. The live fixture has bounded reciprocity and cross-implementation parity receipts. Its security level, comparative strength, and production suitability remain unknown. Use standardized authenticated encryption for real data. Next, we examine the failed generations, the offline promotion loop, and what evidence is still missing.",
+      "durationHintSec": 30
+    }
+  ]
+}

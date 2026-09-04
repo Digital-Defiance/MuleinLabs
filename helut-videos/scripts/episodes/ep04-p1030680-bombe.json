@@ -1,0 +1,119 @@
+{
+  "id": "ep04-p1030680-bombe",
+  "compositionId": "Episode04",
+  "title": "The P1030680 Bombe",
+  "youtubeTitle": "The P1030680 Bombe: What We Built, Tested, and Still Do Not Know",
+  "description": "Why an Enigma message appears in a HELUT series, and what this chosen application built: historical Bombe context, the blind P1030684 control, Welchman diagonal board, Mulein Board, 628-Future bank, and completed Phase 51.16 bounded stripe. The campaign uses HELUT's cleartext compiler and batch engine; it produced zero BREAK gates, no key, plaintext, or decrypt. Epoch C69.",
+  "claimEpoch": "2026-08-20 / C69",
+  "fps": 30,
+  "width": 1920,
+  "height": 1080,
+  "scenes": [
+    {
+      "kind": "title",
+      "id": "title",
+      "eyebrow": "HELUT application · Campaign evidence",
+      "headline": "The P1030680 Bombe",
+      "subhead": "Why this problem · what we built · why the message remains unbroken",
+      "backgroundAsset": "01-title.svg",
+      "voiceover": "Why is an Enigma message in a HELUT series? I chose it as a concrete, demanding way to exercise the cleartext compiler and batch engine. The target, P1030680, is a 72-letter Enigma M4 message from the M-Thetis network, sent in May 1945. Its printed starting-position table is missing. HELUT tests explicit plaintext guesses, correction patterns, and rotor settings against that message. This episode separates a local stop, a physically valid candidate, and an actual break.",
+      "durationHintSec": 37
+    },
+    {
+      "kind": "concept",
+      "id": "historical-context",
+      "kicker": "Historical context",
+      "headline": "Enigma was breakable. This message is still unbroken.",
+      "subhead": "Cribs were powerful constraints, not the whole history of the break.",
+      "backgroundAsset": "00-cribs-and-breaks.svg",
+      "voiceover": "Operational Enigma was not mathematically unbreakable without a crib. Polish cryptanalysts built the foundational attack, and British work by Alan Turing, Gordon Welchman, operators, and engineers extended it. A crib is a plausible plaintext fragment aligned with the ciphertext. Cribs supplied powerful constraints alongside procedures, traffic analysis, captured material, and machine weaknesses. Here the narrower question is what those methods can establish for one short message with no verified crib.",
+      "durationHintSec": 38
+    },
+    {
+      "kind": "narration",
+      "id": "target",
+      "headline": "The target starts with missing information",
+      "bullets": [
+        "72 letters · no depth · no verified M-Thetis crib",
+        "Lost Grund table · indicators contribute <1 bit",
+        "Possible transcription error, not established corruption"
+      ],
+      "backgroundAsset": "02-target.svg",
+      "voiceover": "The archive leaves little leverage. There are 72 letters and no depth: no second message encrypted at the same setting. No broken M-Thetis corpus supplies a verified crib, and the printed table of starting positions, called the Grund table, is missing. The naval indicators narrow the search by less than one bit. Three other-network day keys score like noise. A sister message shows transcription errors are possible, but does not prove this target is corrupted.",
+      "durationHintSec": 41
+    },
+    {
+      "kind": "concept",
+      "id": "blind-control",
+      "kicker": "Claim C2 · positive control",
+      "headline": "First prove the path on a blind control",
+      "subhead": "P1030684 recovered the rotor configuration, all ten plugs, and German plaintext.",
+      "backgroundAsset": "03-control.svg",
+      "voiceover": "Before drawing conclusions about the target, HELUT ran the same path without revealing the answer on known message P1030684. Across 15.96 billion settings, two stops survived. The correct rotor configuration, all ten plug pairs, and readable German were recovered. The archived rerun took 427 seconds, averaging 37.4 million settings per second. This validates the tested path when the crib is true. It does not validate any target crib.",
+      "durationHintSec": 39
+    },
+    {
+      "kind": "concept",
+      "id": "ghost-sieve",
+      "kicker": "Menu → diagonal board → physical plugboard",
+      "headline": "A stop is not a break",
+      "subhead": "Disconnected constraints can create ghost stops.",
+      "backgroundAsset": "04-ghost-sieve.svg",
+      "voiceover": "A Bombe turns one crib alignment into a graph called a menu. Each edge represents the Enigma scrambler at one message step. The diagonal board starts from one proposed plug pair and propagates the constraints. A disconnected menu can satisfy one component while leaving another untested, creating a ghost stop. HELUT therefore asks whether all components fit one plugboard made of at most ten disjoint pairs. The known control passes. The recurring target stops tested here do not. Even a physical completion is only a candidate.",
+      "durationHintSec": 43
+    },
+    {
+      "kind": "concept",
+      "id": "tolerant-board",
+      "kicker": "Mulein Board · pronounced mull-een",
+      "headline": "Delete before closure—and record the repair",
+      "subhead": "Exact first. Minimal edge deletions next. Provenance always preserved.",
+      "backgroundAsset": "05-tolerant-board.svg",
+      "voiceover": "One wrong crib letter can make exact propagation reject the true key. The Mulein Board first runs the exact graph, then retries the smallest recorded sets of deleted edges. It preserves the ten-pair limit, keeps the seed connected, and records every dropped edge. In the known control, one to three injected errors defeated the exact board. Matching tolerance recovered the true setting with all 25 forced plug deductions correct. The host and Metal research path test up to three deletions; the production bank reports exact or one-edge cases only. This is a sensitivity control, not evidence that P1030680 is corrupted.",
+      "durationHintSec": 50
+    },
+    {
+      "kind": "concept",
+      "id": "future-bank",
+      "kicker": "Unified search machine",
+      "headline": "628 Futures share one M4 trail",
+      "subhead": "Each Future is one fully specified crib and correction geometry.",
+      "backgroundAsset": "06-future-bank.svg",
+      "voiceover": "A Future is one fully specified crib and correction geometry. The current manifest contains 628: 314 unchanged alignments and 314 hypotheses with a four-letter gap. One shared 80-step-by-26-letter Enigma trail feeds four parallel lanes. Each lane emits a compact receipt. The host rejects duplicates and replays every hit before a break gate can open. The implementation agrees across four tested surfaces on the known control. This is a cleartext search path, not FHE.",
+      "durationHintSec": 39
+    },
+    {
+      "kind": "narration",
+      "id": "bounded-stripe",
+      "headline": "What Phase 51.16 actually covered",
+      "bullets": [
+        "Setting 0 preflight: 15 repairs · 0 gates",
+        "Settings 1–255 production: 4,184 candidates · 0 gates",
+        "One fixed shell; settings 256–456,975 and other shells remain open"
+      ],
+      "backgroundAsset": "07-bounded-stripe.svg",
+      "voiceover": "The setting-zero preflight checked all 628 Futures and retained 15 one-edge repair candidates. It opened no break gate. Production then covered settings one through 255 on the same fixed shell. It checked 4,163,640 receipts and retained 4,184 host-verified candidates; that count excludes the 15 preflight repairs. Forty exact identity hits failed plugboard completion. Forty-one exact post-gap hits await full-message replay. Another 4,103 one-edge repairs await correction replay. No candidate reached a break gate. The run produced no scored plaintext, key, or decrypt.",
+      "durationHintSec": 55
+    },
+    {
+      "kind": "concept",
+      "id": "replay-next",
+      "kicker": "Bounded negative · open campaign",
+      "headline": "Replay before widening",
+      "subhead": "Most settings, every other shell, and legacy coverage gaps remain open.",
+      "backgroundAsset": "08-replay-next.svg",
+      "voiceover": "For this shell, settings 256 through 456,975 remain open, as do all other shells. More than 82 percent of candidates in the leading four-letter-gap family paired with translated identity states. That does not eliminate a real gap at another boundary. It does make another same-shaped stripe low-information. Next, replay the 41 exact post-gap hits with their full geometry, then deduplicate and explicitly test the strongest identity repairs.",
+      "durationHintSec": 38
+    },
+    {
+      "kind": "outro",
+      "id": "outro",
+      "headline": "A machine, a bounded result, and an open message",
+      "subhead": "One HELUT application ends with public receipts—not a decrypt.",
+      "backgroundAsset": "08-replay-next.svg",
+      "nextEpisode": "E256 — Turning Enigma Inside Out",
+      "voiceover": "This campaign is one application of HELUT, not the definition of the project. The tested machine recovered the known control. For the target, it covered one shell, all 628 hypotheses, and only settings zero through 255. No break gate opened, and P1030680 remains unbroken. Next, I follow a separate idea that grew from the attack lessons: E256, an experimental rotor-inspired offshoot.",
+      "durationHintSec": 33
+    }
+  ]
+}

@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" role="img" aria-labelledby="t d">
+  <title id="t">Core path, application, and offshoot searches</title>
+  <desc id="d">TensorLUT is a core HELUT path, historical M4 search is one application, and E256 profile search belongs to a separate experimental offshoot. Each has different inputs and outputs.</desc>
+  <rect width="1920" height="1080" fill="#091522"/>
+  <g transform="translate(1010 200) scale(.88)" font-family="Arial,sans-serif">
+    <g>
+      <rect width="300" height="500" rx="28" fill="#142738" stroke="#22a89c" stroke-width="2"/>
+      <text x="150" y="52" text-anchor="middle" fill="#22a89c" font-size="16" letter-spacing="1">CORE · TENSORLUT</text>
+      <text x="150" y="102" text-anchor="middle" fill="#fff" font-size="28" font-weight="700">LUT genotype</text>
+      <path d="M70 165h160" stroke="#66758a" stroke-width="3"/>
+      <text x="150" y="215" text-anchor="middle" fill="#9aa8b8" font-size="19">continuous entries</text>
+      <text x="150" y="252" text-anchor="middle" fill="#9aa8b8" font-size="19">↓</text>
+      <text x="150" y="290" text-anchor="middle" fill="#fff" font-size="23">binary circuit</text>
+      <text x="150" y="390" text-anchor="middle" fill="#22a89c" font-size="18">may emit Verilog</text>
+    </g>
+    <g transform="translate(335)">
+      <rect width="300" height="500" rx="28" fill="#282235" stroke="#d4833f" stroke-width="2"/>
+      <text x="150" y="52" text-anchor="middle" fill="#d4833f" font-size="15" letter-spacing="1">APPLICATION · BOMBE</text>
+      <text x="150" y="102" text-anchor="middle" fill="#fff" font-size="28" font-weight="700">M4 hypothesis</text>
+      <path d="M70 165h160" stroke="#66758a" stroke-width="3"/>
+      <text x="150" y="215" text-anchor="middle" fill="#9aa8b8" font-size="19">crib + key setting</text>
+      <text x="150" y="252" text-anchor="middle" fill="#9aa8b8" font-size="19">↓</text>
+      <text x="150" y="290" text-anchor="middle" fill="#fff" font-size="23">candidate / negative</text>
+      <text x="150" y="390" text-anchor="middle" fill="#d4833f" font-size="18">never changes M4</text>
+    </g>
+    <g transform="translate(670)">
+      <rect width="300" height="500" rx="28" fill="#2b2025" stroke="#d4833f" stroke-width="2"/>
+      <text x="150" y="52" text-anchor="middle" fill="#d4833f" font-size="16" letter-spacing="1">OFFSHOOT · E256</text>
+      <text x="150" y="102" text-anchor="middle" fill="#fff" font-size="28" font-weight="700">profile proposal</text>
+      <path d="M70 165h160" stroke="#66758a" stroke-width="3"/>
+      <text x="150" y="215" text-anchor="middle" fill="#9aa8b8" font-size="19">recorded Red pressure</text>
+      <text x="150" y="252" text-anchor="middle" fill="#9aa8b8" font-size="19">↓</text>
+      <text x="150" y="290" text-anchor="middle" fill="#fff" font-size="23">versioned candidate</text>
+      <text x="150" y="390" text-anchor="middle" fill="#d4833f" font-size="18">human promotion required</text>
+    </g>
+    <text x="485" y="575" text-anchor="middle" fill="#9aa8b8" font-size="20">Shared optimization machinery does not collapse their roles or evidence.</text>
+  </g>
+</svg>
