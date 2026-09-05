@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" role="img" aria-labelledby="title desc">
+  <title id="title">HELUT searches INIT values on fixed topology while Yosys and ABC rewrite and map structure</title>
+  <desc id="desc">A side-by-side comparison separates HELUT's fixed-graph truth-table parameter search from Yosys and ABC structural rewriting, removal, and mapping, leaving area, depth, power, timing, and superior-simplification claims open.</desc>
+  <rect width="1920" height="1080" fill="#091522"/>
+  <g transform="translate(976 102)" font-family="Arial, sans-serif">
+    <text x="446" y="18" text-anchor="middle" fill="#9aa8b8" font-size="15" letter-spacing="3">DIFFERENT OPTIMIZATION OBJECTS</text>
+    <g transform="translate(0 58)">
+      <rect width="434" height="570" rx="22" fill="#122b35" stroke="#22a89c" stroke-width="2"/>
+      <text x="217" y="42" text-anchor="middle" fill="#22a89c" font-size="15" letter-spacing="2">HELUT · IMPLEMENTED SEARCH</text>
+      <text x="217" y="78" text-anchor="middle" fill="#fff" font-size="24" font-weight="700">Fixed topology</text>
+      <g transform="translate(44 116)">
+        <line x1="22" y1="86" x2="116" y2="86" stroke="#66758a" stroke-width="4"/><line x1="116" y1="86" x2="214" y2="48" stroke="#66758a" stroke-width="4"/><line x1="116" y1="86" x2="214" y2="124" stroke="#66758a" stroke-width="4"/><line x1="214" y1="48" x2="324" y2="86" stroke="#66758a" stroke-width="4"/><line x1="214" y1="124" x2="324" y2="86" stroke="#66758a" stroke-width="4"/>
+        <circle cx="22" cy="86" r="12" fill="#091522" stroke="#22a89c" stroke-width="2"/><rect x="82" y="55" width="68" height="62" rx="10" fill="#142738" stroke="#22a89c"/><rect x="180" y="17" width="68" height="62" rx="10" fill="#142738" stroke="#22a89c"/><rect x="180" y="93" width="68" height="62" rx="10" fill="#142738" stroke="#22a89c"/><circle cx="324" cy="86" r="12" fill="#091522" stroke="#22a89c" stroke-width="2"/>
+        <text x="116" y="92" text-anchor="middle" fill="#fff" font-size="15" font-weight="700">INIT</text><text x="214" y="54" text-anchor="middle" fill="#fff" font-size="15" font-weight="700">INIT</text><text x="214" y="130" text-anchor="middle" fill="#fff" font-size="15" font-weight="700">INIT</text>
+      </g>
+      <g transform="translate(28 316)">
+        <rect width="378" height="64" rx="11" fill="#091522"/><text x="18" y="27" fill="#fff" font-size="17" font-weight="700">Changes</text><text x="360" y="27" text-anchor="end" fill="#22a89c" font-size="17">truth-table values</text><text x="18" y="50" fill="#9aa8b8" font-size="13">wires and LUT count stay fixed</text>
+        <rect y="78" width="378" height="64" rx="11" fill="#091522"/><text x="18" y="105" fill="#fff" font-size="17" font-weight="700">Objective</text><text x="360" y="105" text-anchor="end" fill="#22a89c" font-size="17">target + binarity</text><text x="18" y="128" fill="#9aa8b8" font-size="13">no area / depth / power / timing term</text>
+        <rect y="156" width="378" height="64" rx="11" fill="#091522"/><text x="18" y="183" fill="#fff" font-size="17" font-weight="700">Direct emit</text><text x="360" y="183" text-anchor="end" fill="#22a89c" font-size="17">1 LUT6 / original LUT</text><text x="18" y="206" fill="#9aa8b8" font-size="13">cannot directly reduce count</text>
+      </g>
+      <rect x="458" width="434" height="570" rx="22" fill="#142738" stroke="#66758a" stroke-width="2"/>
+      <text x="675" y="42" text-anchor="middle" fill="#9aa8b8" font-size="15" letter-spacing="2">YOSYS / ABC</text>
+      <text x="675" y="78" text-anchor="middle" fill="#fff" font-size="24" font-weight="700">Structural rewrite + map</text>
+      <g transform="translate(502 116)">
+        <g opacity="0.55">
+          <line x1="22" y1="86" x2="116" y2="48" stroke="#66758a" stroke-width="3"/><line x1="22" y1="86" x2="116" y2="124" stroke="#66758a" stroke-width="3"/><line x1="116" y1="48" x2="214" y2="86" stroke="#66758a" stroke-width="3"/><line x1="116" y1="124" x2="214" y2="86" stroke="#66758a" stroke-width="3"/>
+          <circle cx="22" cy="86" r="12" fill="#091522" stroke="#66758a"/><rect x="82" y="17" width="68" height="62" rx="10" fill="#0c1724" stroke="#66758a"/><rect x="82" y="93" width="68" height="62" rx="10" fill="#0c1724" stroke="#66758a"/><rect x="180" y="55" width="68" height="62" rx="10" fill="#0c1724" stroke="#66758a"/>
+        </g>
+        <line x1="256" y1="86" x2="294" y2="86" stroke="#d4833f" stroke-width="3"/><polygon points="306,86 289,77 289,95" fill="#d4833f"/>
+        <g transform="translate(320 28)">
+          <line x1="0" y1="58" x2="78" y2="58" stroke="#22a89c" stroke-width="4"/><rect x="22" y="26" width="68" height="64" rx="10" fill="#122b35" stroke="#22a89c"/><circle cx="0" cy="58" r="11" fill="#091522" stroke="#22a89c"/><circle cx="112" cy="58" r="11" fill="#091522" stroke="#22a89c"/><line x1="90" y1="58" x2="112" y2="58" stroke="#22a89c" stroke-width="4"/><text x="56" y="65" text-anchor="middle" fill="#fff" font-size="15" font-weight="700">MAP</text>
+        </g>
+      </g>
+      <g transform="translate(486 316)">
+        <rect width="378" height="64" rx="11" fill="#091522"/><text x="18" y="27" fill="#fff" font-size="17" font-weight="700">Can</text><text x="360" y="27" text-anchor="end" fill="#9aa8b8" font-size="17">rewrite structure</text><text x="18" y="50" fill="#9aa8b8" font-size="13">remove redundancy · change network</text>
+        <rect y="78" width="378" height="64" rx="11" fill="#091522"/><text x="18" y="105" fill="#fff" font-size="17" font-weight="700">Can</text><text x="360" y="105" text-anchor="end" fill="#9aa8b8" font-size="17">map cells / libraries</text><text x="18" y="128" fill="#9aa8b8" font-size="13">structural synthesis role</text>
+        <rect y="156" width="378" height="64" rx="11" fill="#091522"/><text x="18" y="183" fill="#fff" font-size="17" font-weight="700">Comparison</text><text x="360" y="183" text-anchor="end" fill="#d4833f" font-size="17">not yet demonstrated</text><text x="18" y="206" fill="#9aa8b8" font-size="13">identical mapping required</text>
+      </g>
+    </g>
+    <g transform="translate(0 650)">
+      <rect width="892" height="130" rx="18" fill="#2b2025" stroke="#d4833f" stroke-width="2"/>
+      <text x="446" y="38" text-anchor="middle" fill="#d4833f" font-size="14" letter-spacing="2">OPEN CLAIM</text>
+      <text x="446" y="76" text-anchor="middle" fill="#fff" font-size="22" font-weight="700">area · depth · power · timing advantage</text>
+      <text x="446" y="106" text-anchor="middle" fill="#9aa8b8" font-size="15">no superior logic-simplification result over Yosys / ABC</text>
+    </g>
+  </g>
+</svg>

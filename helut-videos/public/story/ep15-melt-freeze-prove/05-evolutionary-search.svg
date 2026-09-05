@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" role="img" aria-labelledby="title desc">
+  <title id="title">The implemented search evolves a population with mutation, whole-LUT crossover, target error, and rising binarity pressure</title>
+  <desc id="desc">A right-side evolutionary loop shows population 48, sparse Gaussian mutation with optional binary jumps, whole-64-entry-LUT crossover, target-error and binarity scoring, selection across 120 generations with fixed seed 0x7A6E17, and explicitly says this is not gradient descent.</desc>
+  <rect width="1920" height="1080" fill="#091522"/>
+  <g transform="translate(974 82)" font-family="Arial, sans-serif">
+    <text x="450" y="18" text-anchor="middle" fill="#9aa8b8" font-size="15" letter-spacing="3">SEARCH MECHANISM · NAME IT CORRECTLY</text>
+    <rect x="0" y="50" width="900" height="760" rx="24" fill="#0c1724" stroke="#66758a" stroke-width="2"/>
+    <g transform="translate(38 88)">
+      <rect x="0" y="0" width="278" height="154" rx="18" fill="#122b35" stroke="#22a89c" stroke-width="2"/>
+      <text x="139" y="38" text-anchor="middle" fill="#22a89c" font-size="14" letter-spacing="2">POPULATION</text>
+      <text x="139" y="91" text-anchor="middle" fill="#fff" font-size="43" font-weight="700">48</text>
+      <text x="139" y="126" text-anchor="middle" fill="#9aa8b8" font-size="15">INIT chromosomes</text>
+      <line x1="278" y1="77" x2="332" y2="77" stroke="#66758a" stroke-width="3"/>
+      <polygon points="345,77 327,68 327,86" fill="#66758a"/>
+      <rect x="345" y="0" width="478" height="154" rx="18" fill="#2b2025" stroke="#d4833f" stroke-width="2"/>
+      <text x="369" y="36" fill="#d4833f" font-size="14" letter-spacing="2">VARIATION</text>
+      <g transform="translate(369 57)">
+        <rect width="204" height="68" rx="11" fill="#201a22"/>
+        <text x="102" y="28" text-anchor="middle" fill="#fff" font-size="17" font-weight="700">Sparse Gaussian mutation</text>
+        <text x="102" y="52" text-anchor="middle" fill="#9aa8b8" font-size="13">optional jumps to 0 / 1</text>
+        <rect x="222" width="208" height="68" rx="11" fill="#201a22"/>
+        <text x="326" y="28" text-anchor="middle" fill="#fff" font-size="17" font-weight="700">Whole-LUT crossover</text>
+        <text x="326" y="52" text-anchor="middle" fill="#9aa8b8" font-size="13">swap 64-entry blocks</text>
+      </g>
+      <line x1="584" y1="154" x2="584" y2="204" stroke="#66758a" stroke-width="3"/>
+      <polygon points="584,217 575,199 593,199" fill="#66758a"/>
+      <rect x="345" y="217" width="478" height="230" rx="18" fill="#142738" stroke="#66758a" stroke-width="2"/>
+      <text x="369" y="255" fill="#9aa8b8" font-size="14" letter-spacing="2">SCORE EACH CANDIDATE</text>
+      <rect x="369" y="278" width="430" height="64" rx="11" fill="#091522"/>
+      <text x="389" y="305" fill="#fff" font-size="17" font-weight="700">Target fitness</text>
+      <text x="779" y="305" text-anchor="end" fill="#22a89c" font-size="17">− squared output error</text>
+      <text x="389" y="329" fill="#9aa8b8" font-size="13">fit the experiment's target</text>
+      <rect x="369" y="356" width="430" height="64" rx="11" fill="#091522"/>
+      <text x="389" y="383" fill="#fff" font-size="17" font-weight="700">Binarity pressure</text>
+      <text x="779" y="383" text-anchor="end" fill="#d4833f" font-size="17">λ · Σ w(1−w)</text>
+      <text x="389" y="407" fill="#9aa8b8" font-size="13">λ rises later · maximum 12</text>
+      <line x1="345" y1="332" x2="283" y2="332" stroke="#66758a" stroke-width="3"/>
+      <polygon points="270,332 288,323 288,341" fill="#66758a"/>
+      <rect x="0" y="217" width="270" height="230" rx="18" fill="#122b35" stroke="#22a89c" stroke-width="2"/>
+      <text x="135" y="255" text-anchor="middle" fill="#22a89c" font-size="14" letter-spacing="2">SELECT + REPEAT</text>
+      <circle cx="135" cy="331" r="52" fill="#091522" stroke="#22a89c" stroke-width="2"/>
+      <text x="135" y="324" text-anchor="middle" fill="#fff" font-size="21" font-weight="700">KEEP</text>
+      <text x="135" y="351" text-anchor="middle" fill="#fff" font-size="21" font-weight="700">ELITES</text>
+      <text x="135" y="405" text-anchor="middle" fill="#9aa8b8" font-size="14">next generation</text>
+      <path d="M135 217 V184 C135 166 153 154 173 154" fill="none" stroke="#22a89c" stroke-width="3"/>
+      <polygon points="187,154 169,145 169,163" fill="#22a89c"/>
+      <g transform="translate(0 484)">
+        <rect width="823" height="112" rx="16" fill="#142738" stroke="#66758a"/>
+        <text x="24" y="34" fill="#9aa8b8" font-size="14" letter-spacing="2">DETERMINISTIC CONTROL</text>
+        <text x="24" y="73" fill="#fff" font-size="22" font-weight="700">120 generations · seed 0x7A6E17 · final binary polish attempt</text>
+        <text x="799" y="94" text-anchor="end" fill="#9aa8b8" font-size="14">fixed topology throughout</text>
+      </g>
+      <rect x="0" y="616" width="823" height="76" rx="14" fill="#2b2025" stroke="#d4833f" stroke-width="2"/>
+      <text x="411" y="647" text-anchor="middle" fill="#d4833f" font-size="14" letter-spacing="2">EXPLICITLY</text>
+      <text x="411" y="676" text-anchor="middle" fill="#fff" font-size="20" font-weight="700">EVOLUTIONARY SEARCH · NOT GRADIENT DESCENT</text>
+    </g>
+  </g>
+</svg>

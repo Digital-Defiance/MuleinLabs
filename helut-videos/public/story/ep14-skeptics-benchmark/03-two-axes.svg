@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" role="img" aria-labelledby="title desc">
+  <title id="title">B circuit instances and N coefficients per encoded wire are orthogonal tensor axes</title>
+  <desc id="desc">A right-side coordinate diagram separates B independent circuit copies from N coefficients on each encoded wire and warns that tensor shape alone proves neither encryption nor speed.</desc>
+  <rect width="1920" height="1080" fill="#091522"/>
+  <g transform="translate(992 116)" font-family="Arial, sans-serif">
+    <text x="426" y="18" text-anchor="middle" fill="#9aa8b8" font-size="15" letter-spacing="3">TWO AXES · TWO DIFFERENT MEANINGS</text>
+    <rect x="0" y="58" width="852" height="650" rx="22" fill="#0c1724" stroke="#66758a" stroke-width="2"/>
+    <g transform="translate(94 110)">
+      <line x1="90" y1="420" x2="674" y2="420" stroke="#22a89c" stroke-width="4"/>
+      <polygon points="690,420 668,408 668,432" fill="#22a89c"/>
+      <line x1="90" y1="420" x2="90" y2="44" stroke="#22a89c" stroke-width="4"/>
+      <polygon points="90,28 78,50 102,50" fill="#22a89c"/>
+      <text x="685" y="466" text-anchor="end" fill="#22a89c" font-size="28" font-weight="700">B</text>
+      <text x="685" y="491" text-anchor="end" fill="#9aa8b8" font-size="15">independent circuit instances</text>
+      <text x="48" y="52" text-anchor="middle" fill="#22a89c" font-size="28" font-weight="700">N</text>
+      <text x="48" y="76" text-anchor="middle" fill="#9aa8b8" font-size="14">coefficients</text>
+      <text x="48" y="96" text-anchor="middle" fill="#9aa8b8" font-size="14">per wire</text>
+      <g transform="translate(130 92)">
+        <g fill="#142738" stroke="#66758a">
+          <rect x="0" y="240" width="94" height="70" rx="10"/><rect x="112" y="240" width="94" height="70" rx="10"/><rect x="224" y="240" width="94" height="70" rx="10"/><rect x="336" y="240" width="94" height="70" rx="10"/>
+          <rect x="0" y="158" width="94" height="70" rx="10"/><rect x="112" y="158" width="94" height="70" rx="10"/><rect x="224" y="158" width="94" height="70" rx="10"/><rect x="336" y="158" width="94" height="70" rx="10"/>
+          <rect x="0" y="76" width="94" height="70" rx="10"/><rect x="112" y="76" width="94" height="70" rx="10"/><rect x="224" y="76" width="94" height="70" rx="10"/><rect x="336" y="76" width="94" height="70" rx="10"/>
+          <rect x="0" y="0" width="94" height="64" rx="10"/><rect x="112" y="0" width="94" height="64" rx="10"/><rect x="224" y="0" width="94" height="64" rx="10"/><rect x="336" y="0" width="94" height="64" rx="10"/>
+        </g>
+        <g fill="#22a89c">
+          <circle cx="47" cy="275" r="8"/><circle cx="159" cy="275" r="8"/><circle cx="271" cy="275" r="8"/><circle cx="383" cy="275" r="8"/>
+          <circle cx="47" cy="193" r="8"/><circle cx="159" cy="193" r="8"/><circle cx="271" cy="193" r="8"/><circle cx="383" cy="193" r="8"/>
+          <circle cx="47" cy="111" r="8"/><circle cx="159" cy="111" r="8"/><circle cx="271" cy="111" r="8"/><circle cx="383" cy="111" r="8"/>
+          <circle cx="47" cy="32" r="8"/><circle cx="159" cy="32" r="8"/><circle cx="271" cy="32" r="8"/><circle cx="383" cy="32" r="8"/>
+        </g>
+        <g fill="#9aa8b8" font-size="13" text-anchor="middle">
+          <text x="47" y="300">instance 1</text><text x="159" y="300">instance 2</text><text x="271" y="300">instance 3</text><text x="383" y="300">instance B</text>
+        </g>
+      </g>
+    </g>
+    <g transform="translate(30 590)">
+      <rect width="250" height="82" rx="13" fill="#122b35" stroke="#22a89c"/>
+      <text x="18" y="31" fill="#22a89c" font-size="14" letter-spacing="2">N = 1</text>
+      <text x="18" y="59" fill="#fff" font-size="17" font-weight="700">trivial Boolean shape</text>
+      <rect x="266" width="298" height="82" rx="13" fill="#142738" stroke="#66758a"/>
+      <text x="284" y="31" fill="#9aa8b8" font-size="14" letter-spacing="2">N = 1024</text>
+      <text x="284" y="58" fill="#fff" font-size="16" font-weight="700">compatible shape ≠ encryption</text>
+      <rect x="580" width="242" height="82" rx="13" fill="#2b2025" stroke="#d4833f"/>
+      <text x="701" y="31" text-anchor="middle" fill="#d4833f" font-size="14" letter-spacing="2">NO SHORTCUT</text>
+      <text x="701" y="58" text-anchor="middle" fill="#fff" font-size="16" font-weight="700">shape ≠ speedup</text>
+    </g>
+  </g>
+</svg>

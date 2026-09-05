@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" role="img" aria-labelledby="title desc">
+  <title id="title">The graph topology stays locked while 64-entry LUT6 INIT tables may change</title>
+  <desc id="desc">A locked wire graph is paired with an eight-by-eight Float32 INIT grid and whole-block frozen or mutable masks, showing that HELUT searches truth-table parameters rather than topology.</desc>
+  <rect width="1920" height="1080" fill="#091522"/>
+  <g transform="translate(980 104)" font-family="Arial, sans-serif">
+    <text x="440" y="18" text-anchor="middle" fill="#9aa8b8" font-size="15" letter-spacing="3">THE REPRESENTATION · NOT THE WIRES</text>
+    <g transform="translate(0 58)">
+      <rect width="402" height="656" rx="22" fill="#122b35" stroke="#22a89c" stroke-width="2"/>
+      <text x="201" y="42" text-anchor="middle" fill="#22a89c" font-size="15" letter-spacing="2">FIXED GRAPH</text>
+      <text x="201" y="75" text-anchor="middle" fill="#fff" font-size="22" font-weight="700">topology stays locked</text>
+      <g transform="translate(34 122)">
+        <line x1="28" y1="80" x2="130" y2="80" stroke="#66758a" stroke-width="4"/>
+        <line x1="28" y1="202" x2="130" y2="202" stroke="#66758a" stroke-width="4"/>
+        <line x1="130" y1="80" x2="204" y2="141" stroke="#66758a" stroke-width="4"/>
+        <line x1="130" y1="202" x2="204" y2="141" stroke="#66758a" stroke-width="4"/>
+        <line x1="204" y1="141" x2="306" y2="141" stroke="#66758a" stroke-width="4"/>
+        <circle cx="28" cy="80" r="13" fill="#091522" stroke="#22a89c" stroke-width="3"/>
+        <circle cx="28" cy="202" r="13" fill="#091522" stroke="#22a89c" stroke-width="3"/>
+        <rect x="102" y="48" width="76" height="64" rx="10" fill="#142738" stroke="#22a89c" stroke-width="2"/>
+        <text x="140" y="87" text-anchor="middle" fill="#fff" font-size="18" font-weight="700">LUT A</text>
+        <rect x="102" y="170" width="76" height="64" rx="10" fill="#142738" stroke="#22a89c" stroke-width="2"/>
+        <text x="140" y="209" text-anchor="middle" fill="#fff" font-size="18" font-weight="700">LUT B</text>
+        <rect x="184" y="109" width="86" height="64" rx="10" fill="#142738" stroke="#22a89c" stroke-width="2"/>
+        <text x="227" y="148" text-anchor="middle" fill="#fff" font-size="18" font-weight="700">LUT C</text>
+        <circle cx="306" cy="141" r="13" fill="#091522" stroke="#22a89c" stroke-width="3"/>
+      </g>
+      <g transform="translate(129 396)">
+        <rect x="0" y="28" width="144" height="116" rx="16" fill="#091522" stroke="#22a89c" stroke-width="3"/>
+        <path d="M35 28 V-2 C35-38 109-38 109-2 V28" fill="none" stroke="#22a89c" stroke-width="8"/>
+        <circle cx="72" cy="77" r="13" fill="#22a89c"/>
+        <rect x="67" y="77" width="10" height="34" fill="#22a89c"/>
+      </g>
+      <g fill="#9aa8b8" font-size="16" text-anchor="middle">
+        <text x="201" y="572">wires · connections · LUT count</text>
+        <text x="201" y="600">DFF count · execution levels</text>
+      </g>
+      <text x="201" y="632" text-anchor="middle" fill="#fff" font-size="16" font-weight="700">NO TOPOLOGY MUTATION</text>
+    </g>
+    <g transform="translate(422 58)">
+      <rect width="458" height="656" rx="22" fill="#0c1724" stroke="#66758a" stroke-width="2"/>
+      <text x="229" y="42" text-anchor="middle" fill="#9aa8b8" font-size="15" letter-spacing="2">WHAT MAY MOVE</text>
+      <text x="229" y="75" text-anchor="middle" fill="#fff" font-size="22" font-weight="700">64 Float32 INIT entries / LUT6</text>
+      <g transform="translate(77 112)">
+        <g fill="#142738" stroke="#66758a">
+          <rect x="0" y="0" width="30" height="30" rx="3"/><rect x="38" y="0" width="30" height="30" rx="3"/><rect x="76" y="0" width="30" height="30" rx="3"/><rect x="114" y="0" width="30" height="30" rx="3"/><rect x="152" y="0" width="30" height="30" rx="3"/><rect x="190" y="0" width="30" height="30" rx="3"/><rect x="228" y="0" width="30" height="30" rx="3"/><rect x="266" y="0" width="30" height="30" rx="3"/>
+          <rect x="0" y="38" width="30" height="30" rx="3"/><rect x="38" y="38" width="30" height="30" rx="3"/><rect x="76" y="38" width="30" height="30" rx="3"/><rect x="114" y="38" width="30" height="30" rx="3"/><rect x="152" y="38" width="30" height="30" rx="3"/><rect x="190" y="38" width="30" height="30" rx="3"/><rect x="228" y="38" width="30" height="30" rx="3"/><rect x="266" y="38" width="30" height="30" rx="3"/>
+          <rect x="0" y="76" width="30" height="30" rx="3"/><rect x="38" y="76" width="30" height="30" rx="3"/><rect x="76" y="76" width="30" height="30" rx="3"/><rect x="114" y="76" width="30" height="30" rx="3"/><rect x="152" y="76" width="30" height="30" rx="3"/><rect x="190" y="76" width="30" height="30" rx="3"/><rect x="228" y="76" width="30" height="30" rx="3"/><rect x="266" y="76" width="30" height="30" rx="3"/>
+          <rect x="0" y="114" width="30" height="30" rx="3"/><rect x="38" y="114" width="30" height="30" rx="3"/><rect x="76" y="114" width="30" height="30" rx="3"/><rect x="114" y="114" width="30" height="30" rx="3"/><rect x="152" y="114" width="30" height="30" rx="3"/><rect x="190" y="114" width="30" height="30" rx="3"/><rect x="228" y="114" width="30" height="30" rx="3"/><rect x="266" y="114" width="30" height="30" rx="3"/>
+          <rect x="0" y="152" width="30" height="30" rx="3"/><rect x="38" y="152" width="30" height="30" rx="3"/><rect x="76" y="152" width="30" height="30" rx="3"/><rect x="114" y="152" width="30" height="30" rx="3"/><rect x="152" y="152" width="30" height="30" rx="3"/><rect x="190" y="152" width="30" height="30" rx="3"/><rect x="228" y="152" width="30" height="30" rx="3"/><rect x="266" y="152" width="30" height="30" rx="3"/>
+          <rect x="0" y="190" width="30" height="30" rx="3"/><rect x="38" y="190" width="30" height="30" rx="3"/><rect x="76" y="190" width="30" height="30" rx="3"/><rect x="114" y="190" width="30" height="30" rx="3"/><rect x="152" y="190" width="30" height="30" rx="3"/><rect x="190" y="190" width="30" height="30" rx="3"/><rect x="228" y="190" width="30" height="30" rx="3"/><rect x="266" y="190" width="30" height="30" rx="3"/>
+          <rect x="0" y="228" width="30" height="30" rx="3"/><rect x="38" y="228" width="30" height="30" rx="3"/><rect x="76" y="228" width="30" height="30" rx="3"/><rect x="114" y="228" width="30" height="30" rx="3"/><rect x="152" y="228" width="30" height="30" rx="3"/><rect x="190" y="228" width="30" height="30" rx="3"/><rect x="228" y="228" width="30" height="30" rx="3"/><rect x="266" y="228" width="30" height="30" rx="3"/>
+          <rect x="0" y="266" width="30" height="30" rx="3"/><rect x="38" y="266" width="30" height="30" rx="3"/><rect x="76" y="266" width="30" height="30" rx="3"/><rect x="114" y="266" width="30" height="30" rx="3"/><rect x="152" y="266" width="30" height="30" rx="3"/><rect x="190" y="266" width="30" height="30" rx="3"/><rect x="228" y="266" width="30" height="30" rx="3"/><rect x="266" y="266" width="30" height="30" rx="3"/>
+        </g>
+        <g fill="#22a89c"><circle cx="15" cy="15" r="5"/><circle cx="53" cy="53" r="5"/><circle cx="91" cy="91" r="5"/><circle cx="129" cy="129" r="5"/></g>
+        <g fill="#d4833f"><circle cx="167" cy="167" r="5"/><circle cx="205" cy="205" r="5"/><circle cx="243" cy="243" r="5"/><circle cx="281" cy="281" r="5"/></g>
+      </g>
+      <text x="229" y="438" text-anchor="middle" fill="#9aa8b8" font-size="15">8 × 8 padded truth-table entries</text>
+      <g transform="translate(34 474)">
+        <rect width="182" height="104" rx="14" fill="#122b35" stroke="#22a89c"/>
+        <text x="91" y="34" text-anchor="middle" fill="#22a89c" font-size="13" letter-spacing="2">FROZEN BLOCK</text>
+        <text x="91" y="67" text-anchor="middle" fill="#fff" font-size="18" font-weight="700">preserve all 64</text>
+        <text x="91" y="90" text-anchor="middle" fill="#9aa8b8" font-size="13">mask = locked</text>
+        <rect x="208" width="182" height="104" rx="14" fill="#2b2025" stroke="#d4833f"/>
+        <text x="299" y="34" text-anchor="middle" fill="#d4833f" font-size="13" letter-spacing="2">MUTABLE BLOCK</text>
+        <text x="299" y="67" text-anchor="middle" fill="#fff" font-size="18" font-weight="700">search all 64</text>
+        <text x="299" y="90" text-anchor="middle" fill="#9aa8b8" font-size="13">whole-LUT mask</text>
+      </g>
+      <text x="229" y="624" text-anchor="middle" fill="#fff" font-size="16" font-weight="700">truth-table parameter search</text>
+    </g>
+  </g>
+</svg>

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" role="img" aria-labelledby="title desc">
+  <title id="title">One local Enigma M3 HELUT receipt with exact clear and Metal agreement</title>
+  <desc id="desc">The receipt records a 688-LUT, 26-DFF, N=1024, B=1 trivial noise-free run repeated three times, the median compile, first-JIT, steady timing and memory observations with their spread, and exact agreement on a 25-letter transcript in all three runs; it is not encrypted and it is not a benchmark distribution.</desc>
+  <rect width="1920" height="1080" fill="#091522"/>
+  <g transform="translate(986 102)" font-family="Arial, sans-serif">
+    <text x="434" y="18" text-anchor="middle" fill="#9aa8b8" font-size="15" letter-spacing="3">MEDIAN OF 3 LOCAL RUNS · 2026-09-05</text>
+    <rect x="4" y="54" width="860" height="760" rx="22" fill="#0c1724" stroke="#66758a" stroke-width="2"/>
+    <g transform="translate(28 80)">
+      <rect width="812" height="92" rx="14" fill="#122b35" stroke="#22a89c" stroke-width="2"/>
+      <text x="22" y="32" fill="#22a89c" font-size="14" letter-spacing="2">SYNTHESIZED ENIGMA M3 GRAPH</text>
+      <text x="22" y="68" fill="#fff" font-size="28" font-weight="700">688 LUT  ·  26 DFF</text>
+      <text x="786" y="62" text-anchor="end" fill="#9aa8b8" font-size="17">supported two-state netlist</text>
+      <rect y="108" width="812" height="92" rx="14" fill="#142738" stroke="#66758a"/>
+      <text x="22" y="140" fill="#9aa8b8" font-size="14" letter-spacing="2">TENSOR SHAPE + OBSERVED MEMORY</text>
+      <text x="22" y="176" fill="#fff" font-size="28" font-weight="700">N=1024  ·  B=1</text>
+      <text x="786" y="176" text-anchor="end" fill="#fff" font-size="24" font-weight="700">239.0 MiB</text>
+      <rect y="216" width="397" height="112" rx="14" fill="#142738" stroke="#66758a"/>
+      <text x="20" y="249" fill="#9aa8b8" font-size="14" letter-spacing="2">SETUP / FIRST RUN</text>
+      <text x="20" y="283" fill="#fff" font-size="22" font-weight="700">compile  0.0383 s</text>
+      <text x="20" y="312" fill="#fff" font-size="22" font-weight="700">first JIT tick  0.3074 s</text>
+      <rect x="415" y="216" width="397" height="112" rx="14" fill="#122b35" stroke="#22a89c"/>
+      <text x="435" y="249" fill="#22a89c" font-size="14" letter-spacing="2">STEADY · 9 LATER TICKS</text>
+      <text x="435" y="286" fill="#fff" font-size="25" font-weight="700">0.0148 s / tick</text>
+      <text x="786" y="312" text-anchor="end" fill="#fff" font-size="22" font-weight="700">67.49 Hz</text>
+      <rect y="344" width="812" height="170" rx="16" fill="#122b35" stroke="#22a89c" stroke-width="2"/>
+      <text x="22" y="378" fill="#22a89c" font-size="14" letter-spacing="2">EXACT AGREEMENT · CLEAR ORACLE = METAL</text>
+      <text x="406" y="430" text-anchor="middle" fill="#fff" font-family="Courier New, monospace" font-size="25" font-weight="700" letter-spacing="1">KEINEBESONDERENEREIGNISSE</text>
+      <line x1="74" y1="454" x2="738" y2="454" stroke="#22a89c" stroke-width="2"/>
+      <text x="406" y="488" text-anchor="middle" fill="#9aa8b8" font-size="16">25 letters · 3 of 3 runs · all outputs equal</text>
+      <rect y="530" width="812" height="126" rx="16" fill="#2b2025" stroke="#d4833f" stroke-width="2"/>
+      <text x="406" y="566" text-anchor="middle" fill="#d4833f" font-size="14" letter-spacing="2">BOUNDARY AROUND THE RECEIPT</text>
+      <text x="406" y="604" text-anchor="middle" fill="#fff" font-size="20" font-weight="700">TRIVIAL · NOISE-FREE · NOT ENCRYPTED</text>
+      <text x="406" y="635" text-anchor="middle" fill="#9aa8b8" font-size="16">median of 3 local runs · 64.9–68.0 Hz spread</text>
+    </g>
+  </g>
+</svg>

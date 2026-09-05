@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" role="img" aria-labelledby="title desc">
+  <title id="title">The existing B=1000 sweep repeats one feed rather than verifying distinct lanes</title>
+  <desc id="desc">Repeated identical lane cards show what the current batch sweep measures, while a separate missing lane-distinct corpus and digest show why no 1000-way useful-throughput claim is supported.</desc>
+  <rect width="1920" height="1080" fill="#091522"/>
+  <g transform="translate(982 112)" font-family="Arial, sans-serif">
+    <text x="440" y="18" text-anchor="middle" fill="#9aa8b8" font-size="15" letter-spacing="3">THE NUMBER THAT CANNOT BE OVERSOLD</text>
+    <g transform="translate(0 62)">
+      <rect width="420" height="608" rx="21" fill="#122b35" stroke="#22a89c" stroke-width="2"/>
+      <text x="210" y="42" text-anchor="middle" fill="#22a89c" font-size="15" letter-spacing="2">WHAT RAN · B = 1000</text>
+      <text x="210" y="73" text-anchor="middle" fill="#fff" font-size="20" font-weight="700">one encoded feed repeated</text>
+      <g transform="translate(28 104)">
+        <g fill="#142738" stroke="#66758a">
+          <rect width="364" height="58" rx="10"/><rect y="70" width="364" height="58" rx="10"/><rect y="140" width="364" height="58" rx="10"/><rect y="210" width="364" height="58" rx="10"/><rect y="280" width="364" height="58" rx="10"/>
+        </g>
+        <g fill="#fff" font-family="Courier New, monospace" font-size="17">
+          <text x="18" y="36">lane 0000</text><text x="252" y="36">FEED A</text>
+          <text x="18" y="106">lane 0001</text><text x="252" y="106">FEED A</text>
+          <text x="18" y="176">lane 0002</text><text x="252" y="176">FEED A</text>
+          <text x="18" y="246">lane 0003</text><text x="252" y="246">FEED A</text>
+          <text x="18" y="316">lane 0999</text><text x="252" y="316">FEED A</text>
+        </g>
+        <text x="182" y="367" text-anchor="middle" fill="#9aa8b8" font-size="15">same inputs · scripted reset · same enable</text>
+      </g>
+      <rect x="28" y="500" width="364" height="80" rx="13" fill="#091522"/>
+      <text x="210" y="530" text-anchor="middle" fill="#9aa8b8" font-size="14" letter-spacing="1">MEASURES</text>
+      <text x="210" y="558" text-anchor="middle" fill="#fff" font-size="15" font-weight="700">shape · allocation · sync · memory pressure</text>
+    </g>
+    <g transform="translate(442 62)">
+      <rect width="438" height="608" rx="21" fill="#2b2025" stroke="#d4833f" stroke-width="2" stroke-dasharray="10 8"/>
+      <text x="219" y="42" text-anchor="middle" fill="#d4833f" font-size="15" letter-spacing="2">STILL MISSING</text>
+      <text x="219" y="73" text-anchor="middle" fill="#fff" font-size="20" font-weight="700">lane-distinct checked work</text>
+      <g transform="translate(28 104)">
+        <g fill="#201a22" stroke="#d4833f">
+          <rect width="382" height="58" rx="10"/><rect y="70" width="382" height="58" rx="10"/><rect y="140" width="382" height="58" rx="10"/><rect y="210" width="382" height="58" rx="10"/>
+        </g>
+        <g fill="#fff" font-family="Courier New, monospace" font-size="17">
+          <text x="18" y="36">lane 0000</text><text x="274" y="36">VECTOR A</text>
+          <text x="18" y="106">lane 0001</text><text x="274" y="106">VECTOR B</text>
+          <text x="18" y="176">lane 0002</text><text x="274" y="176">VECTOR C</text>
+          <text x="18" y="246">lane 0999</text><text x="274" y="246">VECTOR Ω</text>
+        </g>
+        <line x1="191" y1="284" x2="191" y2="328" stroke="#d4833f" stroke-width="3"/>
+        <polygon points="191,341 182,324 200,324" fill="#d4833f"/>
+        <rect y="346" width="382" height="88" rx="13" fill="#091522" stroke="#d4833f"/>
+        <text x="191" y="380" text-anchor="middle" fill="#d4833f" font-size="14" letter-spacing="2">CANONICAL DIGEST</text>
+        <text x="191" y="411" text-anchor="middle" fill="#fff" font-size="22" font-weight="700">outputs + final state = ?</text>
+      </g>
+      <rect x="28" y="560" width="382" height="72" rx="13" fill="#201a22"/>
+      <text x="219" y="590" text-anchor="middle" fill="#d4833f" font-size="14" letter-spacing="1">NOT ESTABLISHED</text>
+      <text x="219" y="616" text-anchor="middle" fill="#fff" font-size="15" font-weight="700">1000 independently verified vectors</text>
+    </g>
+  </g>
+</svg>

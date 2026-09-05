@@ -1,0 +1,126 @@
+{
+  "id": "ep14-skeptics-benchmark",
+  "compositionId": "Episode14",
+  "title": "The Skeptic's Benchmark",
+  "youtubeTitle": "Does Tensorized Verilog Actually Help? An Honest HELUT Benchmark",
+  "description": "A technically informed skeptic asks the right questions: what problem does tensorizing a synthesized circuit solve, is it more efficient than native HDL execution, and why target Apple silicon? This episode answers with the current receipt, the current gaps, and the architectural case for unified memory. A 688-LUT, 26-DFF Enigma M3 netlist runs through HELUT's trivial, noise-free N=1024 Metal path and agrees exactly with the clear oracle on a 25-letter transcript, in three of three runs. The saved log separates compile, first-tick JIT, steady ticks, stream time, and resident memory, and it reports a median with its spread rather than one number. Apple silicon matters here because host orchestration, Metal shaders, and MPSGraph allocate through shared buffers in one physical memory pool, which suits iterative Enigma candidate, scoring, and survivor workflows without claiming that synchronization is free. The episode does not claim encryption, distinct-lane batch throughput, superiority over Verilator, CXXRTL, or a discrete GPU, or a cross-platform result. It pre-registers the comparisons required to answer those questions honestly. Epoch C69.",
+  "claimEpoch": "2026-08-20 / C69",
+  "fps": 30,
+  "width": 1920,
+  "height": 1080,
+  "scenes": [
+    {
+      "kind": "title",
+      "id": "title",
+      "eyebrow": "HELUT · objection accepted · receipts first",
+      "headline": "Does tensorized Verilog actually help?",
+      "subhead": "Start with the null hypothesis: native wins.",
+      "backgroundAsset": "01-title.svg",
+      "voiceover": "A skeptic on Reddit asked the three questions this project has to answer. Hardware simulators already reproduce Verilog and V H D L accurately, so why turn a circuit into tensors? Is that actually faster than compiling H D L to native code? And if it is not, why should anyone care which chip it runs on? I will take those in order, starting from the assumption that native execution wins. What follows is one measured receipt, one caveat that undercuts the most quotable number in the repository, and a written-down experiment that could kill the performance thesis outright.",
+      "durationHintSec": 52
+    },
+    {
+      "kind": "concept",
+      "id": "not-an-hdl-simulator",
+      "kicker": "Define the object before timing it",
+      "headline": "HELUT does not simulate arbitrary Verilog",
+      "subhead": "Yosys first · two-state LUT and DFF netlist second",
+      "backgroundAsset": "02-supported-subset.svg",
+      "voiceover": "First, remove a category error. HELUT is not a replacement for an event-driven H D L simulator. Yosys does the front-end and synthesis work, and A B C, the logic mapper Yosys calls, packs the resulting gates into lookup tables. HELUT picks up after that, from a two-state netlist of lookup tables, flip-flops, and ports. It has no model of behavioral Verilog, propagation delay, signal strength, or the four-state X and Z values a real simulator tracks. Bit accuracy, then, is not the selling point. Verilator and Icarus already own that job. The open question is what a restricted Boolean graph gains by being tensors: batching independent instances, reuse on a Metal graph substrate, sharing one representation with the encrypted path, or turning truth tables into a continuous search space.",
+      "durationHintSec": 58
+    },
+    {
+      "kind": "concept",
+      "id": "what-tensors-add",
+      "kicker": "Two axes · two different meanings",
+      "headline": "Batch instances and wire degree",
+      "subhead": "B copies of a circuit · N coefficients per encoded wire",
+      "backgroundAsset": "03-two-axes.svg",
+      "voiceover": "The tensor representation adds two independent axes. B is how many copies of the circuit ride along together. N is how many coefficients stand in for a single logical wire. N equals one is the smallest Boolean shape there is. N equals one thousand twenty-four matches the polynomial size the encrypted side of this project uses, though a constant-filled, noise-free vector at that size is still not encrypted data. Those axes give experiments a graph-shaped substrate that scalar simulation was never designed around. What they do not give is a speedup. A tensor can expose parallel work. Whether the machine then executes that work efficiently is a measurement, not a definition.",
+      "durationHintSec": 55
+    },
+    {
+      "kind": "capture",
+      "id": "current-receipt",
+      "videoAsset": "episode14-current-receipt.mp4",
+      "label": "ARCHIVED RECEIPT PLAYBACK · preserved 2026-09-05 log · not a fresh timing run",
+      "voiceover": "Here is what the repository can defend today. The synthesized Enigma M three graph holds six hundred eighty-eight lookup tables, twenty-six flip-flops, ten inputs, and eight outputs. I ran the N one thousand twenty-four, B one configuration three times on an M four Max. Median compile: zero point zero three eight three seconds. The first tick cost zero point three zero seven four seconds, because that tick pays to build and specialize the Metal kernels, the just-in-time cost. The nine ticks after it averaged zero point zero one four eight seconds, which the harness prints as sixty-seven point four nine ticks per second. Then a clear oracle, an independent scalar simulator in Swift that reads the same netlist and never touches the G P U, and the Metal path both produced K E I N E B E S O N D E R E N E R E I G N I S S E. All twenty-five letters matched, in all three runs. Why a median instead of a single number? Because the same netlist and tensor shape logged sixty-six to seventy-two ticks per second in archived August runs, and three cold passes earlier today logged about fifty-one. One number here would be fiction.",
+      "durationHintSec": 83.48
+    },
+    {
+      "kind": "concept",
+      "id": "batch-caveat",
+      "kicker": "The number that cannot be oversold",
+      "headline": "The existing batch sweep repeats one feed",
+      "subhead": "B=1000 is not yet 1000 independently checked vectors",
+      "backgroundAsset": "05-batch-caveat.svg",
+      "voiceover": "Now the caveat that undercuts the most quotable number in the repository. The clock benchmark fills every batch lane with the same encoded value. Enable is held at one, reset follows a scripted schedule, and every other primary input sits at zero. Output tensors do get written, but the timed loop never reads them back and never hashes them per lane. So the existing B scaling table measures graph shape, allocation, synchronization, and memory pressure. It does not measure useful throughput over one thousand distinct vectors, and describing it as a thousand-way verified simulation would be a lie. Three things have to change before a batching claim is allowed: every lane doing independent work, a canonical checksum over ordered outputs and final state, and a deliberately corrupted bit that makes the checksum fail.",
+      "durationHintSec": 58
+    },
+    {
+      "kind": "concept",
+      "id": "native-gap",
+      "kicker": "The Reddit question, answered literally",
+      "headline": "Is it faster than native HDL?",
+      "subhead": "Current answer: the repository has not established that",
+      "backgroundAsset": "06-native-gap.svg",
+      "voiceover": "There is no Verilator benchmark in this repository, and none for C X X R T L, the C plus plus simulation backend Yosys ships, either. Not over the same synthesized artifact, not over the same stimulus. The clear Swift simulator is an oracle: a per-bit interpreter walking dictionaries. It is deliberately simple so it can be trusted, which also makes it useless as a performance baseline. Every timing table in the repo compares HELUT against other HELUT configurations. So the literal answer to the question is that HELUT has not established that tensor execution beats H D L compiled to native code. That gap is testable, which is the only reason it is worth admitting out loud. A credible series shows native winning where native wins, prices the setup and the memory, and saves the word crossover for a point where the same checked work actually changes the ordering.",
+      "durationHintSec": 60
+    },
+    {
+      "kind": "concept",
+      "id": "benchmark-contract",
+      "kicker": "Pre-register before measuring",
+      "headline": "Same circuit. Same work. Same digest.",
+      "subhead": "Verilator · post-ABC native · HELUT · repeated trials",
+      "backgroundAsset": "07-benchmark-contract.svg",
+      "voiceover": "The missing comparison has a contract, and writing it down before measuring is the whole point. Three circuits: a tiny combinational control, a medium lookup-table workload, and a sequential design with independent state per lane. Two native baselines: one built from authored R T L, one built from the same post-A B C graph HELUT consumes, so nobody can blame the mapper for the result. One corpus, deterministic and lane-distinct, fed to every backend. Outputs consumed inside the timed region, then hashed outside it, over ordered outputs and final state. Flip one expected bit and the checksum gate has to fail, or the gate is decoration. Then sweep batch size with total useful work held constant, and report all of it: build time, graph compile, first tick, steady compute, end-to-end break-even, vectors per second, peak resident memory, the spread across repeated trials, and every crash or out-of-memory point.",
+      "durationHintSec": 68
+    },
+    {
+      "kind": "concept",
+      "id": "why-apple-silicon",
+      "kicker": "The architectural reason · one memory pool",
+      "headline": "Unified memory is the big win",
+      "subhead": "Host code · Metal shaders · MPSGraph · shared buffers",
+      "backgroundAsset": "08-unified-memory.svg",
+      "voiceover": "Why Apple silicon? The practical answer is that it is the hardware I own, and a lot of other people own it too. The architectural answer is unified memory. HELUT's host code, its hand-written Metal compute shaders, and Metal Performance Shaders Graph all allocate through shared Metal buffers backed by one physical memory pool, instead of treating C P U memory and discrete V R A M as two separately staged worlds. The host writes inputs and state, a shader or a graph reads those same allocations, and the host inspects results after synchronization. The G P U also draws on the machine's whole memory capacity rather than a fixed V R A M budget. None of that makes movement or synchronization free, and none of it is a speedup. What it does is make tightly coupled, memory-hungry hybrid experiments practical on hardware you can buy in a shop.",
+      "durationHintSec": 64
+    },
+    {
+      "kind": "concept",
+      "id": "enigma-unified-memory",
+      "kicker": "Why Enigma makes the architecture visible",
+      "headline": "Build candidates on the CPU; sweep them on the GPU",
+      "subhead": "Settings · tables · ciphertext · scores · survivors · repeat",
+      "backgroundAsset": "09-enigma-unified-memory.svg",
+      "voiceover": "Enigma makes that pattern concrete. Host code organizes rotor, ring, and starting-position settings, plugboard pairs, and candidate populations. Wide Metal kernels sweep many settings or scoring lanes at once. The host then filters survivors, tightens constraints, breeds the next generation, and starts another round. With shared buffers those phases can live in one memory pool instead of paying a staging tax at every boundary. Large candidate tensors can spend real unified memory. But capacity is not throughput, and the repository has a receipt that proves it. At N one thousand twenty-four and B one thousand, resident memory peaked near six gigabytes and the tick rate fell to thirteen point six two per second, against roughly sixty-nine at B equals one. So the defensible claim is that unified memory opens this design space. Beating a discrete G P U inside it is a separate measurement nobody here has taken.",
+      "durationHintSec": 66
+    },
+    {
+      "kind": "narration",
+      "id": "verdict",
+      "headline": "The current verdict",
+      "bullets": [
+        "Proved: supported Yosys LUT/DFF graphs execute on Metal",
+        "Proved: clear oracle and Metal outputs agree, 3 of 3 runs",
+        "Implemented: shared-buffer CPU/GPU workflows on unified memory",
+        "Open: native speedup, lane-distinct batch throughput",
+        "Not claimed: full HDL semantics or Apple exclusivity"
+      ],
+      "backgroundAsset": "10-verdict.svg",
+      "voiceover": "So what does HELUT actually solve today? It bridges supported Yosys lookup-table graphs into a Metal tensor substrate, and on the circuit I tested, that substrate agrees with an independent clear oracle. It also gives host-orchestrated, G P U-evaluated experiments a shared-buffer home on one commodity memory pool. Those two facts establish that the bridge works, and they explain why this target is interesting. Neither one establishes superiority over native simulation. The batch result is not yet lane-distinct throughput. The Apple result is an architectural argument, not a verdict on architectures. Every open row on this list has a specific experiment attached to it, which is the only reason I am comfortable leaving them open.",
+      "durationHintSec": 58
+    },
+    {
+      "kind": "outro",
+      "id": "outro",
+      "headline": "If not better simulation, then what?",
+      "subhead": "Next: melt the truth tables, freeze them again, and inspect the proof.",
+      "nextEpisode": "Episode 15 · Melt. Freeze. Prove.",
+      "backgroundAsset": "11-outro.svg",
+      "voiceover": "The tensor path gets more interesting when the circuit is not merely executed. A lookup table can be lifted out of zeros and ones into continuous values, searched against a target, and pushed back toward discrete hardware. That is melt and freeze, and it arrives with its own bill. Did the frozen circuit stay correct? Did the topology change? Did the resource count improve? Will Yosys take the emitted result back? And what happens when the search refuses to go binary? Episode fifteen puts the passing two-bit control, the round-trip checker, its negative control, and the failed M four run on the same screen.",
+      "durationHintSec": 52
+    }
+  ]
+}

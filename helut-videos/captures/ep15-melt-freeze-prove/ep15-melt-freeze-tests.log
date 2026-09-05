@@ -1,0 +1,42 @@
+=== EP15 receipt: TensorLUT melt/freeze + Yosys round trip ===
+date: 2026-09-05T16:43:29Z
+cmd: swift test -c release --filter 'TensorFreezeMaskTests|TensorLUTYosysRoundTripTests'
+host: Apple M4 Max / macOS 26.6.2
+yosys: Yosys 0.68+post (git sha1 c12172fbae8af5e20f6fb52e3d4e92d56ed587b6, Release, AppleClang clang++ 21.0.0.21000101)
+
+Building for production...
+Build complete! (0.11s)
+Test Suite 'Selected tests' started at 2026-09-05 09:43:29.963.
+Test Suite 'helutPackageTests.xctest' started at 2026-09-05 09:43:29.964.
+Test Suite 'TensorFreezeMaskTests' started at 2026-09-05 09:43:29.964.
+Test Case '-[HELUTTests.TensorFreezeMaskTests testCrossoverKeepsFrozenParentA]' started.
+Test Case '-[HELUTTests.TensorFreezeMaskTests testCrossoverKeepsFrozenParentA]' passed (0.000 seconds).
+Test Case '-[HELUTTests.TensorFreezeMaskTests testHostPenaltyIgnoresFrozenLUTs]' started.
+Test Case '-[HELUTTests.TensorFreezeMaskTests testHostPenaltyIgnoresFrozenLUTs]' passed (0.000 seconds).
+Test Case '-[HELUTTests.TensorFreezeMaskTests testMetalPenaltyMatchesHostWithFreeze]' started.
+Test Case '-[HELUTTests.TensorFreezeMaskTests testMetalPenaltyMatchesHostWithFreeze]' passed (0.044 seconds).
+Test Case '-[HELUTTests.TensorFreezeMaskTests testMutateSkipsFrozenLUTs]' started.
+Test Case '-[HELUTTests.TensorFreezeMaskTests testMutateSkipsFrozenLUTs]' passed (0.001 seconds).
+Test Case '-[HELUTTests.TensorFreezeMaskTests testTwoBitAdderTargetedMeltDiscovers]' started.
+Test Case '-[HELUTTests.TensorFreezeMaskTests testTwoBitAdderTargetedMeltDiscovers]' passed (1.092 seconds).
+Test Case '-[HELUTTests.TensorFreezeMaskTests testWipeMeltRegionPreservesFrozen]' started.
+Test Case '-[HELUTTests.TensorFreezeMaskTests testWipeMeltRegionPreservesFrozen]' passed (0.000 seconds).
+Test Suite 'TensorFreezeMaskTests' passed at 2026-09-05 09:43:31.102.
+	 Executed 6 tests, with 0 failures (0 unexpected) in 1.137 (1.138) seconds
+Test Suite 'TensorLUTYosysRoundTripTests' started at 2026-09-05 09:43:31.102.
+Test Case '-[HELUTTests.TensorLUTYosysRoundTripTests testEmittedVerilogResynthesizesToEquivalentNetlist]' started.
+Test Case '-[HELUTTests.TensorLUTYosysRoundTripTests testEmittedVerilogResynthesizesToEquivalentNetlist]' passed (0.156 seconds).
+Test Case '-[HELUTTests.TensorLUTYosysRoundTripTests testRoundTripDetectsACorruptedInitBit]' started.
+Test Case '-[HELUTTests.TensorLUTYosysRoundTripTests testRoundTripDetectsACorruptedInitBit]' passed (0.161 seconds).
+Test Suite 'TensorLUTYosysRoundTripTests' passed at 2026-09-05 09:43:31.419.
+	 Executed 2 tests, with 0 failures (0 unexpected) in 0.317 (0.317) seconds
+Test Suite 'helutPackageTests.xctest' passed at 2026-09-05 09:43:31.419.
+	 Executed 8 tests, with 0 failures (0 unexpected) in 1.454 (1.455) seconds
+Test Suite 'Selected tests' passed at 2026-09-05 09:43:31.419.
+	 Executed 8 tests, with 0 failures (0 unexpected) in 1.454 (1.456) seconds
+TENSORLUT_ROUNDTRIP ok: 48 output bits over 16 input assignments, yosys-resynthesized vs source netlist
+TENSORLUT_ROUNDTRIP negative control: 4 mismatch(es) detected
+◇ Test run started.
+↳ Testing Library Version: 1902
+↳ Target Platform: arm64e-apple-macos14.0
+✔ Test run with 0 tests in 0 suites passed after 0.001 seconds.

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" role="img" aria-labelledby="title desc">
+  <title id="title">The deterministic two-bit targeted melt passed inside a six-test local suite</title>
+  <desc id="desc">A dated receipt records six tests, zero failures, and a 1.092-second targeted-melt observation with frozen tables unchanged, no mutable entry left in the 0.05 to 0.95 fractional band, and final fitness above negative 0.05; it does not prove round-trip equivalence for a searched elite.</desc>
+  <rect width="1920" height="1080" fill="#091522"/>
+  <g transform="translate(990 112)" font-family="Arial, sans-serif">
+    <text x="430" y="18" text-anchor="middle" fill="#9aa8b8" font-size="15" letter-spacing="3">CURRENT LOCAL RECEIPT · 2026-09-05</text>
+    <rect x="0" y="58" width="860" height="666" rx="24" fill="#0c1724" stroke="#66758a" stroke-width="2"/>
+    <g transform="translate(28 86)">
+      <rect width="804" height="132" rx="18" fill="#122b35" stroke="#22a89c" stroke-width="3"/>
+      <text x="24" y="38" fill="#22a89c" font-size="14" letter-spacing="2">TARGETED TWO-BIT CONTROL</text>
+      <text x="24" y="88" fill="#fff" font-size="36" font-weight="700">6 tests  ·  0 failures</text>
+      <text x="780" y="86" text-anchor="end" fill="#fff" font-size="27" font-weight="700">1.092 s</text>
+      <text x="780" y="110" text-anchor="end" fill="#9aa8b8" font-size="13">targeted melt · rerun 2026-09-05</text>
+      <g transform="translate(0 154)">
+        <rect width="804" height="88" rx="14" fill="#122b35" stroke="#22a89c"/>
+        <circle cx="42" cy="44" r="22" fill="#091522" stroke="#22a89c" stroke-width="2"/>
+        <text x="42" y="52" text-anchor="middle" fill="#22a89c" font-size="23" font-weight="700">✓</text>
+        <text x="80" y="37" fill="#fff" font-size="19" font-weight="700">Frozen LUT tables unchanged</text>
+        <text x="80" y="63" fill="#9aa8b8" font-size="15">byte-identical protected blocks</text>
+        <rect y="104" width="804" height="88" rx="14" fill="#122b35" stroke="#22a89c"/>
+        <circle cx="42" cy="148" r="22" fill="#091522" stroke="#22a89c" stroke-width="2"/>
+        <text x="42" y="156" text-anchor="middle" fill="#22a89c" font-size="23" font-weight="700">✓</text>
+        <text x="80" y="141" fill="#fff" font-size="19" font-weight="700">Mutable region finished discrete</text>
+        <text x="80" y="167" fill="#9aa8b8" font-size="15">nothing left in the 0.05–0.95 band</text>
+        <rect y="208" width="804" height="88" rx="14" fill="#122b35" stroke="#22a89c"/>
+        <circle cx="42" cy="252" r="22" fill="#091522" stroke="#22a89c" stroke-width="2"/>
+        <text x="42" y="260" text-anchor="middle" fill="#22a89c" font-size="23" font-weight="700">✓</text>
+        <text x="80" y="245" fill="#fff" font-size="19" font-weight="700">Bounded target-fitness gate passed</text>
+        <text x="80" y="271" fill="#9aa8b8" font-size="15">final fitness &gt; −0.05 · fixed seed and target</text>
+      </g>
+      <rect y="478" width="804" height="116" rx="16" fill="#2b2025" stroke="#d4833f" stroke-width="2"/>
+      <text x="402" y="512" text-anchor="middle" fill="#d4833f" font-size="14" letter-spacing="2">THIS PASS DOES NOT INCLUDE</text>
+      <text x="402" y="550" text-anchor="middle" fill="#fff" font-size="20" font-weight="700">optimized elite → emitted Verilog → Yosys → exhaustive proof</text>
+      <text x="402" y="579" text-anchor="middle" fill="#9aa8b8" font-size="15">that independent connection remains open</text>
+    </g>
+  </g>
+</svg>

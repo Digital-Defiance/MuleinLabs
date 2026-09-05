@@ -1,0 +1,151 @@
+{
+  "schemaVersion": 1,
+  "captureId": "episode14-current-receipt",
+  "role": "archived receipt playback",
+  "transcript": "CAPTURE_TRANSCRIPT.md",
+  "reproduce": {
+    "workingDirectory": "helut-videos repository root at /Volumes/Code/MuleinLabs/helut-videos",
+    "prerequisites": [
+      "VHS 0.11.0",
+      "ttyd 1.7.7-unknown",
+      "FFmpeg 9.0.1",
+      "The durable copied log at captures/ep14-skeptics-benchmark/ep14-enigma-m3-n1024-b1-x3.log"
+    ],
+    "commands": [
+      "vhs captures/ep14-skeptics-benchmark/episode14-current-receipt.tape"
+    ],
+    "behavior": "Re-records a literal playback of the preserved log; it does not rerun the timing-sensitive Enigma benchmark. The final receipt screen is held for 31 seconds so the already-generated narration can finish over visible evidence.",
+    "workspacePathConstraint": "The tape records to an absolute path under /Volumes/Code/MuleinLabs and must be adjusted if the workspace is relocated."
+  },
+  "capturedAt": "2026-09-05T13:40:18-07:00",
+  "capturedAtBasis": "MP4 filesystem modification time at capture completion",
+  "sourceExperiment": {
+    "recordedAt": "2026-09-05T16:40:43Z",
+    "host": "Apple M4 Max / macOS 26.6.2",
+    "command": "helut-bench --bench enigma_netlist.json --degree 1024 --batch 1 --ticks 10 --warmup 1 --reset-hold 3 --bench-equiv",
+    "executedDuringCapture": false,
+    "sourceLog": "HELUT/build/episode14/ep14-enigma-m3-n1024-b1-x3.log"
+  },
+  "captureMethod": {
+    "recorder": "VHS",
+    "terminal": "real Bash pseudo-terminal",
+    "mode": "normal-speed playback of a preserved experiment log",
+    "finalReceiptHoldSeconds": 31,
+    "uploaded": false,
+    "tape": {
+      "repo": "helut-videos",
+      "path": "captures/ep14-skeptics-benchmark/episode14-current-receipt.tape",
+      "sha256": "64535714880374ed11b65585dd336a89b7b2014e938f2a26339b8849d3f9d8ce",
+      "requestedFrameRate": 30
+    }
+  },
+  "video": {
+    "repo": "helut-videos",
+    "path": "public/captures/ep14-skeptics-benchmark/episode14-current-receipt.mp4",
+    "sha256": "44ebe299b6b6cebc426f6b3dbb72b5fd22e241aefac80201d5cf97b971eb2866",
+    "container": "mov,mp4,m4a,3gp,3g2,mj2",
+    "codec": "h264",
+    "pixelFormat": "yuv420p",
+    "width": 1280,
+    "height": 720,
+    "encodedFrameRate": "25/1",
+    "durationSeconds": 83.48,
+    "sizeBytes": 1104570
+  },
+  "toolchain": {
+    "vhs": "vhs version 0.11.0",
+    "ttyd": "ttyd version 1.7.7-unknown",
+    "ffmpeg": "ffmpeg version 9.0.1"
+  },
+  "artifacts": [
+    {
+      "repo": "HELUT",
+      "path": "build/episode14/ep14-enigma-m3-n1024-b1-x3.log",
+      "kind": "original timing-sensitive experiment log",
+      "durable": false,
+      "sha256": "163dcb21a1ef00c5befbe792f6fb8208e81d675405822833640f7d7d07cbe051"
+    },
+    {
+      "repo": "helut-videos",
+      "path": "captures/ep14-skeptics-benchmark/ep14-enigma-m3-n1024-b1-x3.log",
+      "kind": "durable byte-for-byte copy of the original experiment log",
+      "durable": true,
+      "sourcePath": "HELUT/build/episode14/ep14-enigma-m3-n1024-b1-x3.log",
+      "byteForByteMatch": true,
+      "sha256": "163dcb21a1ef00c5befbe792f6fb8208e81d675405822833640f7d7d07cbe051"
+    }
+  ],
+  "experiment": {
+    "circuit": {
+      "module": "enigma_core",
+      "inputPorts": 10,
+      "outputPorts": 8,
+      "lutCells": 688,
+      "dffs": 26,
+      "netlistSha256": "747d4eb71a8d0564abc0aa86fa006c5f6472f0d98c2144d5a8125e9f8afaab05"
+    },
+    "configuration": {
+      "degree": 1024,
+      "batch": 1,
+      "ticks": 10,
+      "warmupTicks": 1,
+      "resetHoldTicks": 3,
+      "encoding": "constant-fill (trivial, noise-free)",
+      "lutBackend": "multilinear"
+    },
+    "warmRuns": {
+      "count": 3,
+      "compileSeconds": [0.0391, 0.0379, 0.0383],
+      "medianCompileSeconds": 0.0383,
+      "firstTickSeconds": [0.3064, 0.3088, 0.3074],
+      "medianFirstTickSeconds": 0.3074,
+      "steadySecondsPerTick": [0.0154, 0.0147, 0.0148],
+      "medianSteadySecondsPerTick": 0.0148,
+      "steadyHz": [64.92, 67.96, 67.49],
+      "medianSteadyHz": 67.49,
+      "steadyHzObservedRange": [64.92, 67.96],
+      "streamSecondsFor25Letters": [0.6592, 0.6654, 0.6863],
+      "finalRssMiB": [238.9, 239.0, 240.1],
+      "medianFinalRssMiB": 239.0
+    },
+    "equivalence": {
+      "result": "PASS",
+      "passingRuns": 3,
+      "totalRuns": 3,
+      "letters": 25,
+      "plaintext": "KEINEBESONDERENEREIGNISSE",
+      "clear": "KEINEBESONDERENEREIGNISSE",
+      "metal": "KEINEBESONDERENEREIGNISSE"
+    }
+  },
+  "validation": {
+    "tapeSyntaxValidated": true,
+    "mp4ProbedSuccessfully": true,
+    "rawLogCopiedByteForByte": true,
+    "contactSheetInspected": true,
+    "fullResolutionFramesInspectedAtSeconds": [5, 63, 80],
+    "terminalEvidenceOutputLegible": true,
+    "commandEchoWrapOrOverlapObserved": true,
+    "hiddenSetupVisible": false,
+    "archivedPlaybackDisclosureVisible": true,
+    "graphAndEncodingBoundaryVisible": true,
+    "allThreeTimingRunsVisible": true,
+    "allThreeEquivalencePassesVisible": true,
+    "medianAndSpreadVisible": true,
+    "finalHashVisible": true,
+    "finalReceiptHoldInspected": true
+  },
+  "timingContext": {
+    "interpretation": "The capture replays three preserved warm-run observations. It performs no fresh timing run. The values are local observations on one Apple M4 Max, not a deterministic contract or cross-platform benchmark. The final screen hold is presentation time for the existing narration, not benchmark execution.",
+    "coldPassContext": "The preserved source log also records earlier same-day cold observations near 51 Hz; the capture visibly introduces this variance note but does not present the later detail lines."
+  },
+  "claimBoundaries": [
+    "This MP4 is archived receipt playback, not a fresh execution of the benchmark.",
+    "N=1024 uses constant-filled, trivial, noise-free values and is not encrypted execution.",
+    "B=1 provides no lane-distinct batch-throughput evidence.",
+    "The clear and Metal paths agree on this 25-letter transcript in three preserved runs; this is not full HDL equivalence.",
+    "No Verilator, CXXRTL, discrete-GPU, or other native baseline is present, so the receipt establishes no speed superiority.",
+    "Compile, first-tick, steady-tick, stream, and memory figures are observations on one machine; the first tick includes JIT specialization.",
+    "Typed command echoes visibly wrap or overlap at some prompt boundaries in the VHS recording; the result lines remain legible and the durable source log is hash-identified."
+  ]
+}

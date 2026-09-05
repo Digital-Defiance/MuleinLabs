@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" role="img" aria-labelledby="title desc">
+  <title id="title">Two LUT blocks remain frozen while two blocks and 128 floats reset to 0.5</title>
+  <desc id="desc">Four right-side LUT cards split into two byte-preserved frozen blocks and two mutable blocks whose 128 total Float32 entries are erased to 0.5, with the freeze mask presented as a falsifiable gate.</desc>
+  <rect width="1920" height="1080" fill="#091522"/>
+  <g transform="translate(980 116)" font-family="Arial, sans-serif">
+    <text x="440" y="18" text-anchor="middle" fill="#9aa8b8" font-size="15" letter-spacing="3">FREEZE WHAT IS KNOWN · ERASE WHAT IS NOT</text>
+    <rect x="0" y="58" width="880" height="650" rx="24" fill="#0c1724" stroke="#66758a" stroke-width="2"/>
+    <g transform="translate(28 92)">
+      <rect width="398" height="430" rx="20" fill="#122b35" stroke="#22a89c" stroke-width="2"/>
+      <text x="199" y="40" text-anchor="middle" fill="#22a89c" font-size="15" letter-spacing="2">FROZEN · 2 LUT BLOCKS</text>
+      <text x="199" y="72" text-anchor="middle" fill="#fff" font-size="20" font-weight="700">128 Float32 values preserved</text>
+      <g transform="translate(24 104)">
+        <rect width="350" height="118" rx="14" fill="#142738" stroke="#22a89c"/>
+        <text x="18" y="32" fill="#22a89c" font-size="13" letter-spacing="1">LUT 0 · LOW SUM</text>
+        <text x="18" y="69" fill="#fff" font-family="Courier New, monospace" font-size="17">0 1 1 0  ···  binary INIT</text>
+        <text x="18" y="98" fill="#9aa8b8" font-size="14">64 / 64 entries locked</text>
+        <rect y="136" width="350" height="118" rx="14" fill="#142738" stroke="#22a89c"/>
+        <text x="18" y="168" fill="#22a89c" font-size="13" letter-spacing="1">LUT 1 · LOW CARRY</text>
+        <text x="18" y="205" fill="#fff" font-family="Courier New, monospace" font-size="17">0 0 0 1  ···  binary INIT</text>
+        <text x="18" y="234" fill="#9aa8b8" font-size="14">64 / 64 entries locked</text>
+      </g>
+      <text x="199" y="390" text-anchor="middle" fill="#fff" font-size="17" font-weight="700">must remain byte-identical</text>
+      <rect x="426" width="398" height="430" rx="20" fill="#2b2025" stroke="#d4833f" stroke-width="2"/>
+      <text x="625" y="40" text-anchor="middle" fill="#d4833f" font-size="15" letter-spacing="2">MUTABLE · 2 LUT BLOCKS</text>
+      <text x="625" y="72" text-anchor="middle" fill="#fff" font-size="20" font-weight="700">128 Float32 values erased</text>
+      <g transform="translate(450 104)">
+        <rect width="350" height="118" rx="14" fill="#201a22" stroke="#d4833f"/>
+        <text x="18" y="32" fill="#d4833f" font-size="13" letter-spacing="1">LUT 2 · HIGH SUM</text>
+        <text x="175" y="76" text-anchor="middle" fill="#fff" font-family="Courier New, monospace" font-size="28" font-weight="700">0.5 × 64</text>
+        <rect y="136" width="350" height="118" rx="14" fill="#201a22" stroke="#d4833f"/>
+        <text x="18" y="168" fill="#d4833f" font-size="13" letter-spacing="1">LUT 3 · HIGH CARRY</text>
+        <text x="175" y="212" text-anchor="middle" fill="#fff" font-family="Courier New, monospace" font-size="28" font-weight="700">0.5 × 64</text>
+      </g>
+      <text x="625" y="390" text-anchor="middle" fill="#fff" font-size="17" font-weight="700">maximally undecided start</text>
+      <g transform="translate(0 456)">
+        <rect width="824" height="98" rx="15" fill="#142738" stroke="#66758a"/>
+        <text x="20" y="32" fill="#9aa8b8" font-size="14" letter-spacing="2">BLOCK MASK</text>
+        <g transform="translate(160 17)">
+          <rect width="126" height="64" rx="11" fill="#22a89c"/><rect x="138" width="126" height="64" rx="11" fill="#22a89c"/><rect x="276" width="126" height="64" rx="11" fill="#d4833f"/><rect x="414" width="126" height="64" rx="11" fill="#d4833f"/>
+          <text x="63" y="40" text-anchor="middle" fill="#091522" font-size="16" font-weight="700">FROZEN</text><text x="201" y="40" text-anchor="middle" fill="#091522" font-size="16" font-weight="700">FROZEN</text><text x="339" y="40" text-anchor="middle" fill="#091522" font-size="16" font-weight="700">MUTABLE</text><text x="477" y="40" text-anchor="middle" fill="#091522" font-size="16" font-weight="700">MUTABLE</text>
+        </g>
+      </g>
+    </g>
+  </g>
+</svg>

@@ -1,0 +1,141 @@
+{
+  "schemaVersion": 1,
+  "captureId": "episode15-local-pass",
+  "role": "archived receipt playback",
+  "transcript": "CAPTURE_TRANSCRIPT.md",
+  "reproduce": {
+    "workingDirectory": "helut-videos repository root at /Volumes/Code/MuleinLabs/helut-videos",
+    "prerequisites": [
+      "VHS 0.11.0",
+      "ttyd 1.7.7-unknown",
+      "FFmpeg 9.0.1",
+      "The durable copied log at captures/ep15-melt-freeze-prove/ep15-melt-freeze-tests.log"
+    ],
+    "commands": [
+      "vhs captures/ep15-melt-freeze-prove/episode15-local-pass.tape"
+    ],
+    "behavior": "Re-records a literal playback of the preserved test log; it does not rerun the release tests.",
+    "workspacePathConstraint": "The tape records to an absolute path under /Volumes/Code/MuleinLabs and must be adjusted if the workspace is relocated."
+  },
+  "capturedAt": "2026-09-05T12:51:22-07:00",
+  "capturedAtBasis": "MP4 filesystem modification time at capture completion",
+  "sourceExperiment": {
+    "recordedAt": "2026-09-05T16:43:29Z",
+    "host": "Apple M4 Max / macOS 26.6.2",
+    "command": "swift test -c release --filter 'TensorFreezeMaskTests|TensorLUTYosysRoundTripTests'",
+    "executedDuringCapture": false,
+    "sourceLog": "HELUT/build/episode15/ep15-melt-freeze-tests.log"
+  },
+  "captureMethod": {
+    "recorder": "VHS",
+    "terminal": "real Bash pseudo-terminal",
+    "mode": "normal-speed playback of a preserved experiment log",
+    "uploaded": false,
+    "tape": {
+      "repo": "helut-videos",
+      "path": "captures/ep15-melt-freeze-prove/episode15-local-pass.tape",
+      "sha256": "1d80aac3b38684d37f7e858363449fbf6b32c01919140a15f07ffccccd57b657",
+      "requestedFrameRate": 30
+    }
+  },
+  "video": {
+    "repo": "helut-videos",
+    "path": "public/captures/ep15-melt-freeze-prove/episode15-local-pass.mp4",
+    "sha256": "11d195a4dc64caa62913365d189ebe6d3e985ef4b1a5169506f84f699b16d5ec",
+    "container": "mov,mp4,m4a,3gp,3g2,mj2",
+    "codec": "h264",
+    "pixelFormat": "yuv420p",
+    "width": 1280,
+    "height": 720,
+    "encodedFrameRate": "25/1",
+    "durationSeconds": 55.16,
+    "sizeBytes": 612563
+  },
+  "toolchain": {
+    "vhs": "vhs version 0.11.0",
+    "ttyd": "ttyd version 1.7.7-unknown",
+    "ffmpeg": "ffmpeg version 9.0.1",
+    "yosysFromSourceLog": "Yosys 0.68+post (git sha1 c12172fbae8af5e20f6fb52e3d4e92d56ed587b6, Release, AppleClang clang++ 21.0.0.21000101)"
+  },
+  "artifacts": [
+    {
+      "repo": "HELUT",
+      "path": "build/episode15/ep15-melt-freeze-tests.log",
+      "kind": "original release-test log",
+      "durable": false,
+      "sha256": "1ccc05562d22de5a82775284fd6738ffe72497835b85808f73d3ab49a421c08f"
+    },
+    {
+      "repo": "helut-videos",
+      "path": "captures/ep15-melt-freeze-prove/ep15-melt-freeze-tests.log",
+      "kind": "durable byte-for-byte copy of the original release-test log",
+      "durable": true,
+      "sourcePath": "HELUT/build/episode15/ep15-melt-freeze-tests.log",
+      "byteForByteMatch": true,
+      "sha256": "1ccc05562d22de5a82775284fd6738ffe72497835b85808f73d3ab49a421c08f"
+    }
+  ],
+  "experiment": {
+    "freezeMaskSuite": {
+      "suite": "TensorFreezeMaskTests",
+      "result": "PASS",
+      "executedTests": 6,
+      "failures": 0,
+      "unexpectedFailures": 0,
+      "suiteSeconds": 1.137,
+      "elapsedSeconds": 1.138,
+      "tests": [
+        "testCrossoverKeepsFrozenParentA",
+        "testHostPenaltyIgnoresFrozenLUTs",
+        "testMetalPenaltyMatchesHostWithFreeze",
+        "testMutateSkipsFrozenLUTs",
+        "testTwoBitAdderTargetedMeltDiscovers",
+        "testWipeMeltRegionPreservesFrozen"
+      ]
+    },
+    "targetedMelt": {
+      "test": "testTwoBitAdderTargetedMeltDiscovers",
+      "result": "PASS",
+      "observedSeconds": 1.092,
+      "interpretation": "A deterministic local test observation inside the saved run, not a timing contract."
+    },
+    "additionalSourceLogReceipt": {
+      "suite": "TensorLUTYosysRoundTripTests",
+      "executedTests": 2,
+      "failures": 0,
+      "identityOutputBitsChecked": 48,
+      "inputAssignmentsChecked": 16,
+      "negativeControlMismatchesObserved": 4,
+      "visibleInThisPlayback": false,
+      "reason": "The local-pass capture is deliberately bounded to the six freeze-mask tests; the episode presents identity round-trip evidence separately."
+    }
+  },
+  "validation": {
+    "tapeSyntaxValidated": true,
+    "mp4ProbedSuccessfully": true,
+    "rawLogCopiedByteForByte": true,
+    "contactSheetInspected": true,
+    "fullResolutionFramesInspectedAtSeconds": [5, 49],
+    "terminalEvidenceOutputLegible": true,
+    "commandEchoWrapOrOverlapObserved": true,
+    "hiddenSetupVisible": false,
+    "archivedPlaybackDisclosureVisible": true,
+    "allSixFreezeMaskPassLinesVisible": true,
+    "sixTestZeroFailureVerdictVisible": true,
+    "targetedMeltObservedTimeVisible": true,
+    "separateRoundTripBoundaryVisible": true,
+    "finalHashVisible": true
+  },
+  "timingContext": {
+    "interpretation": "The capture replays one preserved release-test run. It performs no fresh test execution. The 1.092-second targeted-melt value is an observation from that saved run, not a deterministic performance contract."
+  },
+  "claimBoundaries": [
+    "This MP4 is archived receipt playback, not a fresh execution of the release tests.",
+    "The visible receipt establishes that six freeze-mask tests, including the deterministic targeted two-bit melt, passed with zero failures in the preserved run.",
+    "The targeted-melt test does not emit the searched elite, resynthesize it with Yosys, or exhaustively re-prove the searched result.",
+    "The durable combined log also contains identity round-trip and corruption-detection results, but those lines are intentionally not projected in this local-pass capture and are presented separately in the episode.",
+    "The 1.092-second elapsed value is a local observation, not a timing contract or benchmark distribution.",
+    "This receipt does not establish topology mutation, area reduction, depth reduction, or general logic simplification.",
+    "Typed command echoes visibly wrap or overlap at some prompt boundaries in the VHS recording; the result lines remain legible and the durable source log is hash-identified."
+  ]
+}

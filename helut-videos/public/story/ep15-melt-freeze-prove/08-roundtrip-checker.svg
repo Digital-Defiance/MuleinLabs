@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" role="img" aria-labelledby="title desc">
+  <title id="title">The identity round-trip checker passes and catches corruption, separately from the optimized elite</title>
+  <desc id="desc">A solid identity lane emits the unmutated four-LUT adder through Yosys and ABC, reloads it, and checks all 16 rows for 48 agreeing output bits; a one-bit INIT corruption causes four mismatches, while the optimized-elite lane remains visibly open.</desc>
+  <rect width="1920" height="1080" fill="#091522"/>
+  <g transform="translate(970 66)" font-family="Arial, sans-serif">
+    <text x="454" y="18" text-anchor="middle" fill="#9aa8b8" font-size="15" letter-spacing="3">A SEPARATE RECEIPT WITH TEETH</text>
+    <rect x="0" y="48" width="908" height="820" rx="24" fill="#0c1724" stroke="#66758a" stroke-width="2"/>
+    <g transform="translate(26 78)">
+      <rect width="856" height="326" rx="20" fill="#122b35" stroke="#22a89c" stroke-width="2"/>
+      <text x="24" y="38" fill="#22a89c" font-size="14" letter-spacing="2">IDENTITY ROUND TRIP · IMPLEMENTED</text>
+      <text x="832" y="38" text-anchor="end" fill="#9aa8b8" font-size="14">unmutated four-LUT adder</text>
+      <g transform="translate(20 72)">
+        <rect width="144" height="82" rx="12" fill="#142738"/>
+        <text x="72" y="33" text-anchor="middle" fill="#fff" font-size="17" font-weight="700">TensorLUT</text>
+        <text x="72" y="59" text-anchor="middle" fill="#9aa8b8" font-size="13">identity INIT</text>
+        <line x1="144" y1="41" x2="170" y2="41" stroke="#22a89c" stroke-width="3"/><polygon points="181,41 165,33 165,49" fill="#22a89c"/>
+        <rect x="181" width="144" height="82" rx="12" fill="#142738"/>
+        <text x="253" y="33" text-anchor="middle" fill="#fff" font-size="17" font-weight="700">Emit LUT6</text>
+        <text x="253" y="59" text-anchor="middle" fill="#9aa8b8" font-size="13">Verilog</text>
+        <line x1="325" y1="41" x2="351" y2="41" stroke="#22a89c" stroke-width="3"/><polygon points="362,41 346,33 346,49" fill="#22a89c"/>
+        <rect x="362" width="144" height="82" rx="12" fill="#142738"/>
+        <text x="434" y="33" text-anchor="middle" fill="#fff" font-size="17" font-weight="700">Yosys / ABC</text>
+        <text x="434" y="59" text-anchor="middle" fill="#9aa8b8" font-size="13">map + JSON</text>
+        <line x1="506" y1="41" x2="532" y2="41" stroke="#22a89c" stroke-width="3"/><polygon points="543,41 527,33 527,49" fill="#22a89c"/>
+        <rect x="543" width="144" height="82" rx="12" fill="#142738"/>
+        <text x="615" y="33" text-anchor="middle" fill="#fff" font-size="17" font-weight="700">Reload</text>
+        <text x="615" y="59" text-anchor="middle" fill="#9aa8b8" font-size="13">new netlist</text>
+        <line x1="687" y1="41" x2="713" y2="41" stroke="#22a89c" stroke-width="3"/><polygon points="724,41 708,33 708,49" fill="#22a89c"/>
+        <rect x="724" width="92" height="82" rx="12" fill="#091522" stroke="#22a89c"/>
+        <text x="770" y="31" text-anchor="middle" fill="#22a89c" font-size="13">CHECK</text>
+        <text x="770" y="58" text-anchor="middle" fill="#fff" font-size="17" font-weight="700">16 rows</text>
+      </g>
+      <g transform="translate(20 180)">
+        <rect width="816" height="116" rx="14" fill="#091522" stroke="#22a89c" stroke-width="2"/>
+        <text x="24" y="35" fill="#22a89c" font-size="14" letter-spacing="2">EXHAUSTIVE RESULT</text>
+        <text x="24" y="79" fill="#fff" font-size="30" font-weight="700">3 outputs × 16 rows = 48 / 48 bits agree</text>
+        <text x="792" y="96" text-anchor="end" fill="#9aa8b8" font-size="14">identity path only</text>
+      </g>
+      <rect y="346" width="856" height="152" rx="20" fill="#2b2025" stroke="#d4833f" stroke-width="2"/>
+      <text x="24" y="384" fill="#d4833f" font-size="14" letter-spacing="2">NEGATIVE CONTROL · CHECKER MUST BITE</text>
+      <g transform="translate(24 405)">
+        <rect width="222" height="62" rx="11" fill="#201a22"/>
+        <text x="111" y="39" text-anchor="middle" fill="#fff" font-size="17" font-weight="700">flip 1 INIT bit</text>
+        <line x1="222" y1="31" x2="286" y2="31" stroke="#d4833f" stroke-width="3"/><polygon points="299,31 281,22 281,40" fill="#d4833f"/>
+        <rect x="299" width="222" height="62" rx="11" fill="#201a22"/>
+        <text x="410" y="39" text-anchor="middle" fill="#fff" font-size="17" font-weight="700">repeat round trip</text>
+        <line x1="521" y1="31" x2="585" y2="31" stroke="#d4833f" stroke-width="3"/><polygon points="598,31 580,22 580,40" fill="#d4833f"/>
+        <rect x="598" width="210" height="62" rx="11" fill="#091522" stroke="#d4833f"/>
+        <text x="703" y="29" text-anchor="middle" fill="#d4833f" font-size="16" font-weight="700">4 mismatches</text>
+        <text x="703" y="49" text-anchor="middle" fill="#9aa8b8" font-size="12">observed today</text>
+      </g>
+      <rect y="520" width="856" height="202" rx="20" fill="#2b2025" stroke="#d4833f" stroke-width="2" stroke-dasharray="10 8"/>
+      <text x="24" y="558" fill="#d4833f" font-size="14" letter-spacing="2">OPTIMIZED ELITE LANE · OPEN</text>
+      <g transform="translate(24 584)">
+        <rect width="232" height="92" rx="13" fill="#201a22"/>
+        <text x="116" y="37" text-anchor="middle" fill="#fff" font-size="18" font-weight="700">polished search elite</text>
+        <text x="116" y="65" text-anchor="middle" fill="#9aa8b8" font-size="14">from targeted melt</text>
+        <line x1="232" y1="46" x2="338" y2="46" stroke="#d4833f" stroke-width="3" stroke-dasharray="8 7"/>
+        <text x="285" y="31" text-anchor="middle" fill="#d4833f" font-size="12">MISSING LINK</text>
+        <polygon points="351,46 333,37 333,55" fill="#d4833f"/>
+        <rect x="351" width="457" height="92" rx="13" fill="#201a22" stroke="#d4833f" stroke-dasharray="8 6"/>
+        <text x="579" y="38" text-anchor="middle" fill="#fff" font-size="18" font-weight="700">emit → Yosys / ABC → reload → 16 rows</text>
+        <text x="579" y="67" text-anchor="middle" fill="#d4833f" font-size="15" font-weight="700">NOT YET PROVED</text>
+      </g>
+    </g>
+  </g>
+</svg>

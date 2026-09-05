@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" role="img" aria-labelledby="title desc">
+  <title id="title">HELUT consumes a supported post-synthesis LUT and DFF subset</title>
+  <desc id="desc">Verilog passes through Yosys into a two-state LUT, DFF, input, and output graph; behavioral events, delays, strengths, and X or Z semantics remain outside HELUT's boundary.</desc>
+  <rect width="1920" height="1080" fill="#091522"/>
+  <g transform="translate(982 118)" font-family="Arial, sans-serif">
+    <text x="438" y="18" text-anchor="middle" fill="#9aa8b8" font-size="15" letter-spacing="3">DEFINE THE OBJECT BEFORE TIMING IT</text>
+    <g transform="translate(6 70)">
+      <rect x="0" y="0" width="220" height="132" rx="18" fill="#142738" stroke="#66758a" stroke-width="2"/>
+      <text x="110" y="40" text-anchor="middle" fill="#9aa8b8" font-size="14" letter-spacing="2">AUTHORED INPUT</text>
+      <text x="110" y="81" text-anchor="middle" fill="#fff" font-size="29" font-weight="700">Verilog</text>
+      <text x="110" y="110" text-anchor="middle" fill="#9aa8b8" font-size="15">front-end source</text>
+      <line x1="220" y1="66" x2="278" y2="66" stroke="#66758a" stroke-width="3"/>
+      <polygon points="291,66 273,57 273,75" fill="#66758a"/>
+      <rect x="292" y="0" width="220" height="132" rx="18" fill="#282235" stroke="#66758a" stroke-width="2"/>
+      <text x="402" y="40" text-anchor="middle" fill="#9aa8b8" font-size="14" letter-spacing="2">FRONT END</text>
+      <text x="402" y="81" text-anchor="middle" fill="#fff" font-size="29" font-weight="700">Yosys</text>
+      <text x="402" y="110" text-anchor="middle" fill="#9aa8b8" font-size="15">synthesize + map</text>
+      <line x1="512" y1="66" x2="570" y2="66" stroke="#22a89c" stroke-width="3"/>
+      <polygon points="583,66 565,57 565,75" fill="#22a89c"/>
+      <rect x="584" y="0" width="280" height="132" rx="18" fill="#122b35" stroke="#22a89c" stroke-width="2"/>
+      <text x="724" y="36" text-anchor="middle" fill="#22a89c" font-size="14" letter-spacing="2">HELUT INPUT</text>
+      <text x="724" y="76" text-anchor="middle" fill="#fff" font-size="27" font-weight="700">LUT + DFF graph</text>
+      <text x="724" y="107" text-anchor="middle" fill="#9aa8b8" font-size="15">two-state · I/O · selected flops</text>
+    </g>
+    <g transform="translate(6 252)">
+      <rect width="864" height="274" rx="20" fill="#122b35" stroke="#22a89c" stroke-width="2"/>
+      <text x="28" y="42" fill="#22a89c" font-size="15" letter-spacing="2">INSIDE THE SUPPORTED BOUNDARY</text>
+      <g transform="translate(28 70)">
+        <rect width="245" height="154" rx="14" fill="#142738"/>
+        <text x="122" y="39" text-anchor="middle" fill="#fff" font-size="21" font-weight="700">Lookup tables</text>
+        <g fill="#22a89c">
+          <rect x="38" y="69" width="28" height="28" rx="4"/><rect x="78" y="69" width="28" height="28" rx="4"/><rect x="118" y="69" width="28" height="28" rx="4"/><rect x="158" y="69" width="28" height="28" rx="4"/>
+        </g>
+        <text x="122" y="130" text-anchor="middle" fill="#9aa8b8" font-size="15">Boolean INIT entries</text>
+        <rect x="282" width="245" height="154" rx="14" fill="#142738"/>
+        <text x="404" y="39" text-anchor="middle" fill="#fff" font-size="21" font-weight="700">Selected DFFs</text>
+        <rect x="365" y="66" width="78" height="45" rx="7" fill="#091522" stroke="#22a89c" stroke-width="2"/>
+        <text x="404" y="96" text-anchor="middle" fill="#22a89c" font-size="19" font-weight="700">D → Q</text>
+        <text x="404" y="136" text-anchor="middle" fill="#9aa8b8" font-size="15">clocked state</text>
+        <rect x="564" width="244" height="154" rx="14" fill="#142738"/>
+        <text x="686" y="39" text-anchor="middle" fill="#fff" font-size="21" font-weight="700">Ports + wires</text>
+        <line x1="617" y1="88" x2="755" y2="88" stroke="#22a89c" stroke-width="3"/>
+        <circle cx="617" cy="88" r="8" fill="#091522" stroke="#22a89c" stroke-width="2"/>
+        <circle cx="755" cy="88" r="8" fill="#091522" stroke="#22a89c" stroke-width="2"/>
+        <text x="686" y="136" text-anchor="middle" fill="#9aa8b8" font-size="15">post-synthesis graph</text>
+      </g>
+    </g>
+    <g transform="translate(6 552)">
+      <rect width="864" height="190" rx="20" fill="#2b2025" stroke="#d4833f" stroke-width="2" stroke-dasharray="10 8"/>
+      <text x="28" y="40" fill="#d4833f" font-size="15" letter-spacing="2">OUTSIDE THIS MODEL · NOT FULL HDL SIMULATION</text>
+      <g fill="#fff" font-size="18" font-weight="700">
+        <text x="30" y="86">Arbitrary behavioral events</text>
+        <text x="449" y="86">Propagation delays</text>
+        <text x="30" y="132">Signal strengths</text>
+        <text x="449" y="132">Four-state X / Z semantics</text>
+      </g>
+      <text x="432" y="168" text-anchor="middle" fill="#9aa8b8" font-size="15">Accuracy for the supported graph is the scope—not general Verilog semantics.</text>
+    </g>
+  </g>
+</svg>

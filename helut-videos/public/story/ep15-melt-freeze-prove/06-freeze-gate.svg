@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" role="img" aria-labelledby="title desc">
+  <title id="title">Freezing thresholds at 0.5, then re-scores the hard candidate before acceptance</title>
+  <desc id="desc">Continuous entries below 0.5 map to zero and entries at or above 0.5 map to one; the hard candidate is accepted only when target fitness is no more than 0.001 worse than soft fitness, and a warning states that discrete alone does not mean correct.</desc>
+  <rect width="1920" height="1080" fill="#091522"/>
+  <g transform="translate(982 116)" font-family="Arial, sans-serif">
+    <text x="440" y="18" text-anchor="middle" fill="#9aa8b8" font-size="15" letter-spacing="3">THRESHOLDING IS A PROPOSAL · NOT A PROOF</text>
+    <rect x="0" y="58" width="880" height="640" rx="24" fill="#0c1724" stroke="#66758a" stroke-width="2"/>
+    <g transform="translate(28 102)">
+      <rect width="212" height="188" rx="18" fill="#2b2025" stroke="#d4833f" stroke-width="2"/>
+      <text x="106" y="38" text-anchor="middle" fill="#d4833f" font-size="14" letter-spacing="2">SOFT ENTRIES</text>
+      <text x="106" y="88" text-anchor="middle" fill="#fff" font-family="Courier New, monospace" font-size="20">.12  .50</text>
+      <text x="106" y="124" text-anchor="middle" fill="#fff" font-family="Courier New, monospace" font-size="20">.83  .49</text>
+      <text x="106" y="161" text-anchor="middle" fill="#9aa8b8" font-size="14">fractional values</text>
+      <line x1="212" y1="94" x2="265" y2="94" stroke="#66758a" stroke-width="3"/>
+      <polygon points="278,94 260,85 260,103" fill="#66758a"/>
+      <rect x="278" width="278" height="188" rx="18" fill="#142738" stroke="#66758a" stroke-width="2"/>
+      <text x="417" y="38" text-anchor="middle" fill="#9aa8b8" font-size="14" letter-spacing="2">THRESHOLD AT 0.5</text>
+      <rect x="300" y="62" width="234" height="44" rx="9" fill="#091522"/>
+      <text x="417" y="90" text-anchor="middle" fill="#fff" font-family="Courier New, monospace" font-size="18">w &lt; 0.5  →  0</text>
+      <rect x="300" y="118" width="234" height="44" rx="9" fill="#091522"/>
+      <text x="417" y="146" text-anchor="middle" fill="#fff" font-family="Courier New, monospace" font-size="18">w ≥ 0.5  →  1</text>
+      <line x1="556" y1="94" x2="609" y2="94" stroke="#66758a" stroke-width="3"/>
+      <polygon points="622,94 604,85 604,103" fill="#66758a"/>
+      <rect x="622" width="202" height="188" rx="18" fill="#122b35" stroke="#22a89c" stroke-width="2"/>
+      <text x="723" y="38" text-anchor="middle" fill="#22a89c" font-size="14" letter-spacing="2">HARD CANDIDATE</text>
+      <text x="723" y="88" text-anchor="middle" fill="#fff" font-family="Courier New, monospace" font-size="22">0  1</text>
+      <text x="723" y="124" text-anchor="middle" fill="#fff" font-family="Courier New, monospace" font-size="22">1  0</text>
+      <text x="723" y="161" text-anchor="middle" fill="#9aa8b8" font-size="14">zero fractional entries</text>
+      <line x1="723" y1="188" x2="723" y2="236" stroke="#22a89c" stroke-width="3"/>
+      <polygon points="723,249 714,231 732,231" fill="#22a89c"/>
+      <rect x="278" y="249" width="546" height="124" rx="18" fill="#122b35" stroke="#22a89c" stroke-width="2"/>
+      <text x="551" y="283" text-anchor="middle" fill="#22a89c" font-size="14" letter-spacing="2">RE-SCORE AGAINST THE SAME TARGET</text>
+      <text x="551" y="321" text-anchor="middle" fill="#fff" font-size="21" font-weight="700">hard fitness ≥ soft fitness − 0.001 ?</text>
+      <text x="551" y="350" text-anchor="middle" fill="#9aa8b8" font-size="14">no more than 0.001 worse</text>
+      <line x1="551" y1="373" x2="551" y2="414" stroke="#66758a" stroke-width="3"/>
+      <line x1="551" y1="414" x2="396" y2="414" stroke="#22a89c" stroke-width="3"/>
+      <line x1="551" y1="414" x2="706" y2="414" stroke="#d4833f" stroke-width="3"/>
+      <polygon points="383,414 401,405 401,423" fill="#22a89c"/><polygon points="719,414 701,405 701,423" fill="#d4833f"/>
+      <text x="474" y="402" text-anchor="middle" fill="#22a89c" font-size="13">YES</text>
+      <text x="628" y="402" text-anchor="middle" fill="#d4833f" font-size="13">NO</text>
+      <rect x="278" y="430" width="210" height="74" rx="13" fill="#122b35" stroke="#22a89c"/>
+      <text x="383" y="460" text-anchor="middle" fill="#22a89c" font-size="13" letter-spacing="2">ACCEPT POLISH</text>
+      <text x="383" y="485" text-anchor="middle" fill="#fff" font-size="16" font-weight="700">for this target gate</text>
+      <rect x="614" y="430" width="210" height="74" rx="13" fill="#2b2025" stroke="#d4833f"/>
+      <text x="719" y="460" text-anchor="middle" fill="#d4833f" font-size="13" letter-spacing="2">REJECT POLISH</text>
+      <text x="719" y="485" text-anchor="middle" fill="#fff" font-size="16" font-weight="700">keep failure visible</text>
+      <rect x="0" y="530" width="824" height="80" rx="14" fill="#2b2025" stroke="#d4833f" stroke-width="2"/>
+      <text x="412" y="561" text-anchor="middle" fill="#d4833f" font-size="14" letter-spacing="2">BOUNDARY</text>
+      <text x="412" y="590" text-anchor="middle" fill="#fff" font-size="20" font-weight="700">DISCRETE DOES NOT, BY ITSELF, MEAN CORRECT</text>
+    </g>
+  </g>
+</svg>

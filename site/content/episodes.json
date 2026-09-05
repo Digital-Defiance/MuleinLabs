@@ -1548,6 +1548,321 @@
           ]
         }
       ]
+    },
+    {
+      "episodeNumber": 14,
+      "sourceFile": "ep14-skeptics-benchmark.json",
+      "id": "ep14-skeptics-benchmark",
+      "compositionId": "Episode14",
+      "title": "The Skeptic's Benchmark",
+      "youtubeTitle": "Does Tensorized Verilog Actually Help? An Honest HELUT Benchmark",
+      "description": "A technically informed skeptic asks the right questions: what problem does tensorizing a synthesized circuit solve, is it more efficient than native HDL execution, and why target Apple silicon? This episode answers with the current receipt, the current gaps, and the architectural case for unified memory. A 688-LUT, 26-DFF Enigma M3 netlist runs through HELUT's trivial, noise-free N=1024 Metal path and agrees exactly with the clear oracle on a 25-letter transcript, in three of three runs. The saved log separates compile, first-tick JIT, steady ticks, stream time, and resident memory, and it reports a median with its spread rather than one number. Apple silicon matters here because host orchestration, Metal shaders, and MPSGraph allocate through shared buffers in one physical memory pool, which suits iterative Enigma candidate, scoring, and survivor workflows without claiming that synchronization is free. The episode does not claim encryption, distinct-lane batch throughput, superiority over Verilator, CXXRTL, or a discrete GPU, or a cross-platform result. It pre-registers the comparisons required to answer those questions honestly. Epoch C69.",
+      "claimEpoch": "2026-08-20 / C69",
+      "scenes": [
+        {
+          "kind": "title",
+          "id": "title",
+          "voiceover": "A skeptic on Reddit asked the three questions this project has to answer. Hardware simulators already reproduce Verilog and V H D L accurately, so why turn a circuit into tensors? Is that actually faster than compiling H D L to native code? And if it is not, why should anyone care which chip it runs on? I will take those in order, starting from the assumption that native execution wins. What follows is one measured receipt, one caveat that undercuts the most quotable number in the repository, and a written-down experiment that could kill the performance thesis outright.",
+          "durationHintSec": 52,
+          "eyebrow": "HELUT · objection accepted · receipts first",
+          "headline": "Does tensorized Verilog actually help?",
+          "subhead": "Start with the null hypothesis: native wins."
+        },
+        {
+          "kind": "concept",
+          "id": "not-an-hdl-simulator",
+          "voiceover": "First, remove a category error. HELUT is not a replacement for an event-driven H D L simulator. Yosys does the front-end and synthesis work, and A B C, the logic mapper Yosys calls, packs the resulting gates into lookup tables. HELUT picks up after that, from a two-state netlist of lookup tables, flip-flops, and ports. It has no model of behavioral Verilog, propagation delay, signal strength, or the four-state X and Z values a real simulator tracks. Bit accuracy, then, is not the selling point. Verilator and Icarus already own that job. The open question is what a restricted Boolean graph gains by being tensors: batching independent instances, reuse on a Metal graph substrate, sharing one representation with the encrypted path, or turning truth tables into a continuous search space.",
+          "durationHintSec": 58,
+          "headline": "HELUT does not simulate arbitrary Verilog",
+          "subhead": "Yosys first · two-state LUT and DFF netlist second",
+          "kicker": "Define the object before timing it"
+        },
+        {
+          "kind": "concept",
+          "id": "what-tensors-add",
+          "voiceover": "The tensor representation adds two independent axes. B is how many copies of the circuit ride along together. N is how many coefficients stand in for a single logical wire. N equals one is the smallest Boolean shape there is. N equals one thousand twenty-four matches the polynomial size the encrypted side of this project uses, though a constant-filled, noise-free vector at that size is still not encrypted data. Those axes give experiments a graph-shaped substrate that scalar simulation was never designed around. What they do not give is a speedup. A tensor can expose parallel work. Whether the machine then executes that work efficiently is a measurement, not a definition.",
+          "durationHintSec": 55,
+          "headline": "Batch instances and wire degree",
+          "subhead": "B copies of a circuit · N coefficients per encoded wire",
+          "kicker": "Two axes · two different meanings"
+        },
+        {
+          "kind": "capture",
+          "id": "current-receipt",
+          "voiceover": "Here is what the repository can defend today. The synthesized Enigma M three graph holds six hundred eighty-eight lookup tables, twenty-six flip-flops, ten inputs, and eight outputs. I ran the N one thousand twenty-four, B one configuration three times on an M four Max. Median compile: zero point zero three eight three seconds. The first tick cost zero point three zero seven four seconds, because that tick pays to build and specialize the Metal kernels, the just-in-time cost. The nine ticks after it averaged zero point zero one four eight seconds, which the harness prints as sixty-seven point four nine ticks per second. Then a clear oracle, an independent scalar simulator in Swift that reads the same netlist and never touches the G P U, and the Metal path both produced K E I N E B E S O N D E R E N E R E I G N I S S E. All twenty-five letters matched, in all three runs. Why a median instead of a single number? Because the same netlist and tensor shape logged sixty-six to seventy-two ticks per second in archived August runs, and three cold passes earlier today logged about fifty-one. One number here would be fiction.",
+          "durationHintSec": 83.48,
+          "label": "ARCHIVED RECEIPT PLAYBACK · preserved 2026-09-05 log · not a fresh timing run",
+          "videoAsset": "episode14-current-receipt.mp4"
+        },
+        {
+          "kind": "concept",
+          "id": "batch-caveat",
+          "voiceover": "Now the caveat that undercuts the most quotable number in the repository. The clock benchmark fills every batch lane with the same encoded value. Enable is held at one, reset follows a scripted schedule, and every other primary input sits at zero. Output tensors do get written, but the timed loop never reads them back and never hashes them per lane. So the existing B scaling table measures graph shape, allocation, synchronization, and memory pressure. It does not measure useful throughput over one thousand distinct vectors, and describing it as a thousand-way verified simulation would be a lie. Three things have to change before a batching claim is allowed: every lane doing independent work, a canonical checksum over ordered outputs and final state, and a deliberately corrupted bit that makes the checksum fail.",
+          "durationHintSec": 58,
+          "headline": "The existing batch sweep repeats one feed",
+          "subhead": "B=1000 is not yet 1000 independently checked vectors",
+          "kicker": "The number that cannot be oversold"
+        },
+        {
+          "kind": "concept",
+          "id": "native-gap",
+          "voiceover": "There is no Verilator benchmark in this repository, and none for C X X R T L, the C plus plus simulation backend Yosys ships, either. Not over the same synthesized artifact, not over the same stimulus. The clear Swift simulator is an oracle: a per-bit interpreter walking dictionaries. It is deliberately simple so it can be trusted, which also makes it useless as a performance baseline. Every timing table in the repo compares HELUT against other HELUT configurations. So the literal answer to the question is that HELUT has not established that tensor execution beats H D L compiled to native code. That gap is testable, which is the only reason it is worth admitting out loud. A credible series shows native winning where native wins, prices the setup and the memory, and saves the word crossover for a point where the same checked work actually changes the ordering.",
+          "durationHintSec": 60,
+          "headline": "Is it faster than native HDL?",
+          "subhead": "Current answer: the repository has not established that",
+          "kicker": "The Reddit question, answered literally"
+        },
+        {
+          "kind": "concept",
+          "id": "benchmark-contract",
+          "voiceover": "The missing comparison has a contract, and writing it down before measuring is the whole point. Three circuits: a tiny combinational control, a medium lookup-table workload, and a sequential design with independent state per lane. Two native baselines: one built from authored R T L, one built from the same post-A B C graph HELUT consumes, so nobody can blame the mapper for the result. One corpus, deterministic and lane-distinct, fed to every backend. Outputs consumed inside the timed region, then hashed outside it, over ordered outputs and final state. Flip one expected bit and the checksum gate has to fail, or the gate is decoration. Then sweep batch size with total useful work held constant, and report all of it: build time, graph compile, first tick, steady compute, end-to-end break-even, vectors per second, peak resident memory, the spread across repeated trials, and every crash or out-of-memory point.",
+          "durationHintSec": 68,
+          "headline": "Same circuit. Same work. Same digest.",
+          "subhead": "Verilator · post-ABC native · HELUT · repeated trials",
+          "kicker": "Pre-register before measuring"
+        },
+        {
+          "kind": "concept",
+          "id": "why-apple-silicon",
+          "voiceover": "Why Apple silicon? The practical answer is that it is the hardware I own, and a lot of other people own it too. The architectural answer is unified memory. HELUT's host code, its hand-written Metal compute shaders, and Metal Performance Shaders Graph all allocate through shared Metal buffers backed by one physical memory pool, instead of treating C P U memory and discrete V R A M as two separately staged worlds. The host writes inputs and state, a shader or a graph reads those same allocations, and the host inspects results after synchronization. The G P U also draws on the machine's whole memory capacity rather than a fixed V R A M budget. None of that makes movement or synchronization free, and none of it is a speedup. What it does is make tightly coupled, memory-hungry hybrid experiments practical on hardware you can buy in a shop.",
+          "durationHintSec": 64,
+          "headline": "Unified memory is the big win",
+          "subhead": "Host code · Metal shaders · MPSGraph · shared buffers",
+          "kicker": "The architectural reason · one memory pool"
+        },
+        {
+          "kind": "concept",
+          "id": "enigma-unified-memory",
+          "voiceover": "Enigma makes that pattern concrete. Host code organizes rotor, ring, and starting-position settings, plugboard pairs, and candidate populations. Wide Metal kernels sweep many settings or scoring lanes at once. The host then filters survivors, tightens constraints, breeds the next generation, and starts another round. With shared buffers those phases can live in one memory pool instead of paying a staging tax at every boundary. Large candidate tensors can spend real unified memory. But capacity is not throughput, and the repository has a receipt that proves it. At N one thousand twenty-four and B one thousand, resident memory peaked near six gigabytes and the tick rate fell to thirteen point six two per second, against roughly sixty-nine at B equals one. So the defensible claim is that unified memory opens this design space. Beating a discrete G P U inside it is a separate measurement nobody here has taken.",
+          "durationHintSec": 66,
+          "headline": "Build candidates on the CPU; sweep them on the GPU",
+          "subhead": "Settings · tables · ciphertext · scores · survivors · repeat",
+          "kicker": "Why Enigma makes the architecture visible"
+        },
+        {
+          "kind": "narration",
+          "id": "verdict",
+          "voiceover": "So what does HELUT actually solve today? It bridges supported Yosys lookup-table graphs into a Metal tensor substrate, and on the circuit I tested, that substrate agrees with an independent clear oracle. It also gives host-orchestrated, G P U-evaluated experiments a shared-buffer home on one commodity memory pool. Those two facts establish that the bridge works, and they explain why this target is interesting. Neither one establishes superiority over native simulation. The batch result is not yet lane-distinct throughput. The Apple result is an architectural argument, not a verdict on architectures. Every open row on this list has a specific experiment attached to it, which is the only reason I am comfortable leaving them open.",
+          "durationHintSec": 58,
+          "headline": "The current verdict",
+          "bullets": [
+            "Proved: supported Yosys LUT/DFF graphs execute on Metal",
+            "Proved: clear oracle and Metal outputs agree, 3 of 3 runs",
+            "Implemented: shared-buffer CPU/GPU workflows on unified memory",
+            "Open: native speedup, lane-distinct batch throughput",
+            "Not claimed: full HDL semantics or Apple exclusivity"
+          ]
+        },
+        {
+          "kind": "outro",
+          "id": "outro",
+          "voiceover": "The tensor path gets more interesting when the circuit is not merely executed. A lookup table can be lifted out of zeros and ones into continuous values, searched against a target, and pushed back toward discrete hardware. That is melt and freeze, and it arrives with its own bill. Did the frozen circuit stay correct? Did the topology change? Did the resource count improve? Will Yosys take the emitted result back? And what happens when the search refuses to go binary? Episode fifteen puts the passing two-bit control, the round-trip checker, its negative control, and the failed M four run on the same screen.",
+          "durationHintSec": 52,
+          "headline": "If not better simulation, then what?",
+          "subhead": "Next: melt the truth tables, freeze them again, and inspect the proof."
+        }
+      ],
+      "captures": [
+        {
+          "captureId": "episode14-current-receipt",
+          "role": "archived receipt playback",
+          "capturedAt": "2026-09-05T13:40:18-07:00",
+          "video": {
+            "file": "episode14-current-receipt.mp4",
+            "sha256": "44ebe299b6b6cebc426f6b3dbb72b5fd22e241aefac80201d5cf97b971eb2866",
+            "codec": "h264",
+            "width": 1280,
+            "height": 720,
+            "durationSeconds": 83.48,
+            "sizeBytes": 1104570
+          },
+          "tape": {
+            "file": "episode14-current-receipt.tape",
+            "sha256": "64535714880374ed11b65585dd336a89b7b2014e938f2a26339b8849d3f9d8ce"
+          },
+          "manifestFile": "capture-manifest.json",
+          "transcriptFile": "CAPTURE_TRANSCRIPT.md",
+          "reproduce": {
+            "workingDirectory": "helut-videos repository root at /Volumes/Code/MuleinLabs/helut-videos",
+            "prerequisites": [
+              "VHS 0.11.0",
+              "ttyd 1.7.7-unknown",
+              "FFmpeg 9.0.1",
+              "The durable copied log at captures/ep14-skeptics-benchmark/ep14-enigma-m3-n1024-b1-x3.log"
+            ],
+            "commands": [
+              "vhs captures/ep14-skeptics-benchmark/episode14-current-receipt.tape"
+            ],
+            "behavior": "Re-records a literal playback of the preserved log; it does not rerun the timing-sensitive Enigma benchmark. The final receipt screen is held for 31 seconds so the already-generated narration can finish over visible evidence.",
+            "workspacePathConstraint": "The tape records to an absolute path under /Volumes/Code/MuleinLabs and must be adjusted if the workspace is relocated."
+          },
+          "timingNote": "The capture replays three preserved warm-run observations. It performs no fresh timing run. The values are local observations on one Apple M4 Max, not a deterministic contract or cross-platform benchmark. The final screen hold is presentation time for the existing narration, not benchmark execution.",
+          "claimBoundaries": [
+            "This MP4 is archived receipt playback, not a fresh execution of the benchmark.",
+            "N=1024 uses constant-filled, trivial, noise-free values and is not encrypted execution.",
+            "B=1 provides no lane-distinct batch-throughput evidence.",
+            "The clear and Metal paths agree on this 25-letter transcript in three preserved runs; this is not full HDL equivalence.",
+            "No Verilator, CXXRTL, discrete-GPU, or other native baseline is present, so the receipt establishes no speed superiority.",
+            "Compile, first-tick, steady-tick, stream, and memory figures are observations on one machine; the first tick includes JIT specialization.",
+            "Typed command echoes visibly wrap or overlap at some prompt boundaries in the VHS recording; the result lines remain legible and the durable source log is hash-identified."
+          ]
+        }
+      ]
+    },
+    {
+      "episodeNumber": 15,
+      "sourceFile": "ep15-melt-freeze-prove.json",
+      "id": "ep15-melt-freeze-prove",
+      "compositionId": "Episode15",
+      "title": "Melt. Freeze. Prove.",
+      "youtubeTitle": "Melt and Freeze a Hardware Circuit — What HELUT Actually Proves",
+      "description": "HELUT's melt/freeze path is shown as implemented: fixed-topology LUT truth tables are lifted from binary entries to Float32 values, selected LUTs are searched with evolutionary mutation and crossover, and a final threshold may return the mutable region to discrete zero-or-one tables when target fitness is preserved. Rerun on 2026-09-05, the deterministic two-bit-adder control passes in 1.092 s inside a six-test freeze-mask suite with zero failures. A separate identity emit-to-Yosys round trip checks 48 output bits over all 16 input assignments, and a one-bit INIT corruption produces four detected mismatches. Those are separate receipts: the current tree emits searched elites but never re-synthesizes and re-proves them, does not mutate topology, and does not establish area or depth improvement over Yosys/ABC. An archived M4 targeted-melt failure remains visible. Epoch C69.",
+      "claimEpoch": "2026-08-20 / C69",
+      "scenes": [
+        {
+          "kind": "title",
+          "id": "title",
+          "voiceover": "Melt and freeze sounds dramatic, so let me take the drama out first. A lookup table in HELUT holds truth-table entries that are normally exact zeros and ones. Melting means letting selected entries become floating-point values in between, then searching those values against a target. Freezing means pushing them back to exact binary. Proving means checking the resulting discrete circuit independently, with a tool that had no part in the search. The repository demonstrates each of those links, and it is missing the join between two of them. This episode shows the controlled pass, the checker that catches corruption, the large experiment that failed, and the exact sentence where a general simplification claim would outrun the evidence.",
+          "durationHintSec": 58,
+          "eyebrow": "TensorLUT · controlled experiment · boundary included",
+          "headline": "Melt. Freeze. Prove.",
+          "subhead": "Continuous truth tables are useful only if the discrete circuit survives."
+        },
+        {
+          "kind": "concept",
+          "id": "what-melts",
+          "voiceover": "What melts is the I N I T table inside a lookup-table block. I N I T is the Verilog parameter that spells out a table's truth values, and TensorLUT pads every supported table to sixty-four Float thirty-two entries, six inputs being the widest cell it accepts. Evaluation uses the multilinear extension: each of the sixty-four entries is weighted by how strongly the inputs point at its corner of the cube. Feed it exact zeros and ones and only one weight is nonzero, so it returns the same entry Boolean logic would. Feed it fractions and it interpolates between corners. A freeze mask then picks which whole blocks mutation may touch. Wires, connections, lookup-table count, and flip-flop count never move, because the genome is nothing but I N I T floats. No operator exists that could move them. That matters, because a phrase like genetic hardware implies topology search. This is narrower: evolutionary search over truth-table parameters on a fixed graph. Useful for inverse design or targeted repair. Not structural logic synthesis.",
+          "durationHintSec": 72,
+          "headline": "Topology stays fixed; INIT values move",
+          "subhead": "64 Float32 entries per LUT6 · frozen or mutable by block",
+          "kicker": "The representation · not the wires"
+        },
+        {
+          "kind": "concept",
+          "id": "adder-baseline",
+          "voiceover": "The strongest controlled example is deliberately tiny. A two-bit adder built from four lookup tables, scheduled in two execution levels, meaning two rounds of evaluation where everything inside a round can be computed at once. Four primary input bits, three output bits, so the entire combinational domain is sixteen assignments. The first level computes the low sum with X O R and the low carry with A N D. The second level combines the two upper input bits with that carry. Because every possible input fits on one page, comparing all sixteen rows later is exhaustive for this function rather than a sample. Small does not mean weak evidence here. It means the word proof can be used literally.",
+          "durationHintSec": 55,
+          "headline": "A four-LUT two-bit adder",
+          "subhead": "4 inputs · 3 outputs · 16 complete rows · 2 logic levels",
+          "kicker": "The microscope · small enough to exhaust"
+        },
+        {
+          "kind": "concept",
+          "id": "targeted-melt",
+          "voiceover": "The targeted experiment freezes the two low-bit tables and lets only the two carry-stage tables move. Sixty-four entries each, so the mutable region is one hundred twenty-eight floats, and every one of them is wiped to zero point five: maximally undecided under this representation. The frozen blocks keep their original binary tables byte for byte, and that is the first falsifiable gate. If mutation or crossover disturbs a single frozen entry, the test fails. It is worth being precise about what is being asked here. The carry-stage tables were declared as all zeros to begin with, so there is no correct answer hiding underneath the wipe. The search has to discover the carry logic, not remember it, while the rest of the circuit stays fixed.",
+          "durationHintSec": 58,
+          "headline": "Two LUTs frozen, two LUTs melted",
+          "subhead": "128 mutable floats wiped to 0.5 · 128 frozen floats preserved",
+          "kicker": "Freeze what is known · erase what is not"
+        },
+        {
+          "kind": "concept",
+          "id": "evolutionary-search",
+          "voiceover": "The implemented search is evolutionary, not gradient descent. Forty-eight chromosomes, each one a full copy of the lookup-table entries. Sparse Gaussian mutation nudges mutable values, occasional jumps land exactly on zero or one, and crossover swaps whole sixty-four-entry blocks between parents. The objective has two terms. The first is what the code calls crypto fitness: the negative sum of squared output error, so zero is perfect and everything else is worse. The second is a binarity penalty, the sum of w times one minus w over every mutable entry, which is zero at zero and at one and largest at one half. Its lambda weight sits at nothing for the first tenth of the run and then ramps up, so the search fits the target first and feels pressure toward binary tables later. The two-bit control pins all of it: one hundred twenty generations, seed hexadecimal seven A six E one seven, a lambda ceiling of twelve, and one binary polish attempt at the end.",
+          "durationHintSec": 70,
+          "headline": "Mutation, crossover, target error, binarity pressure",
+          "subhead": "Population 48 · 120 generations · fixed seed 0x7A6E17",
+          "kicker": "Search mechanism · name it correctly"
+        },
+        {
+          "kind": "concept",
+          "id": "freeze-gate",
+          "voiceover": "Polish proposes a discrete chromosome by thresholding each mutable entry at zero point five. Below becomes zero, at or above becomes one. HELUT then re-scores that hard version against the same target and accepts it only if hard crypto fitness comes out no more than zero point zero zero one worse than the soft version it would replace. That is a real safety gate, and it deserves an accurate name. It is a check against this experiment's target, not a theorem about equivalence. Zero fractional entries tells you the result is discrete. On its own it tells you nothing about whether the result is right.",
+          "durationHintSec": 52,
+          "headline": "Snap at 0.5, then score again",
+          "subhead": "Accept only if hard target fitness stays within 0.001",
+          "kicker": "Thresholding is a proposal, not a proof"
+        },
+        {
+          "kind": "capture",
+          "id": "local-pass",
+          "voiceover": "I reran the release test suite this morning. The targeted two-bit melt passed in one point zero nine two seconds, inside a six-test freeze-mask suite that reported zero failures. Its assertions are specific: the frozen tables must stay byte-identical, the mutable region must come back with nothing left in the fractional band between zero point zero five and zero point nine five, and final fitness must beat negative zero point zero five. That proves the harness can discover an acceptable discrete solution for this target and this seed while honoring its freeze mask. It does not prove the searched result survives contact with hardware. Nothing in that test emits Verilog, calls Yosys, or re-checks the sixteen rows afterward.",
+          "durationHintSec": 55.16,
+          "label": "ARCHIVED RECEIPT PLAYBACK · preserved 2026-09-05 log · not a fresh test run",
+          "videoAsset": "episode15-local-pass.mp4"
+        },
+        {
+          "kind": "concept",
+          "id": "roundtrip-checker",
+          "voiceover": "A different test closes the hardware loop. It takes the unmutated four-table adder, emits it as six-input L U T Verilog, hands the file to Yosys, maps it with A B C, the logic mapper Yosys calls, writes a fresh JSON netlist, reloads that netlist, and compares three outputs across all sixteen inputs. Forty-eight output bits, all agreeing. Then the negative control flips one I N I T entry and runs the same loop. Today's run reported four mismatches, which are exactly the four input patterns that address the corrupted entry. Worth noting that the assertion only demands at least one mismatch, so four is observed behavior rather than a pinned contract. Either way the gate has teeth. But these remain two separate receipts. Targeted search on one side, identity emission on the other.",
+          "durationHintSec": 60,
+          "headline": "Emit → Yosys → reload → exhaust all rows",
+          "subhead": "48 output bits agree · corrupted INIT observed: 4 mismatches",
+          "kicker": "A separate receipt with teeth"
+        },
+        {
+          "kind": "concept",
+          "id": "failed-m4",
+          "voiceover": "The archived M four run is the counterweight, and it used a different configuration from the two-bit control: population sixteen, lambda ceiling ten, a hundred fifty generations of exploring followed by two hundred fifty of squeezing. Exploring means chasing target fitness with the binarity penalty switched off. Squeezing means turning that penalty up to force the entries binary. The graph held nine hundred twenty-five lookup tables and forty-nine flip-flops, sixteen tables mutable and nine hundred nine frozen. Exploring worked: sampled fitness climbed from minus four point two five to minus one point nine. Squeezing did not. It finished with one hundred eighteen entries still non-binary and target fitness back down at minus four point nine four. A Verilog file came out anyway, because the emitter thresholds whatever it is handed. No equivalence check ever said that file was correct, so this is a failure, not a near-success parked behind an artifact path. The project's answer was to stop searching for plugboard reciprocity in truth-table entries and enforce it structurally instead.",
+          "durationHintSec": 74,
+          "headline": "A larger targeted melt did not freeze",
+          "subhead": "925 LUT · 49 DFF · 16 mutable · 118 entries still fractional",
+          "kicker": "The failure stays in the ledger"
+        },
+        {
+          "kind": "concept",
+          "id": "compare-abc",
+          "voiceover": "So how does this compare with logic simplification as it already exists? Yosys and A B C rewrite Boolean structure. They remove redundancy, merge cells, map to a target library, and trade depth against area. The HELUT search holds structure still and changes lookup-table values to fit a target while pushing them toward binary. Its objective carries no area term, no depth term, no power or timing term. And the emitter writes exactly one L U T six per original lookup table, so emission alone can never reduce the count. A combined flow is easy to describe: discover a new discrete function on fixed topology, emit it, then let A B C strip whatever redundancy that creates. Until that flow runs end to end and reports fewer tables or lower depth under identical mapping, HELUT has not demonstrated better simplification. It has demonstrated a different knob.",
+          "durationHintSec": 64,
+          "headline": "HELUT and ABC optimize different things",
+          "subhead": "Fixed truth tables versus structural rewriting and mapping",
+          "kicker": "Answer the synthesis question directly"
+        },
+        {
+          "kind": "outro",
+          "id": "verdict",
+          "voiceover": "Four rows, then. One: a Yosys lookup-table graph can be lifted into continuous truth-table parameters and evaluated on Metal. Two: a freeze mask protects known tables while a deterministic evolutionary search discovers an acceptable discrete solution in the two-bit control. Three: unmutated TensorLUT Verilog survives Yosys re-synthesis and exhaustive checking, and the checker catches a one-bit corruption. Four: those two lanes are not joined. Searched elites do get emitted in other tests, but nothing re-synthesizes one and re-proves it, and there is no area or depth win over A B C to point at. That join is a precise engineering task now rather than an open question. Melt and freeze is real. General logic simplification is still a hypothesis with named gates in front of it.",
+          "durationHintSec": 62,
+          "headline": "What melt/freeze proves today",
+          "subhead": "Representation: yes. Controlled rediscovery: yes. General simplification: open."
+        }
+      ],
+      "captures": [
+        {
+          "captureId": "episode15-local-pass",
+          "role": "archived receipt playback",
+          "capturedAt": "2026-09-05T12:51:22-07:00",
+          "video": {
+            "file": "episode15-local-pass.mp4",
+            "sha256": "11d195a4dc64caa62913365d189ebe6d3e985ef4b1a5169506f84f699b16d5ec",
+            "codec": "h264",
+            "width": 1280,
+            "height": 720,
+            "durationSeconds": 55.16,
+            "sizeBytes": 612563
+          },
+          "tape": {
+            "file": "episode15-local-pass.tape",
+            "sha256": "1d80aac3b38684d37f7e858363449fbf6b32c01919140a15f07ffccccd57b657"
+          },
+          "manifestFile": "capture-manifest.json",
+          "transcriptFile": "CAPTURE_TRANSCRIPT.md",
+          "reproduce": {
+            "workingDirectory": "helut-videos repository root at /Volumes/Code/MuleinLabs/helut-videos",
+            "prerequisites": [
+              "VHS 0.11.0",
+              "ttyd 1.7.7-unknown",
+              "FFmpeg 9.0.1",
+              "The durable copied log at captures/ep15-melt-freeze-prove/ep15-melt-freeze-tests.log"
+            ],
+            "commands": [
+              "vhs captures/ep15-melt-freeze-prove/episode15-local-pass.tape"
+            ],
+            "behavior": "Re-records a literal playback of the preserved test log; it does not rerun the release tests.",
+            "workspacePathConstraint": "The tape records to an absolute path under /Volumes/Code/MuleinLabs and must be adjusted if the workspace is relocated."
+          },
+          "timingNote": "The capture replays one preserved release-test run. It performs no fresh test execution. The 1.092-second targeted-melt value is an observation from that saved run, not a deterministic performance contract.",
+          "claimBoundaries": [
+            "This MP4 is archived receipt playback, not a fresh execution of the release tests.",
+            "The visible receipt establishes that six freeze-mask tests, including the deterministic targeted two-bit melt, passed with zero failures in the preserved run.",
+            "The targeted-melt test does not emit the searched elite, resynthesize it with Yosys, or exhaustively re-prove the searched result.",
+            "The durable combined log also contains identity round-trip and corruption-detection results, but those lines are intentionally not projected in this local-pass capture and are presented separately in the episode.",
+            "The 1.092-second elapsed value is a local observation, not a timing contract or benchmark distribution.",
+            "This receipt does not establish topology mutation, area reduction, depth reduction, or general logic simplification.",
+            "Typed command echoes visibly wrap or overlap at some prompt boundaries in the VHS recording; the result lines remain legible and the durable source log is hash-identified."
+          ]
+        }
+      ]
     }
   ]
 }

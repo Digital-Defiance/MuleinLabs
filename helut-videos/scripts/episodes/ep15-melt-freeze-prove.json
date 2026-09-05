@@ -1,0 +1,120 @@
+{
+  "id": "ep15-melt-freeze-prove",
+  "compositionId": "Episode15",
+  "title": "Melt. Freeze. Prove.",
+  "youtubeTitle": "Melt and Freeze a Hardware Circuit — What HELUT Actually Proves",
+  "description": "HELUT's melt/freeze path is shown as implemented: fixed-topology LUT truth tables are lifted from binary entries to Float32 values, selected LUTs are searched with evolutionary mutation and crossover, and a final threshold may return the mutable region to discrete zero-or-one tables when target fitness is preserved. Rerun on 2026-09-05, the deterministic two-bit-adder control passes in 1.092 s inside a six-test freeze-mask suite with zero failures. A separate identity emit-to-Yosys round trip checks 48 output bits over all 16 input assignments, and a one-bit INIT corruption produces four detected mismatches. Those are separate receipts: the current tree emits searched elites but never re-synthesizes and re-proves them, does not mutate topology, and does not establish area or depth improvement over Yosys/ABC. An archived M4 targeted-melt failure remains visible. Epoch C69.",
+  "claimEpoch": "2026-08-20 / C69",
+  "fps": 30,
+  "width": 1920,
+  "height": 1080,
+  "scenes": [
+    {
+      "kind": "title",
+      "id": "title",
+      "eyebrow": "TensorLUT · controlled experiment · boundary included",
+      "headline": "Melt. Freeze. Prove.",
+      "subhead": "Continuous truth tables are useful only if the discrete circuit survives.",
+      "backgroundAsset": "01-title.svg",
+      "voiceover": "Melt and freeze sounds dramatic, so let me take the drama out first. A lookup table in HELUT holds truth-table entries that are normally exact zeros and ones. Melting means letting selected entries become floating-point values in between, then searching those values against a target. Freezing means pushing them back to exact binary. Proving means checking the resulting discrete circuit independently, with a tool that had no part in the search. The repository demonstrates each of those links, and it is missing the join between two of them. This episode shows the controlled pass, the checker that catches corruption, the large experiment that failed, and the exact sentence where a general simplification claim would outrun the evidence.",
+      "durationHintSec": 58
+    },
+    {
+      "kind": "concept",
+      "id": "what-melts",
+      "kicker": "The representation · not the wires",
+      "headline": "Topology stays fixed; INIT values move",
+      "subhead": "64 Float32 entries per LUT6 · frozen or mutable by block",
+      "backgroundAsset": "02-what-melts.svg",
+      "voiceover": "What melts is the I N I T table inside a lookup-table block. I N I T is the Verilog parameter that spells out a table's truth values, and TensorLUT pads every supported table to sixty-four Float thirty-two entries, six inputs being the widest cell it accepts. Evaluation uses the multilinear extension: each of the sixty-four entries is weighted by how strongly the inputs point at its corner of the cube. Feed it exact zeros and ones and only one weight is nonzero, so it returns the same entry Boolean logic would. Feed it fractions and it interpolates between corners. A freeze mask then picks which whole blocks mutation may touch. Wires, connections, lookup-table count, and flip-flop count never move, because the genome is nothing but I N I T floats. No operator exists that could move them. That matters, because a phrase like genetic hardware implies topology search. This is narrower: evolutionary search over truth-table parameters on a fixed graph. Useful for inverse design or targeted repair. Not structural logic synthesis.",
+      "durationHintSec": 72
+    },
+    {
+      "kind": "concept",
+      "id": "adder-baseline",
+      "kicker": "The microscope · small enough to exhaust",
+      "headline": "A four-LUT two-bit adder",
+      "subhead": "4 inputs · 3 outputs · 16 complete rows · 2 logic levels",
+      "backgroundAsset": "03-adder-baseline.svg",
+      "voiceover": "The strongest controlled example is deliberately tiny. A two-bit adder built from four lookup tables, scheduled in two execution levels, meaning two rounds of evaluation where everything inside a round can be computed at once. Four primary input bits, three output bits, so the entire combinational domain is sixteen assignments. The first level computes the low sum with X O R and the low carry with A N D. The second level combines the two upper input bits with that carry. Because every possible input fits on one page, comparing all sixteen rows later is exhaustive for this function rather than a sample. Small does not mean weak evidence here. It means the word proof can be used literally.",
+      "durationHintSec": 55
+    },
+    {
+      "kind": "concept",
+      "id": "targeted-melt",
+      "kicker": "Freeze what is known · erase what is not",
+      "headline": "Two LUTs frozen, two LUTs melted",
+      "subhead": "128 mutable floats wiped to 0.5 · 128 frozen floats preserved",
+      "backgroundAsset": "04-targeted-melt.svg",
+      "voiceover": "The targeted experiment freezes the two low-bit tables and lets only the two carry-stage tables move. Sixty-four entries each, so the mutable region is one hundred twenty-eight floats, and every one of them is wiped to zero point five: maximally undecided under this representation. The frozen blocks keep their original binary tables byte for byte, and that is the first falsifiable gate. If mutation or crossover disturbs a single frozen entry, the test fails. It is worth being precise about what is being asked here. The carry-stage tables were declared as all zeros to begin with, so there is no correct answer hiding underneath the wipe. The search has to discover the carry logic, not remember it, while the rest of the circuit stays fixed.",
+      "durationHintSec": 58
+    },
+    {
+      "kind": "concept",
+      "id": "evolutionary-search",
+      "kicker": "Search mechanism · name it correctly",
+      "headline": "Mutation, crossover, target error, binarity pressure",
+      "subhead": "Population 48 · 120 generations · fixed seed 0x7A6E17",
+      "backgroundAsset": "05-evolutionary-search.svg",
+      "voiceover": "The implemented search is evolutionary, not gradient descent. Forty-eight chromosomes, each one a full copy of the lookup-table entries. Sparse Gaussian mutation nudges mutable values, occasional jumps land exactly on zero or one, and crossover swaps whole sixty-four-entry blocks between parents. The objective has two terms. The first is what the code calls crypto fitness: the negative sum of squared output error, so zero is perfect and everything else is worse. The second is a binarity penalty, the sum of w times one minus w over every mutable entry, which is zero at zero and at one and largest at one half. Its lambda weight sits at nothing for the first tenth of the run and then ramps up, so the search fits the target first and feels pressure toward binary tables later. The two-bit control pins all of it: one hundred twenty generations, seed hexadecimal seven A six E one seven, a lambda ceiling of twelve, and one binary polish attempt at the end.",
+      "durationHintSec": 70
+    },
+    {
+      "kind": "concept",
+      "id": "freeze-gate",
+      "kicker": "Thresholding is a proposal, not a proof",
+      "headline": "Snap at 0.5, then score again",
+      "subhead": "Accept only if hard target fitness stays within 0.001",
+      "backgroundAsset": "06-freeze-gate.svg",
+      "voiceover": "Polish proposes a discrete chromosome by thresholding each mutable entry at zero point five. Below becomes zero, at or above becomes one. HELUT then re-scores that hard version against the same target and accepts it only if hard crypto fitness comes out no more than zero point zero zero one worse than the soft version it would replace. That is a real safety gate, and it deserves an accurate name. It is a check against this experiment's target, not a theorem about equivalence. Zero fractional entries tells you the result is discrete. On its own it tells you nothing about whether the result is right.",
+      "durationHintSec": 52
+    },
+    {
+      "kind": "capture",
+      "id": "local-pass",
+      "videoAsset": "episode15-local-pass.mp4",
+      "label": "ARCHIVED RECEIPT PLAYBACK · preserved 2026-09-05 log · not a fresh test run",
+      "voiceover": "I reran the release test suite this morning. The targeted two-bit melt passed in one point zero nine two seconds, inside a six-test freeze-mask suite that reported zero failures. Its assertions are specific: the frozen tables must stay byte-identical, the mutable region must come back with nothing left in the fractional band between zero point zero five and zero point nine five, and final fitness must beat negative zero point zero five. That proves the harness can discover an acceptable discrete solution for this target and this seed while honoring its freeze mask. It does not prove the searched result survives contact with hardware. Nothing in that test emits Verilog, calls Yosys, or re-checks the sixteen rows afterward.",
+      "durationHintSec": 55.16
+    },
+    {
+      "kind": "concept",
+      "id": "roundtrip-checker",
+      "kicker": "A separate receipt with teeth",
+      "headline": "Emit → Yosys → reload → exhaust all rows",
+      "subhead": "48 output bits agree · corrupted INIT observed: 4 mismatches",
+      "backgroundAsset": "08-roundtrip-checker.svg",
+      "voiceover": "A different test closes the hardware loop. It takes the unmutated four-table adder, emits it as six-input L U T Verilog, hands the file to Yosys, maps it with A B C, the logic mapper Yosys calls, writes a fresh JSON netlist, reloads that netlist, and compares three outputs across all sixteen inputs. Forty-eight output bits, all agreeing. Then the negative control flips one I N I T entry and runs the same loop. Today's run reported four mismatches, which are exactly the four input patterns that address the corrupted entry. Worth noting that the assertion only demands at least one mismatch, so four is observed behavior rather than a pinned contract. Either way the gate has teeth. But these remain two separate receipts. Targeted search on one side, identity emission on the other.",
+      "durationHintSec": 60
+    },
+    {
+      "kind": "concept",
+      "id": "failed-m4",
+      "kicker": "The failure stays in the ledger",
+      "headline": "A larger targeted melt did not freeze",
+      "subhead": "925 LUT · 49 DFF · 16 mutable · 118 entries still fractional",
+      "backgroundAsset": "09-failed-m4.svg",
+      "voiceover": "The archived M four run is the counterweight, and it used a different configuration from the two-bit control: population sixteen, lambda ceiling ten, a hundred fifty generations of exploring followed by two hundred fifty of squeezing. Exploring means chasing target fitness with the binarity penalty switched off. Squeezing means turning that penalty up to force the entries binary. The graph held nine hundred twenty-five lookup tables and forty-nine flip-flops, sixteen tables mutable and nine hundred nine frozen. Exploring worked: sampled fitness climbed from minus four point two five to minus one point nine. Squeezing did not. It finished with one hundred eighteen entries still non-binary and target fitness back down at minus four point nine four. A Verilog file came out anyway, because the emitter thresholds whatever it is handed. No equivalence check ever said that file was correct, so this is a failure, not a near-success parked behind an artifact path. The project's answer was to stop searching for plugboard reciprocity in truth-table entries and enforce it structurally instead.",
+      "durationHintSec": 74
+    },
+    {
+      "kind": "concept",
+      "id": "compare-abc",
+      "kicker": "Answer the synthesis question directly",
+      "headline": "HELUT and ABC optimize different things",
+      "subhead": "Fixed truth tables versus structural rewriting and mapping",
+      "backgroundAsset": "10-compare-abc.svg",
+      "voiceover": "So how does this compare with logic simplification as it already exists? Yosys and A B C rewrite Boolean structure. They remove redundancy, merge cells, map to a target library, and trade depth against area. The HELUT search holds structure still and changes lookup-table values to fit a target while pushing them toward binary. Its objective carries no area term, no depth term, no power or timing term. And the emitter writes exactly one L U T six per original lookup table, so emission alone can never reduce the count. A combined flow is easy to describe: discover a new discrete function on fixed topology, emit it, then let A B C strip whatever redundancy that creates. Until that flow runs end to end and reports fewer tables or lower depth under identical mapping, HELUT has not demonstrated better simplification. It has demonstrated a different knob.",
+      "durationHintSec": 64
+    },
+    {
+      "kind": "outro",
+      "id": "verdict",
+      "headline": "What melt/freeze proves today",
+      "subhead": "Representation: yes. Controlled rediscovery: yes. General simplification: open.",
+      "backgroundAsset": "11-verdict.svg",
+      "voiceover": "Four rows, then. One: a Yosys lookup-table graph can be lifted into continuous truth-table parameters and evaluated on Metal. Two: a freeze mask protects known tables while a deterministic evolutionary search discovers an acceptable discrete solution in the two-bit control. Three: unmutated TensorLUT Verilog survives Yosys re-synthesis and exhaustive checking, and the checker catches a one-bit corruption. Four: those two lanes are not joined. Searched elites do get emitted in other tests, but nothing re-synthesizes one and re-proves it, and there is no area or depth win over A B C to point at. That join is a precise engineering task now rather than an open question. Melt and freeze is real. General logic simplification is still a hypothesis with named gates in front of it.",
+      "durationHintSec": 62
+    }
+  ]
+}

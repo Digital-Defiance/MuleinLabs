@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" role="img" aria-labelledby="title desc">
+  <title id="title">Native execution is the null hypothesis; tensor execution is the question</title>
+  <desc id="desc">A right-side comparison frames native HDL as the baseline expected to win and HELUT tensor execution as a measured question, with no speed advantage claimed.</desc>
+  <rect width="1920" height="1080" fill="#091522"/>
+  <g transform="translate(990 132)" font-family="Arial, sans-serif">
+    <text x="430" y="18" text-anchor="middle" fill="#9aa8b8" font-size="15" letter-spacing="3">THE SKEPTIC'S STARTING POINT</text>
+    <rect x="0" y="58" width="860" height="644" rx="24" fill="#0c1724" stroke="#66758a" stroke-width="2"/>
+    <g transform="translate(34 92)">
+      <rect width="792" height="180" rx="18" fill="#122b35" stroke="#22a89c" stroke-width="2"/>
+      <text x="28" y="38" fill="#22a89c" font-size="14" letter-spacing="2">NULL HYPOTHESIS</text>
+      <text x="28" y="92" fill="#fff" font-size="38" font-weight="700">Native execution wins.</text>
+      <text x="28" y="132" fill="#9aa8b8" font-size="18">Established toolchains get the first position—not HELUT.</text>
+      <g transform="translate(635 38)">
+        <rect width="118" height="104" rx="14" fill="#091522" stroke="#22a89c"/>
+        <text x="59" y="42" text-anchor="middle" fill="#22a89c" font-size="13" letter-spacing="2">BASELINE</text>
+        <text x="59" y="80" text-anchor="middle" fill="#fff" font-size="30" font-weight="700">01</text>
+      </g>
+    </g>
+    <line x1="430" y1="287" x2="430" y2="342" stroke="#66758a" stroke-width="3"/>
+    <polygon points="430,356 421,339 439,339" fill="#66758a"/>
+    <g transform="translate(34 370)">
+      <rect width="792" height="180" rx="18" fill="#2b2025" stroke="#d4833f" stroke-width="2"/>
+      <text x="28" y="38" fill="#d4833f" font-size="14" letter-spacing="2">TENSOR QUESTION</text>
+      <text x="28" y="92" fill="#fff" font-size="38" font-weight="700">Where could tensors help?</text>
+      <text x="28" y="132" fill="#9aa8b8" font-size="18">Batching · graph substrate · shared-memory workflows</text>
+      <circle cx="694" cy="90" r="52" fill="#091522" stroke="#d4833f" stroke-width="2"/>
+      <text x="694" y="106" text-anchor="middle" fill="#d4833f" font-size="52" font-weight="700">?</text>
+    </g>
+    <g transform="translate(34 578)">
+      <rect width="792" height="82" rx="14" fill="#142738"/>
+      <text x="396" y="33" text-anchor="middle" fill="#fff" font-size="20" font-weight="700">MEASURE BEFORE CLAIM</text>
+      <text x="396" y="60" text-anchor="middle" fill="#9aa8b8" font-size="15">same circuit · same checked work · losing result stays visible</text>
+    </g>
+  </g>
+</svg>

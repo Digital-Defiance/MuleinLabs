@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" role="img" aria-labelledby="title desc">
+  <title id="title">Episode 15 verdict separates demonstrated representation, rediscovery, and identity checking from open proof and simplification claims</title>
+  <desc id="desc">A five-row ledger marks continuous fixed-topology representation, deterministic controlled rediscovery, and an identity round-trip checker with corruption control as demonstrated, while optimized-elite emit-and-prove and simplification wins remain open.</desc>
+  <rect width="1920" height="1080" fill="#091522"/>
+  <g transform="translate(986 110)" font-family="Arial, sans-serif">
+    <text x="434" y="18" text-anchor="middle" fill="#9aa8b8" font-size="15" letter-spacing="3">WHAT MELT / FREEZE PROVES TODAY</text>
+    <rect x="0" y="58" width="868" height="684" rx="24" fill="#0c1724" stroke="#66758a" stroke-width="2"/>
+    <g transform="translate(26 88)">
+      <rect width="816" height="98" rx="15" fill="#122b35" stroke="#22a89c" stroke-width="2"/>
+      <rect width="118" height="98" rx="15" fill="#22a89c"/>
+      <text x="59" y="58" text-anchor="middle" fill="#091522" font-size="16" font-weight="700" letter-spacing="2">YES</text>
+      <text x="144" y="40" fill="#fff" font-size="19" font-weight="700">Continuous fixed-topology representation</text>
+      <text x="144" y="68" fill="#9aa8b8" font-size="15">64 Float32 INIT entries per LUT6 · graph stays fixed</text>
+      <rect y="114" width="816" height="98" rx="15" fill="#122b35" stroke="#22a89c" stroke-width="2"/>
+      <rect y="114" width="118" height="98" rx="15" fill="#22a89c"/>
+      <text x="59" y="172" text-anchor="middle" fill="#091522" font-size="16" font-weight="700" letter-spacing="2">YES</text>
+      <text x="144" y="154" fill="#fff" font-size="19" font-weight="700">Controlled deterministic rediscovery</text>
+      <text x="144" y="182" fill="#9aa8b8" font-size="15">two-bit target · fixed seed · freeze mask honored</text>
+      <rect y="228" width="816" height="98" rx="15" fill="#122b35" stroke="#22a89c" stroke-width="2"/>
+      <rect y="228" width="118" height="98" rx="15" fill="#22a89c"/>
+      <text x="59" y="286" text-anchor="middle" fill="#091522" font-size="16" font-weight="700" letter-spacing="2">YES</text>
+      <text x="144" y="268" fill="#fff" font-size="19" font-weight="700">Identity round-trip checker with teeth</text>
+      <text x="144" y="296" fill="#9aa8b8" font-size="15">48 bits agree · one corrupted INIT → 4 mismatches</text>
+      <rect y="360" width="816" height="98" rx="15" fill="#2b2025" stroke="#d4833f" stroke-width="2"/>
+      <rect y="360" width="138" height="98" rx="15" fill="#d4833f"/>
+      <text x="69" y="418" text-anchor="middle" fill="#091522" font-size="15" font-weight="700" letter-spacing="2">OPEN</text>
+      <text x="164" y="400" fill="#fff" font-size="19" font-weight="700">Optimized elite emit → Yosys → reload → prove</text>
+      <text x="164" y="428" fill="#9aa8b8" font-size="15">search receipt and identity receipt are not yet connected</text>
+      <rect y="474" width="816" height="98" rx="15" fill="#2b2025" stroke="#d4833f" stroke-width="2"/>
+      <rect y="474" width="138" height="98" rx="15" fill="#d4833f"/>
+      <text x="69" y="532" text-anchor="middle" fill="#091522" font-size="15" font-weight="700" letter-spacing="2">OPEN</text>
+      <text x="164" y="514" fill="#fff" font-size="19" font-weight="700">Area or depth simplification win over ABC</text>
+      <text x="164" y="542" fill="#9aa8b8" font-size="15">no structural, power, or timing advantage established</text>
+    </g>
+    <text x="434" y="714" text-anchor="middle" fill="#9aa8b8" font-size="15">Melt and freeze: implemented mechanism · general simplification: hypothesis</text>
+  </g>
+</svg>
