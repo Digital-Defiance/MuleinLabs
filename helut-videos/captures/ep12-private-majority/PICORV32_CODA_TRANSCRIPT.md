@@ -58,7 +58,7 @@ Put in words: place one in a register, store it to memory address zero, then rea
 
 ## 2/4 — Three lookup tables versus a processor
 
-Both circuits are compiled live from checked-in netlist files in the same capture, so the contrast is measured rather than asserted. Note that `picorv32_netlist.json` is committed in HELUT, while `Generated/Netlists/Examples/private_majority5_netlist.json` was added by the private-majority experiment and is still uncommitted at the time of this capture; the coda's reproduce path depends on that file being committed alongside.
+Both circuits are compiled live from tracked netlist files in the same capture, so the contrast is measured rather than asserted. `picorv32_netlist.json` and `Generated/Netlists/Examples/private_majority5_netlist.json` are both committed in HELUT, so this reproduce path resolves from a clean recursive checkout.
 
 ```console
 helut$ echo '2/4  THREE LOOKUP TABLES VERSUS A PROCESSOR'
