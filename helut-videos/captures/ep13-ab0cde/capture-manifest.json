@@ -1,0 +1,198 @@
+{
+  "schemaVersion": 1,
+  "captureId": "episode13-ab0cde-full-run",
+  "role": "primary experiment capture",
+  "transcript": "CAPTURE_TRANSCRIPT.md",
+  "reproduce": {
+    "workingDirectory": "HELUT repository root",
+    "prerequisites": [
+      "Apple silicon macOS host",
+      "Swift 6.3 toolchain",
+      "Yosys 0.68+ with ABC",
+      "radioconda environment with GNU Radio 3.10.12.0 and NumPy 2.5.2"
+    ],
+    "commands": [
+      "source ~/radioconda/etc/profile.d/conda.sh && conda activate gnuradio",
+      "swift build -c release --product HELUTRadio",
+      "HELUT_RADIO_LIB=\"$PWD/.build/release/libHELUTRadio.dylib\" PYTHONPATH=\"$PWD/Apps/gr-helut/python\" python Apps/gr-helut/examples/helut_edge_matcher.py --batch 10000 --noise 0.0 --encrypted-freeze"
+    ]
+  },
+  "capturedAt": "2026-09-04T19:24:32-07:00",
+  "captureMethod": {
+    "recorder": "VHS",
+    "terminal": "real Bash pseudo-terminal",
+    "uploaded": false,
+    "tape": {
+      "repo": "helut-videos",
+      "path": "captures/ep13-ab0cde/episode13-ab0cde.tape",
+      "sha256": "2d5a2599c05f08e567f4ada155eb957484903834b58208d282110902b1716e80",
+      "requestedFrameRate": 30
+    }
+  },
+  "video": {
+    "repo": "helut-videos",
+    "path": "public/captures/ep13-ab0cde/episode13-ab0cde.mp4",
+    "sha256": "fd1264ea5fc6386a906a087b87dbbe7f4fc6e961527f7061b3e37065fa959625",
+    "container": "mov,mp4,m4a,3gp,3g2,mj2",
+    "codec": "h264",
+    "pixelFormat": "yuv420p",
+    "width": 1280,
+    "height": 720,
+    "encodedFrameRate": "25/1",
+    "durationSeconds": 48.24,
+    "sizeBytes": 932025
+  },
+  "toolchain": {
+    "vhs": "vhs version 0.11.0",
+    "ttyd": "ttyd version 1.7.7-unknown",
+    "ffmpeg": "ffmpeg version 9.0.1",
+    "yosys": "Yosys 0.68+post (git sha1 c12172fbae8af5e20f6fb52e3d4e92d56ed587b6, Release, AppleClang clang++ 21.0.0.21000101)",
+    "swift": "swift-driver version: 1.148.6 Apple Swift version 6.3.3",
+    "python": "3.14.6",
+    "numpy": "2.5.2",
+    "gnuRadio": "3.10.12.0",
+    "helutRadio": "HELUTRadio 0.1.0"
+  },
+  "sourceVerification": {
+    "repo": "HELUT",
+    "path": "Hardware/RTL/Examples/ab0cde_matcher.v",
+    "displayedInFull": true,
+    "exactCaseSensitiveAsciiPattern": "AB0CDE",
+    "sha256": "2ad6a707bac6dae62e8d52ce1c51b00a9e8e41c5483ddac8529c6e816a1e5ebf"
+  },
+  "artifacts": [
+    {
+      "repo": "HELUT",
+      "path": "Generated/Netlists/Examples/ab0cde_netlist.json",
+      "kind": "canonical Yosys LUT2 netlist",
+      "durable": true,
+      "sha256": "366c65799aa45c20d2502960ffb6bb19d64ca8179b82a9c39099b815012d7462"
+    },
+    {
+      "repo": "HELUT",
+      "path": "ab0cde_netlist.json",
+      "kind": "manifest-required root compatibility copy",
+      "durable": true,
+      "sha256": "366c65799aa45c20d2502960ffb6bb19d64ca8179b82a9c39099b815012d7462"
+    },
+    {
+      "repo": "HELUT",
+      "path": "Apps/gr-helut/examples/helut_edge_matcher.py",
+      "kind": "captured experiment runner",
+      "durable": true,
+      "sha256": "b9e31702bdfb56c89ef89c8173940b4cc455c2e49f8dbd0688a4e8a05ce5e2c3"
+    },
+    {
+      "repo": "HELUT",
+      "path": "build/episode13/capture-pass/01-ab0cde-full.log",
+      "kind": "capture-time full unfiltered stdout and stderr",
+      "durable": false,
+      "sha256": "4c70ca230a5c36730da27132893504c7d06150a7d0b103e411808251c8d4d58d"
+    },
+    {
+      "repo": "helut-videos",
+      "path": "captures/ep13-ab0cde/01-ab0cde-full.log",
+      "kind": "durable byte-for-byte copy of the full capture log",
+      "durable": true,
+      "sourcePath": "HELUT/build/episode13/capture-pass/01-ab0cde-full.log",
+      "byteForByteMatch": true,
+      "sha256": "4c70ca230a5c36730da27132893504c7d06150a7d0b103e411808251c8d4d58d"
+    }
+  ],
+  "experiment": {
+    "circuit": {
+      "module": "ab0cde_matcher",
+      "predicate": "six exact, case-sensitive ASCII bytes equal AB0CDE",
+      "inputPorts": 6,
+      "inputBits": 48,
+      "outputPorts": 1,
+      "outputBits": 1,
+      "lut2Cells": 47,
+      "dffs": 0,
+      "yosysCheckProblems": 0
+    },
+    "radio": {
+      "source": "finite local GNU Radio vector source",
+      "modulationDescription": "BPSK-like complex baseband",
+      "channel": "GNU Radio channel_model with simulated AWGN",
+      "noiseVoltage": 0.0,
+      "samplesPerSymbol": 4,
+      "iqSamples": 1112,
+      "dspMilliseconds": 4.63,
+      "preambleHex": "aa55",
+      "transmittedPayload": "CQ CQ CQ DE AB0CDE AB0CDE K",
+      "transmittedBytes": 27,
+      "recoveredPayload": "CQ CQ CQ DE AB0CDE AB0CDE K",
+      "recoveredBytes": 27,
+      "byteDifferences": 0,
+      "antennaUsed": false,
+      "overTheAir": false
+    },
+    "act1ClearOracle": {
+      "result": "PASS",
+      "module": "ab0cde_matcher",
+      "mode": "clear",
+      "hitCompletionIndices": [17, 24],
+      "expectedFromRecoveredBytes": [17, 24],
+      "expectedFromTransmittedBytes": [17, 24],
+      "feedMilliseconds": 0.28,
+      "observedBytesPerSecond": 94876
+    },
+    "act2ScalarHostLoop": {
+      "result": "PASS",
+      "batchWindows": 10000,
+      "uniqueSourceWindows": 22,
+      "hits": 908,
+      "expectedHits": 908,
+      "wallMilliseconds": 113.34,
+      "observedWindowsPerSecond": 88229,
+      "microsecondsPerWindow": 11.3,
+      "nativeTensorBatch": false,
+      "encryptedThroughput": false
+    },
+    "act3EncryptedFreeze": {
+      "result": "PASS",
+      "mode": "encrypted-demo",
+      "windowStartInclusive": 12,
+      "windowEndExclusive": 18,
+      "window": "AB0CDE",
+      "polyDegree": 8,
+      "match": 1,
+      "expectedMatch": 1,
+      "evaluationMilliseconds": 1.1,
+      "engineAndKeySetupIncludedInTimer": false,
+      "path": "blind-rotate demo path"
+    }
+  },
+  "validation": {
+    "tapeSyntaxValidated": true,
+    "mp4ProbedSuccessfully": true,
+    "rawLogCopiedByteForByte": true,
+    "contactSheetInspected": true,
+    "fullResolutionFramesInspectedAtSeconds": [3, 12, 19, 30, 39, 46],
+    "terminalTextLegible": true,
+    "hiddenSetupVisible": false,
+    "allFourEvidenceScreensVisible": true,
+    "finalHashesVisible": true,
+    "finalNoAntennaVerdictVisible": true,
+    "onlyDemonstrationCallsignVisible": true
+  },
+  "timingContext": {
+    "filmedRun": {
+      "dspMilliseconds": 4.63,
+      "act2WallMilliseconds": 113.34,
+      "act3EvaluationMilliseconds": 1.1
+    },
+    "interpretation": "These are individual local observations from the filmed run, not a timing distribution or stability benchmark. The Act III evaluation timer excludes engine and key setup."
+  },
+  "claimBoundaries": [
+    "The IQ is generated locally and passes through a simulated GNU Radio channel; no antenna, OTA signal, or interception is involved.",
+    "The capture uses noise_voltage=0.0 for deterministic evidence and does not establish robustness under channel noise.",
+    "Acts I and II use the clear Boolean netlist oracle, not encrypted stream processing.",
+    "Act II repeats 10,000 scalar host-loop evaluations over 22 unique recovered windows; it is not a native tensor batch or encrypted throughput result.",
+    "Act III evaluates one six-byte window at demonstration parameter N=8; this is not a production security parameter.",
+    "The Act III evaluation timer excludes engine and key setup.",
+    "The circuit is a fixed exact-literal AB0CDE matcher, not a general regular-expression engine.",
+    "Reported timings are individual observations on this machine, not benchmark distributions."
+  ]
+}

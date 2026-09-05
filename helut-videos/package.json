@@ -20,6 +20,7 @@
     "render:ep10": "remotion render src/index.ts Episode10 out/ep10-why-it-holds.mp4",
     "render:ep11": "remotion render src/index.ts Episode11 out/ep11-the-frontier.mp4",
     "render:ep12": "remotion render src/index.ts Episode12 out/ep12-private-majority.mp4",
+    "render:ep13": "remotion render src/index.ts Episode13 out/ep13-ab0cde.mp4",
     "pretts": "npm run check",
     "tts": "node scripts/generate-tts.mjs",
     "tts:pending": "node scripts/tts-pending.mjs",

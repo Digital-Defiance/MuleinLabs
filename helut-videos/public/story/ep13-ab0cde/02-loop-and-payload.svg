@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" role="img" aria-labelledby="t d">
+  <title id="t">A local GNU Radio loop recovers all twenty-seven payload bytes</title>
+  <desc id="d">A finite vector becomes BPSK-like IQ, passes through simulated AWGN at noise_voltage zero, is sliced and aligned, and returns all bytes exactly. No antenna, OTA signal, or interception exists.</desc>
+  <rect width="1920" height="1080" fill="#091522"/>
+  <g transform="translate(990 120)" font-family="Arial,sans-serif">
+    <text x="425" y="18" text-anchor="middle" fill="#9aa8b8" font-size="15" letter-spacing="3">FINITE LOCAL LOOP · NO EXTERNAL SIGNAL</text>
+    <g transform="translate(22 58)">
+      <rect width="806" height="92" rx="16" fill="#142738" stroke="#22a89c"/>
+      <text x="24" y="33" fill="#22a89c" font-size="14" letter-spacing="2">TX PAYLOAD · 27 BYTES</text>
+      <text x="24" y="67" fill="#fff" font-family="Courier New,monospace" font-size="22" font-weight="700">CQ CQ CQ DE AB0CDE AB0CDE K</text>
+      <path d="M403 92V128" stroke="#66758a" stroke-width="3"/>
+      <g transform="translate(0 128)">
+        <rect width="180" height="92" rx="14" fill="#101a2b" stroke="#66758a"/><text x="90" y="35" text-anchor="middle" fill="#9aa8b8" font-size="13" letter-spacing="1">VECTOR BITS</text><text x="90" y="65" text-anchor="middle" fill="#fff" font-size="19">memory only</text>
+        <path d="M180 46H208" stroke="#66758a" stroke-width="3"/>
+        <rect x="208" width="180" height="92" rx="14" fill="#101a2b" stroke="#66758a"/><text x="298" y="35" text-anchor="middle" fill="#9aa8b8" font-size="13" letter-spacing="1">BPSK-LIKE IQ</text><text x="298" y="65" text-anchor="middle" fill="#fff" font-size="19">±1 · sps 4</text>
+        <path d="M388 46H416" stroke="#66758a" stroke-width="3"/>
+        <rect x="416" width="180" height="92" rx="14" fill="#282235" stroke="#d4833f"/><text x="506" y="35" text-anchor="middle" fill="#d4833f" font-size="13" letter-spacing="1">SIMULATED AWGN</text><text x="506" y="65" text-anchor="middle" fill="#fff" font-size="17">noise_voltage=0.0</text>
+        <path d="M596 46H624" stroke="#66758a" stroke-width="3"/>
+        <rect x="624" width="182" height="92" rx="14" fill="#101a2b" stroke="#66758a"/><text x="715" y="35" text-anchor="middle" fill="#9aa8b8" font-size="13" letter-spacing="1">SLICE + ALIGN</text><text x="715" y="65" text-anchor="middle" fill="#fff" font-size="18">AA55 preamble</text>
+      </g>
+      <path d="M403 220V264" stroke="#66758a" stroke-width="3"/>
+      <rect y="264" width="806" height="116" rx="17" fill="#122b35" stroke="#22a89c" stroke-width="2"/>
+      <text x="24" y="302" fill="#22a89c" font-size="14" letter-spacing="2">RECOVERED PAYLOAD</text>
+      <text x="24" y="337" fill="#fff" font-family="Courier New,monospace" font-size="22" font-weight="700">CQ CQ CQ DE AB0CDE AB0CDE K</text>
+      <text x="24" y="367" fill="#9aa8b8" font-size="16">27 TX · 27 RX · 0 byte differences · 1112 IQ samples</text>
+      <g transform="translate(0 412)">
+        <rect width="806" height="92" rx="16" fill="#2b2025" stroke="#d4833f"/>
+        <text x="403" y="38" text-anchor="middle" fill="#d4833f" font-size="15" letter-spacing="2">NO ANTENNA · NO OTA · NO INTERCEPTION</text>
+        <text x="403" y="68" text-anchor="middle" fill="#9aa8b8" font-size="17">zero injected noise is a deterministic receipt, not a noise-tolerance result</text>
+      </g>
+    </g>
+  </g>
+</svg>

@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" role="img" aria-labelledby="t d">
+  <title id="t">Act three encrypts exactly one AB0CDE window at demonstration parameter N equals eight</title>
+  <desc id="d">Engine and key setup happen before the stopwatch. One six-byte window is evaluated on the blind-rotate demonstration path and returns one. This is not an encrypted stream or production security.</desc>
+  <rect width="1920" height="1080" fill="#091522"/>
+  <g transform="translate(986 118)" font-family="Arial,sans-serif">
+    <text x="430" y="18" text-anchor="middle" fill="#d4833f" font-size="15" letter-spacing="3">ACT III · ONE ENCRYPTED DEMONSTRATION WINDOW</text>
+    <g transform="translate(12 62)">
+      <rect width="836" height="112" rx="17" fill="#142738" stroke="#22a89c"/>
+      <text x="28" y="40" fill="#22a89c" font-size="14" letter-spacing="2">RECOVERED WINDOW [12:18]</text>
+      <text x="28" y="80" fill="#fff" font-family="Courier New,monospace" font-size="33" font-weight="700" letter-spacing="12">AB0CDE</text>
+      <path d="M418 112V158" stroke="#66758a" stroke-width="3"/>
+      <g transform="translate(0 158)">
+        <rect width="836" height="116" rx="17" fill="#2b2025" stroke="#d4833f" stroke-width="2"/>
+        <text x="28" y="39" fill="#d4833f" font-size="14" letter-spacing="2">OUTSIDE THE TIMER</text>
+        <text x="28" y="76" fill="#fff" font-size="24" font-weight="700">open N=8 engine · construct fixed-seed key</text>
+        <text x="28" y="101" fill="#9aa8b8" font-size="16">setup cost is not part of the displayed evaluation wall time</text>
+      </g>
+      <path d="M418 274V320" stroke="#66758a" stroke-width="3"/>
+      <g transform="translate(0 320)">
+        <rect width="836" height="142" rx="18" fill="#282235" stroke="#d4833f" stroke-width="2"/>
+        <text x="28" y="39" fill="#d4833f" font-size="14" letter-spacing="2">STOPWATCH · FILMED OBSERVATION</text>
+        <text x="28" y="80" fill="#fff" font-size="27" font-weight="700">5 warm-up feeds + 1 encrypted circuit tick</text>
+        <text x="28" y="116" fill="#9aa8b8" font-size="18">blind-rotate demo path · eval_wall 1.1 ms</text>
+      </g>
+      <path d="M418 462V508" stroke="#66758a" stroke-width="3"/>
+      <rect y="508" width="836" height="100" rx="17" fill="#122b35" stroke="#22a89c" stroke-width="2"/>
+      <text x="28" y="545" fill="#22a89c" font-size="14" letter-spacing="2">RESULT</text>
+      <text x="28" y="580" fill="#fff" font-size="30" font-weight="700">match = 1 · expected = 1 · PASS</text>
+      <text x="418" y="649" text-anchor="middle" fill="#d4833f" font-size="16" font-weight="700">N=8 demo · one window · not an encrypted stream · not production security</text>
+    </g>
+  </g>
+</svg>

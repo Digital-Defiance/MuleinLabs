@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" role="img" aria-labelledby="t d">
+  <title id="t">The Episode 13 callsign experiment summarized in four receipt rows</title>
+  <desc id="d">The receipt records exact recovered bytes and hit indices, circuit dimensions, clear scalar repetition, and one N=8 encrypted demonstration window.</desc>
+  <rect width="1920" height="1080" fill="#091522"/>
+  <g transform="translate(988 126)" font-family="Arial,sans-serif">
+    <text x="426" y="18" text-anchor="middle" fill="#9aa8b8" font-size="15" letter-spacing="3">EPISODE 13 · FILMED RECEIPT · 2026-09-04</text>
+    <g transform="translate(10 58)">
+      <rect width="832" height="130" rx="18" fill="#122b35" stroke="#22a89c" stroke-width="2"/>
+      <text x="26" y="39" fill="#22a89c" font-size="14" letter-spacing="2">LOCAL GNU RADIO LOOP</text>
+      <text x="26" y="78" fill="#fff" font-size="29" font-weight="700">27 / 27 exact · hits [17, 24]</text>
+      <text x="26" y="108" fill="#9aa8b8" font-size="16">noise_voltage=0.0 · no antenna · no OTA</text>
+      <rect y="150" width="832" height="130" rx="18" fill="#142738" stroke="#66758a"/>
+      <text x="26" y="189" fill="#9aa8b8" font-size="14" letter-spacing="2">FIXED YOSYS CIRCUIT</text>
+      <text x="26" y="228" fill="#fff" font-size="29" font-weight="700">6 bytes · 48 inputs · 47 LUT2 · 1 bit</text>
+      <text x="26" y="258" fill="#9aa8b8" font-size="16">exact case-sensitive AB0CDE literal</text>
+      <rect y="300" width="832" height="130" rx="18" fill="#122b35" stroke="#22a89c" stroke-width="2"/>
+      <text x="26" y="339" fill="#22a89c" font-size="14" letter-spacing="2">ACT II · CLEAR SCALAR</text>
+      <text x="26" y="378" fill="#fff" font-size="29" font-weight="700">10,000 calls · 22 unique · 908 / 908</text>
+      <text x="26" y="408" fill="#9aa8b8" font-size="16">not native tensor batch · not encrypted throughput</text>
+      <rect y="450" width="832" height="130" rx="18" fill="#2b2025" stroke="#d4833f" stroke-width="2"/>
+      <text x="26" y="489" fill="#d4833f" font-size="14" letter-spacing="2">ACT III · ENCRYPTED DEMO</text>
+      <text x="26" y="528" fill="#fff" font-size="29" font-weight="700">1 AB0CDE window · N=8 · result 1</text>
+      <text x="26" y="558" fill="#9aa8b8" font-size="16">evaluation timer excludes engine and key setup</text>
+      <text x="416" y="628" text-anchor="middle" fill="#9aa8b8" font-size="16">source · netlist · tape · MP4 · transcript · full raw log · SHA-256</text>
+    </g>
+  </g>
+</svg>

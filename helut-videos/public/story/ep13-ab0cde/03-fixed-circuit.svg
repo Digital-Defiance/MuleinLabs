@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" role="img" aria-labelledby="t d">
+  <title id="t">The fixed AB0CDE circuit maps six exact ASCII bytes to one match bit</title>
+  <desc id="d">Six eight-bit inputs carrying A, B, 0, C, D, and E become forty-eight wires and forty-seven two-input lookup tables. This is a fixed literal matcher, not a general regex engine.</desc>
+  <rect width="1920" height="1080" fill="#091522"/>
+  <g transform="translate(985 118)" font-family="Arial,sans-serif">
+    <text x="430" y="18" text-anchor="middle" fill="#9aa8b8" font-size="15" letter-spacing="3">AUTHORED VERILOG → YOSYS JSON → HELUT</text>
+    <g transform="translate(12 58)">
+      <g font-family="Courier New,monospace">
+        <rect width="836" height="246" rx="18" fill="#0c1724" stroke="#66758a"/>
+        <text x="24" y="35" fill="#9aa8b8" font-size="14">// exact, case-sensitive ASCII literal</text>
+        <text x="24" y="76" fill="#fff" font-size="19">char0 == 8'h41   // A</text>
+        <text x="24" y="107" fill="#fff" font-size="19">char1 == 8'h42   // B</text>
+        <text x="24" y="138" fill="#fff" font-size="19">char2 == 8'h30   // 0</text>
+        <text x="420" y="76" fill="#fff" font-size="19">char3 == 8'h43   // C</text>
+        <text x="420" y="107" fill="#fff" font-size="19">char4 == 8'h44   // D</text>
+        <text x="420" y="138" fill="#fff" font-size="19">char5 == 8'h45   // E</text>
+        <text x="24" y="194" fill="#22a89c" font-size="20">match = all six comparisons</text>
+        <text x="24" y="224" fill="#9aa8b8" font-size="15">ports char0…char5 determine the rolling window width</text>
+      </g>
+      <path d="M418 246V292" stroke="#66758a" stroke-width="3"/>
+      <g transform="translate(0 292)">
+        <rect width="250" height="116" rx="16" fill="#142738" stroke="#22a89c"/><text x="125" y="38" text-anchor="middle" fill="#22a89c" font-size="14" letter-spacing="2">INPUT</text><text x="125" y="75" text-anchor="middle" fill="#fff" font-size="29" font-weight="700">6 × 8</text><text x="125" y="99" text-anchor="middle" fill="#9aa8b8" font-size="15">48 wires</text>
+        <path d="M250 58H293" stroke="#66758a" stroke-width="3"/>
+        <rect x="293" width="250" height="116" rx="16" fill="#282235" stroke="#d4833f"/><text x="418" y="38" text-anchor="middle" fill="#d4833f" font-size="14" letter-spacing="2">MAPPED LOGIC</text><text x="418" y="75" text-anchor="middle" fill="#fff" font-size="29" font-weight="700">47 $lut</text><text x="418" y="99" text-anchor="middle" fill="#9aa8b8" font-size="15">WIDTH=2</text>
+        <path d="M543 58H586" stroke="#66758a" stroke-width="3"/>
+        <rect x="586" width="250" height="116" rx="16" fill="#122b35" stroke="#22a89c"/><text x="711" y="38" text-anchor="middle" fill="#22a89c" font-size="14" letter-spacing="2">OUTPUT</text><text x="711" y="75" text-anchor="middle" fill="#fff" font-size="29" font-weight="700">match</text><text x="711" y="99" text-anchor="middle" fill="#9aa8b8" font-size="15">one bit</text>
+      </g>
+      <rect y="444" width="836" height="82" rx="14" fill="#2b2025" stroke="#d4833f"/>
+      <text x="418" y="477" text-anchor="middle" fill="#d4833f" font-size="15" letter-spacing="2">FIXED LITERAL CIRCUIT</text>
+      <text x="418" y="507" text-anchor="middle" fill="#fff" font-size="20" font-weight="700">not runtime-configurable · not a general regex engine</text>
+    </g>
+  </g>
+</svg>

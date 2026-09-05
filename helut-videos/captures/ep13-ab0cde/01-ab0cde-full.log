@@ -1,0 +1,33 @@
+swift build -c release --product HELUTRadio
+[0/1] Planning build
+Building for production...
+[0/2] Write swift-version--58304C5D6DBC2206.txt
+Build of product 'HELUTRadio' complete! (0.17s)
+HELUT_RADIO_LIB="/Volumes/Code/MuleinLabs/HELUT/.build/release/libHELUTRadio.dylib" \
+	PYTHONPATH="/Volumes/Code/MuleinLabs/HELUT/Apps/gr-helut/python${PYTHONPATH:+:$PYTHONPATH}" \
+	python Apps/gr-helut/examples/helut_edge_matcher.py --batch 10000 --noise 0.0 --encrypted-freeze
+========================================================================
+HELUT Callsign Edge Matcher  (closed-loop, no OTA / no antenna)
+  lib:       HELUTRadio 0.1.0
+  netlist:   /Volumes/Code/MuleinLabs/HELUT/Generated/Netlists/Examples/ab0cde_netlist.json
+  pattern:   b'AB0CDE'  (6 exact ASCII bytes)
+  TX payload:b'CQ CQ CQ DE AB0CDE AB0CDE K'
+========================================================================
+[Act I] GNU Radio local IQ  noise=0.0  sps=4  iq_samps=1112  dsp=4.63 ms
+[Act I] channel receipt  tx_bytes=27  rx_bytes=27  byte_differences=0
+[Act I] HELUT Yosys netlist  module=ab0cde_matcher  mode=clear  input_bits=48
+        recovered=b'CQ CQ CQ DE AB0CDE AB0CDE K'
+        ★ CALLSIGN MATCH completes at payload byte 17
+        ★ CALLSIGN MATCH completes at payload byte 24
+[Act I] clear feed  0.28 ms  (94876 bytes/s)  hits=[17, 24]
+[Act I] PASS  HELUT agrees with recovered bytes; transmitted callsign windows survived at [17, 24]
+------------------------------------------------------------------------
+[Act II] clear scalar host-loop  B=10000  source_windows=22  hits=908/908  verdict=PASS
+         wall=113.34 ms  (88229 win/s)  ~11.3 µs/window  (not native tensor batch)
+------------------------------------------------------------------------
+[Act III] encrypted-demo freeze  window[12:18]=b'AB0CDE'
+          N=8 demonstration parameter; one window; not production security
+[Act III] result=1 expected=1  verdict=PASS  eval_wall=1.1 ms
+          blind-rotate demo path; engine/key setup excluded from timer
+========================================================================
+OK  — callsign envelope demo complete (local loopback; no antenna used)

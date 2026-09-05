@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" role="img" aria-labelledby="t d">
+  <title id="t">Act one finds two exact callsigns at completion indices seventeen and twenty-four</title>
+  <desc id="d">The transmitted and recovered twenty-seven-byte payloads agree. AB0CDE spans positions twelve through seventeen and nineteen through twenty-four, and the clear oracle reports both final E positions.</desc>
+  <rect width="1920" height="1080" fill="#091522"/>
+  <g transform="translate(982 122)" font-family="Arial,sans-serif">
+    <text x="434" y="18" text-anchor="middle" fill="#22a89c" font-size="15" letter-spacing="3">ACT I · CLEAR BOOLEAN ORACLE</text>
+    <g transform="translate(14 58)">
+      <rect width="840" height="94" rx="16" fill="#122b35" stroke="#22a89c" stroke-width="2"/>
+      <text x="24" y="35" fill="#22a89c" font-size="14" letter-spacing="2">CHANNEL RECEIPT</text>
+      <text x="24" y="68" fill="#fff" font-size="24" font-weight="700">27 TX = 27 RX · zero byte differences</text>
+      <g transform="translate(0 128)" font-family="Courier New,monospace">
+        <rect width="840" height="244" rx="18" fill="#0c1724" stroke="#66758a"/>
+        <text x="24" y="38" fill="#9aa8b8" font-size="14">payload positions</text>
+        <text x="24" y="76" fill="#fff" font-size="18">0 … 11</text>
+        <g transform="translate(138 50)" text-anchor="middle">
+          <rect width="300" height="72" rx="13" fill="#142738" stroke="#22a89c" stroke-width="2"/>
+          <text x="150" y="31" fill="#22a89c" font-size="14">12                                17</text>
+          <text x="150" y="58" fill="#fff" font-size="23" font-weight="700" letter-spacing="8">AB0CDE</text>
+        </g>
+        <text x="461" y="92" fill="#9aa8b8" font-size="18">18</text>
+        <g transform="translate(500 50)" text-anchor="middle">
+          <rect width="300" height="72" rx="13" fill="#142738" stroke="#22a89c" stroke-width="2"/>
+          <text x="150" y="31" fill="#22a89c" font-size="14">19                                24</text>
+          <text x="150" y="58" fill="#fff" font-size="23" font-weight="700" letter-spacing="8">AB0CDE</text>
+        </g>
+        <text x="24" y="165" fill="#9aa8b8" font-size="15">a match is emitted when the final E completes the six-byte window</text>
+        <text x="24" y="211" fill="#fff" font-size="23">HELUT hits = [</text><text x="212" y="211" fill="#22a89c" font-size="29" font-weight="700">17, 24</text><text x="327" y="211" fill="#fff" font-size="23">]</text>
+      </g>
+      <g transform="translate(0 404)">
+        <rect width="840" height="112" rx="16" fill="#122b35" stroke="#22a89c"/>
+        <text x="24" y="38" fill="#9aa8b8" font-size="14" letter-spacing="2">FAIL-CLOSED AGREEMENT</text>
+        <text x="24" y="71" fill="#fff" font-size="20" font-weight="700">HELUT = recovered-byte scan = transmitted positions</text>
+        <text x="24" y="96" fill="#22a89c" font-size="17">PASS · both transmitted callsign windows survived</text>
+      </g>
+    </g>
+  </g>
+</svg>
