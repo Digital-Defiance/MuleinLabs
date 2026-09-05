@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" role="img" aria-labelledby="t d">
+  <title id="t">An encrypted honey-token ledger</title>
+  <desc id="d">A distributed store checks documents against attacker patterns in one encrypted pass and can trip a trap without learning which file or trigger was involved. The first experiment adds a measurement of what the host process can still observe.</desc>
+  <rect width="1920" height="1080" fill="#091522"/>
+  <g transform="translate(1000 150)" font-family="Arial,sans-serif">
+    <text x="415" y="14" text-anchor="middle" fill="#9aa8b8" font-size="15" letter-spacing="3">ONE ENCRYPTED PASS, MANY PATTERNS</text>
+
+    <g transform="translate(0 40)">
+      <rect width="405" height="92" rx="16" fill="#142738" stroke="#22a89c" stroke-width="2"/>
+      <text x="202" y="28" text-anchor="middle" fill="#22a89c" font-size="14" letter-spacing="1">THE STORE</text>
+      <text x="202" y="58" text-anchor="middle" fill="#fff" font-size="19" font-weight="700">trips a wire</text>
+      <text x="202" y="80" text-anchor="middle" fill="#9aa8b8" font-size="16">without reading the file</text>
+    </g>
+    <g transform="translate(425 40)">
+      <rect width="405" height="92" rx="16" fill="#142738" stroke="#22a89c" stroke-width="2"/>
+      <text x="202" y="28" text-anchor="middle" fill="#22a89c" font-size="14" letter-spacing="1">THE MESH</text>
+      <text x="202" y="58" text-anchor="middle" fill="#fff" font-size="19" font-weight="700">changes state</text>
+      <text x="202" y="80" text-anchor="middle" fill="#9aa8b8" font-size="16">without learning the trigger</text>
+    </g>
+
+    <path d="M415 132v30" stroke="#66758a" stroke-width="3" stroke-dasharray="8 8"/>
+
+    <g transform="translate(0 162)">
+      <rect width="830" height="70" rx="14" fill="#122b35" stroke="#22a89c" stroke-width="2"/>
+      <text x="22" y="26" fill="#22a89c" font-size="14" letter-spacing="2">FIRST EXPERIMENT · PART ONE</text>
+      <text x="22" y="52" fill="#fff" font-size="18">pattern matcher at modest batch, with a written non-claim</text>
+    </g>
+
+    <g transform="translate(0 248)">
+      <rect width="830" height="86" rx="14" fill="#2b2025" stroke="#d4833f" stroke-width="3"/>
+      <text x="22" y="26" fill="#d4833f" font-size="14" letter-spacing="2">PART TWO · THE INTERESTING HALF</text>
+      <text x="22" y="54" fill="#fff" font-size="18">then measure what the host can still see anyway</text>
+      <text x="22" y="76" fill="#9aa8b8" font-size="16">message lengths · timings</text>
+    </g>
+
+    <text x="415" y="392" text-anchor="middle" fill="#d4833f" font-size="20" font-weight="700">Honesty before mesh networks.</text>
+  </g>
+</svg>

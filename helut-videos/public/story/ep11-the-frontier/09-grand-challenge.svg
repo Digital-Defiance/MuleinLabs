@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" role="img" aria-labelledby="t d">
+  <title id="t">The longer horizon, labelled as trajectory</title>
+  <desc id="d">Pointing the continuous-to-discrete engine at encrypted gate costs, zero-knowledge proof circuits, and post-quantum lattice structures. Every one of these ends the same way in the source: trajectory only, until receipts exist.</desc>
+  <rect width="1920" height="1080" fill="#091522"/>
+  <g transform="translate(1000 158)" font-family="Arial,sans-serif">
+    <text x="415" y="14" text-anchor="middle" fill="#9aa8b8" font-size="15" letter-spacing="3">SAME ENGINE · LARGER TARGETS</text>
+
+    <g transform="translate(0 44)">
+      <rect width="830" height="62" rx="12" fill="#142738" stroke="#66758a"/>
+      <text x="22" y="26" fill="#9aa8b8" font-size="13" letter-spacing="2">ENCRYPTED GATES</text>
+      <text x="22" y="49" fill="#fff" font-size="18">find shallower arrangements · cut the overhead</text>
+    </g>
+    <g transform="translate(0 118)">
+      <rect width="830" height="62" rx="12" fill="#142738" stroke="#66758a"/>
+      <text x="22" y="26" fill="#9aa8b8" font-size="13" letter-spacing="2">ZERO-KNOWLEDGE CIRCUITS</text>
+      <text x="22" y="49" fill="#fff" font-size="18">fewer gates, less depth · the main bottleneck</text>
+    </g>
+    <g transform="translate(0 192)">
+      <rect width="830" height="62" rx="12" fill="#142738" stroke="#66758a"/>
+      <text x="22" y="26" fill="#9aa8b8" font-size="13" letter-spacing="2">POST-QUANTUM LATTICES</text>
+      <text x="22" y="49" fill="#fff" font-size="18">the largest ambition on the list</text>
+    </g>
+
+    <rect x="0" y="278" width="830" height="72" rx="16" fill="#101a2b" stroke="#d4833f" stroke-width="3" stroke-dasharray="10 7"/>
+    <text x="415" y="306" text-anchor="middle" fill="#d4833f" font-size="14" letter-spacing="2">HOW EACH ONE ENDS IN THE SOURCE</text>
+    <text x="415" y="334" text-anchor="middle" fill="#fff" font-size="21" font-weight="700">trajectory only, until receipts exist</text>
+
+    <text x="415" y="400" text-anchor="middle" fill="#9aa8b8" font-size="19">That is exactly as far as this episode goes.</text>
+  </g>
+</svg>

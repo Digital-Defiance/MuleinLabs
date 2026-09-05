@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" role="img" aria-labelledby="t d">
+  <title id="t">The private-majority Verilog source</title>
+  <desc id="d">A readable five-input majority circuit sums five one-bit votes and compares the count with three.</desc>
+  <rect width="1920" height="1080" fill="#091522"/>
+  <g transform="translate(1000 142)" font-family="Arial,sans-serif">
+    <text x="415" y="14" text-anchor="middle" fill="#9aa8b8" font-size="15" letter-spacing="3">THE SOURCE THAT ACTUALLY RAN</text>
+    <rect x="0" y="42" width="830" height="490" rx="18" fill="#0d1724" stroke="#66758a" stroke-width="2"/>
+    <rect x="0" y="42" width="830" height="44" rx="18" fill="#142738"/>
+    <circle cx="24" cy="64" r="6" fill="#e0574c"/><circle cx="44" cy="64" r="6" fill="#d4833f"/><circle cx="64" cy="64" r="6" fill="#22a89c"/>
+    <text x="415" y="70" text-anchor="middle" fill="#9aa8b8" font-size="14">Hardware/RTL/Examples/private_majority5.v</text>
+    <g font-family="Courier New,Courier,monospace" font-size="17">
+      <text x="28" y="120" fill="#d4833f">09</text><text x="70" y="120" fill="#fff">module private_majority5 (</text>
+      <text x="28" y="150" fill="#d4833f">10</text><text x="70" y="150" fill="#9aa8b8">  input  wire [4:0] votes,</text>
+      <text x="28" y="180" fill="#d4833f">11</text><text x="70" y="180" fill="#9aa8b8">  output wire       proposal_passes</text>
+      <text x="28" y="210" fill="#d4833f">12</text><text x="70" y="210" fill="#fff">);</text>
+      <text x="28" y="250" fill="#d4833f">13</text><text x="70" y="250" fill="#22a89c">wire [2:0] yes_count;</text>
+      <text x="28" y="290" fill="#d4833f">15</text><text x="70" y="290" fill="#fff">assign yes_count = {2'b0, votes[0]} +</text>
+      <text x="28" y="320" fill="#d4833f">16</text><text x="70" y="320" fill="#fff">                   {2'b0, votes[1]} +</text>
+      <text x="28" y="350" fill="#d4833f">17</text><text x="70" y="350" fill="#fff">                   {2'b0, votes[2]} +</text>
+      <text x="28" y="380" fill="#d4833f">18</text><text x="70" y="380" fill="#fff">                   {2'b0, votes[3]} +</text>
+      <text x="28" y="410" fill="#d4833f">19</text><text x="70" y="410" fill="#fff">                   {2'b0, votes[4]};</text>
+      <text x="28" y="458" fill="#d4833f">21</text><text x="70" y="458" fill="#22a89c">assign proposal_passes = (yes_count &gt;= 3'd3);</text>
+      <text x="28" y="494" fill="#d4833f">22</text><text x="70" y="494" fill="#fff">endmodule</text>
+    </g>
+    <text x="415" y="566" text-anchor="middle" fill="#9aa8b8" font-size="15">SHA-256 · 9df86f15425f310b…e5f8603764b59b</text>
+  </g>
+</svg>

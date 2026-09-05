@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" role="img" aria-labelledby="t d">
+  <title id="t">Initial pre-script Yosys synthesis and HELUT compilation receipt</title>
+  <desc id="d">The initial pre-script run maps the circuit to three lookup-table cells, reports zero Yosys problems, and compiles five inputs and one output in 0.0032 seconds.</desc>
+  <rect width="1920" height="1080" fill="#091522"/>
+  <g transform="translate(1000 142)" font-family="Arial,sans-serif">
+    <text x="415" y="14" text-anchor="middle" fill="#9aa8b8" font-size="15" letter-spacing="3">INITIAL PRE-SCRIPT RECEIPT · TWO COMPILERS</text>
+    <g transform="translate(0 42)">
+      <rect width="830" height="194" rx="18" fill="#0d1724" stroke="#66758a" stroke-width="2"/>
+      <rect width="830" height="42" rx="18" fill="#142738"/>
+      <circle cx="24" cy="21" r="6" fill="#e0574c"/><circle cx="44" cy="21" r="6" fill="#d4833f"/><circle cx="64" cy="21" r="6" fill="#22a89c"/>
+      <text x="415" y="27" text-anchor="middle" fill="#9aa8b8" font-size="14">Yosys 0.68 + ABC</text>
+      <g font-family="Courier New,Courier,monospace" font-size="15">
+        <text x="24" y="76" fill="#d4833f">$</text><text x="46" y="76" fill="#fff">read_verilog private_majority5.v; synth -flatten;</text>
+        <text x="46" y="102" fill="#fff">abc -lut 4; check -assert; stat; write_json …</text>
+        <text x="24" y="140" fill="#22a89c">=== private_majority5 ===</text>
+        <text x="44" y="166" fill="#fff">3 cells    3 $lut</text>
+        <text x="420" y="166" fill="#22a89c">Found and reported 0 problems.</text>
+      </g>
+    </g>
+    <g transform="translate(0 254)">
+      <rect width="830" height="136" rx="18" fill="#0d1724" stroke="#22a89c" stroke-width="2"/>
+      <text x="24" y="34" fill="#22a89c" font-size="14" letter-spacing="2">HELUT COMPILE</text>
+      <text x="24" y="70" fill="#fff" font-size="23" font-weight="700">5 inputs · 3 LUTs · 0 DFFs · 1 output</text>
+      <text x="24" y="104" fill="#9aa8b8" font-size="18">total 0.0032 s</text>
+      <text x="806" y="104" text-anchor="end" fill="#22a89c" font-size="18">compiled module private_majority5</text>
+    </g>
+    <g transform="translate(0 414)">
+      <rect width="395" height="86" rx="14" fill="#2b2025" stroke="#d4833f"/>
+      <text x="197" y="30" text-anchor="middle" fill="#d4833f" font-size="14" letter-spacing="2">ENDPOINT</text>
+      <text x="197" y="62" text-anchor="middle" fill="#fff" font-size="23" font-weight="700">00000 → 0</text>
+    </g>
+    <g transform="translate(435 414)">
+      <rect width="395" height="86" rx="14" fill="#122b35" stroke="#22a89c"/>
+      <text x="197" y="30" text-anchor="middle" fill="#22a89c" font-size="14" letter-spacing="2">ENDPOINT</text>
+      <text x="197" y="62" text-anchor="middle" fill="#fff" font-size="23" font-weight="700">11111 → 1</text>
+    </g>
+    <text x="415" y="538" text-anchor="middle" fill="#9aa8b8" font-size="16">LUT widths: 3, 3, 4 · mapping result, not a minimality proof</text>
+  </g>
+</svg>

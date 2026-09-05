@@ -1,0 +1,113 @@
+{
+  "id": "ep09-application-gallery",
+  "compositionId": "Episode09",
+  "title": "The Application Gallery",
+  "youtubeTitle": "What HELUT Has Actually Been Pointed At: Radio, Regex, Trees, Ciphers",
+  "description": "The breadth of HELUT applications, organized around the distinction that matters most: the same netlist runs in an oracle shape-laboratory tier and an encrypted tier, and only one of them is FHE. Covers the GNU Radio matcher, regex versus decision tree, encrypted sequential circuits, carry-save architecture, the Mulein width sweep where sixteen lanes lose to four, and the Python-only toy cipher. Epoch C69.",
+  "claimEpoch": "2026-08-20 / C69",
+  "fps": 30,
+  "width": 1920,
+  "height": 1080,
+  "scenes": [
+    {
+      "kind": "title",
+      "id": "title",
+      "eyebrow": "HELUT · Application gallery",
+      "headline": "The same circuit, twice",
+      "subhead": "Breadth is easy. Labelling the tier is not.",
+      "backgroundAsset": "01-title.svg",
+      "voiceover": "HELUT has been pointed at more than one problem. A radio receiver, a regular-expression matcher, a decision tree, a processor, and a historical cipher search. This episode is that gallery. But it is organized around one distinction, because it is the easiest thing in this project to get wrong: most of these circuits run in two different tiers, and only one of those tiers is encrypted.",
+      "durationHintSec": 30
+    },
+    {
+      "kind": "concept",
+      "id": "radio",
+      "kicker": "Closed loop · no antenna",
+      "headline": "Matching bytes off a signal",
+      "subhead": "Baseband, noise, recovered bytes, then a netlist.",
+      "backgroundAsset": "02-radio-chain.svg",
+      "voiceover": "Start with the demo that needs no explanation. A GNU Radio flowgraph generates a baseband signal, adds noise, and recovers bytes. Those bytes feed a Yosys netlist compiled from Verilog: a three-character regular-expression matcher. When the letters D, E, F arrive, the circuit flags a match. No antenna is involved and nothing is intercepted; it is a closed loop on one machine. The same demo then runs ten thousand windows as a batch to show throughput, and finally freezes a single window under encryption at demonstration size, where being slow is the entire point.",
+      "durationHintSec": 42
+    },
+    {
+      "kind": "concept",
+      "id": "two-tiers",
+      "kicker": "The distinction that matters",
+      "headline": "Two backends, one netlist",
+      "subhead": "Shape laboratory versus encrypted evaluation.",
+      "backgroundAsset": "03-two-tiers.svg",
+      "voiceover": "Here is the distinction. The same netlist can run on two different backends. In the oracle tier, values are ordinary numbers, the batch can be enormous, and it runs in real time. That tier proves the shape of the computation: the wiring, the clocking, the batch axis. In the encrypted tier, the wires carry lattice samples and every look-up table costs a blind rotation. Same circuit, same answers, wildly different cost, and wildly different claims. Calling the oracle tier encrypted computing is the most common error available here, and it is the one this project guards hardest.",
+      "durationHintSec": 44
+    },
+    {
+      "kind": "concept",
+      "id": "what-graduated",
+      "kicker": "Siblings that diverged",
+      "headline": "One graduated. One did not.",
+      "subhead": "Regex reached production size. The tree is still waiting.",
+      "backgroundAsset": "04-graduated.svg",
+      "voiceover": "Two of the shape-laboratory demos tried to graduate into the encrypted tier. The regular-expression matcher made it: 23 look-up tables, evaluated encrypted at production polynomial size, in about 27 seconds. The decision tree did not. It still runs only at demonstration size, and its covering path on Metal remains open. Same family, same compiler, one graduated and one is still waiting. That difference is recorded rather than smoothed over.",
+      "durationHintSec": 32
+    },
+    {
+      "kind": "concept",
+      "id": "sequential",
+      "kicker": "Encrypted state, small circuits",
+      "headline": "The stepping stones",
+      "subhead": "Counter, toy instruction set, one cipher round.",
+      "backgroundAsset": "05-sequential.svg",
+      "voiceover": "Encrypted state also works at production size, as long as the circuit stays small. A four-bit counter passes in about 16 seconds across four stimuli. A toy instruction set with a no-op and an add passes in about 20 seconds. A single round of the E256 cipher, 58 gates wide, passes in about 23 seconds. None of those is a processor, and none of them touches live memory. They are the stepping stones between an encrypted adder and the encrypted processor from the last episode.",
+      "durationHintSec": 38
+    },
+    {
+      "kind": "concept",
+      "id": "architecture",
+      "kicker": "A useful corrective",
+      "headline": "The cheapest win was a better circuit",
+      "subhead": "Carry-save against ripple-carry: 11 tables down to 8.",
+      "backgroundAsset": "06-architecture.svg",
+      "voiceover": "One result is a useful corrective. A four-bit adder was synthesized two ways: a ripple-carry version at 11 look-up tables, and a carry-save version at eight. That is a 27 percent cut, and both versions pass the correctness gate. The lesson is that the cheapest win available here came from choosing a better circuit architecture, not from any search or optimizer. The ledger labels it explicitly as architecture, and not as a TensorLUT melt.",
+      "durationHintSec": 34
+    },
+    {
+      "kind": "concept",
+      "id": "width-sweep",
+      "kicker": "Measured, not assumed",
+      "headline": "Sixteen lanes lose to four",
+      "subhead": "Same digest every width. Wider is not faster.",
+      "backgroundAsset": "07-width-sweep.svg",
+      "voiceover": "Now the result I did not expect. The cleartext Enigma search engine can be built with one, two, four, eight, or sixteen parallel lanes. Sixteen lanes cost sixteen times the silicon: about 758,000 look-up tables against 45,000 for a single lane. Every width produces a byte-identical result digest, so it is provably the same computation. And sixteen lanes are slower than one: 231 complete receipts per second against 234. Four lanes win, at 276. Width four was selected on measured throughput, not on size, not on synthesis time, and not on intuition.",
+      "durationHintSec": 42
+    },
+    {
+      "kind": "concept",
+      "id": "blasters",
+      "kicker": "Two faults, two repairs",
+      "headline": "Garble and Indel",
+      "subhead": "A suspect letter is not the same as a missing one.",
+      "backgroundAsset": "08-blasters.svg",
+      "voiceover": "The subsystem around that engine has deliberately memorable names, and they encode a real distinction. A transcript can be wrong in two different ways, and conflating them causes bad science. If a recorded letter is merely suspect, that is edge-erasure tolerance, handled by the Tolerant Closure, informally the Garble Blaster nine thousand. If letters are missing or extra, the whole rotor alignment shifts, which is splice geometry, handled by the Splice Engine, informally the Indel Blaster nine thousand. Different fault, different repair, separate receipts. A survivor from either one is a repair hypothesis, not a result.",
+      "durationHintSec": 44
+    },
+    {
+      "kind": "concept",
+      "id": "smallest-honest-example",
+      "kicker": "Runs on nothing but Python",
+      "headline": "Two ciphers, one broken on purpose",
+      "subhead": "The on-ramp for anyone without Apple silicon.",
+      "backgroundAsset": "09-smallest-example.svg",
+      "voiceover": "Not everything here needs Apple silicon. A reviewer asked a sharp question: show two ciphers of the same type, one sound and one broken on purpose, then demonstrate telling them apart. The answer runs on nothing but Python. One substitution-permutation skeleton, built twice: once with a real S-box, and once with an invertible affine one that looks fine and is not. Four separate tests distinguish them, including a difference table that reads four against sixteen, and key recovery from a single known pair with no search at all. It is the smallest honest example in the project, and it is deliberately not a claim row.",
+      "durationHintSec": 46
+    },
+    {
+      "kind": "outro",
+      "id": "outro",
+      "headline": "Two numbers, one firewall",
+      "subhead": "276 receipts/s cleartext · 114 s per encrypted tick.",
+      "nextEpisode": "More MuleinLabs",
+      "backgroundAsset": "03-two-tiers.svg",
+      "voiceover": "One pairing keeps this gallery honest. The cleartext search engine delivers about 276 complete receipts per second. An encrypted processor tick costs about 114 seconds. Both come out of the same compiler, and putting them in one sentence as though they were comparable is exactly the error this series is built to avoid. Everything here carries a date, and the gallery grows when the receipts do. More MuleinLabs work is coming, on this and on other things entirely.",
+      "durationHintSec": 36
+    }
+  ]
+}

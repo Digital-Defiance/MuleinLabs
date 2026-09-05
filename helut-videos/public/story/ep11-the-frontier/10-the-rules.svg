@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" role="img" aria-labelledby="t d">
+  <title id="t">Rules for writing about a frontier idea</title>
+  <desc id="d">Label every paragraph, name the claim the idea would become, name the false conclusion it must not invite, and if the evidence cannot even be imagined the idea is not ready.</desc>
+  <rect width="1920" height="1080" fill="#091522"/>
+  <g transform="translate(1000 152)" font-family="Arial,sans-serif">
+    <text x="415" y="14" text-anchor="middle" fill="#9aa8b8" font-size="15" letter-spacing="3">RULES WORTH STEALING</text>
+
+    <g transform="translate(0 42)">
+      <rect width="830" height="58" rx="12" fill="#142738" stroke="#66758a"/>
+      <text x="22" y="26" fill="#9aa8b8" font-size="13" letter-spacing="2">LABEL</text>
+      <text x="22" y="48" fill="#fff" font-size="18">every paragraph: frontier, or first experiment</text>
+    </g>
+    <g transform="translate(0 112)">
+      <rect width="830" height="58" rx="12" fill="#122b35" stroke="#22a89c"/>
+      <text x="22" y="26" fill="#22a89c" font-size="13" letter-spacing="2">NAME THE CLAIM</text>
+      <text x="22" y="48" fill="#fff" font-size="18">what it would become if it worked</text>
+    </g>
+    <g transform="translate(0 182)">
+      <rect width="830" height="58" rx="12" fill="#33161b" stroke="#e0574c"/>
+      <text x="22" y="26" fill="#e0574c" font-size="13" letter-spacing="2">NAME THE TRAP</text>
+      <text x="22" y="48" fill="#fff" font-size="18">the false conclusion it must not invite</text>
+    </g>
+
+    <rect x="0" y="264" width="830" height="86" rx="16" fill="#1b2637" stroke="#d4833f" stroke-width="3"/>
+    <text x="415" y="292" text-anchor="middle" fill="#d4833f" font-size="14" letter-spacing="2">THE TEST THAT DOES THE MOST WORK</text>
+    <text x="415" y="322" text-anchor="middle" fill="#fff" font-size="21" font-weight="700">can you imagine the evidence?</text>
+    <text x="415" y="343" text-anchor="middle" fill="#9aa8b8" font-size="17">if not, it is not ready to be written down</text>
+
+    <text x="415" y="404" text-anchor="middle" fill="#9aa8b8" font-size="19">Graduation happens through a log file, not an announcement.</text>
+  </g>
+</svg>

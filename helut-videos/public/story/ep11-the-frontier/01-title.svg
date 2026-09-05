@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" role="img" aria-labelledby="t d">
+  <title id="t">Frontier paired with first experiment</title>
+  <desc id="d">Each speculative avenue is presented alongside the modest first experiment that would earn it a place in the claim ledger, which is what separates a frontier from a fantasy.</desc>
+  <defs>
+    <linearGradient id="bgF" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#08111f"/><stop offset="1" stop-color="#16323d"/></linearGradient>
+  </defs>
+  <rect width="1920" height="1080" fill="url(#bgF)"/>
+  <g transform="translate(1005 164)" font-family="Arial,sans-serif">
+    <text x="415" y="14" text-anchor="middle" fill="#9aa8b8" font-size="15" letter-spacing="3">THE PAIRING THAT KEEPS IT HONEST</text>
+
+    <g transform="translate(0 46)">
+      <rect width="390" height="150" rx="18" fill="#101a2b" stroke="#66758a" stroke-width="2" stroke-dasharray="10 7"/>
+      <text x="195" y="32" text-anchor="middle" fill="#9aa8b8" font-size="14" letter-spacing="2">THE WILD IDEA</text>
+      <text x="195" y="72" text-anchor="middle" fill="#fff" font-size="22" font-weight="700">exciting</text>
+      <text x="195" y="102" text-anchor="middle" fill="#fff" font-size="22" font-weight="700">unproven</text>
+      <text x="195" y="132" text-anchor="middle" fill="#9aa8b8" font-size="17">cheap to say</text>
+    </g>
+
+    <text x="415" y="128" text-anchor="middle" fill="#66758a" font-size="26">+</text>
+
+    <g transform="translate(440 46)">
+      <rect width="390" height="150" rx="18" fill="#122b35" stroke="#22a89c" stroke-width="2"/>
+      <text x="195" y="32" text-anchor="middle" fill="#22a89c" font-size="14" letter-spacing="2">FIRST EXPERIMENT</text>
+      <text x="195" y="72" text-anchor="middle" fill="#fff" font-size="22" font-weight="700">small</text>
+      <text x="195" y="102" text-anchor="middle" fill="#fff" font-size="22" font-weight="700">dull</text>
+      <text x="195" y="132" text-anchor="middle" fill="#22a89c" font-size="17">actually runnable</text>
+    </g>
+
+    <path d="M415 210v34" stroke="#66758a" stroke-width="3"/>
+    <rect x="115" y="244" width="600" height="66" rx="16" fill="#1b2637" stroke="#d4833f" stroke-width="3"/>
+    <text x="415" y="272" text-anchor="middle" fill="#d4833f" font-size="14" letter-spacing="2">THE DIFFERENCE</text>
+    <text x="415" y="298" text-anchor="middle" fill="#fff" font-size="21" font-weight="700">knowing what your next experiment is</text>
+
+    <text x="415" y="362" text-anchor="middle" fill="#9aa8b8" font-size="19">Nothing in this episode is a result.</text>
+  </g>
+</svg>

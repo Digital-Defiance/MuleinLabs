@@ -1,0 +1,132 @@
+{
+  "id": "ep12-private-majority",
+  "compositionId": "Episode12",
+  "title": "Five Ballots, One Bit",
+  "youtubeTitle": "We Built a Private Majority Circuit and Ran It Encrypted on Metal",
+  "description": "A from-scratch HELUT experiment with dated terminal receipts: five encrypted ballot bits enter a synthesized majority circuit and one decision bit leaves. Yosys maps the design to three lookup-table cells; all 32 inputs pass clear and demonstration-size encrypted equivalence; and two deterministic endpoints pass at N=1024 on Metal. The initial pre-script run recorded 0.0089 seconds at N=16 and 2.7189 seconds at N=1024; a literal filmed rerun recorded 0.0095 and 2.5320 seconds. Both passed, but two observations are not a timing distribution. The harness owns the key, and the bootstrap-key construction is exact-noiseless, so this is neither a deployed voting protocol nor a noisy-key proof. A closing coda sends the same compiler path through a RISC-V processor instead: 4,785 lookup tables and 1,565 flip-flops running a three-instruction program, padded with no-ops, encrypted on CPU for 48 ticks, all rows matching the clear model at 4.0 modeled classical bits, where the host implements memory and therefore sees addresses and data. Reproduce paths and hashes included. Epoch C69.",
+  "claimEpoch": "2026-08-20 / C69",
+  "fps": 30,
+  "width": 1920,
+  "height": 1080,
+  "scenes": [
+    {
+      "kind": "title",
+      "id": "title",
+      "eyebrow": "HELUT · Build, run, receipt",
+      "headline": "Five ballots. One bit.",
+      "subhead": "The experiment came before the script; the filmed rerun came after.",
+      "backgroundAsset": "01-title.svg",
+      "voiceover": "Last episode promised that we would stop describing and start building. This is that build. A circuit with five ballot bits as inputs and one bit as output: did at least three voters say yes? I wrote it, synthesized it, exercised every possible input through the clear and encrypted demonstration paths, and then moved the same netlist to a production-parameter-size Metal run. The experiment came before this script. The authored panels use that first dated receipt. Later, you will also see a literal terminal rerun with its own dated values. We keep the two observations separate.",
+      "durationHintSec": 42
+    },
+    {
+      "kind": "concept",
+      "id": "one-bit-contract",
+      "kicker": "The privacy boundary",
+      "headline": "Reveal the decision, not five ballots",
+      "subhead": "Encrypted inputs in · one decrypted result out",
+      "backgroundAsset": "02-one-bit-contract.svg",
+      "voiceover": "The boundary comes first. Five ballot bits are encrypted before evaluation. The synthesized circuit computes whether at least three are one. Afterward, the benchmark harness decrypts the single proposal-passes bit inside the process and compares it with a clear golden model. That is the experiment's privacy contract. It is not a voting system. There is no ballot authentication, independent key custody, threshold decryption, coercion resistance, or malicious-party protocol here. The same harness owns the key and performs the comparison. The bounded claim is simply that this circuit can compute on encrypted ballot bits while revealing only the result chosen for decryption.",
+      "durationHintSec": 50
+    },
+    {
+      "kind": "concept",
+      "id": "write-the-circuit",
+      "kicker": "Step one · write it",
+      "headline": "The circuit, from scratch",
+      "subhead": "Five one-bit inputs. Sum. Compare with three.",
+      "backgroundAsset": "03-write-the-circuit.svg",
+      "voiceover": "The source is deliberately ordinary Verilog. Zero-extend each vote, add the five bits into a three-bit count, and set proposal-passes when that count is at least three. There is no special voting primitive and no handwritten encrypted algorithm. HELUT needs a circuit, so we give it the simplest readable description of the function we want. The source lives in the hardware examples with its own hash, and its comments carry the limitation beside the code: this demonstrates the shape of private computation, not the rest of a secure election.",
+      "durationHintSec": 44
+    },
+    {
+      "kind": "concept",
+      "id": "synthesize-and-compile",
+      "kicker": "Initial receipt · step two",
+      "headline": "Five inputs. Three lookup tables.",
+      "subhead": "Yosys + ABC · tables up to four inputs",
+      "backgroundAsset": "04-synthesize-and-compile.svg",
+      "voiceover": "In the initial pre-script run, I ran Yosys zero point sixty-eight with ABC allowed to use lookup tables of up to four inputs. It mapped the majority function to three table cells: two with three inputs and one with four. The check pass reported zero problems. That is a mapping result, not a proof that three is mathematically minimal. The separate endpoint receipt says all-zero ballots reject and all-one ballots pass. HELUT then parsed the generated JSON and compiled a graph with five inputs, three lookup tables, no flip-flops, and one output in zero point zero zero three two seconds. The filmed rerun later reports its own compile observation.",
+      "durationHintSec": 50
+    },
+    {
+      "kind": "concept",
+      "id": "clear-exhaustive",
+      "kicker": "Step three · prove the plain shape",
+      "headline": "All thirty-two vote patterns",
+      "subhead": "Clear simulator ≡ trivial multilinear graph",
+      "backgroundAsset": "05-clear-exhaustive.svg",
+      "voiceover": "Five input bits have exactly thirty-two possible patterns, small enough to test without sampling. The clear-equivalence command enumerated every one. For each row it evaluated the ordinary netlist simulator and the noise-free multilinear graph, then compared the output bit. Thirty-two rows entered. Thirty-two matched. Result: pass. This establishes that lowering the synthesized tables into HELUT preserved the majority function over its entire input space. It does not establish encryption yet. Keeping that receipt separate matters, because the next pass proves a different thing.",
+      "durationHintSec": 43
+    },
+    {
+      "kind": "concept",
+      "id": "encrypted-n16",
+      "kicker": "Initial receipt · step four",
+      "headline": "Thirty-two encrypted rows. Thirty-two matches.",
+      "subhead": "Initial run · N=16 demonstration · 0.0089 seconds total",
+      "backgroundAsset": "06-encrypted-n16.svg",
+      "voiceover": "Now the encrypted path in the initial receipt. SING means stimuli in, golden out: run each stimulus through the encrypted evaluator, decrypt the chosen output inside the harness, and compare it with the clear result. At polynomial size sixteen, the harness again covered all thirty-two vote patterns. Every decrypted decision matched. The complete run took zero point zero zero eight nine seconds, or zero point two eight milliseconds per row. But this is a correctness demonstration, not production security. Its own receipt prints eight modeled classical bits, and the bootstrap key uses an exact-noiseless construction. Fast, exhaustive, and intentionally insecure are all true at once.",
+      "durationHintSec": 50
+    },
+    {
+      "kind": "concept",
+      "id": "metal-n1024",
+      "kicker": "Initial receipt · step five",
+      "headline": "Production parameter size. Two rows.",
+      "subhead": "Initial run · N=1024 · PASS · 2.7189 seconds",
+      "backgroundAsset": "07-metal-n1024.svg",
+      "voiceover": "Finally, the initial receipt runs the same three-table netlist at polynomial size one thousand twenty-four on Metal. This run covered two deterministic endpoint stimuli, not all thirty-two: the production-size receipt is bounded to two rows. Both matched the golden model. Total wall time was two point seven one eight nine seconds, or about one point three six seconds per row. The hardness line reports one hundred seventy-five point seven modeled classical bits. Modeled is essential. And the receipt still says exact-noiseless construction, so this is a production-parameter-size execution receipt, not a noisy bootstrap-key robustness proof or a blanket security audit.",
+      "durationHintSec": 52
+    },
+    {
+      "kind": "capture",
+      "id": "filmed-rerun",
+      "videoAsset": "episode12-full-run.mp4",
+      "label": "Filmed rerun · 2026-09-04 · normal speed",
+      "voiceover": "One more receipt belongs beside the authored panels: the literal terminal rerun filmed after the script was drafted. This is a real Bash pseudo-terminal at normal speed. It types the complete Verilog, verifies a byte-for-byte match with the tracked source, synthesizes three lookup tables, checks both endpoints, exhausts all thirty-two clear rows, exhausts all thirty-two encrypted rows at N sixteen, and runs two deterministic rows at N one thousand twenty-four on Metal. The values differ slightly from the first receipt. The initial run recorded zero point zero zero eight nine seconds and two point seven one eight nine seconds. This filmed rerun recorded zero point zero zero nine five seconds and two point five three two zero seconds. Both runs passed. They are two observations, not a timing distribution or evidence of stable performance. The footage proves that these commands executed; the static panels remain the readable scientific receipts.",
+      "durationHintSec": 56.76
+    },
+    {
+      "kind": "narration",
+      "id": "what-this-proves",
+      "headline": "What the receipts prove",
+      "bullets": [
+        "Yosys: 5 inputs → 3 mapped tables → 1 output",
+        "Clear path: 32 of 32 patterns match in both runs",
+        "Encrypted N=16 path: 32 of 32 match in both runs",
+        "Metal N=1024 path: 2 of 2 endpoints match in both runs"
+      ],
+      "backgroundAsset": "08-what-this-proves.svg",
+      "voiceover": "Put the layers beside one another and the result is useful without being inflated. Yosys mapped a five-input majority function into three lookup tables. The clear path matched all thirty-two inputs. The encrypted demonstration path matched all thirty-two again. The production-parameter-size Metal path matched two endpoint rows. The later filmed rerun repeated those outcomes, with separate timing observations. Outside those receipts are the stronger claims: no multiparty voting protocol, no proof that the host learns nothing from timing or metadata, no noisy-key result, and no exhaustive sweep at one thousand twenty-four. The circuit works in the harness. The surrounding election system has not been built, and the episode will not pretend otherwise.",
+      "durationHintSec": 49
+    },
+    {
+      "kind": "concept",
+      "id": "coda-scale",
+      "kicker": "Coda · the same path, much bigger",
+      "headline": "Three lookup tables, then a processor",
+      "subhead": "4785 lookup tables · 1565 flip-flops · encrypted state",
+      "backgroundAsset": "10-picorv32-coda.svg",
+      "voiceover": "One more thing, because scale is the honest test of a compiler. Everything so far used three lookup tables. The same path also takes a real processor: a RISC-V core synthesized to four thousand seven hundred eighty-five lookup tables and one thousand five hundred sixty-five flip-flops. That matters because flip-flops mean state. The circuit has to be clocked, and every encrypted register has to survive every tick. The program is deliberately tiny: put one in a register, store it to memory, read it back. If encrypted state were broken, that sequence would fail immediately. Here is the boundary, though. The host implements the memory, so it sees instruction addresses and data. Only the processor itself is evaluated encrypted.",
+      "durationHintSec": 46
+    },
+    {
+      "kind": "capture",
+      "id": "picorv32-coda",
+      "videoAsset": "episode12-picorv32-coda.mp4",
+      "label": "Coda · encrypted RISC-V · normal speed",
+      "voiceover": "Same compiler, same encrypted evaluator, a very different circuit. The capture compiles both designs live: the majority circuit is five inputs, three lookup tables, no state. The processor is a hundred and two inputs, four thousand seven hundred eighty-five lookup tables, and one thousand five hundred sixty-five flip-flops. Then it runs that tiny program under encryption for forty-eight ticks. Watch the program counter advance by four each fetch. At tick sixteen the store writes one to address zero. At tick twenty-five the host serves that same one back. Forty-eight of forty-eight ticks matched the clear model, including every flip-flop, in two point four eight two eight seconds. And the honest part: this ran on CPU, at four modeled bits, and the host is the memory.",
+      "durationHintSec": 53.8
+    },
+    {
+      "kind": "outro",
+      "id": "outro",
+      "headline": "The path back is the point",
+      "subhead": "Source. Netlist. Six logs. One bounded result.",
+      "backgroundAsset": "09-receipt.svg",
+      "voiceover": "The worthwhile part is not that majority is a difficult function. It is that the privacy boundary is understandable, the input space is small enough to exhaust, and the production-size claim can be separated cleanly from the demonstration. The source, generated netlist, six full logs, curated receipt, two literal captures with their own manifests and transcripts, commands, dates, and hashes are all preserved. On a matching toolchain, there is a path back from the sentence to the run. Five encrypted bits entered this harness. One decision bit was revealed. A three-table vote and a whole processor came out of the same compiler. Everything stronger remains outside the receipt. That is how a small experiment earns an episode.",
+      "durationHintSec": 49
+    }
+  ]
+}

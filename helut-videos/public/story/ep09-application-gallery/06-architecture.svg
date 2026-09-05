@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" role="img" aria-labelledby="t d">
+  <title id="t">Carry-save against ripple-carry</title>
+  <desc id="d">Synthesizing a four-bit adder as carry-save instead of ripple-carry cuts look-up tables from eleven to eight, a twenty-seven percent reduction, with both versions passing the correctness gate. Architecture, not an optimizer.</desc>
+  <rect width="1920" height="1080" fill="#091522"/>
+  <g transform="translate(1000 166)" font-family="Arial,sans-serif">
+    <text x="415" y="14" text-anchor="middle" fill="#9aa8b8" font-size="15" letter-spacing="3">SAME 4-BIT ADDER · TWO ARCHITECTURES</text>
+
+    <g transform="translate(0 44)">
+      <text x="0" y="20" fill="#d4833f" font-size="15" letter-spacing="1">RIPPLE-CARRY</text>
+      <rect x="0" y="32" width="830" height="44" rx="8" fill="#101a2b" stroke="#66758a"/>
+      <rect x="2" y="34" width="600" height="40" rx="6" fill="#d4833f"/>
+      <text x="622" y="61" fill="#fff" font-size="21" font-weight="700">11 tables</text>
+    </g>
+
+    <g transform="translate(0 148)">
+      <text x="0" y="20" fill="#22a89c" font-size="15" letter-spacing="1">CARRY-SAVE</text>
+      <rect x="0" y="32" width="830" height="44" rx="8" fill="#101a2b" stroke="#66758a"/>
+      <rect x="2" y="34" width="436" height="40" rx="6" fill="#22a89c"/>
+      <text x="458" y="61" fill="#fff" font-size="21" font-weight="700">8 tables</text>
+      <text x="806" y="61" text-anchor="end" fill="#22a89c" font-size="22" font-weight="700">−27%</text>
+    </g>
+
+    <rect x="0" y="252" width="830" height="66" rx="14" fill="#122b35" stroke="#22a89c" stroke-width="2"/>
+    <text x="415" y="279" text-anchor="middle" fill="#22a89c" font-size="14" letter-spacing="2">BOTH PASS THE CORRECTNESS GATE</text>
+    <text x="415" y="305" text-anchor="middle" fill="#fff" font-size="19">the cheaper one is simply a better circuit</text>
+
+    <text x="415" y="366" text-anchor="middle" fill="#d4833f" font-size="20" font-weight="700">Labelled architecture — not a TensorLUT melt.</text>
+  </g>
+</svg>

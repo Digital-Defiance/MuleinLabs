@@ -71,6 +71,16 @@ export const SceneSchema = z.discriminatedUnion('kind', [
     kicker: z.string().optional(),
     ...atmosphereFields,
   }),
+  /** Literal foreground footage. durationHintSec is the source-duration floor. */
+  z.object({
+    kind: z.literal('capture'),
+    id: z.string(),
+    voiceover: z.string(),
+    durationHintSec: z.number().positive(),
+    videoAsset: z.string().min(1),
+    label: z.string().min(1).optional(),
+    ...atmosphereFields,
+  }),
   z.object({
     kind: z.literal('outro'),
     id: z.string(),
@@ -156,4 +166,14 @@ export function storyBackgroundStaticPath(
   if (trimmed.startsWith('story/')) return trimmed;
   if (trimmed.includes('/')) return `story/${trimmed}`;
   return `story/${episodeId}/${trimmed}`;
+}
+
+export function captureVideoStaticPath(
+  episodeId: string,
+  videoAsset: string,
+): string {
+  const trimmed = videoAsset.trim().replace(/^\/+/, '');
+  if (trimmed.startsWith('captures/')) return trimmed;
+  if (trimmed.includes('/')) return `captures/${trimmed}`;
+  return `captures/${episodeId}/${trimmed}`;
 }

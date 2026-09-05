@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" role="img" aria-labelledby="t d">
+  <title id="t">What the substrate has been pointed at</title>
+  <desc id="d">A radio matcher, a regular-expression matcher, a decision tree, a processor and a historical cipher search all compile to the same netlist form, and each must declare which tier it ran in.</desc>
+  <defs>
+    <linearGradient id="bg9" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#08111f"/><stop offset="1" stop-color="#16323d"/></linearGradient>
+  </defs>
+  <rect width="1920" height="1080" fill="url(#bg9)"/>
+  <g transform="translate(1005 160)" font-family="Arial,sans-serif">
+    <text x="415" y="14" text-anchor="middle" fill="#9aa8b8" font-size="15" letter-spacing="3">ONE NETLIST FORM · MANY PROBLEMS</text>
+
+    <g transform="translate(0 44)">
+      <rect width="266" height="62" rx="12" fill="#142738" stroke="#22a89c"/>
+      <text x="133" y="38" text-anchor="middle" fill="#fff" font-size="19">radio matcher</text>
+    </g>
+    <g transform="translate(282 44)">
+      <rect width="266" height="62" rx="12" fill="#142738" stroke="#22a89c"/>
+      <text x="133" y="38" text-anchor="middle" fill="#fff" font-size="19">regex · tree</text>
+    </g>
+    <g transform="translate(564 44)">
+      <rect width="266" height="62" rx="12" fill="#142738" stroke="#22a89c"/>
+      <text x="133" y="38" text-anchor="middle" fill="#fff" font-size="19">processor</text>
+    </g>
+    <g transform="translate(141 122)">
+      <rect width="266" height="62" rx="12" fill="#282235" stroke="#d4833f"/>
+      <text x="133" y="38" text-anchor="middle" fill="#fff" font-size="19">cipher search</text>
+    </g>
+    <g transform="translate(423 122)">
+      <rect width="266" height="62" rx="12" fill="#282235" stroke="#d4833f"/>
+      <text x="133" y="38" text-anchor="middle" fill="#fff" font-size="19">toy cipher</text>
+    </g>
+
+    <path d="M415 184v40" stroke="#66758a" stroke-width="3"/>
+
+    <rect x="60" y="224" width="710" height="80" rx="18" fill="#1b2637" stroke="#d4833f" stroke-width="3"/>
+    <text x="415" y="254" text-anchor="middle" fill="#d4833f" font-size="14" letter-spacing="2">EVERY ENTRY MUST DECLARE</text>
+    <text x="415" y="286" text-anchor="middle" fill="#fff" font-size="23" font-weight="700">which tier did it run in?</text>
+
+    <text x="415" y="352" text-anchor="middle" fill="#9aa8b8" font-size="19">Breadth is easy. Labelling is the discipline.</text>
+  </g>
+</svg>

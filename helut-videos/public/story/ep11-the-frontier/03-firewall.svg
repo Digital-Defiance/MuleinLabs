@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" role="img" aria-labelledby="t d">
+  <title id="t">An encrypted prompt firewall</title>
+  <desc id="d">A logic-gate filter evaluating in the encrypted domain between an untrusted prompt and a local model, where neither prompt, weights, nor defence rules appear in the clear. The first experiment is a four-gate classifier with a certificate.</desc>
+  <rect width="1920" height="1080" fill="#091522"/>
+  <g transform="translate(1000 156)" font-family="Arial,sans-serif">
+    <text x="415" y="14" text-anchor="middle" fill="#9aa8b8" font-size="15" letter-spacing="3">NOTHING IN THE CLEAR AT ANY POINT</text>
+
+    <g transform="translate(0 42)">
+      <rect width="230" height="64" rx="12" fill="#33161b" stroke="#e0574c"/>
+      <text x="115" y="27" text-anchor="middle" fill="#e0574c" font-size="13" letter-spacing="1">UNTRUSTED PROMPT</text>
+      <text x="115" y="50" text-anchor="middle" fill="#fff" font-size="17">encrypted</text>
+    </g>
+    <path d="M230 74h40" stroke="#66758a" stroke-width="3"/>
+    <g transform="translate(270 42)">
+      <rect width="270" height="64" rx="12" fill="#1b2637" stroke="#d4833f" stroke-width="3"/>
+      <text x="135" y="27" text-anchor="middle" fill="#d4833f" font-size="13" letter-spacing="1">GATE FIREWALL</text>
+      <text x="135" y="50" text-anchor="middle" fill="#fff" font-size="17">evaluates blind</text>
+    </g>
+    <path d="M540 74h40" stroke="#66758a" stroke-width="3"/>
+    <g transform="translate(580 42)">
+      <rect width="250" height="64" rx="12" fill="#142738" stroke="#22a89c"/>
+      <text x="125" y="27" text-anchor="middle" fill="#22a89c" font-size="13" letter-spacing="1">LOCAL MODEL</text>
+      <text x="125" y="50" text-anchor="middle" fill="#fff" font-size="17">weights unseen</text>
+    </g>
+
+    <text x="415" y="140" text-anchor="middle" fill="#9aa8b8" font-size="17">the filter would mutate its own topology from blocked attacks</text>
+
+    <path d="M415 158v30" stroke="#66758a" stroke-width="3" stroke-dasharray="8 8"/>
+
+    <g transform="translate(0 188)">
+      <rect width="830" height="88" rx="16" fill="#122b35" stroke="#22a89c" stroke-width="2"/>
+      <text x="415" y="28" text-anchor="middle" fill="#22a89c" font-size="14" letter-spacing="2">FIRST EXPERIMENT · NOTICE THE SCALE</text>
+      <text x="415" y="60" text-anchor="middle" fill="#fff" font-size="21" font-weight="700">4 gates · synthetic bits · one certificate</text>
+      <text x="415" y="80" text-anchor="middle" fill="#9aa8b8" font-size="16">before any evolution, and before any real model</text>
+    </g>
+
+    <text x="415" y="336" text-anchor="middle" fill="#d4833f" font-size="19">Four gates now beats a firewall in a slide deck.</text>
+  </g>
+</svg>

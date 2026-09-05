@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" role="img" aria-labelledby="t d">
+  <title id="t">The known-key rehearsal</title>
+  <desc id="d">A message from the same network and day whose key was published is truncated to the target's seventy-two letters and run through the full attack pipeline, so success or failure can be checked against a known answer.</desc>
+  <rect width="1920" height="1080" fill="#091522"/>
+  <g transform="translate(1000 160)" font-family="Arial,sans-serif">
+    <text x="415" y="14" text-anchor="middle" fill="#9aa8b8" font-size="15" letter-spacing="3">TEST THE METHOD, NOT THE TARGET</text>
+
+    <g transform="translate(0 42)">
+      <rect width="255" height="76" rx="14" fill="#142738" stroke="#22a89c" stroke-width="2"/>
+      <text x="127" y="28" text-anchor="middle" fill="#22a89c" font-size="14" letter-spacing="1">SAME NET, SAME DAY</text>
+      <text x="127" y="56" text-anchor="middle" fill="#fff" font-size="19" font-weight="700">key published</text>
+    </g>
+    <path d="M255 80h40" stroke="#66758a" stroke-width="3"/>
+    <g transform="translate(295 42)">
+      <rect width="235" height="76" rx="14" fill="#142738" stroke="#22a89c" stroke-width="2"/>
+      <text x="117" y="28" text-anchor="middle" fill="#22a89c" font-size="14" letter-spacing="1">TRUNCATE</text>
+      <text x="117" y="56" text-anchor="middle" fill="#fff" font-size="19" font-weight="700">to 72 letters</text>
+    </g>
+    <path d="M530 80h40" stroke="#66758a" stroke-width="3"/>
+    <g transform="translate(570 42)">
+      <rect width="260" height="76" rx="14" fill="#1b2637" stroke="#d4833f" stroke-width="3"/>
+      <text x="130" y="28" text-anchor="middle" fill="#d4833f" font-size="14" letter-spacing="1">FULL PIPELINE</text>
+      <text x="130" y="56" text-anchor="middle" fill="#fff" font-size="19" font-weight="700">can it find it?</text>
+    </g>
+
+    <path d="M700 118v30M700 148H240M240 148v26M700 148v26" fill="none" stroke="#66758a" stroke-width="3"/>
+
+    <g transform="translate(60 174)">
+      <rect width="360" height="80" rx="14" fill="#122b35" stroke="#22a89c"/>
+      <text x="180" y="28" text-anchor="middle" fill="#22a89c" font-size="14" letter-spacing="1">IF YES</text>
+      <text x="180" y="58" text-anchor="middle" fill="#fff" font-size="18">method sound · target merely hard</text>
+    </g>
+    <g transform="translate(460 174)">
+      <rect width="360" height="80" rx="14" fill="#33161b" stroke="#e0574c"/>
+      <text x="180" y="28" text-anchor="middle" fill="#e0574c" font-size="14" letter-spacing="1">IF NO</text>
+      <text x="180" y="58" text-anchor="middle" fill="#fff" font-size="18">the method is the problem</text>
+    </g>
+
+    <text x="415" y="306" text-anchor="middle" fill="#d4833f" font-size="20" font-weight="700">Two checks. Both graded numbers, not impressions.</text>
+  </g>
+</svg>

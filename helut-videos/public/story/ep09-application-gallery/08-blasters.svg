@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" role="img" aria-labelledby="t d">
+  <title id="t">Two transcript faults, two separate repairs</title>
+  <desc id="d">A suspect recorded letter is handled by edge-erasure tolerance in the Tolerant Closure. Missing or extra letters shift rotor alignment and are handled as splice geometry by the Splice Engine. The faults and their receipts stay distinct.</desc>
+  <rect width="1920" height="1080" fill="#091522"/>
+  <g transform="translate(1000 150)" font-family="Arial,sans-serif">
+    <text x="415" y="14" text-anchor="middle" fill="#9aa8b8" font-size="15" letter-spacing="3">A TRANSCRIPT CAN BE WRONG TWO WAYS</text>
+
+    <g transform="translate(0 40)">
+      <rect width="405" height="188" rx="18" fill="#282235" stroke="#d4833f" stroke-width="2"/>
+      <text x="202" y="30" text-anchor="middle" fill="#d4833f" font-size="14" letter-spacing="1">SUSPECT LETTER</text>
+      <text x="202" y="60" text-anchor="middle" fill="#fff" font-size="19" font-weight="700">edge-erasure tolerance</text>
+      <text x="202" y="88" text-anchor="middle" fill="#9aa8b8" font-size="16">Tolerant Closure</text>
+      <path d="M40 108h325" stroke="#66758a" stroke-width="2"/>
+      <text x="202" y="134" text-anchor="middle" fill="#9aa8b8" font-size="16">alignment unchanged</text>
+      <text x="202" y="160" text-anchor="middle" fill="#9aa8b8" font-size="16">drop one graded edge</text>
+      <text x="202" y="180" text-anchor="middle" fill="#d4833f" font-size="15">“Garble Blaster 9000”</text>
+    </g>
+
+    <g transform="translate(425 40)">
+      <rect width="405" height="188" rx="18" fill="#2b2025" stroke="#d4833f" stroke-width="2"/>
+      <text x="202" y="30" text-anchor="middle" fill="#d4833f" font-size="14" letter-spacing="1">MISSING OR EXTRA LETTERS</text>
+      <text x="202" y="60" text-anchor="middle" fill="#fff" font-size="19" font-weight="700">splice geometry</text>
+      <text x="202" y="88" text-anchor="middle" fill="#9aa8b8" font-size="16">Splice Engine</text>
+      <path d="M40 108h325" stroke="#66758a" stroke-width="2"/>
+      <text x="202" y="134" text-anchor="middle" fill="#9aa8b8" font-size="16">rotor alignment shifts</text>
+      <text x="202" y="160" text-anchor="middle" fill="#9aa8b8" font-size="16">not edge erasure</text>
+      <text x="202" y="180" text-anchor="middle" fill="#d4833f" font-size="15">“Indel Blaster 9000”</text>
+    </g>
+
+    <rect x="0" y="254" width="830" height="70" rx="16" fill="#101a2b" stroke="#66758a"/>
+    <text x="415" y="282" text-anchor="middle" fill="#9aa8b8" font-size="14" letter-spacing="2">WHY THE SEPARATION MATTERS</text>
+    <text x="415" y="309" text-anchor="middle" fill="#fff" font-size="19">different fault · different repair · separate receipts</text>
+
+    <text x="415" y="372" text-anchor="middle" fill="#d4833f" font-size="20" font-weight="700">A survivor is a repair hypothesis, not a result.</text>
+  </g>
+</svg>

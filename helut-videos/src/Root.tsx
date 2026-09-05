@@ -14,6 +14,10 @@ import ep05 from '../scripts/episodes/ep05-enigma256-architecture.json';
 import ep06 from '../scripts/episodes/ep06-e256-evolution-audit.json';
 import ep07 from '../scripts/episodes/ep07-almost-near-misses.json';
 import ep08 from '../scripts/episodes/ep08-encrypted-picorv32.json';
+import ep09 from '../scripts/episodes/ep09-application-gallery.json';
+import ep10 from '../scripts/episodes/ep10-why-it-holds.json';
+import ep11 from '../scripts/episodes/ep11-the-frontier.json';
+import ep12 from '../scripts/episodes/ep12-private-majority.json';
 
 // Block Studio/render until Fraunces + Outfit are registered.
 void ensureHelutFonts();
@@ -32,6 +36,10 @@ const episodes = [
   load(ep06),
   load(ep07),
   load(ep08),
+  load(ep09),
+  load(ep10),
+  load(ep11),
+  load(ep12),
 ];
 
 export const RemotionRoot: React.FC = () => {

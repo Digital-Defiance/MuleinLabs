@@ -1,0 +1,129 @@
+{
+  "id": "ep10-why-it-holds",
+  "compositionId": "Episode10",
+  "title": "Why It Holds",
+  "youtubeTitle": "We Handed the Machine the Answer and It Walked Away: Why P1030680 Holds",
+  "description": "The honest answer to why P1030680 is still unbroken. A known-key rehearsal shows the true key ranking at the 48.8th percentile by index of coincidence, and a plugboard climb started from the true rotor setting walking away to a wrong optimum that scores better. The blocker is statistical, not computational. Also the measured crib-free length threshold, the 68 percent the partial exhaustion closed, and why the real bottleneck is corpus size. Epoch C69.",
+  "claimEpoch": "2026-08-20 / C69",
+  "fps": 30,
+  "width": 1920,
+  "height": 1080,
+  "scenes": [
+    {
+      "kind": "title",
+      "id": "title",
+      "eyebrow": "HELUT · Campaign, answered",
+      "headline": "Why it holds",
+      "subhead": "Not a compute problem. A measurement problem.",
+      "backgroundAsset": "01-title.svg",
+      "voiceover": "An earlier episode covered the P1030680 campaign: the machine, the boards, the bounded negative result. It left the obvious question unanswered. The hardware works, the search is fast, the sieve is correct, so why is this message still unbroken? There is a measured answer, and it is not the one most people guess. The problem is not that the machine is too slow. The problem is that it cannot recognise the right answer when it is handed one.",
+      "durationHintSec": 34
+    },
+    {
+      "kind": "concept",
+      "id": "rehearsal",
+      "kicker": "Known-key rehearsal",
+      "headline": "Give the machine a message you can check",
+      "subhead": "A published key, truncated to the target's length.",
+      "backgroundAsset": "02-rehearsal.svg",
+      "voiceover": "The test is straightforward. Take a different message from the same network on the same day, one whose key was published decades ago, so the answer is known. Then truncate it to 72 letters, the exact length of the unsolved target. Now run the full attack pipeline against it. If the machine can find a key it is allowed to know, the method is sound and the target is merely hard. If it cannot, the method itself is the problem. There are two checks, and both are graded numbers rather than impressions.",
+      "durationHintSec": 40
+    },
+    {
+      "kind": "concept",
+      "id": "level-one",
+      "kicker": "Check one · the sieve",
+      "headline": "The true key ranks dead centre",
+      "subhead": "48.8th percentile. The statistic has no signal at all.",
+      "backgroundAsset": "03-level-one.svg",
+      "voiceover": "First check. Hand the machine the correct wheels and rings, so the only unknown is the message key, and rank every candidate by index of coincidence, the standard statistic for spotting German-like text. The true key comes back at the 48.8th percentile. Not in the top ten, not in the top thousand: statistically dead centre. Its score is 0.0379, and a random wrong key averages 0.0385. The correct answer scores very slightly worse than noise. That means any sieve built on this statistic does not merely rank the answer poorly. It discards it.",
+      "durationHintSec": 44
+    },
+    {
+      "kind": "concept",
+      "id": "level-two",
+      "kicker": "Check two · the climb",
+      "headline": "Started on the answer",
+      "subhead": "The wrong optimum scores better than the truth.",
+      "backgroundAsset": "04-level-two.svg",
+      "voiceover": "Second check, and it is the one that settles the argument. Skip the search entirely. Place the machine directly on the true rotor setting, then let it climb for the plugboard from there. It is starting on the answer. It recovers four letters out of 72 and zero plug pairs out of ten, and it settles on a wrong configuration scoring minus 3.127 where the truth scores minus 2.872. The wrong answer scores better. The climb did not fail to find the summit; it walked downhill away from it, because by its own measure downhill was up.",
+      "durationHintSec": 44
+    },
+    {
+      "kind": "narration",
+      "id": "verdict",
+      "headline": "The blocker is statistical, not computational",
+      "bullets": [
+        "GPU sweep, sieve, and search are all sound",
+        "The objective function cannot see the answer",
+        "~47 bits of plugboard freedom overfit to 72 letters"
+      ],
+      "backgroundAsset": "05-verdict.svg",
+      "voiceover": "That is the finding, and the repository states it plainly: the blocker is statistical, not computational. The batch datapath is correct. The sieve logic is correct. The evolutionary search is correct. What fails is the scoring function, and no amount of hardware fixes a blind judge. It also retires a tempting number. A high plausibility score on a 72-letter decrypt means nothing, because roughly 47 bits of plugboard freedom can be fitted to 72 letters of anything. Without strong cribs, that score is not evidence.",
+      "durationHintSec": 40
+    },
+    {
+      "kind": "concept",
+      "id": "crib-free-ladder",
+      "kicker": "The other engine",
+      "headline": "How short can a message be?",
+      "subhead": "Measured 200. Published record 78. Target 72.",
+      "backgroundAsset": "06-letter-ladder.svg",
+      "voiceover": "There is a second attack that needs no crib at all. Instead of guessing plaintext, it climbs the plugboard at every candidate rotor setting and ranks each setting by how good a score the climb reaches. Published work with this method has reached messages of about 100 letters, and the shortest success on record is 78 letters on a three-rotor army machine. Measured on this traffic, HELUT's own threshold is about 200 letters. So the honest gap is stated in the ledger: 200 measured, 78 published, 72 needed. Roughly two-point-eight times worse than the state of the art, and the target requires being slightly better than it.",
+      "durationHintSec": 48
+    },
+    {
+      "kind": "concept",
+      "id": "what-helped",
+      "kicker": "Two things that moved it",
+      "headline": "Better scoring, and one fixed plug",
+      "subhead": "68 percent of the deficit closed. Still negative.",
+      "backgroundAsset": "07-what-helped.svg",
+      "voiceover": "Two changes measurably improved that threshold. The first was staging the scorer: index of coincidence, then bigrams, then trigrams, because the measures fail at different points rather than uniformly. HELUT's climb had been using bigrams alone. The second is the named contribution of the published method. Rather than climbing ten plugs from nothing, fix one plug and climb the remaining nine, then repeat for every candidate. A wrong first plug poisons everything chosen after it, and one of the fixed candidates is the true plug, so that run begins in a far better basin. Together they close 68 percent of the deficit at 72 letters. The margin is still negative, and the ledger prints it as negative.",
+      "durationHintSec": 52
+    },
+    {
+      "kind": "concept",
+      "id": "finishable",
+      "kicker": "The upper bound",
+      "headline": "A true stop is finishable",
+      "subhead": "Four plugs flip the margin. Eight recover everything.",
+      "backgroundAsset": "08-finishable.svg",
+      "voiceover": "One result cuts the other way, and it is genuinely encouraging. If the machine is given a true stop plus a handful of correct plug pairs, it can finish the job at 72 letters. Four forced plugs flip the margin from negative to positive. Eight recover the complete key and 100 percent of the plaintext, on ten out of ten controls. But read that precisely, because it is easy to over-read. Those plugs come from the known key, so the result assumes the stop being seeded from is already the true one. It is an upper bound on how well finding and finishing could couple, not a break, and the ledger labels it exactly that way.",
+      "durationHintSec": 50
+    },
+    {
+      "kind": "concept",
+      "id": "wrong-german",
+      "kicker": "A reasoned guess that measured null",
+      "headline": "It was the wrong German",
+      "subhead": "It spells its numbers and punctuates with letters.",
+      "backgroundAsset": "09-wrong-german.svg",
+      "voiceover": "Here is a good failure. If the scorer is starving, the obvious fix is a better language model, and the available one is 28.5 million letters of generic German. But naval traffic is not generic German. It is a dialect: X and Y serve as punctuation, numbers are spelled out as words, U-boats are marked with a triple U, and procedure markers repeat fixed letter groups. So a naval-dialect model should beat a bigger generic one. It was a reasoned hypothesis, it was tested, and it measured null. That is recorded as a null result rather than quietly dropped.",
+      "durationHintSec": 44
+    },
+    {
+      "kind": "narration",
+      "id": "the-real-bottleneck",
+      "headline": "The bottleneck is data, not silicon",
+      "bullets": [
+        "Corpus is ~10,300 letters — about 15 counts per bigram cell",
+        "Published work uses tables built from millions",
+        "Crib logic eliminates by contradiction instead of fitting"
+      ],
+      "backgroundAsset": "10-bottleneck.svg",
+      "voiceover": "So what would actually move it? The top priority is not a bigger machine. The German corpus behind the scorer is about 10,300 letters, which gives roughly 15 counts per bigram cell and is far too thin for trigrams, while published attacks use tables built from millions of letters. That is a data problem, and it gates everything else. Second, climb at every rotor setting rather than after a sieve, because check one proved the sieve throws the answer away. And third, the deterministic route: crib logic with a diagonal board eliminates plugboard hypotheses by contradiction instead of fitting them. Historically, that is the method that actually worked.",
+      "durationHintSec": 52
+    },
+    {
+      "kind": "outro",
+      "id": "outro",
+      "headline": "Two numbers are the gate",
+      "subhead": "Any proposed improvement has to move them.",
+      "nextEpisode": "The frontier",
+      "backgroundAsset": "05-verdict.svg",
+      "voiceover": "The rehearsal leaves behind a gate that any future idea has to pass. Move the percentile, or move the climb that walks away from its own answer. An improvement that does neither is decoration, however clever it sounds. P1030680 remains unbroken, and the reason is now specific rather than vague: the search space is affordable and the measurement is not yet good enough to navigate it. Next, the speculative work, and the first experiment that would earn each idea a place in the ledger.",
+      "durationHintSec": 40
+    }
+  ]
+}

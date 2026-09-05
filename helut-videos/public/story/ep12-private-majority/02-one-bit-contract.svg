@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" role="img" aria-labelledby="t d">
+  <title id="t">The bounded privacy contract for the private-majority experiment</title>
+  <desc id="d">Five encrypted ballot bits are evaluated, one chosen result is decrypted inside the SING harness, and stronger voting-system claims remain outside the receipt.</desc>
+  <rect width="1920" height="1080" fill="#091522"/>
+  <g transform="translate(1000 158)" font-family="Arial,sans-serif">
+    <text x="415" y="14" text-anchor="middle" fill="#9aa8b8" font-size="15" letter-spacing="3">THE CONTRACT, BEFORE THE RESULT</text>
+    <g transform="translate(0 54)">
+      <rect width="232" height="118" rx="16" fill="#142738" stroke="#22a89c" stroke-width="2"/>
+      <text x="116" y="32" text-anchor="middle" fill="#22a89c" font-size="14" letter-spacing="2">INPUT</text>
+      <text x="116" y="66" text-anchor="middle" fill="#fff" font-size="21" font-weight="700">5 ballot bits</text>
+      <text x="116" y="94" text-anchor="middle" fill="#9aa8b8" font-size="17">encrypted</text>
+    </g>
+    <path d="M232 113h64" stroke="#66758a" stroke-width="4"/><path d="M286 104l14 9-14 9" fill="none" stroke="#66758a" stroke-width="4"/>
+    <g transform="translate(300 54)">
+      <rect width="232" height="118" rx="16" fill="#282235" stroke="#d4833f" stroke-width="2"/>
+      <text x="116" y="32" text-anchor="middle" fill="#d4833f" font-size="14" letter-spacing="2">EVALUATE</text>
+      <text x="116" y="66" text-anchor="middle" fill="#fff" font-size="21" font-weight="700">3 LUT graph</text>
+      <text x="116" y="94" text-anchor="middle" fill="#9aa8b8" font-size="17">majority ≥ 3</text>
+    </g>
+    <path d="M532 113h64" stroke="#66758a" stroke-width="4"/><path d="M586 104l14 9-14 9" fill="none" stroke="#66758a" stroke-width="4"/>
+    <g transform="translate(600 54)">
+      <rect width="230" height="118" rx="16" fill="#122b35" stroke="#22a89c" stroke-width="2"/>
+      <text x="115" y="32" text-anchor="middle" fill="#22a89c" font-size="14" letter-spacing="2">REVEAL</text>
+      <text x="115" y="66" text-anchor="middle" fill="#fff" font-size="21" font-weight="700">1 result bit</text>
+      <text x="115" y="94" text-anchor="middle" fill="#9aa8b8" font-size="17">decrypted in harness</text>
+    </g>
+    <rect x="70" y="222" width="690" height="96" rx="16" fill="#101a2b" stroke="#66758a"/>
+    <text x="415" y="254" text-anchor="middle" fill="#9aa8b8" font-size="14" letter-spacing="2">WHAT THE HARNESS DOES</text>
+    <text x="415" y="284" text-anchor="middle" fill="#fff" font-size="20">decrypt chosen output · compare with clear golden model</text>
+    <text x="415" y="306" text-anchor="middle" fill="#9aa8b8" font-size="16">the same process owns the key</text>
+    <rect x="40" y="354" width="750" height="112" rx="16" fill="#2b2025" stroke="#d4833f" stroke-width="2"/>
+    <text x="415" y="386" text-anchor="middle" fill="#d4833f" font-size="14" letter-spacing="2">OUTSIDE THIS RECEIPT</text>
+    <text x="415" y="420" text-anchor="middle" fill="#fff" font-size="20" font-weight="700">not a deployed multiparty voting protocol</text>
+    <text x="415" y="448" text-anchor="middle" fill="#9aa8b8" font-size="16">no authentication · threshold custody · coercion resistance</text>
+  </g>
+</svg>

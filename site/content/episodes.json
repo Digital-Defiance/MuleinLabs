@@ -1,0 +1,1397 @@
+{
+  "schemaVersion": 1,
+  "generatedFrom": "helut-videos/scripts/episodes",
+  "episodes": [
+    {
+      "episodeNumber": 0,
+      "sourceFile": "ep00-what-is-helut.json",
+      "id": "ep00-what-is-helut",
+      "compositionId": "Episode00",
+      "title": "What is HELUT?",
+      "youtubeTitle": "What is HELUT? Living Research on Circuits, Torus FHE, and TensorLUT",
+      "description": "A plain-language map of HELUT: one Yosys-to-Metal compiler substrate, two core research paths, chosen application case studies, and a living claim ledger that gets corrected in public. Epoch C69. Site: https://helut.digitaldefiance.org · Source: https://github.com/Digital-Defiance/HELUT",
+      "claimEpoch": "2026-08-20 / C69",
+      "scenes": [
+        {
+          "kind": "title",
+          "id": "title",
+          "voiceover": "This is living research on living silicon. Every claim in this series carries a date, because the ledger changes as evidence arrives. HELUT stands for Homomorphic Edge Look-Up Tensors: a Swift and Metal research prototype that treats a digital circuit as something you can compute, search, and encrypt on Apple silicon.",
+          "durationHintSec": 24,
+          "eyebrow": "HELUT · Concept series",
+          "headline": "What is HELUT?",
+          "subhead": "Living research · living silicon · a dated ledger"
+        },
+        {
+          "kind": "narration",
+          "id": "substrate-not-application",
+          "voiceover": "Yosys is an open-source synthesis tool. It turns a circuit description into a parts list called a netlist: wires, look-up tables, and flip-flops. A look-up table stores a small truth table, which lists the output for every possible input. HELUT compiles those supported parts, adds a batch dimension for independent circuit instances, and runs them on Metal. Once a problem fits that shape, it can become a case study.",
+          "durationHintSec": 31,
+          "headline": "A substrate, not one application",
+          "bullets": [
+            "Yosys netlist: wires, look-up tables, flip-flops",
+            "Many independent circuit instances in one batch",
+            "Applications inherit capabilities—not claims"
+          ]
+        },
+        {
+          "kind": "concept",
+          "id": "two-core-paths",
+          "voiceover": "The Metal compiler is shared infrastructure. One core research path evaluates circuit wires under torus fully homomorphic encryption. Another, TensorLUT, searches the truth tables that define hardware. The cleartext compiler and batch engine also power concrete applications. Later in this series, I show one I chose: using historical Enigma as a difficult search problem. That application does not define HELUT.",
+          "durationHintSec": 27,
+          "headline": "Torus FHE · TensorLUT",
+          "subhead": "Applications use it without redefining it.",
+          "kicker": "One substrate · two core paths"
+        },
+        {
+          "kind": "narration",
+          "id": "what-runs",
+          "voiceover": "Today the repository compiles supported Yosys circuits to CPU and Metal graphs. It runs cleartext batches, encrypted look-up-table demonstrations, and TensorLUT synthesis experiments. It has also booted a processor core under encryption, one clock tick at a time. I used the cleartext batch path for the P1030680 Enigma campaign, and a later rotor-inspired experiment called E256 grew out of it.",
+          "durationHintSec": 30,
+          "headline": "What runs today",
+          "bullets": [
+            "Supported Yosys circuits → CPU and Metal graphs",
+            "Cleartext batches, encrypted LUTs, TensorLUT search",
+            "Application case studies keep separate claims"
+          ]
+        },
+        {
+          "kind": "narration",
+          "id": "non-claims",
+          "voiceover": "HELUT did not invent torus fully homomorphic encryption. In the Enigma application, it has not decrypted P1030680. The later E256 offshoot is not approved for real secrets, and cross-implementation parity is not a security proof. Even the hardness estimates are configuration-specific: of eight compared parameter sets, only four agree with the reference estimator inside the stated tolerance.",
+          "durationHintSec": 30,
+          "headline": "The non-claims are part of the result",
+          "bullets": [
+            "No claim to have invented torus FHE",
+            "Enigma application: no P1030680 decrypt",
+            "E256 offshoot: no production-security claim"
+          ]
+        },
+        {
+          "kind": "concept",
+          "id": "living-research",
+          "voiceover": "This project is deliberately unfinished. The claim sheet is a living ledger: results get measured again, and some get withdrawn. One encrypted failure turned out to be a nondeterminism bug rather than a limit. Seven timing rows had understated the code by about two times. The work is a search for new levers, new applications, and better evidence. When a claim breaks, it gets fixed in public, with the correction recorded.",
+          "durationHintSec": 31,
+          "headline": "Deliberately unfinished",
+          "subhead": "Re-measured, corrected, withdrawn, replaced.",
+          "kicker": "Living ledger · dated claims"
+        },
+        {
+          "kind": "outro",
+          "id": "outro",
+          "voiceover": "Next, we follow one supported Yosys circuit from JSON into a Metal graph. That shared compiler makes the later cleartext, encrypted, and TensorLUT paths easier to understand.",
+          "durationHintSec": 17,
+          "headline": "Next: the compiler substrate",
+          "subhead": "One Yosys circuit, from JSON to a Metal graph."
+        }
+      ],
+      "captures": []
+    },
+    {
+      "episodeNumber": 1,
+      "sourceFile": "ep01-metal-compiler.json",
+      "id": "ep01-metal-compiler",
+      "compositionId": "Episode01",
+      "title": "The compiler substrate",
+      "youtubeTitle": "How HELUT Compiles Yosys Circuits into One Metal Graph",
+      "description": "How HELUT parses supported Yosys LUT and flip-flop cells, lowers dependency waves into a Metal Performance Shaders Graph, and uses a batch dimension for independent circuit evaluation and later application experiments. Epoch C69. Cleartext fitness is not encrypted throughput.",
+      "claimEpoch": "2026-08-20 / C69",
+      "scenes": [
+        {
+          "kind": "title",
+          "id": "title",
+          "voiceover": "HELUT begins with a supported Yosys circuit. It turns each look-up table and flip-flop into tensor operations, then builds one Metal Performance Shaders Graph. A batch dimension lets that graph evaluate many independent circuit states in parallel.",
+          "durationHintSec": 21,
+          "eyebrow": "HELUT · Shared substrate",
+          "headline": "The compiler substrate",
+          "subhead": "Yosys JSON → supported cells → one reusable Metal graph"
+        },
+        {
+          "kind": "concept",
+          "id": "compiler-flow",
+          "voiceover": "A Yosys JSON netlist names wires, look-up-table truth tables, and flip-flops. HELUT parses the supported cells and groups independent look-up tables by dependency. It lowers each group into tensor operations and builds one reusable graph. A host loop supplies inputs, advances the clock, and carries state into the next tick.",
+          "durationHintSec": 28,
+          "headline": "A circuit becomes a graph",
+          "subhead": "Dependencies determine waves; the host advances sequential state.",
+          "kicker": "Parse · lower · schedule · build · tick"
+        },
+        {
+          "kind": "narration",
+          "id": "lut-dff",
+          "voiceover": "A look-up table stores a small truth table. HELUT expands that table into a multilinear tensor operation. A D flip-flop preserves one state bit between ticks; enable and synchronous-reset behavior remain explicit. Alternating state buffers keep combinational evaluation separate from the clock edge.",
+          "durationHintSec": 25,
+          "headline": "Truth tables and state",
+          "bullets": [
+            "Each LUT → multilinear truth-table expansion",
+            "D flip-flops preserve state across ticks",
+            "Enable, reset, and clock behavior stay explicit"
+          ]
+        },
+        {
+          "kind": "concept",
+          "id": "batch-axis",
+          "voiceover": "B is the batch dimension. Each row carries an independent circuit state through the same compiled graph. That batching is application-agnostic. I later used it to test and score many historical Enigma hypotheses at once. The blind-control campaign averaged 37.4 million settings per second. Hold on to that number: it is a cleartext rate, and an encrypted tick costs roughly a hundred seconds. Those two figures must never be mixed.",
+          "durationHintSec": 33,
+          "headline": "Many machines, one graph run",
+          "subhead": "Independent rows share the schedule without sharing state.",
+          "kicker": "Batch dimension B"
+        },
+        {
+          "kind": "narration",
+          "id": "apps",
+          "voiceover": "The supported-cell path has run PicoRV32 processor cores, regular-expression and decision-tree demos, a radio receiver matching bytes off the air, and a historical M4 search application. E256 is a later experimental offshoot, not another compiler capability. These examples test compiler breadth; they do not share one security level. The encrypted processor work is real but narrow: a ten-tick boot and an instruction fetch, at reduced wire dimension. That is a functional check, not Linux and not a production encrypted CPU.",
+          "durationHintSec": 39,
+          "headline": "What the supported-cell path has run",
+          "bullets": [
+            "PicoRV32 processor stress tests",
+            "Regular-expression and decision-tree demos",
+            "Historical M4 application and later E256 offshoot"
+          ]
+        },
+        {
+          "kind": "outro",
+          "id": "outro",
+          "voiceover": "Next, we keep the circuit schedule but replace clear Boolean wires with encrypted lattice samples. We will define each sample type before showing how blind rotation evaluates a look-up table.",
+          "durationHintSec": 17,
+          "headline": "Next: torus FHE",
+          "subhead": "Keep the schedule. Replace Boolean wires with encrypted samples."
+        }
+      ],
+      "captures": []
+    },
+    {
+      "episodeNumber": 2,
+      "sourceFile": "ep02-torus-fhe.json",
+      "id": "ep02-torus-fhe",
+      "compositionId": "Episode02",
+      "title": "Torus FHE",
+      "youtubeTitle": "HELUT Torus FHE: From Encrypted Wires to Blind Rotation",
+      "description": "A term-first tour of HELUT's torus fully homomorphic encryption path: encrypted sample types, blind rotation, negacyclic kernels, the SING correctness gate (Stimuli In, Golden out), wavefront scheduling, configuration-specific receipts, and open limits. Epoch C69.",
+      "claimEpoch": "2026-08-20 / C69",
+      "scenes": [
+        {
+          "kind": "title",
+          "id": "title",
+          "voiceover": "One HELUT research path explores torus fully homomorphic encryption, or FHE. In FHE, a circuit can operate on ciphertexts without first revealing the underlying bits. The torus here means values sit on a wrapped number circle, so arithmetic runs around the circle instead of overflowing. HELUT keeps the supported Yosys schedule, but replaces clear Boolean wires with encrypted samples built on lattices: hard problems over regular grids of points.",
+          "durationHintSec": 32,
+          "eyebrow": "HELUT · Encrypted evaluation",
+          "headline": "Torus FHE",
+          "subhead": "Operate on encrypted circuit wires without first revealing their bits."
+        },
+        {
+          "kind": "concept",
+          "id": "sample-types",
+          "voiceover": "A learning-with-errors sample, shortened to L W E, carries one encrypted scalar wire. A polynomial form called G L W E supplies the rotating accumulator. A G G S W bootstrap key lets the circuit choose a rotation without exposing the control bit. These are different data structures, not three security grades. The errors in that first name are the point: every sample carries deliberate random noise, and that noise is what hides the value. Each operation makes the noise grow, which is why this episode keeps measuring it.",
+          "durationHintSec": 38,
+          "headline": "Wire · accumulator · bootstrap key",
+          "subhead": "LWE carries a scalar wire; GLWE carries a polynomial; GGSW controls rotation.",
+          "kicker": "Three jobs · three structures"
+        },
+        {
+          "kind": "concept",
+          "id": "blind-rotate",
+          "voiceover": "Blind rotation turns an encrypted input into a look-up-table result without decrypting the wire. In the public path, modulus switching prepares that result for the next stage. HELUT also has a secret-key refresh mode for experiments. That mode is not an end-to-end public FHE path. The scheduler runs independent look-up tables together, while the host advances sequential state.",
+          "durationHintSec": 32,
+          "headline": "Blind rotation selects the answer",
+          "subhead": "The public path continues without a secret-key refresh.",
+          "kicker": "Encrypted look-up table"
+        },
+        {
+          "kind": "concept",
+          "id": "negacyclic",
+          "voiceover": "The heavy kernel is a negacyclic matrix-vector product. Coefficients that run off the end of the polynomial wrap back to the front with their sign flipped. At degree 1024, native unsigned 32-bit wraparound supplies the modular arithmetic for free.",
+          "durationHintSec": 24,
+          "headline": "Wrap around with a sign change",
+          "subhead": "A negacyclic matrix-vector product supplies the blind-rotation muscle.",
+          "kicker": "Heavy kernel"
+        },
+        {
+          "kind": "concept",
+          "id": "sing",
+          "voiceover": "SING is the correctness gate everything else depends on, and the name spells out the method: Stimuli In, Golden out. In hardware verification, a golden model is the trusted reference implementation. Here that reference is the cleartext netlist simulator. So one set of input vectors runs twice. Through the clear circuit, they produce golden bits. Encrypted, evaluated under blind rotation, then decrypted, they must reproduce those same bits exactly. It is the encrypted equivalent of a scan chain. Three published configurations already clear this gate: the adder, the regular-expression matcher, and the processor at reduced wire dimension. And the rule that follows is deliberately harsh: if SING fails, timing is not discussed at all. A fast wrong answer is not a result.",
+          "durationHintSec": 50,
+          "headline": "Stimuli In, Golden out",
+          "subhead": "The golden model is the cleartext netlist.",
+          "kicker": "The correctness gate"
+        },
+        {
+          "kind": "concept",
+          "id": "wavefront",
+          "voiceover": "Look-up tables with no dependency between them can blind-rotate in the same scheduler wave. In one logged configuration, eight SING rows took 10.6 seconds at degree 1024. That number measures the scheduler and the kernels together. It is not the cleartext campaign's settings-per-second rate.",
+          "durationHintSec": 26,
+          "headline": "Independent LUTs share a wave",
+          "subhead": "Scheduling and kernels are measured together; campaign throughput is separate.",
+          "kicker": "Claim C20 · scheduling"
+        },
+        {
+          "kind": "narration",
+          "id": "certificates",
+          "voiceover": "Each published configuration needs three separate answers. Did encrypted output match clear output? Did measured noise stay inside the stated bound? What hardness estimate applies to these exact dimensions? The bar for that noise bound is an error probability of two to the minus sixty-four. One logged configuration clears it with room to spare. A neighbouring one shows why parameters matter: at spacing seven it falls short, and only at spacing fourteen does it clear. Neither result becomes a universal guarantee.",
+          "durationHintSec": 39,
+          "headline": "Three questions, three receipts",
+          "bullets": [
+            "Correctness: did encrypted output match clear output?",
+            "Noise: did the measured bound clear its stated bar?",
+            "Hardness: which exact dimensions were estimated?"
+          ]
+        },
+        {
+          "kind": "narration",
+          "id": "honest-limits",
+          "voiceover": "Limits remain. Campaign fitness is cleartext, not FHE throughput. The adder ladder now passes at wire dimensions 256 and 512, because a determinism defect was found and fixed; the earlier failure at 512 was withdrawn, not explained away. Separate checks at full native dimension still fail. The hardness comparison only agrees on some parameter sets, so no single bit-count describes the system. HELUT has not established side-channel or quantum resistance.",
+          "durationHintSec": 36,
+          "headline": "Open limits stay visible",
+          "bullets": [
+            "Campaign fitness is cleartext, not FHE throughput",
+            "Native-dimension processor checks still fail",
+            "No side-channel or quantum-resistance claim"
+          ]
+        },
+        {
+          "kind": "outro",
+          "id": "outro",
+          "voiceover": "Next, the circuit returns to cleartext, but its look-up-table contents become variables. TensorLUT relaxes those truth tables to continuous values, searches them on Metal, and checks whether a binary circuit can be emitted.",
+          "durationHintSec": 19,
+          "headline": "Next: TensorLUT",
+          "subhead": "Keep the circuit clear, but make its truth tables searchable."
+        }
+      ],
+      "captures": []
+    },
+    {
+      "episodeNumber": 3,
+      "sourceFile": "ep03-tensorlut.json",
+      "id": "ep03-tensorlut",
+      "compositionId": "Episode03",
+      "title": "TensorLUT",
+      "youtubeTitle": "HELUT TensorLUT: Searching and Emitting Truth Tables",
+      "description": "TensorLUT turns supported Yosys LUT truth tables into continuous search variables, evaluates them on Metal, and emits discrete Verilog only when bounded checks pass. C44 and C48 stay scoped; this is not a P1030680 decrypt. Epoch C69.",
+      "claimEpoch": "2026-08-20 / C69",
+      "scenes": [
+        {
+          "kind": "title",
+          "id": "title",
+          "voiceover": "Another HELUT research path is TensorLUT. A look-up table normally has a fixed truth table, stored in a value called INIT. TensorLUT treats those entries as search variables, relaxes them to continuous values, and optimizes the circuit on Metal.",
+          "durationHintSec": 22,
+          "eyebrow": "HELUT · Circuit search",
+          "headline": "TensorLUT",
+          "subhead": "Search the truth tables, then demand discrete hardware."
+        },
+        {
+          "kind": "concept",
+          "id": "melt",
+          "voiceover": "The cycle has four stages: melt, score, freeze, and snap. Melting means taking the 64 truth-table entries of a six-input look-up table and letting them hold fractional values, blending between entries instead of choosing. Scoring compares circuit output against target behavior. Freezing holds the parts that must not move. Snapping raises a penalty that pushes every entry back to zero or one, and only then does the emitter write a discrete Verilog circuit.",
+          "durationHintSec": 35,
+          "headline": "Continuous search, binary destination",
+          "subhead": "A six-input LUT has 64 truth-table entries.",
+          "kicker": "Melt · score · freeze · snap"
+        },
+        {
+          "kind": "narration",
+          "id": "what-worked",
+          "voiceover": "To test this search on a real stateful circuit, I used an unmodified historical Enigma M4 netlist as one benchmark. It first serves as a zero-error baseline. Attempts to melt every entry, or only the plugboard cone, shattered: thousands of values refused to settle to zero or one. The current bounded experiment freezes the known circuit and searches only an involutive plugboard, meaning one that undoes itself, of at most ten swapped pairs. A blind three-pair recovery passed on a short crib.",
+          "durationHintSec": 38,
+          "headline": "What worked—and what did not",
+          "bullets": [
+            "Unmodified M4 netlist: zero-error baseline",
+            "Full-INIT and plugboard-cone melts: unstable",
+            "Frozen core + ≤10-pair involution: bounded success"
+          ]
+        },
+        {
+          "kind": "concept",
+          "id": "theorem",
+          "voiceover": "The formal result is bounded, and the boundary is precise. For one fully observed look-up table, there is a proof that it returns to its target truth table from anywhere inside the snap basin: the region where every entry is already nearer its goal than its opposite. A second certificate extends that to a two-table cascade and emits Verilog. The ladder currently stops at two tables. Arbitrary multi-table netlists are the open frontier, not a solved case.",
+          "durationHintSec": 37,
+          "headline": "Continuous does not automatically mean discrete",
+          "subhead": "C44 covers one observed LUT; C48 demonstrates a two-LUT cascade.",
+          "kicker": "Bounded bridge"
+        },
+        {
+          "kind": "narration",
+          "id": "parallel",
+          "voiceover": "That M4 benchmark does not turn TensorLUT into an Enigma project, and it is not evidence that P1030680 is broken. TensorLUT supplies no guessed plaintext, key, or decrypt. Searching a look-up-table genotype, searching historical M4 settings in a chosen application, and proposing a new E256 profile in a later offshoot are related experiments, but they are not the same process. None should mutate a live cipher without review.",
+          "durationHintSec": 36,
+          "headline": "Related experiments are not interchangeable",
+          "bullets": [
+            "TensorLUT does not supply a P1030680 crib",
+            "M4 application and E256 offshoot are distinct",
+            "No live cipher mutates without review"
+          ]
+        },
+        {
+          "kind": "outro",
+          "id": "outro",
+          "voiceover": "One separate application combined HELUT's cleartext compiler and TensorLUT machinery with a historical Enigma target. Next, I explain why I chose that problem, define the attack terms, and follow each stop through the candidate and break gates. The FHE work remains a separate research path.",
+          "durationHintSec": 26,
+          "headline": "Next: one application—the P1030680 Bombe",
+          "subhead": "Why choose Enigma? Then define cribs, inspect the machine, and bound the result."
+        }
+      ],
+      "captures": []
+    },
+    {
+      "episodeNumber": 4,
+      "sourceFile": "ep04-p1030680-bombe.json",
+      "id": "ep04-p1030680-bombe",
+      "compositionId": "Episode04",
+      "title": "The P1030680 Bombe",
+      "youtubeTitle": "The P1030680 Bombe: What We Built, Tested, and Still Do Not Know",
+      "description": "Why an Enigma message appears in a HELUT series, and what this chosen application built: historical Bombe context, the blind P1030684 control, Welchman diagonal board, Mulein Board, 628-Future bank, and completed Phase 51.16 bounded stripe. The campaign uses HELUT's cleartext compiler and batch engine; it produced zero BREAK gates, no key, plaintext, or decrypt. Epoch C69.",
+      "claimEpoch": "2026-08-20 / C69",
+      "scenes": [
+        {
+          "kind": "title",
+          "id": "title",
+          "voiceover": "Why is an Enigma message in a HELUT series? I chose it as a concrete, demanding way to exercise the cleartext compiler and batch engine. The target, P1030680, is a 72-letter Enigma M4 message from the M-Thetis network, sent in May 1945. Its printed starting-position table is missing. HELUT tests explicit plaintext guesses, correction patterns, and rotor settings against that message. This episode separates a local stop, a physically valid candidate, and an actual break.",
+          "durationHintSec": 37,
+          "eyebrow": "HELUT application · Campaign evidence",
+          "headline": "The P1030680 Bombe",
+          "subhead": "Why this problem · what we built · why the message remains unbroken"
+        },
+        {
+          "kind": "concept",
+          "id": "historical-context",
+          "voiceover": "Operational Enigma was not mathematically unbreakable without a crib. Polish cryptanalysts built the foundational attack, and British work by Alan Turing, Gordon Welchman, operators, and engineers extended it. A crib is a plausible plaintext fragment aligned with the ciphertext. Cribs supplied powerful constraints alongside procedures, traffic analysis, captured material, and machine weaknesses. Here the narrower question is what those methods can establish for one short message with no verified crib.",
+          "durationHintSec": 38,
+          "headline": "Enigma was breakable. This message is still unbroken.",
+          "subhead": "Cribs were powerful constraints, not the whole history of the break.",
+          "kicker": "Historical context"
+        },
+        {
+          "kind": "narration",
+          "id": "target",
+          "voiceover": "The archive leaves little leverage. There are 72 letters and no depth: no second message encrypted at the same setting. No broken M-Thetis corpus supplies a verified crib, and the printed table of starting positions, called the Grund table, is missing. The naval indicators narrow the search by less than one bit. Three other-network day keys score like noise. A sister message shows transcription errors are possible, but does not prove this target is corrupted.",
+          "durationHintSec": 41,
+          "headline": "The target starts with missing information",
+          "bullets": [
+            "72 letters · no depth · no verified M-Thetis crib",
+            "Lost Grund table · indicators contribute <1 bit",
+            "Possible transcription error, not established corruption"
+          ]
+        },
+        {
+          "kind": "concept",
+          "id": "blind-control",
+          "voiceover": "Before drawing conclusions about the target, HELUT ran the same path without revealing the answer on known message P1030684. Across 15.96 billion settings, two stops survived. The correct rotor configuration, all ten plug pairs, and readable German were recovered. The archived rerun took 427 seconds, averaging 37.4 million settings per second. This validates the tested path when the crib is true. It does not validate any target crib.",
+          "durationHintSec": 39,
+          "headline": "First prove the path on a blind control",
+          "subhead": "P1030684 recovered the rotor configuration, all ten plugs, and German plaintext.",
+          "kicker": "Claim C2 · positive control"
+        },
+        {
+          "kind": "concept",
+          "id": "ghost-sieve",
+          "voiceover": "A Bombe turns one crib alignment into a graph called a menu. Each edge represents the Enigma scrambler at one message step. The diagonal board starts from one proposed plug pair and propagates the constraints. A disconnected menu can satisfy one component while leaving another untested, creating a ghost stop. HELUT therefore asks whether all components fit one plugboard made of at most ten disjoint pairs. The known control passes. The recurring target stops tested here do not. Even a physical completion is only a candidate.",
+          "durationHintSec": 43,
+          "headline": "A stop is not a break",
+          "subhead": "Disconnected constraints can create ghost stops.",
+          "kicker": "Menu → diagonal board → physical plugboard"
+        },
+        {
+          "kind": "concept",
+          "id": "tolerant-board",
+          "voiceover": "One wrong crib letter can make exact propagation reject the true key. The Mulein Board first runs the exact graph, then retries the smallest recorded sets of deleted edges. It preserves the ten-pair limit, keeps the seed connected, and records every dropped edge. In the known control, one to three injected errors defeated the exact board. Matching tolerance recovered the true setting with all 25 forced plug deductions correct. The host and Metal research path test up to three deletions; the production bank reports exact or one-edge cases only. This is a sensitivity control, not evidence that P1030680 is corrupted.",
+          "durationHintSec": 50,
+          "headline": "Delete before closure—and record the repair",
+          "subhead": "Exact first. Minimal edge deletions next. Provenance always preserved.",
+          "kicker": "Mulein Board · pronounced mull-een"
+        },
+        {
+          "kind": "concept",
+          "id": "future-bank",
+          "voiceover": "A Future is one fully specified crib and correction geometry. The current manifest contains 628: 314 unchanged alignments and 314 hypotheses with a four-letter gap. One shared 80-step-by-26-letter Enigma trail feeds four parallel lanes. Each lane emits a compact receipt. The host rejects duplicates and replays every hit before a break gate can open. The implementation agrees across four tested surfaces on the known control. This is a cleartext search path, not FHE.",
+          "durationHintSec": 39,
+          "headline": "628 Futures share one M4 trail",
+          "subhead": "Each Future is one fully specified crib and correction geometry.",
+          "kicker": "Unified search machine"
+        },
+        {
+          "kind": "narration",
+          "id": "bounded-stripe",
+          "voiceover": "The setting-zero preflight checked all 628 Futures and retained 15 one-edge repair candidates. It opened no break gate. Production then covered settings one through 255 on the same fixed shell. It checked 4,163,640 receipts and retained 4,184 host-verified candidates; that count excludes the 15 preflight repairs. Forty exact identity hits failed plugboard completion. Forty-one exact post-gap hits await full-message replay. Another 4,103 one-edge repairs await correction replay. No candidate reached a break gate. The run produced no scored plaintext, key, or decrypt.",
+          "durationHintSec": 55,
+          "headline": "What Phase 51.16 actually covered",
+          "bullets": [
+            "Setting 0 preflight: 15 repairs · 0 gates",
+            "Settings 1–255 production: 4,184 candidates · 0 gates",
+            "One fixed shell; settings 256–456,975 and other shells remain open"
+          ]
+        },
+        {
+          "kind": "concept",
+          "id": "replay-next",
+          "voiceover": "For this shell, settings 256 through 456,975 remain open, as do all other shells. More than 82 percent of candidates in the leading four-letter-gap family paired with translated identity states. That does not eliminate a real gap at another boundary. It does make another same-shaped stripe low-information. Next, replay the 41 exact post-gap hits with their full geometry, then deduplicate and explicitly test the strongest identity repairs.",
+          "durationHintSec": 38,
+          "headline": "Replay before widening",
+          "subhead": "Most settings, every other shell, and legacy coverage gaps remain open.",
+          "kicker": "Bounded negative · open campaign"
+        },
+        {
+          "kind": "outro",
+          "id": "outro",
+          "voiceover": "This campaign is one application of HELUT, not the definition of the project. The tested machine recovered the known control. For the target, it covered one shell, all 628 hypotheses, and only settings zero through 255. No break gate opened, and P1030680 remains unbroken. Next, I follow a separate idea that grew from the attack lessons: E256, an experimental rotor-inspired offshoot.",
+          "durationHintSec": 33,
+          "headline": "A machine, a bounded result, and an open message",
+          "subhead": "One HELUT application ends with public receipts—not a decrypt."
+        }
+      ],
+      "captures": []
+    },
+    {
+      "episodeNumber": 5,
+      "sourceFile": "ep05-enigma256-architecture.json",
+      "id": "ep05-enigma256-architecture",
+      "compositionId": "Episode05",
+      "title": "E256 — Turning Enigma Inside Out",
+      "youtubeTitle": "E256 Architecture: Turning Enigma's Weaknesses into a Design Brief",
+      "description": "How one HELUT application led to E256, a separate experimental crypto offshoot; what its anti-fascist counter-history means to its author; and how the byte-wide reciprocal machine is built. Covers base 256, the attack-response matrix, ten-access byte path, state schedule, and host/RTL boundary. Experimental; not for real secrets. Epoch C69.",
+      "claimEpoch": "2026-08-20 / C69",
+      "scenes": [
+        {
+          "kind": "title",
+          "id": "title",
+          "voiceover": "E256 is not a third HELUT pillar. It is a separate experimental crypto offshoot inspired by the Enigma application. After using HELUT to study historical M4 search, I turned selected attack lessons into a new design brief. E256 is a byte-wide stream construction inspired by rotor machines. It is not a repaired M4, and it is not compatible with historical Enigma.",
+          "durationHintSec": 31,
+          "eyebrow": "From application to offshoot",
+          "headline": "E256",
+          "subhead": "A byte-wide reciprocal machine inspired by rotor structure—not a repaired M4."
+        },
+        {
+          "kind": "concept",
+          "id": "counter-history",
+          "voiceover": "Foundational Polish cryptanalysis, then work by Turing, Welchman, operators, engineers, and captured intelligence made historical breaks possible. As a trans engineer, I also read Turing's persecution as a warning about state power against queer people. Reversing the symbolism matters to me: study a fascist war machine, publish its weaknesses, and build defensive tools against modern neo-Nazi and authoritarian threats. That ethical frame is personal. It does not prove E256 secure or make past and present identical.",
+          "durationHintSec": 41,
+          "headline": "Counter-history, not a security claim",
+          "subhead": "Remember the full history. Reverse the symbolism. Build defensively.",
+          "kicker": "Motivation · not evidence"
+        },
+        {
+          "kind": "concept",
+          "id": "what-256-means",
+          "voiceover": "The number 256 describes the byte alphabet, from hexadecimal zero-zero through F F. It is a base-256 datapath, not a claim of 256-bit security. The design replaces a 26-letter alphabet, a ten-pair plugboard, a reflector, paper day keys, and odometer stepping. Replacing those features changes the attack surface. It does not measure the new one.",
+          "durationHintSec": 31,
+          "headline": "256 byte values—not 256 bits of security",
+          "subhead": "The alphabet is 00 through FF; the security level is unknown.",
+          "kicker": "Name the width honestly"
+        },
+        {
+          "kind": "concept",
+          "id": "attack-response",
+          "voiceover": "Historical attacks used a small alphabet, the reflector's self-encipherment rule, predictable rotor motion, a thin plugboard, and operational key procedures. E256 responds with full-byte permutations, no reflector, four independently enabled rotors, a full 256-entry plugboard, and software-derived message state. These are architectural responses to specific weaknesses. There is no proof that adapted statistical, algebraic, protocol, or physical attacks will fail.",
+          "durationHintSec": 35,
+          "headline": "Patch specific attack conveniences",
+          "subhead": "Architecture can answer a requirement; only cryptanalysis can grade the answer.",
+          "kicker": "M4 wound → E256 response → unknown"
+        },
+        {
+          "kind": "concept",
+          "id": "byte-path",
+          "voiceover": "One byte enters a full 256-entry involutive plugboard and passes forward through four selected rotors. It then combines with a host-derived center-mask byte using exclusive OR. The byte returns through the four inverse rotors and the same plugboard. For one frozen state, the same path decrypts what it encrypted. Nine unique tables require ten serial accesses because the plugboard is visited twice. Reciprocity is a functional invariant, not confidentiality evidence.",
+          "durationHintSec": 38,
+          "headline": "Ten accesses across nine tables",
+          "subhead": "Plugboard → four rotors → center mask → four inverse rotors → plugboard",
+          "kicker": "Reciprocal byte path"
+        },
+        {
+          "kind": "concept",
+          "id": "day-and-message-state",
+          "voiceover": "Day material contains one full plugboard and 16 forward-and-reverse rotor pairs. A message nonce selects four active rotors, four starting offsets, a 64-bit state seed, and a center-mask key. Hardware loads only the active plugboard and four rotor pairs: nine tables, or 2,304 bytes. After each accepted byte, a shift register with linear feedback feeds a nonlinear filter. That filter decides independently which of the four rotors step.",
+          "durationHintSec": 38,
+          "headline": "Sixteen rotors in the pool; four active",
+          "subhead": "A nonce selects rotors, offsets, state seed, and the center schedule.",
+          "kicker": "Day material · message state"
+        },
+        {
+          "kind": "concept",
+          "id": "trust-boundary",
+          "voiceover": "The host owns the handshake, key derivation, container authentication, nonce discipline, and center-mask schedule. For each byte, it sends one atomic tuple: payload, center mask, and absolute byte counter. The RTL checks that counter before transforming or advancing state. It does not store the message-authentication key, and it does not derive or validate the mask itself. That trust boundary is explicit and still under audit.",
+          "durationHintSec": 37,
+          "headline": "The hardware trusts a supplied mask",
+          "subhead": "The host authenticates and derives; RTL checks the counter and transforms.",
+          "kicker": "Host / RTL boundary"
+        },
+        {
+          "kind": "concept",
+          "id": "one-byte-in-time",
+          "voiceover": "The update order is part of the cipher identity. First snapshot the tuple and compare its counter. Then transform under the current offsets and emit the output. Only after acceptance does the machine apply the captured four-bit step mask, clock its state register, and increment the counter. A counter mismatch raises an error and must not advance the stream.",
+          "durationHintSec": 31,
+          "headline": "Validate, transform, emit, then step",
+          "subhead": "A counter mismatch raises an error and must not advance the stream.",
+          "kicker": "One accepted byte"
+        },
+        {
+          "kind": "outro",
+          "id": "outro",
+          "voiceover": "E256 removes or changes several conveniences used against M4. The live fixture has bounded reciprocity and cross-implementation parity receipts. Its security level, comparative strength, and production suitability remain unknown. Use standardized authenticated encryption for real data. Next, we examine the failed generations, the offline promotion loop, and what evidence is still missing.",
+          "durationHintSec": 30,
+          "headline": "A response matrix is not a security proof",
+          "subhead": "E256 removes selected M4 conveniences; comparative strength remains unknown."
+        }
+      ],
+      "captures": []
+    },
+    {
+      "episodeNumber": 6,
+      "sourceFile": "ep06-e256-evolution-audit.json",
+      "id": "ep06-e256-evolution-audit",
+      "compositionId": "Episode06",
+      "title": "E256 — Evolution Without Hype",
+      "youtubeTitle": "E256 Evolution Without Hype: Autopsy, Offline Promotion, Open Audit",
+      "description": "The honest E256 offshoot story: three related but distinct search roles, quarantined v1 failures, immutable runtime profiles, deterministic offline candidate promotion, bounded parity evidence, open threats, and the long-lived-algorithm thought experiment. Experimental; not for real secrets. Epoch C69.",
+      "claimEpoch": "2026-08-20 / C69",
+      "scenes": [
+        {
+          "kind": "title",
+          "id": "title",
+          "voiceover": "Could a cipher lineage improve after each disclosed weakness? E256 treats that as a research question, not a promise of immortality. The running profile is immutable. Candidate changes happen offline, keep their failed ancestors visible, and require explicit promotion.",
+          "durationHintSec": 23,
+          "eyebrow": "E256 · Experimental offshoot",
+          "headline": "Evolution without hype",
+          "subhead": "The research ledger changes. The running cipher does not mutate itself."
+        },
+        {
+          "kind": "concept",
+          "id": "three-evolutions",
+          "voiceover": "Three related projects use search for different jobs. In HELUT's core TensorLUT path, search adjusts continuous truth-table values and may emit a discrete circuit. In the Enigma application, the Bombe searches historical M4 hypotheses and never changes that cipher. In the separate E256 offshoot, profile search proposes a new, versioned construction for later review. Shared optimization tools do not make them one system.",
+          "durationHintSec": 35,
+          "headline": "Core path, application, offshoot",
+          "subhead": "TensorLUT genotype · M4 hypothesis · E256 profile",
+          "kicker": "Different roles · different outputs"
+        },
+        {
+          "kind": "concept",
+          "id": "v1-autopsy",
+          "voiceover": "Earlier E256 generations passed 35 of 35 tests while hiding structural failures. Their state transition lost rank; after 59 clocks, only rank five remained. About one in 32 sampled seeds locked at zero. One nonlinear formula also correlated with a linear input. Those profiles and their grades are quarantined. The lesson is not that evolution saved the cipher. It is that implementations can agree while testing the wrong invariant.",
+          "durationHintSec": 36,
+          "headline": "Passing tests hid a collapsing machine",
+          "subhead": "Thirty-five checks passed while the old recurrence lost almost all rank.",
+          "kicker": "Quarantined history"
+        },
+        {
+          "kind": "concept",
+          "id": "offline-promotion",
+          "voiceover": "The live fixture-v4 profile cannot breed or apply mutations at runtime. Red-team pressure is recorded. A deterministic offline search may propose candidates, and it may return no acceptable candidate. Separate holdout attacks and receipt validation come next. Only an explicit human promotion can create a new compatibility identity. Silent fallback to an older profile is forbidden.",
+          "durationHintSec": 32,
+          "headline": "No mutation in the live stream",
+          "subhead": "Record pressure → search offline → holdout → validate → human promotion",
+          "kicker": "Fail closed"
+        },
+        {
+          "kind": "concept",
+          "id": "evidence-ladder",
+          "voiceover": "The live fixture covers 1,024 payload bytes, nine tables, ten traces, and 25 artifacts. Swift, direct RTL, two bus paths, and an internal Rust consumer agree on that fixture. The publication suite reports 49 passing checks, plus one bounded five-part certificate. This is useful implementation evidence. It is not independent cryptanalysis, a confidentiality proof, or an external known-answer test.",
+          "durationHintSec": 35,
+          "headline": "Strong engineering receipts, open cryptography",
+          "subhead": "1,024 bytes · 9 tables · 10 traces · 25 artifacts · same repository boundary",
+          "kicker": "Parity is not security"
+        },
+        {
+          "kind": "narration",
+          "id": "open-threats",
+          "voiceover": "The active audit still carries open construction, protocol, parser, lifecycle, RTL, fault, and side-channel findings. Human acceptance of the center construction remains open. The bus wrappers and table loader need adversarial hardening. No calibrated matrix of standard attacks or independent external implementation exists. Optional timing jitter is not side-channel protection. E256 remains a laboratory, not a product.",
+          "durationHintSec": 33,
+          "headline": "The security case is still open",
+          "bullets": [
+            "Construction and human acceptance",
+            "Protocol, parser, replay, and lifecycle",
+            "RTL buses, table loading, faults, and side channels",
+            "Independent attacks and external implementations"
+          ]
+        },
+        {
+          "kind": "concept",
+          "id": "living-lineage",
+          "voiceover": "A compromised message cannot be unsent, and a failed profile cannot retroactively protect old traffic. But a disclosed weakness can become evidence for a new, incompatible profile and better future experiments. The question is whether a versioned lineage can survive repeated criticism without hiding its dead ends. That could make the research long-lived. It would not make the algorithm immortal, autonomous, or unbreakable.",
+          "durationHintSec": 34,
+          "headline": "Long-lived lineage—not an immortal cipher",
+          "subhead": "A failure can inform a future profile; it cannot protect yesterday's message.",
+          "kicker": "The thought experiment"
+        },
+        {
+          "kind": "outro",
+          "id": "outro",
+          "voiceover": "Today, fixture-v4 is the only live public profile. A fixture-v5 lane records staged engineering progress, but it has not been promoted and inherits no security claim. Failed profiles remain visible. Open findings remain open. The living part is the research ledger, not the running cipher. For real secrets, use standardized, reviewed authenticated encryption. Next, the most useful episode in this series: everything that almost worked.",
+          "durationHintSec": 36,
+          "headline": "The living part is the ledger",
+          "subhead": "fixture-v4 is live and bounded · fixture-v5 is staging · no profile is production-approved"
+        }
+      ],
+      "captures": []
+    },
+    {
+      "episodeNumber": 7,
+      "sourceFile": "ep07-almost-near-misses.json",
+      "id": "ep07-almost-near-misses",
+      "compositionId": "Episode07",
+      "title": "Almost — The Near Misses",
+      "youtubeTitle": "Almost: What HELUT Nearly Does, and the Exact Margin It Misses By",
+      "description": "The most useful episode: HELUT's capability near misses, sorted by the kind of margin they miss by. One flip-flop short, a few bits short, a pass with no headroom, correct but unproven, one decode short, and two failures that turned out to be measurement bugs. Living research, stated as levers rather than limits. Epoch C69.",
+      "claimEpoch": "2026-08-20 / C69",
+      "scenes": [
+        {
+          "kind": "title",
+          "id": "title",
+          "voiceover": "The interesting part of a research project is not the list of things that worked. It is the list of things that almost worked, and by exactly how much. This episode walks through HELUT's near misses. Each one is a measured margin with a named lever, because a limit you can measure is a target, and a limit you cannot is just a story.",
+          "durationHintSec": 27,
+          "eyebrow": "Living research · living silicon",
+          "headline": "Almost",
+          "subhead": "Every failure has a margin and a lever."
+        },
+        {
+          "kind": "concept",
+          "id": "one-cell",
+          "voiceover": "The sharpest near miss is an encrypted processor tick at full production size. Every one of roughly two thousand encrypted look-up-table evaluations completes. It takes about half an hour. Then a single flip-flop disagrees with the cleartext answer: it wanted zero and got one. Using a finer encoding did not fix it, and the log names the exact cell that failed. Two other results box it in. The same circuit passes at small size in under two seconds, and a route that shrinks the wire dimension first passes at full size in 114 seconds. So the capability exists. The direct road has one broken cell on it.",
+          "durationHintSec": 48,
+          "headline": "2,006 agree. One doesn't.",
+          "subhead": "It fails at a single named cell.",
+          "kicker": "One flip-flop short"
+        },
+        {
+          "kind": "concept",
+          "id": "margin-ruler",
+          "voiceover": "Most encrypted results are graded against one bar: an error probability of two to the minus sixty-four. Measured against that bar, the margins are thin in both directions. One configuration clears it with about one and a half orders to spare. Another falls short by roughly four, and only a wider spacing recovers it. A third slides off gradually as the wire dimension grows, from comfortably decodable, to marginal, to a single failed decode. None of those are mysteries. They are dials with known positions.",
+          "durationHintSec": 40,
+          "headline": "Thin margins, both ways",
+          "subhead": "Some configurations clear it by a hair. Others miss by a hair.",
+          "kicker": "A few bits short"
+        },
+        {
+          "kind": "concept",
+          "id": "no-headroom",
+          "voiceover": "One result is stranger than a failure. A configuration cleared the bar, but its bound tolerated only about five percent growth in measured spread, and the spread actually observed across similar runs was closer to fifty percent. So the result was true as recorded and would not survive ordinary variance. Rather than bank it, the project moved to a wider spacing with more than double the headroom. A pass you cannot lean on is treated here as a near miss, not a win.",
+          "durationHintSec": 37,
+          "headline": "Technically true, not yet trustworthy",
+          "subhead": "It clears the bar, but not the noise.",
+          "kicker": "A pass with no headroom"
+        },
+        {
+          "kind": "concept",
+          "id": "correct-unproven",
+          "voiceover": "There is a category where the machine gives the right answer and the mathematics has not caught up. At one spacing, encrypted output matched cleartext output on every tested path, while the error estimate swung wildly between trial counts. Correctness passed; the bound was unstable. These are not the same achievement, and collapsing them is how projects start overclaiming. The honest description is that it computes correctly at a setting we cannot yet certify.",
+          "durationHintSec": 36,
+          "headline": "Right, but not proven.",
+          "subhead": "Parity passes. The bound stays unstable.",
+          "kicker": "Correct but unproven"
+        },
+        {
+          "kind": "concept",
+          "id": "sibling-paths",
+          "voiceover": "Some near misses are not about size at all. A 58-gate encrypted slice of the E256 cipher passes at full production size on one encoding path, in about 23 seconds. On the neighbouring encoding it fails outright. The same is true of an adder at one particular setting. Nothing about the circuit changed. Only the numerical route did. That tells you the boundary lives in the encoding, which is a much more useful thing to know than a general shrug about scale.",
+          "durationHintSec": 38,
+          "headline": "Same circuit, adjacent encoding, different verdict",
+          "subhead": "One route passes. Its neighbour fails.",
+          "kicker": "Right on one path, wrong on its sibling"
+        },
+        {
+          "kind": "concept",
+          "id": "evidence-cost",
+          "voiceover": "One near miss is purely economic. To pin down one error figure to within a single order of magnitude would take tens of thousands of trials, roughly a week and a half of continuous compute. To demonstrate that the same figure clears the bar takes about two dozen. Those are different questions with wildly different prices, and noticing that was worth more than any hardware upgrade. The capability was never in doubt. The affordable evidence was.",
+          "durationHintSec": 36,
+          "headline": "Clearing a bar is cheaper than measuring a value",
+          "subhead": "Clear it: ~24 trials. Resolve it: ~35,000.",
+          "kicker": "The proof you cannot afford"
+        },
+        {
+          "kind": "concept",
+          "id": "ladder-stopped",
+          "voiceover": "On the TensorLUT side, the proof ladder is short and honest. One fully observed look-up table is proved. A two-table cascade is proved and emits hardware. Arbitrary networks are open. The penalty strength needed to force values binary was measured at about three point seven three on the small case, bracketing a crossover observed between two and four. Then came the useful embarrassment: that threshold is a known result from nineteen sixty-nine, rediscovered. What genuinely remains open is how it scales with depth and fan-out.",
+          "durationHintSec": 41,
+          "headline": "One table proved. Two tables proved. Then open.",
+          "subhead": "The threshold was published in 1969.",
+          "kicker": "The ladder stopped at two"
+        },
+        {
+          "kind": "narration",
+          "id": "failure-that-wasnt",
+          "voiceover": "Two entries were not near misses at all. A clean-looking encrypted failure was traced to encrypting inputs in randomized dictionary order while drawing from one shared random stream, so different wires received mismatched masks. Sorting the loops fixed it, the failure was withdrawn, and a guard now protects it. A plausible physical explanation had already been written down before the real cause surfaced. The same bug had made another row flaky; it now passes four times out of four. And going the other way, seven timing rows had understated the code by about a factor of two. The ledger was wrong in both directions.",
+          "durationHintSec": 49,
+          "headline": "Two failures that were measurement bugs",
+          "bullets": [
+            "A withdrawn encrypted failure: randomized iteration order",
+            "A flaky row that became four-for-four after the fix",
+            "Seven timing rows that had understated the code by ~2×"
+          ]
+        },
+        {
+          "kind": "concept",
+          "id": "shatter",
+          "voiceover": "One result belongs here precisely because it is nowhere near. Melting an entire 925-gate sequential cipher from a cold start shatters: around fourteen thousand values refuse to settle, and a related attempt on a live cipher cone ends with more than twelve hundred still stuck between zero and one. That is not a margin, it is a wall. Including it is what makes the thin margins credible. A project where everything is almost working is not reporting carefully.",
+          "durationHintSec": 38,
+          "headline": "Not everything is close",
+          "subhead": "A cold-start melt of 925 gates shatters.",
+          "kicker": "The honest blowout"
+        },
+        {
+          "kind": "outro",
+          "id": "outro",
+          "voiceover": "Every episode here carries a date for one reason: this is living research on living silicon, and the ledger is expected to move. Claims get re-measured, corrected, withdrawn, and sometimes recovered by a better route. New levers appear, and with them new applications worth trying. If you want to check any of it, the claim sheet, the logs, and the reproduce commands are public. The most valuable contribution is not agreement. It is a receipt that disagrees. Next, the deepest thing this substrate has run: a processor, under encryption.",
+          "durationHintSec": 43,
+          "headline": "Living research, living silicon",
+          "subhead": "The ledger is dated because it is expected to change."
+        }
+      ],
+      "captures": []
+    },
+    {
+      "episodeNumber": 8,
+      "sourceFile": "ep08-encrypted-picorv32.json",
+      "id": "ep08-encrypted-picorv32",
+      "compositionId": "Episode08",
+      "title": "The Encrypted Processor",
+      "youtubeTitle": "Running a RISC-V Core Under Encryption: One Tick at a Time",
+      "description": "HELUT's deepest result: a PicoRV32 RISC-V core evaluated under torus FHE. The demo-size ladder from one tick to a store-then-load program, the two levers that cut the cost, one encrypted tick at production polynomial size, the extract-and-key-switch route, and the bounded non-claims. Not Linux, not a production encrypted CPU. Epoch C69.",
+      "claimEpoch": "2026-08-20 / C69",
+      "scenes": [
+        {
+          "kind": "title",
+          "id": "title",
+          "voiceover": "A processor is just a circuit. So if HELUT can evaluate circuits under encryption, it should be able to run a processor under encryption. It can. This episode is the ladder from a single encrypted clock cycle to a small program that stores a value in memory and reads it back, without the machine ever seeing that value in the clear.",
+          "durationHintSec": 28,
+          "eyebrow": "HELUT · Torus FHE at depth",
+          "headline": "The encrypted processor",
+          "subhead": "A circuit that runs a program it cannot see."
+        },
+        {
+          "kind": "concept",
+          "id": "the-netlist",
+          "voiceover": "The processor is PicoRV32, a compact RISC-V core that other people use in real designs. Synthesized down to two-input look-up tables it becomes 4,785 tables and 1,565 flip-flops. Re-synthesized to six-input tables it drops to 2,006 tables, a 58 percent cut, with the same flip-flop count. Those flip-flops are the interesting part. They hold state between clock ticks, which means the encrypted circuit has memory.",
+          "durationHintSec": 36,
+          "headline": "A real RISC-V core",
+          "subhead": "2,006 look-up tables and 1,565 flip-flops.",
+          "kicker": "The circuit under test"
+        },
+        {
+          "kind": "concept",
+          "id": "first-tick",
+          "voiceover": "One encrypted clock tick at demonstration size took 76 milliseconds. That number comes with a hard caveat. At that size the encryption parameters carry about four bits of hardness, and four bits is not security. It is a functional test. The point of a demonstration size is to prove the semantics are right, cheaply, before paying for production parameters.",
+          "durationHintSec": 29,
+          "headline": "One tick, 76 milliseconds",
+          "subhead": "Four bits of hardness is a functional test.",
+          "kicker": "Demonstration size first"
+        },
+        {
+          "kind": "concept",
+          "id": "real-program",
+          "voiceover": "Then it stops being a single tick. A scripted reset holds the core low for three cycles and releases it, and the encrypted core boots across ten ticks. Given a read-only memory full of no-op instructions, the program counter walks: ten fetches, at addresses zero, four, eight, and on up to hexadecimal twenty-four. Then a real program. Load the number one into a register, store that register to memory, and load it back. The store writes with all four byte-enables set and a value of one. The later load reads one. The circuit executed a program it could not see.",
+          "durationHintSec": 47,
+          "headline": "It executed a program it could not read",
+          "subhead": "The store wrote a 1. The later load read a 1.",
+          "kicker": "Boot · fetch · store · load"
+        },
+        {
+          "kind": "narration",
+          "id": "flip-flop-fixes",
+          "voiceover": "Most of the work here was not cryptography. It was flip-flop semantics. A plain D flip-flop must not refresh its incoming data the way a look-up table output does, and 91 cells were doing exactly that. The synthesis tool emits flip-flops where the clock enable gates the reset, and that has to be modelled exactly or the boot sequence diverges. Read data has to be held for the cycle the core actually samples it. This is the unglamorous half of making an encrypted circuit agree with a cleartext one.",
+          "durationHintSec": 41,
+          "headline": "Most of the work was flip-flop semantics",
+          "bullets": [
+            "91 cells refreshed data they should not have",
+            "Clock enable gates the reset—model it exactly",
+            "Read data must be held for the sampled cycle"
+          ]
+        },
+        {
+          "kind": "concept",
+          "id": "two-levers",
+          "voiceover": "Two changes moved the cost more than any parameter tuning. Re-synthesizing to six-input look-up tables cut the table count by 58 percent. Then the scheduler learned to evaluate every ready table in a tick concurrently, even when the circuit contains flip-flops, and to skip tables that are only an identity or a constant. On this core that was about an eight-fold speed-up: 1.35 seconds down to 0.165.",
+          "durationHintSec": 33,
+          "headline": "Fewer tables, and a smarter schedule",
+          "subhead": "58% fewer tables, then ~8x faster.",
+          "kicker": "What actually moved the cost"
+        },
+        {
+          "kind": "concept",
+          "id": "production-size",
+          "voiceover": "With those levers, one encrypted tick of the whole processor ran at production polynomial size: 373.89 seconds, just over six minutes, for a single clock cycle. Re-measured three times, the spread was two tenths of one percent. The hardness figure printed for that configuration is about 176 bits, and it carries its own caveat: it agrees with the reference estimator on some parameter sets and disagrees on others, so it is not a blanket security level.",
+          "durationHintSec": 38,
+          "headline": "Six minutes for one clock cycle",
+          "subhead": "373.89 seconds, stable to two tenths of a percent.",
+          "kicker": "Production polynomial size"
+        },
+        {
+          "kind": "concept",
+          "id": "covering-route",
+          "voiceover": "There is a catch. Under the noisier encoding needed for deeper work, the direct route at full native dimension fails. Every combinational table completes, and then a single flip-flop disagrees. The fix was not a bigger machine. Extracting the sample and switching it down to a much smaller wire dimension first, sixty-four instead of 1,024, makes it pass: one tick in 114 seconds, the ten-tick boot in about nineteen minutes, and the instruction fetch in about fifteen. Truncating that extraction instead of properly key-switching it would be unsound, which is exactly why the honest route is the slower one.",
+          "durationHintSec": 50,
+          "headline": "Shrink the wire",
+          "subhead": "One tick in 114 s. A boot in ~19 minutes.",
+          "kicker": "The detour that worked"
+        },
+        {
+          "kind": "narration",
+          "id": "not-linux",
+          "voiceover": "What this is not. It is not Linux, and it is not a production encrypted processor. The demonstration-size results carry four bits of hardness, which is a functional check and nothing more. The production-size results are single ticks and short tick counts, not workloads. A load instruction under the noisier encoding at full native dimension is still open. Every one of those sentences sits in the ledger, directly beside the results.",
+          "durationHintSec": 36,
+          "headline": "What this is not",
+          "bullets": [
+            "Not Linux · not a production encrypted CPU",
+            "Demo-size results carry 4 bits of hardness",
+            "Single ticks and short runs, not workloads"
+          ]
+        },
+        {
+          "kind": "outro",
+          "id": "outro",
+          "voiceover": "An encrypted processor tick costs about 114 seconds. The cleartext search campaign in this series runs 37.4 million circuit settings per second. Those two numbers come from the same compiler and must never be mixed. The distance between them is the real research frontier, and it is where the next levers have to come from. Next, the wider set of problems this substrate has actually been pointed at.",
+          "durationHintSec": 34,
+          "headline": "The gap is the frontier",
+          "subhead": "114 s per encrypted tick vs 37.4M settings/s."
+        }
+      ],
+      "captures": []
+    },
+    {
+      "episodeNumber": 9,
+      "sourceFile": "ep09-application-gallery.json",
+      "id": "ep09-application-gallery",
+      "compositionId": "Episode09",
+      "title": "The Application Gallery",
+      "youtubeTitle": "What HELUT Has Actually Been Pointed At: Radio, Regex, Trees, Ciphers",
+      "description": "The breadth of HELUT applications, organized around the distinction that matters most: the same netlist runs in an oracle shape-laboratory tier and an encrypted tier, and only one of them is FHE. Covers the GNU Radio matcher, regex versus decision tree, encrypted sequential circuits, carry-save architecture, the Mulein width sweep where sixteen lanes lose to four, and the Python-only toy cipher. Epoch C69.",
+      "claimEpoch": "2026-08-20 / C69",
+      "scenes": [
+        {
+          "kind": "title",
+          "id": "title",
+          "voiceover": "HELUT has been pointed at more than one problem. A radio receiver, a regular-expression matcher, a decision tree, a processor, and a historical cipher search. This episode is that gallery. But it is organized around one distinction, because it is the easiest thing in this project to get wrong: most of these circuits run in two different tiers, and only one of those tiers is encrypted.",
+          "durationHintSec": 30,
+          "eyebrow": "HELUT · Application gallery",
+          "headline": "The same circuit, twice",
+          "subhead": "Breadth is easy. Labelling the tier is not."
+        },
+        {
+          "kind": "concept",
+          "id": "radio",
+          "voiceover": "Start with the demo that needs no explanation. A GNU Radio flowgraph generates a baseband signal, adds noise, and recovers bytes. Those bytes feed a Yosys netlist compiled from Verilog: a three-character regular-expression matcher. When the letters D, E, F arrive, the circuit flags a match. No antenna is involved and nothing is intercepted; it is a closed loop on one machine. The same demo then runs ten thousand windows as a batch to show throughput, and finally freezes a single window under encryption at demonstration size, where being slow is the entire point.",
+          "durationHintSec": 42,
+          "headline": "Matching bytes off a signal",
+          "subhead": "Baseband, noise, recovered bytes, then a netlist.",
+          "kicker": "Closed loop · no antenna"
+        },
+        {
+          "kind": "concept",
+          "id": "two-tiers",
+          "voiceover": "Here is the distinction. The same netlist can run on two different backends. In the oracle tier, values are ordinary numbers, the batch can be enormous, and it runs in real time. That tier proves the shape of the computation: the wiring, the clocking, the batch axis. In the encrypted tier, the wires carry lattice samples and every look-up table costs a blind rotation. Same circuit, same answers, wildly different cost, and wildly different claims. Calling the oracle tier encrypted computing is the most common error available here, and it is the one this project guards hardest.",
+          "durationHintSec": 44,
+          "headline": "Two backends, one netlist",
+          "subhead": "Shape laboratory versus encrypted evaluation.",
+          "kicker": "The distinction that matters"
+        },
+        {
+          "kind": "concept",
+          "id": "what-graduated",
+          "voiceover": "Two of the shape-laboratory demos tried to graduate into the encrypted tier. The regular-expression matcher made it: 23 look-up tables, evaluated encrypted at production polynomial size, in about 27 seconds. The decision tree did not. It still runs only at demonstration size, and its covering path on Metal remains open. Same family, same compiler, one graduated and one is still waiting. That difference is recorded rather than smoothed over.",
+          "durationHintSec": 32,
+          "headline": "One graduated. One did not.",
+          "subhead": "Regex reached production size. The tree is still waiting.",
+          "kicker": "Siblings that diverged"
+        },
+        {
+          "kind": "concept",
+          "id": "sequential",
+          "voiceover": "Encrypted state also works at production size, as long as the circuit stays small. A four-bit counter passes in about 16 seconds across four stimuli. A toy instruction set with a no-op and an add passes in about 20 seconds. A single round of the E256 cipher, 58 gates wide, passes in about 23 seconds. None of those is a processor, and none of them touches live memory. They are the stepping stones between an encrypted adder and the encrypted processor from the last episode.",
+          "durationHintSec": 38,
+          "headline": "The stepping stones",
+          "subhead": "Counter, toy instruction set, one cipher round.",
+          "kicker": "Encrypted state, small circuits"
+        },
+        {
+          "kind": "concept",
+          "id": "architecture",
+          "voiceover": "One result is a useful corrective. A four-bit adder was synthesized two ways: a ripple-carry version at 11 look-up tables, and a carry-save version at eight. That is a 27 percent cut, and both versions pass the correctness gate. The lesson is that the cheapest win available here came from choosing a better circuit architecture, not from any search or optimizer. The ledger labels it explicitly as architecture, and not as a TensorLUT melt.",
+          "durationHintSec": 34,
+          "headline": "The cheapest win was a better circuit",
+          "subhead": "Carry-save against ripple-carry: 11 tables down to 8.",
+          "kicker": "A useful corrective"
+        },
+        {
+          "kind": "concept",
+          "id": "width-sweep",
+          "voiceover": "Now the result I did not expect. The cleartext Enigma search engine can be built with one, two, four, eight, or sixteen parallel lanes. Sixteen lanes cost sixteen times the silicon: about 758,000 look-up tables against 45,000 for a single lane. Every width produces a byte-identical result digest, so it is provably the same computation. And sixteen lanes are slower than one: 231 complete receipts per second against 234. Four lanes win, at 276. Width four was selected on measured throughput, not on size, not on synthesis time, and not on intuition.",
+          "durationHintSec": 42,
+          "headline": "Sixteen lanes lose to four",
+          "subhead": "Same digest every width. Wider is not faster.",
+          "kicker": "Measured, not assumed"
+        },
+        {
+          "kind": "concept",
+          "id": "blasters",
+          "voiceover": "The subsystem around that engine has deliberately memorable names, and they encode a real distinction. A transcript can be wrong in two different ways, and conflating them causes bad science. If a recorded letter is merely suspect, that is edge-erasure tolerance, handled by the Tolerant Closure, informally the Garble Blaster nine thousand. If letters are missing or extra, the whole rotor alignment shifts, which is splice geometry, handled by the Splice Engine, informally the Indel Blaster nine thousand. Different fault, different repair, separate receipts. A survivor from either one is a repair hypothesis, not a result.",
+          "durationHintSec": 44,
+          "headline": "Garble and Indel",
+          "subhead": "A suspect letter is not the same as a missing one.",
+          "kicker": "Two faults, two repairs"
+        },
+        {
+          "kind": "concept",
+          "id": "smallest-honest-example",
+          "voiceover": "Not everything here needs Apple silicon. A reviewer asked a sharp question: show two ciphers of the same type, one sound and one broken on purpose, then demonstrate telling them apart. The answer runs on nothing but Python. One substitution-permutation skeleton, built twice: once with a real S-box, and once with an invertible affine one that looks fine and is not. Four separate tests distinguish them, including a difference table that reads four against sixteen, and key recovery from a single known pair with no search at all. It is the smallest honest example in the project, and it is deliberately not a claim row.",
+          "durationHintSec": 46,
+          "headline": "Two ciphers, one broken on purpose",
+          "subhead": "The on-ramp for anyone without Apple silicon.",
+          "kicker": "Runs on nothing but Python"
+        },
+        {
+          "kind": "outro",
+          "id": "outro",
+          "voiceover": "One pairing keeps this gallery honest. The cleartext search engine delivers about 276 complete receipts per second. An encrypted processor tick costs about 114 seconds. Both come out of the same compiler, and putting them in one sentence as though they were comparable is exactly the error this series is built to avoid. Everything here carries a date, and the gallery grows when the receipts do. More MuleinLabs work is coming, on this and on other things entirely.",
+          "durationHintSec": 36,
+          "headline": "Two numbers, one firewall",
+          "subhead": "276 receipts/s cleartext · 114 s per encrypted tick."
+        }
+      ],
+      "captures": []
+    },
+    {
+      "episodeNumber": 10,
+      "sourceFile": "ep10-why-it-holds.json",
+      "id": "ep10-why-it-holds",
+      "compositionId": "Episode10",
+      "title": "Why It Holds",
+      "youtubeTitle": "We Handed the Machine the Answer and It Walked Away: Why P1030680 Holds",
+      "description": "The honest answer to why P1030680 is still unbroken. A known-key rehearsal shows the true key ranking at the 48.8th percentile by index of coincidence, and a plugboard climb started from the true rotor setting walking away to a wrong optimum that scores better. The blocker is statistical, not computational. Also the measured crib-free length threshold, the 68 percent the partial exhaustion closed, and why the real bottleneck is corpus size. Epoch C69.",
+      "claimEpoch": "2026-08-20 / C69",
+      "scenes": [
+        {
+          "kind": "title",
+          "id": "title",
+          "voiceover": "An earlier episode covered the P1030680 campaign: the machine, the boards, the bounded negative result. It left the obvious question unanswered. The hardware works, the search is fast, the sieve is correct, so why is this message still unbroken? There is a measured answer, and it is not the one most people guess. The problem is not that the machine is too slow. The problem is that it cannot recognise the right answer when it is handed one.",
+          "durationHintSec": 34,
+          "eyebrow": "HELUT · Campaign, answered",
+          "headline": "Why it holds",
+          "subhead": "Not a compute problem. A measurement problem."
+        },
+        {
+          "kind": "concept",
+          "id": "rehearsal",
+          "voiceover": "The test is straightforward. Take a different message from the same network on the same day, one whose key was published decades ago, so the answer is known. Then truncate it to 72 letters, the exact length of the unsolved target. Now run the full attack pipeline against it. If the machine can find a key it is allowed to know, the method is sound and the target is merely hard. If it cannot, the method itself is the problem. There are two checks, and both are graded numbers rather than impressions.",
+          "durationHintSec": 40,
+          "headline": "Give the machine a message you can check",
+          "subhead": "A published key, truncated to the target's length.",
+          "kicker": "Known-key rehearsal"
+        },
+        {
+          "kind": "concept",
+          "id": "level-one",
+          "voiceover": "First check. Hand the machine the correct wheels and rings, so the only unknown is the message key, and rank every candidate by index of coincidence, the standard statistic for spotting German-like text. The true key comes back at the 48.8th percentile. Not in the top ten, not in the top thousand: statistically dead centre. Its score is 0.0379, and a random wrong key averages 0.0385. The correct answer scores very slightly worse than noise. That means any sieve built on this statistic does not merely rank the answer poorly. It discards it.",
+          "durationHintSec": 44,
+          "headline": "The true key ranks dead centre",
+          "subhead": "48.8th percentile. The statistic has no signal at all.",
+          "kicker": "Check one · the sieve"
+        },
+        {
+          "kind": "concept",
+          "id": "level-two",
+          "voiceover": "Second check, and it is the one that settles the argument. Skip the search entirely. Place the machine directly on the true rotor setting, then let it climb for the plugboard from there. It is starting on the answer. It recovers four letters out of 72 and zero plug pairs out of ten, and it settles on a wrong configuration scoring minus 3.127 where the truth scores minus 2.872. The wrong answer scores better. The climb did not fail to find the summit; it walked downhill away from it, because by its own measure downhill was up.",
+          "durationHintSec": 44,
+          "headline": "Started on the answer",
+          "subhead": "The wrong optimum scores better than the truth.",
+          "kicker": "Check two · the climb"
+        },
+        {
+          "kind": "narration",
+          "id": "verdict",
+          "voiceover": "That is the finding, and the repository states it plainly: the blocker is statistical, not computational. The batch datapath is correct. The sieve logic is correct. The evolutionary search is correct. What fails is the scoring function, and no amount of hardware fixes a blind judge. It also retires a tempting number. A high plausibility score on a 72-letter decrypt means nothing, because roughly 47 bits of plugboard freedom can be fitted to 72 letters of anything. Without strong cribs, that score is not evidence.",
+          "durationHintSec": 40,
+          "headline": "The blocker is statistical, not computational",
+          "bullets": [
+            "GPU sweep, sieve, and search are all sound",
+            "The objective function cannot see the answer",
+            "~47 bits of plugboard freedom overfit to 72 letters"
+          ]
+        },
+        {
+          "kind": "concept",
+          "id": "crib-free-ladder",
+          "voiceover": "There is a second attack that needs no crib at all. Instead of guessing plaintext, it climbs the plugboard at every candidate rotor setting and ranks each setting by how good a score the climb reaches. Published work with this method has reached messages of about 100 letters, and the shortest success on record is 78 letters on a three-rotor army machine. Measured on this traffic, HELUT's own threshold is about 200 letters. So the honest gap is stated in the ledger: 200 measured, 78 published, 72 needed. Roughly two-point-eight times worse than the state of the art, and the target requires being slightly better than it.",
+          "durationHintSec": 48,
+          "headline": "How short can a message be?",
+          "subhead": "Measured 200. Published record 78. Target 72.",
+          "kicker": "The other engine"
+        },
+        {
+          "kind": "concept",
+          "id": "what-helped",
+          "voiceover": "Two changes measurably improved that threshold. The first was staging the scorer: index of coincidence, then bigrams, then trigrams, because the measures fail at different points rather than uniformly. HELUT's climb had been using bigrams alone. The second is the named contribution of the published method. Rather than climbing ten plugs from nothing, fix one plug and climb the remaining nine, then repeat for every candidate. A wrong first plug poisons everything chosen after it, and one of the fixed candidates is the true plug, so that run begins in a far better basin. Together they close 68 percent of the deficit at 72 letters. The margin is still negative, and the ledger prints it as negative.",
+          "durationHintSec": 52,
+          "headline": "Better scoring, and one fixed plug",
+          "subhead": "68 percent of the deficit closed. Still negative.",
+          "kicker": "Two things that moved it"
+        },
+        {
+          "kind": "concept",
+          "id": "finishable",
+          "voiceover": "One result cuts the other way, and it is genuinely encouraging. If the machine is given a true stop plus a handful of correct plug pairs, it can finish the job at 72 letters. Four forced plugs flip the margin from negative to positive. Eight recover the complete key and 100 percent of the plaintext, on ten out of ten controls. But read that precisely, because it is easy to over-read. Those plugs come from the known key, so the result assumes the stop being seeded from is already the true one. It is an upper bound on how well finding and finishing could couple, not a break, and the ledger labels it exactly that way.",
+          "durationHintSec": 50,
+          "headline": "A true stop is finishable",
+          "subhead": "Four plugs flip the margin. Eight recover everything.",
+          "kicker": "The upper bound"
+        },
+        {
+          "kind": "concept",
+          "id": "wrong-german",
+          "voiceover": "Here is a good failure. If the scorer is starving, the obvious fix is a better language model, and the available one is 28.5 million letters of generic German. But naval traffic is not generic German. It is a dialect: X and Y serve as punctuation, numbers are spelled out as words, U-boats are marked with a triple U, and procedure markers repeat fixed letter groups. So a naval-dialect model should beat a bigger generic one. It was a reasoned hypothesis, it was tested, and it measured null. That is recorded as a null result rather than quietly dropped.",
+          "durationHintSec": 44,
+          "headline": "It was the wrong German",
+          "subhead": "It spells its numbers and punctuates with letters.",
+          "kicker": "A reasoned guess that measured null"
+        },
+        {
+          "kind": "narration",
+          "id": "the-real-bottleneck",
+          "voiceover": "So what would actually move it? The top priority is not a bigger machine. The German corpus behind the scorer is about 10,300 letters, which gives roughly 15 counts per bigram cell and is far too thin for trigrams, while published attacks use tables built from millions of letters. That is a data problem, and it gates everything else. Second, climb at every rotor setting rather than after a sieve, because check one proved the sieve throws the answer away. And third, the deterministic route: crib logic with a diagonal board eliminates plugboard hypotheses by contradiction instead of fitting them. Historically, that is the method that actually worked.",
+          "durationHintSec": 52,
+          "headline": "The bottleneck is data, not silicon",
+          "bullets": [
+            "Corpus is ~10,300 letters — about 15 counts per bigram cell",
+            "Published work uses tables built from millions",
+            "Crib logic eliminates by contradiction instead of fitting"
+          ]
+        },
+        {
+          "kind": "outro",
+          "id": "outro",
+          "voiceover": "The rehearsal leaves behind a gate that any future idea has to pass. Move the percentile, or move the climb that walks away from its own answer. An improvement that does neither is decoration, however clever it sounds. P1030680 remains unbroken, and the reason is now specific rather than vague: the search space is affordable and the measurement is not yet good enough to navigate it. Next, the speculative work, and the first experiment that would earn each idea a place in the ledger.",
+          "durationHintSec": 40,
+          "headline": "Two numbers are the gate",
+          "subhead": "Any proposed improvement has to move them."
+        }
+      ],
+      "captures": []
+    },
+    {
+      "episodeNumber": 11,
+      "sourceFile": "ep11-the-frontier.json",
+      "id": "ep11-the-frontier",
+      "compositionId": "Episode11",
+      "title": "The Frontier",
+      "youtubeTitle": "Five Wild Ideas, and the Small Experiment That Would Earn Each One",
+      "description": "The speculative end of HELUT, handled honestly. Five frontier avenues — an encrypted prompt-injection firewall, self-mutating encrypted binaries, encrypted honey-token ledgers, software that evolves its own circuits, and power analysis against FHE as deployed — each paired with the modest first experiment that would earn it a claim row. Includes the dual-use material and the trajectory items. Nothing here is a claim. Epoch C69.",
+      "claimEpoch": "2026-08-20 / C69",
+      "scenes": [
+        {
+          "kind": "title",
+          "id": "title",
+          "voiceover": "Every episode so far has stuck to things with receipts. This one deliberately does not. It covers the speculative end of the project: the ideas that are exciting, unproven, and in one case explicitly refused. But each one comes with something that keeps it honest. For every wild idea, the repository also names the small, dull experiment that would earn it a place in the ledger. That pairing is the whole episode, because the difference between a frontier and a fantasy is knowing what your next experiment is.",
+          "durationHintSec": 40,
+          "eyebrow": "HELUT · Frontier, labelled",
+          "headline": "The frontier",
+          "subhead": "Wild ideas are cheap. Next steps are not."
+        },
+        {
+          "kind": "narration",
+          "id": "four-classes",
+          "voiceover": "The project sorts every public sentence into one of four boxes. A reproducible claim can be cited and re-run by someone else. An open hedge can be discussed, but the asterisk travels with it. A non-implication is something you must actively stop people concluding. And then there is the frontier: material that is not a claim at all until it earns a reproduce command. The teaching guidance for these is blunt. Do not lecture them as fact, and never put them in a true-or-false question. Everything after this scene lives in that fourth box.",
+          "durationHintSec": 42,
+          "headline": "How speculation gets filed",
+          "bullets": [
+            "Reproducible claim — you may cite it",
+            "Open hedge — keep the asterisk",
+            "Non-implication — actively prevent the inference",
+            "Frontier — never a fact, ever"
+          ]
+        },
+        {
+          "kind": "concept",
+          "id": "firewall",
+          "voiceover": "First idea. Prompt injection against language models is currently fought with other language models and brittle instructions. Suppose instead you evolved a small logic-gate firewall that sits between an untrusted prompt and a local model, and evaluates entirely in the encrypted domain, mutating its own gate topology based on the attacks it successfully blocked. Neither the prompt, nor the weights, nor the defence rules ever appear in the clear. Now the graduating experiment, and notice how much smaller it is: a four-gate encrypted classifier passing a correctness check on synthetic token bits, with a certificate. That comes before any talk of evolution or actual language models.",
+          "durationHintSec": 50,
+          "headline": "A firewall that never sees the prompt",
+          "subhead": "First experiment: four gates and a certificate.",
+          "kicker": "Avenue one"
+        },
+        {
+          "kind": "concept",
+          "id": "dark-code",
+          "voiceover": "Second idea, and the uncomfortable one. An encrypted processor already boots. What happens if you feed it a program that rewrites its own instructions while staying encrypted? The host would see uniform tensor arithmetic while, inside, code mutates and executes where the operating system cannot inspect, debug, or breakpoint it. The repository describes that honestly as malware-class self-modification running inside an accelerator built for privacy, and then does something better than getting excited: it lists claiming this as an explicit non-goal. The graduating experiment is deliberately mundane. An encrypted instruction fetch on a toy machine smaller than the processor we already ran, accompanied by a written ethics note. It is framed as a privacy-architecture question, not as malware homework.",
+          "durationHintSec": 58,
+          "headline": "Code that rewrites itself in the dark",
+          "subhead": "Listed as an explicit non-goal, on purpose.",
+          "kicker": "Avenue two · refused as a claim"
+        },
+        {
+          "kind": "concept",
+          "id": "honey-tokens",
+          "voiceover": "Third idea. Take the batched pattern matcher and put it inside a distributed ledger, so that every time a node synchronises, a large document set is checked against many attacker patterns in a single encrypted pass. If someone queries the store, the store evaluates an encrypted trap and changes state across the mesh, without the storage node learning which file was searched or which trigger fired. The graduating experiment has a twist I like a great deal. Run the pattern matcher at a modest batch with an explicit written non-claim that the node learns nothing, and then go and measure what the host process can still see anyway: message lengths, timings. Honesty before mesh networks.",
+          "durationHintSec": 54,
+          "headline": "A wire it cannot read",
+          "subhead": "Then measure what the host still sees.",
+          "kicker": "Avenue three"
+        },
+        {
+          "kind": "concept",
+          "id": "genetic-hardware",
+          "voiceover": "Fourth idea. Rather than writing a circuit by hand and synthesizing it, mutate the truth tables and the connections directly, then compile the result into a running graph. Taken to its conclusion, a machine meeting an unfamiliar data stream would evolve a custom circuit for it, compile that circuit in seconds, and process the stream through hardware it had just invented. The graduating experiment is one offline generation producing a two-gate circuit that matches a fixed specification, with the wall-clock time for synthesis and lowering written down. No claims about doing it on the fly.",
+          "durationHintSec": 46,
+          "headline": "Software that invents its own hardware",
+          "subhead": "One circuit, offline, with a stopwatch.",
+          "kicker": "Avenue four"
+        },
+        {
+          "kind": "concept",
+          "id": "power-analysis",
+          "voiceover": "Fifth idea, and the genuinely adversarial one. Homomorphic evaluation is supposed to look like featureless tensor arithmetic from outside. So point a power meter at the actual graph while it runs controlled inputs, align the traces to circuit ticks rather than wall-clock, and ask whether key-dependent structure still leaks through the energy trace. That would be side-channel analysis against encryption as it is really deployed on a GPU, not against a textbook circuit. The guardrails are written down and they are strict: live graphs only, controlled fixtures only, and tick synchronisation is mandatory. No opportunistic capture of other people's workloads. The graduating experiment is almost comically modest: build the harness, emit the tick markers, and publish a log that says no analysis yet. And note the framing — a clean negative is also a result, because it hardens the claim that the graph is power-flat.",
+          "durationHintSec": 66,
+          "headline": "Encrypted, but still radiating?",
+          "subhead": "Live graphs only. Controlled fixtures only.",
+          "kicker": "Avenue five · parked"
+        },
+        {
+          "kind": "concept",
+          "id": "legacy-ciphers",
+          "voiceover": "There is a dual-use edge here that deserves saying out loud rather than hinting at. The machinery that melts a truth table does not care what the circuit is for. Two named legacy stream ciphers sit on the roadmap as candidates: one from early mobile telephony, one from early web encryption. Compiling them to circuits and melting their internal state logic would suggest that differentiable hardware can dismantle late twentieth-century telecommunications cryptography about as readily as it handles 1940s machines. The roadmap carries that idea with a parenthesis attached: not a claim until it is graded and reproducible. Which is the correct place for it, and also the reason to talk about it in public rather than quietly.",
+          "durationHintSec": 54,
+          "headline": "The same tool points backwards",
+          "subhead": "Trajectory only. Not a claim until graded.",
+          "kicker": "Dual use, stated plainly"
+        },
+        {
+          "kind": "narration",
+          "id": "grand-challenge",
+          "voiceover": "Beyond the five avenues there is a longer horizon, and the roadmap is careful with it. Point the same continuous-to-discrete engine at the gates that make encrypted computation expensive, and you might find shallower arrangements. Point it at the enormous circuits behind zero-knowledge proofs, and fewer gates with less depth would directly relieve the main bottleneck in private infrastructure. Point it at post-quantum lattice structures, and the ambition gets larger still. Every one of those sentences ends the same way in the source: trajectory only, until receipts exist. Which is exactly how far I am willing to say it here.",
+          "durationHintSec": 48,
+          "headline": "The far end, labelled as far",
+          "bullets": [
+            "Shallower circuits for encrypted gates",
+            "Smaller circuits for zero-knowledge proofs",
+            "Post-quantum lattice structures"
+          ]
+        },
+        {
+          "kind": "narration",
+          "id": "the-rules",
+          "voiceover": "The project sets rules for talking about any of this, and they are worth stealing. Label every paragraph as either frontier or first experiment, so nobody can quote you out of context. Name the specific claim the idea would become if it worked. Name the false conclusion it must not invite along the way. And the test that does the most work: if you cannot even imagine what the evidence would look like, the idea is not ready to be written down as a proposal, let alone announced.",
+          "durationHintSec": 40,
+          "headline": "What earns a frontier idea its place",
+          "bullets": [
+            "Label it: frontier, or first experiment",
+            "Name the claim it would become",
+            "Name the false conclusion it must not invite",
+            "If you cannot imagine the evidence, it is not ready"
+          ]
+        },
+        {
+          "kind": "outro",
+          "id": "outro",
+          "voiceover": "Five ideas, and not one of them is a result. What makes them frontier rather than fantasy is that each arrived with a specific, small, testable next step, and in one case with a refusal to pursue it as a claim at all. If any of them graduates, it will do so quietly, through a log file and a reproduce command, and this series will say so with a date on it. Next time, something completely different. We stop describing and start building: a circuit written from scratch, on camera, running on data it cannot see.",
+          "durationHintSec": 44,
+          "headline": "Frontier, not fantasy",
+          "subhead": "Every idea here arrived with its own next step."
+        }
+      ],
+      "captures": []
+    },
+    {
+      "episodeNumber": 12,
+      "sourceFile": "ep12-private-majority.json",
+      "id": "ep12-private-majority",
+      "compositionId": "Episode12",
+      "title": "Five Ballots, One Bit",
+      "youtubeTitle": "We Built a Private Majority Circuit and Ran It Encrypted on Metal",
+      "description": "A from-scratch HELUT experiment with dated terminal receipts: five encrypted ballot bits enter a synthesized majority circuit and one decision bit leaves. Yosys maps the design to three lookup-table cells; all 32 inputs pass clear and demonstration-size encrypted equivalence; and two deterministic endpoints pass at N=1024 on Metal. The initial pre-script run recorded 0.0089 seconds at N=16 and 2.7189 seconds at N=1024; a literal filmed rerun recorded 0.0095 and 2.5320 seconds. Both passed, but two observations are not a timing distribution. The harness owns the key, and the bootstrap-key construction is exact-noiseless, so this is neither a deployed voting protocol nor a noisy-key proof. A closing coda sends the same compiler path through a RISC-V processor instead: 4,785 lookup tables and 1,565 flip-flops running a three-instruction program, padded with no-ops, encrypted on CPU for 48 ticks, all rows matching the clear model at 4.0 modeled classical bits, where the host implements memory and therefore sees addresses and data. Reproduce paths and hashes included. Epoch C69.",
+      "claimEpoch": "2026-08-20 / C69",
+      "scenes": [
+        {
+          "kind": "title",
+          "id": "title",
+          "voiceover": "Last episode promised that we would stop describing and start building. This is that build. A circuit with five ballot bits as inputs and one bit as output: did at least three voters say yes? I wrote it, synthesized it, exercised every possible input through the clear and encrypted demonstration paths, and then moved the same netlist to a production-parameter-size Metal run. The experiment came before this script. The authored panels use that first dated receipt. Later, you will also see a literal terminal rerun with its own dated values. We keep the two observations separate.",
+          "durationHintSec": 42,
+          "eyebrow": "HELUT · Build, run, receipt",
+          "headline": "Five ballots. One bit.",
+          "subhead": "The experiment came before the script; the filmed rerun came after."
+        },
+        {
+          "kind": "concept",
+          "id": "one-bit-contract",
+          "voiceover": "The boundary comes first. Five ballot bits are encrypted before evaluation. The synthesized circuit computes whether at least three are one. Afterward, the benchmark harness decrypts the single proposal-passes bit inside the process and compares it with a clear golden model. That is the experiment's privacy contract. It is not a voting system. There is no ballot authentication, independent key custody, threshold decryption, coercion resistance, or malicious-party protocol here. The same harness owns the key and performs the comparison. The bounded claim is simply that this circuit can compute on encrypted ballot bits while revealing only the result chosen for decryption.",
+          "durationHintSec": 50,
+          "headline": "Reveal the decision, not five ballots",
+          "subhead": "Encrypted inputs in · one decrypted result out",
+          "kicker": "The privacy boundary"
+        },
+        {
+          "kind": "concept",
+          "id": "write-the-circuit",
+          "voiceover": "The source is deliberately ordinary Verilog. Zero-extend each vote, add the five bits into a three-bit count, and set proposal-passes when that count is at least three. There is no special voting primitive and no handwritten encrypted algorithm. HELUT needs a circuit, so we give it the simplest readable description of the function we want. The source lives in the hardware examples with its own hash, and its comments carry the limitation beside the code: this demonstrates the shape of private computation, not the rest of a secure election.",
+          "durationHintSec": 44,
+          "headline": "The circuit, from scratch",
+          "subhead": "Five one-bit inputs. Sum. Compare with three.",
+          "kicker": "Step one · write it"
+        },
+        {
+          "kind": "concept",
+          "id": "synthesize-and-compile",
+          "voiceover": "In the initial pre-script run, I ran Yosys zero point sixty-eight with ABC allowed to use lookup tables of up to four inputs. It mapped the majority function to three table cells: two with three inputs and one with four. The check pass reported zero problems. That is a mapping result, not a proof that three is mathematically minimal. The separate endpoint receipt says all-zero ballots reject and all-one ballots pass. HELUT then parsed the generated JSON and compiled a graph with five inputs, three lookup tables, no flip-flops, and one output in zero point zero zero three two seconds. The filmed rerun later reports its own compile observation.",
+          "durationHintSec": 50,
+          "headline": "Five inputs. Three lookup tables.",
+          "subhead": "Yosys + ABC · tables up to four inputs",
+          "kicker": "Initial receipt · step two"
+        },
+        {
+          "kind": "concept",
+          "id": "clear-exhaustive",
+          "voiceover": "Five input bits have exactly thirty-two possible patterns, small enough to test without sampling. The clear-equivalence command enumerated every one. For each row it evaluated the ordinary netlist simulator and the noise-free multilinear graph, then compared the output bit. Thirty-two rows entered. Thirty-two matched. Result: pass. This establishes that lowering the synthesized tables into HELUT preserved the majority function over its entire input space. It does not establish encryption yet. Keeping that receipt separate matters, because the next pass proves a different thing.",
+          "durationHintSec": 43,
+          "headline": "All thirty-two vote patterns",
+          "subhead": "Clear simulator ≡ trivial multilinear graph",
+          "kicker": "Step three · prove the plain shape"
+        },
+        {
+          "kind": "concept",
+          "id": "encrypted-n16",
+          "voiceover": "Now the encrypted path in the initial receipt. SING means stimuli in, golden out: run each stimulus through the encrypted evaluator, decrypt the chosen output inside the harness, and compare it with the clear result. At polynomial size sixteen, the harness again covered all thirty-two vote patterns. Every decrypted decision matched. The complete run took zero point zero zero eight nine seconds, or zero point two eight milliseconds per row. But this is a correctness demonstration, not production security. Its own receipt prints eight modeled classical bits, and the bootstrap key uses an exact-noiseless construction. Fast, exhaustive, and intentionally insecure are all true at once.",
+          "durationHintSec": 50,
+          "headline": "Thirty-two encrypted rows. Thirty-two matches.",
+          "subhead": "Initial run · N=16 demonstration · 0.0089 seconds total",
+          "kicker": "Initial receipt · step four"
+        },
+        {
+          "kind": "concept",
+          "id": "metal-n1024",
+          "voiceover": "Finally, the initial receipt runs the same three-table netlist at polynomial size one thousand twenty-four on Metal. This run covered two deterministic endpoint stimuli, not all thirty-two: the production-size receipt is bounded to two rows. Both matched the golden model. Total wall time was two point seven one eight nine seconds, or about one point three six seconds per row. The hardness line reports one hundred seventy-five point seven modeled classical bits. Modeled is essential. And the receipt still says exact-noiseless construction, so this is a production-parameter-size execution receipt, not a noisy bootstrap-key robustness proof or a blanket security audit.",
+          "durationHintSec": 52,
+          "headline": "Production parameter size. Two rows.",
+          "subhead": "Initial run · N=1024 · PASS · 2.7189 seconds",
+          "kicker": "Initial receipt · step five"
+        },
+        {
+          "kind": "capture",
+          "id": "filmed-rerun",
+          "voiceover": "One more receipt belongs beside the authored panels: the literal terminal rerun filmed after the script was drafted. This is a real Bash pseudo-terminal at normal speed. It types the complete Verilog, verifies a byte-for-byte match with the tracked source, synthesizes three lookup tables, checks both endpoints, exhausts all thirty-two clear rows, exhausts all thirty-two encrypted rows at N sixteen, and runs two deterministic rows at N one thousand twenty-four on Metal. The values differ slightly from the first receipt. The initial run recorded zero point zero zero eight nine seconds and two point seven one eight nine seconds. This filmed rerun recorded zero point zero zero nine five seconds and two point five three two zero seconds. Both runs passed. They are two observations, not a timing distribution or evidence of stable performance. The footage proves that these commands executed; the static panels remain the readable scientific receipts.",
+          "durationHintSec": 56.76,
+          "label": "Filmed rerun · 2026-09-04 · normal speed",
+          "videoAsset": "episode12-full-run.mp4"
+        },
+        {
+          "kind": "narration",
+          "id": "what-this-proves",
+          "voiceover": "Put the layers beside one another and the result is useful without being inflated. Yosys mapped a five-input majority function into three lookup tables. The clear path matched all thirty-two inputs. The encrypted demonstration path matched all thirty-two again. The production-parameter-size Metal path matched two endpoint rows. The later filmed rerun repeated those outcomes, with separate timing observations. Outside those receipts are the stronger claims: no multiparty voting protocol, no proof that the host learns nothing from timing or metadata, no noisy-key result, and no exhaustive sweep at one thousand twenty-four. The circuit works in the harness. The surrounding election system has not been built, and the episode will not pretend otherwise.",
+          "durationHintSec": 49,
+          "headline": "What the receipts prove",
+          "bullets": [
+            "Yosys: 5 inputs → 3 mapped tables → 1 output",
+            "Clear path: 32 of 32 patterns match in both runs",
+            "Encrypted N=16 path: 32 of 32 match in both runs",
+            "Metal N=1024 path: 2 of 2 endpoints match in both runs"
+          ]
+        },
+        {
+          "kind": "concept",
+          "id": "coda-scale",
+          "voiceover": "One more thing, because scale is the honest test of a compiler. Everything so far used three lookup tables. The same path also takes a real processor: a RISC-V core synthesized to four thousand seven hundred eighty-five lookup tables and one thousand five hundred sixty-five flip-flops. That matters because flip-flops mean state. The circuit has to be clocked, and every encrypted register has to survive every tick. The program is deliberately tiny: put one in a register, store it to memory, read it back. If encrypted state were broken, that sequence would fail immediately. Here is the boundary, though. The host implements the memory, so it sees instruction addresses and data. Only the processor itself is evaluated encrypted.",
+          "durationHintSec": 46,
+          "headline": "Three lookup tables, then a processor",
+          "subhead": "4785 lookup tables · 1565 flip-flops · encrypted state",
+          "kicker": "Coda · the same path, much bigger"
+        },
+        {
+          "kind": "capture",
+          "id": "picorv32-coda",
+          "voiceover": "Same compiler, same encrypted evaluator, a very different circuit. The capture compiles both designs live: the majority circuit is five inputs, three lookup tables, no state. The processor is a hundred and two inputs, four thousand seven hundred eighty-five lookup tables, and one thousand five hundred sixty-five flip-flops. Then it runs that tiny program under encryption for forty-eight ticks. Watch the program counter advance by four each fetch. At tick sixteen the store writes one to address zero. At tick twenty-five the host serves that same one back. Forty-eight of forty-eight ticks matched the clear model, including every flip-flop, in two point four eight two eight seconds. And the honest part: this ran on CPU, at four modeled bits, and the host is the memory.",
+          "durationHintSec": 53.8,
+          "label": "Coda · encrypted RISC-V · normal speed",
+          "videoAsset": "episode12-picorv32-coda.mp4"
+        },
+        {
+          "kind": "outro",
+          "id": "outro",
+          "voiceover": "The worthwhile part is not that majority is a difficult function. It is that the privacy boundary is understandable, the input space is small enough to exhaust, and the production-size claim can be separated cleanly from the demonstration. The source, generated netlist, six full logs, curated receipt, two literal captures with their own manifests and transcripts, commands, dates, and hashes are all preserved. On a matching toolchain, there is a path back from the sentence to the run. Five encrypted bits entered this harness. One decision bit was revealed. A three-table vote and a whole processor came out of the same compiler. Everything stronger remains outside the receipt. That is how a small experiment earns an episode.",
+          "durationHintSec": 49,
+          "headline": "The path back is the point",
+          "subhead": "Source. Netlist. Six logs. One bounded result."
+        }
+      ],
+      "captures": [
+        {
+          "captureId": "episode12-private-majority-full-run",
+          "role": null,
+          "capturedAt": "2026-09-04T13:59:20-07:00",
+          "video": {
+            "file": "episode12-full-run.mp4",
+            "sha256": "066c818c6bcb239171eac95247ee413c7c6864b9756b99842d352a313efd7288",
+            "codec": "h264",
+            "width": 1280,
+            "height": 720,
+            "durationSeconds": 56.76,
+            "sizeBytes": 1315250
+          },
+          "tape": {
+            "file": "episode12-full-run.tape",
+            "sha256": "8b94941ed17889845c4fcb88b7abe2c35255764b4019b427c6fef2a3812d0377"
+          },
+          "manifestFile": "capture-manifest.json",
+          "transcriptFile": "CAPTURE_TRANSCRIPT.md",
+          "reproduce": {
+            "workingDirectory": "HELUT repository root",
+            "prerequisites": [
+              "swift build -c release --product helut-bench",
+              "Yosys 0.68+ with ABC for the synthesis and endpoint stages",
+              "Apple silicon with Metal for the N=1024 stage"
+            ],
+            "commands": [
+              "yosys -Q -p 'read_verilog Hardware/RTL/Examples/private_majority5.v; hierarchy -check -top private_majority5; synth -top private_majority5 -flatten; abc -lut 4; check -assert; stat; write_json build/episode12/capture-pass/private_majority5.json'",
+              "yosys -Q -p 'read_verilog Hardware/RTL/Examples/private_majority5.v; prep -top private_majority5; eval -set votes 0 -show proposal_passes; eval -set votes 31 -show proposal_passes'",
+              ".build/release/helut-bench --bench build/episode12/capture-pass/private_majority5.json --degree 16 --compile-only",
+              ".build/release/helut-bench --bench build/episode12/capture-pass/private_majority5.json --degree 16 --bench-equiv",
+              ".build/release/helut-bench --bench build/episode12/capture-pass/private_majority5.json --degree 16 --bench-encrypted --cpu-only --sing --vectors 32 --paths 'blind-rotate public-ms boolean'",
+              ".build/release/helut-bench --bench build/episode12/capture-pass/private_majority5.json --degree 1024 --bench-encrypted --sing --vectors 2 --paths 'blind-rotate-metal public-ms boolean'"
+            ]
+          },
+          "timingNote": "These are two individual observations, not a timing distribution or stability benchmark.",
+          "claimBoundaries": [
+            "The SING harness owns the key and decrypts in-process to compare with the clear golden model.",
+            "This is not a deployed multiparty voting protocol and does not prove host privacy.",
+            "N=16 is a demonstration parameter with 8.0 modeled classical bits.",
+            "The N=1024 run checks two deterministic rows, not all 32 rows.",
+            "The 175.7-bit figure is modeled, not independently audited.",
+            "exactNoiselessConstruction is not a noisy bootstrapping proof."
+          ]
+        },
+        {
+          "captureId": "episode12-picorv32-coda",
+          "role": "Episode 12 coda: scale contrast against the private-majority circuit",
+          "capturedAt": "2026-09-04T15:23:30-07:00",
+          "video": {
+            "file": "episode12-picorv32-coda.mp4",
+            "sha256": "8f2568f6090fe219f231120477d1a76fbbceea8350aa9067364027fa64c998c9",
+            "codec": "h264",
+            "width": 1280,
+            "height": 720,
+            "durationSeconds": 53.8,
+            "sizeBytes": 918787
+          },
+          "tape": {
+            "file": "episode12-picorv32-coda.tape",
+            "sha256": "c96e2a75dc05e4b2bab88b894df2b22f6a46d32d4e4d3282c49905a747683ff0"
+          },
+          "manifestFile": "picorv32-coda-manifest.json",
+          "transcriptFile": "PICORV32_CODA_TRANSCRIPT.md",
+          "reproduce": {
+            "workingDirectory": "HELUT repository root",
+            "prerequisites": [
+              "swift build -c release --product helut-bench",
+              "no Yosys or Metal device required; both netlists are checked in and the run is CPU-only"
+            ],
+            "commands": [
+              ".build/release/helut-bench --bench Generated/Netlists/Examples/private_majority5_netlist.json --degree 16 --compile-only",
+              ".build/release/helut-bench --bench picorv32_netlist.json --degree 8 --compile-only",
+              ".build/release/helut-bench --bench picorv32_netlist.json --degree 8 --bench-encrypted --cpu-only --sing --ticks 48 --reset-hold 3 --encrypted-mem prog --paths 'blind-rotate public-ms boolean'"
+            ]
+          },
+          "timingNote": "Three individual observations on one machine. This is not a timing distribution, a stability claim, or a performance benchmark.",
+          "claimBoundaries": [
+            "N=8 is a demonstration parameter. The run reports 4.0 modeled classical bits and is explicitly not production security.",
+            "The host implements memory. It drives mem_ready/mem_rdata and observes mem_valid/mem_addr/mem_wstrb/mem_wdata, so instruction addresses and memory data are visible to the host and appear in the trace in the clear.",
+            "The SING harness owns the key and decrypts outputs in-process to compare them with a clear golden model.",
+            "The encrypted evaluation covers the synthesized picorv32 netlist, not the host ROM or host RAM.",
+            "This run used CPU blind rotation. The Metal path was skipped by --cpu-only.",
+            "exactNoiselessConstruction is not a noisy bootstrapping-key robustness proof.",
+            "The program is three meaningful instructions in a tiny ROM padded with unbounded no-ops, not a general workload, not an operating system, and not a production encrypted CPU.",
+            "4,785 LUTs and 1,565 DFFs are counts for this synthesized netlist, not a claim about minimal PicoRV32 area.",
+            "The lookup-table comparison against the majority circuit is a scale contrast, not a normalized area metric: the majority netlist was mapped up to four-input tables while this PicoRV32 netlist tops out at three-input tables."
+          ]
+        }
+      ]
+    }
+  ]
+}

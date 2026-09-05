@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" role="img" aria-labelledby="t d">
+  <title id="t">What the Episode 12 receipt proves and does not prove</title>
+  <desc id="d">Four measured results are separated from four stronger claims that remain outside the receipt.</desc>
+  <rect width="1920" height="1080" fill="#091522"/>
+  <g transform="translate(990 140)" font-family="Arial,sans-serif">
+    <text x="425" y="14" text-anchor="middle" fill="#9aa8b8" font-size="15" letter-spacing="3">THE BOUNDARY AROUND THE RESULT</text>
+    <g transform="translate(0 48)">
+      <rect width="410" height="470" rx="18" fill="#122b35" stroke="#22a89c" stroke-width="2"/>
+      <text x="205" y="38" text-anchor="middle" fill="#22a89c" font-size="15" letter-spacing="2">IN THE RECEIPT</text>
+      <g transform="translate(24 68)">
+        <rect width="362" height="74" rx="12" fill="#142738"/><text x="18" y="29" fill="#9aa8b8" font-size="14">SYNTHESIS</text><text x="18" y="56" fill="#fff" font-size="20" font-weight="700">5 → 3 LUTs → 1</text>
+        <rect y="90" width="362" height="74" rx="12" fill="#142738"/><text x="18" y="119" fill="#9aa8b8" font-size="14">CLEAR / TRIVIAL</text><text x="18" y="146" fill="#fff" font-size="20" font-weight="700">32 / 32 · PASS</text>
+        <rect y="180" width="362" height="74" rx="12" fill="#142738"/><text x="18" y="209" fill="#9aa8b8" font-size="14">ENCRYPTED · N=16</text><text x="18" y="236" fill="#fff" font-size="20" font-weight="700">32 / 32 · PASS</text>
+        <rect y="270" width="362" height="74" rx="12" fill="#142738"/><text x="18" y="299" fill="#9aa8b8" font-size="14">METAL · N=1024</text><text x="18" y="326" fill="#fff" font-size="20" font-weight="700">2 / 2 · PASS</text>
+      </g>
+    </g>
+    <g transform="translate(440 48)">
+      <rect width="410" height="470" rx="18" fill="#2b2025" stroke="#d4833f" stroke-width="2"/>
+      <text x="205" y="38" text-anchor="middle" fill="#d4833f" font-size="15" letter-spacing="2">OUTSIDE THE RECEIPT</text>
+      <g transform="translate(24 68)" font-size="18">
+        <rect width="362" height="74" rx="12" fill="#201a22"/><text x="18" y="32" fill="#fff" font-weight="700">No voting protocol</text><text x="18" y="56" fill="#9aa8b8" font-size="15">key custody and authentication absent</text>
+        <rect y="90" width="362" height="74" rx="12" fill="#201a22"/><text x="18" y="122" fill="#fff" font-weight="700">No host-privacy proof</text><text x="18" y="146" fill="#9aa8b8" font-size="15">timing and metadata not measured</text>
+        <rect y="180" width="362" height="74" rx="12" fill="#201a22"/><text x="18" y="212" fill="#fff" font-weight="700">No noisy-BK result</text><text x="18" y="236" fill="#9aa8b8" font-size="15">exact-noiseless construction used</text>
+        <rect y="270" width="362" height="74" rx="12" fill="#201a22"/><text x="18" y="302" fill="#fff" font-weight="700">No exhaustive N=1024</text><text x="18" y="326" fill="#9aa8b8" font-size="15">two endpoint rows only</text>
+      </g>
+    </g>
+  </g>
+</svg>

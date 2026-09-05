@@ -19,8 +19,13 @@ export function sceneDurationSec(
   audioSeconds?: AudioSeconds,
 ): number {
   const clip = audioSeconds?.[scene.id];
-  if (clip != null) return clip + AUDIO_TAIL_PAD_SEC;
-  return hintSec(scene);
+  if (clip == null) return hintSec(scene);
+
+  const narratedSeconds = clip + AUDIO_TAIL_PAD_SEC;
+  if (scene.kind === 'capture') {
+    return Math.max(hintSec(scene), narratedSeconds);
+  }
+  return narratedSeconds;
 }
 
 export function sceneDurationFrames(
@@ -28,7 +33,10 @@ export function sceneDurationFrames(
   fps = FPS,
   audioSeconds?: AudioSeconds,
 ): number {
-  return Math.max(1, Math.round(sceneDurationSec(scene, audioSeconds) * fps));
+  const exactFrames = sceneDurationSec(scene, audioSeconds) * fps;
+  const roundedFrames =
+    scene.kind === 'capture' ? Math.ceil(exactFrames) : Math.round(exactFrames);
+  return Math.max(1, roundedFrames);
 }
 
 export function episodeDurationFrames(

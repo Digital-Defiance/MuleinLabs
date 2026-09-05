@@ -5,6 +5,12 @@ import { HomePage } from './pages/HomePage'
 const TextbookPage = lazy(() =>
   import('./pages/TextbookPage').then((m) => ({ default: m.TextbookPage })),
 )
+const EpisodesPage = lazy(() =>
+  import('./pages/EpisodesPage').then((m) => ({ default: m.EpisodesPage })),
+)
+const EpisodePage = lazy(() =>
+  import('./pages/EpisodePage').then((m) => ({ default: m.EpisodePage })),
+)
 
 function Nav() {
   return (
@@ -17,9 +23,21 @@ function Nav() {
         <nav>
           <ul className="nav-links">
             <li>
+              <NavLink to="/episodes">Episodes</NavLink>
+            </li>
+            <li>
               <NavLink to="/textbook">Living textbook</NavLink>
             </li>
             <li>
+              <a
+                href="https://www.youtube.com/@MuleinLabs"
+                target="_blank"
+                rel="noreferrer"
+              >
+                YouTube
+              </a>
+            </li>
+            <li className="nav-github">
               <a
                 href="https://github.com/JessicaMulein/MuleinLabs"
                 target="_blank"
@@ -53,6 +71,8 @@ export default function App() {
       <Suspense fallback={<div className="shell loading">Loading…</div>}>
         <Routes>
           <Route path="/" element={<HomePage />} />
+          <Route path="/episodes" element={<EpisodesPage />} />
+          <Route path="/episodes/:episodeId" element={<EpisodePage />} />
           <Route path="/textbook" element={<TextbookPage />} />
         </Routes>
       </Suspense>

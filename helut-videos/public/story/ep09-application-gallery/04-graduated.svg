@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" role="img" aria-labelledby="t d">
+  <title id="t">One demo graduated to the encrypted tier, one did not</title>
+  <desc id="d">The regular-expression matcher runs encrypted at production polynomial size in about 27 seconds. The decision tree still runs only at demonstration size and its covering path remains open.</desc>
+  <rect width="1920" height="1080" fill="#091522"/>
+  <g transform="translate(1000 162)" font-family="Arial,sans-serif">
+    <text x="415" y="14" text-anchor="middle" fill="#9aa8b8" font-size="15" letter-spacing="3">SAME FAMILY · SAME COMPILER</text>
+
+    <g transform="translate(0 42)">
+      <rect width="830" height="104" rx="16" fill="#122b35" stroke="#22a89c" stroke-width="2"/>
+      <text x="24" y="32" fill="#22a89c" font-size="14" letter-spacing="2">GRADUATED</text>
+      <text x="24" y="66" fill="#fff" font-size="24" font-weight="700">regex matcher · 23 tables</text>
+      <text x="24" y="92" fill="#9aa8b8" font-size="17">encrypted at production size · ≈27 s</text>
+      <text x="806" y="70" text-anchor="end" fill="#22a89c" font-size="30" font-weight="700">✓</text>
+    </g>
+
+    <g transform="translate(0 168)">
+      <rect width="830" height="104" rx="16" fill="#2b2025" stroke="#d4833f" stroke-width="2" stroke-dasharray="10 7"/>
+      <text x="24" y="32" fill="#d4833f" font-size="14" letter-spacing="2">STILL WAITING</text>
+      <text x="24" y="66" fill="#fff" font-size="24" font-weight="700">decision tree</text>
+      <text x="24" y="92" fill="#9aa8b8" font-size="17">demonstration size only · covering path open</text>
+      <text x="806" y="70" text-anchor="end" fill="#d4833f" font-size="28" font-weight="700">?</text>
+    </g>
+
+    <text x="415" y="322" text-anchor="middle" fill="#d4833f" font-size="20" font-weight="700">The gap is recorded, not smoothed over.</text>
+  </g>
+</svg>

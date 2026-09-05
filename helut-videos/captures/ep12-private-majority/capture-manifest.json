@@ -1,0 +1,221 @@
+{
+  "schemaVersion": 1,
+  "captureId": "episode12-private-majority-full-run",
+  "transcript": "CAPTURE_TRANSCRIPT.md",
+  "reproduce": {
+    "workingDirectory": "HELUT repository root",
+    "prerequisites": [
+      "swift build -c release --product helut-bench",
+      "Yosys 0.68+ with ABC for the synthesis and endpoint stages",
+      "Apple silicon with Metal for the N=1024 stage"
+    ],
+    "commands": [
+      "yosys -Q -p 'read_verilog Hardware/RTL/Examples/private_majority5.v; hierarchy -check -top private_majority5; synth -top private_majority5 -flatten; abc -lut 4; check -assert; stat; write_json build/episode12/capture-pass/private_majority5.json'",
+      "yosys -Q -p 'read_verilog Hardware/RTL/Examples/private_majority5.v; prep -top private_majority5; eval -set votes 0 -show proposal_passes; eval -set votes 31 -show proposal_passes'",
+      ".build/release/helut-bench --bench build/episode12/capture-pass/private_majority5.json --degree 16 --compile-only",
+      ".build/release/helut-bench --bench build/episode12/capture-pass/private_majority5.json --degree 16 --bench-equiv",
+      ".build/release/helut-bench --bench build/episode12/capture-pass/private_majority5.json --degree 16 --bench-encrypted --cpu-only --sing --vectors 32 --paths 'blind-rotate public-ms boolean'",
+      ".build/release/helut-bench --bench build/episode12/capture-pass/private_majority5.json --degree 1024 --bench-encrypted --sing --vectors 2 --paths 'blind-rotate-metal public-ms boolean'"
+    ]
+  },
+  "capturedAt": "2026-09-04T13:59:20-07:00",
+  "captureMethod": {
+    "recorder": "VHS",
+    "terminal": "real Bash pseudo-terminal",
+    "uploaded": false,
+    "tape": {
+      "repo": "helut-videos",
+      "path": "captures/ep12-private-majority/episode12-full-run.tape",
+      "sha256": "8b94941ed17889845c4fcb88b7abe2c35255764b4019b427c6fef2a3812d0377",
+      "requestedFrameRate": 30
+    }
+  },
+  "video": {
+    "repo": "helut-videos",
+    "path": "public/captures/ep12-private-majority/episode12-full-run.mp4",
+    "sha256": "066c818c6bcb239171eac95247ee413c7c6864b9756b99842d352a313efd7288",
+    "container": "mov,mp4,m4a,3gp,3g2,mj2",
+    "codec": "h264",
+    "pixelFormat": "yuv420p",
+    "width": 1280,
+    "height": 720,
+    "encodedFrameRate": "25/1",
+    "durationSeconds": 56.76,
+    "sizeBytes": 1315250
+  },
+  "toolchain": {
+    "vhs": {
+      "commandOutput": "vhs version 0.11.0",
+      "homebrewPackage": "vhs 0.11.0"
+    },
+    "ttyd": {
+      "commandOutput": "ttyd version 1.7.7-unknown",
+      "homebrewPackage": "ttyd 1.7.7_12"
+    },
+    "ffmpeg": {
+      "commandOutput": "ffmpeg version 9.0.1 Copyright (c) 2000-2026 the FFmpeg developers",
+      "homebrewPackage": "ffmpeg 9.0.1_1"
+    },
+    "yosys": "Yosys 0.68+post (git sha1 c12172fbae8af5e20f6fb52e3d4e92d56ed587b6, Release, AppleClang clang++ 21.0.0.21000101)",
+    "swift": "swift-driver version: 1.148.6 Apple Swift version 6.3.3 (swiftlang-6.3.3.1.3 clang-2100.1.1.101)"
+  },
+  "sourceVerification": {
+    "typedPath": "/tmp/episode12-private_majority5.v",
+    "trackedRepo": "HELUT",
+    "trackedPath": "Hardware/RTL/Examples/private_majority5.v",
+    "comparisonCommand": "cmp /tmp/episode12-private_majority5.v Hardware/RTL/Examples/private_majority5.v",
+    "byteForByteMatch": true,
+    "sha256": "9df86f15425f310bbdb2966e13976202c47fe082c98cf11a70e5f8603764b59b"
+  },
+  "artifacts": [
+    {
+      "repo": "HELUT",
+      "path": "build/episode12/capture-pass/private_majority5.json",
+      "kind": "capture-generated Yosys netlist",
+      "sha256": "b0e15e06dbeca6012019c47a354045348b8852fcdc231f2a6ef8a404a2fb56a7"
+    },
+    {
+      "repo": "HELUT",
+      "path": "build/episode12/capture-pass/01-synthesis.log",
+      "kind": "full capture-pass log",
+      "sha256": "a465d6c942cd378a70e02e013e94fd910e55ea1273f716d7aabd48407eae13ca"
+    },
+    {
+      "repo": "HELUT",
+      "path": "build/episode12/capture-pass/02-endpoints.log",
+      "kind": "full capture-pass log",
+      "sha256": "d4157c9f335a05df3012f13ee30bbcfeea7e6f2c8efbff3622439b3e7d7a2e25"
+    },
+    {
+      "repo": "HELUT",
+      "path": "build/episode12/capture-pass/03-compile.log",
+      "kind": "full capture-pass log",
+      "sha256": "98247deb004fad96430248b86ae18d84d4a4ff8ca18b3880021cf2b9bc33ed48"
+    },
+    {
+      "repo": "HELUT",
+      "path": "build/episode12/capture-pass/04-clear-equiv.log",
+      "kind": "full capture-pass log",
+      "sha256": "0da5018a4e070f10e0708e129f05a384346340263952b8bf4aa0f01acb64eee3"
+    },
+    {
+      "repo": "HELUT",
+      "path": "build/episode12/capture-pass/05-encrypted-n16-cpu.log",
+      "kind": "full capture-pass log",
+      "sha256": "b5700e2789a16476cafa0e8e1953330fbcb34f2e94c8144d989db4df939e81a1"
+    },
+    {
+      "repo": "HELUT",
+      "path": "build/episode12/capture-pass/06-encrypted-n1024-metal.log",
+      "kind": "full capture-pass log",
+      "sha256": "2ed3408dacc977826eca99ddc8dddef92f2ccb66e230c3f8b22af7983d3431dc"
+    }
+  ],
+  "experiment": {
+    "circuit": {
+      "module": "private_majority5",
+      "inputs": 5,
+      "outputs": 1,
+      "decision": "proposal_passes is one when at least three of five vote bits are one"
+    },
+    "synthesis": {
+      "result": "PASS",
+      "checkProblems": 0,
+      "lutCount": 3,
+      "lutWidthsInNetlistOrder": [4, 3, 3],
+      "lutWidthsSorted": [3, 3, 4]
+    },
+    "endpoints": [
+      {
+        "votesDecimal": 0,
+        "votesBinary": "00000",
+        "proposalPasses": 0
+      },
+      {
+        "votesDecimal": 31,
+        "votesBinary": "11111",
+        "proposalPasses": 1
+      }
+    ],
+    "compile": {
+      "result": "PASS",
+      "polyDegree": 16,
+      "inputs": 5,
+      "luts": 3,
+      "dffs": 0,
+      "outputs": 1,
+      "totalSeconds": 0.0004
+    },
+    "clearEquivalence": {
+      "result": "PASS",
+      "rows": 32,
+      "exhaustiveForFiveInputs": true,
+      "encoding": "constant-fill",
+      "lutBackend": "multilinear"
+    },
+    "encryptedN16Cpu": {
+      "result": "PASS",
+      "path": "blind-rotate public-ms boolean",
+      "polyDegree": 16,
+      "ringSize2N": 32,
+      "rows": 32,
+      "exhaustiveForFiveInputs": true,
+      "wallSeconds": 0.0095,
+      "millisecondsPerRow": 0.30,
+      "modeledClassicalBits": 8.0,
+      "meetsModeled128Bits": false,
+      "ingestEpsilonLog2": "-inf",
+      "noisyBkBound": 0,
+      "construction": "exactNoiselessConstruction",
+      "decodable": true
+    },
+    "encryptedN1024Metal": {
+      "result": "PASS",
+      "path": "blind-rotate-metal public-ms boolean",
+      "polyDegree": 1024,
+      "ringSize2N": 2048,
+      "rows": 2,
+      "exhaustiveForFiveInputs": false,
+      "wallSeconds": 2.5320,
+      "millisecondsPerRow": 1265.99,
+      "modeledClassicalBits": 175.7,
+      "meetsModeled128Bits": true,
+      "ingestEpsilonLog2": "-inf",
+      "noisyBkBound": 0,
+      "construction": "exactNoiselessConstruction",
+      "decodable": true
+    }
+  },
+  "validation": {
+    "tapeSyntaxValidated": true,
+    "mp4ProbedSuccessfully": true,
+    "allSixCaptureLogsPresent": true,
+    "contactSheetInspected": true,
+    "terminalTextLegible": true,
+    "removedSetupSentinelVisible": false,
+    "sourceMatchVisible": true,
+    "allSixStagesVisible": true,
+    "finalHashesVisible": true
+  },
+  "timingContext": {
+    "initialReceipt": {
+      "repo": "HELUT",
+      "path": "logs/helut-episode12-private-majority-20260904.log",
+      "encryptedN16CpuWallSeconds": 0.0089,
+      "encryptedN1024MetalWallSeconds": 2.7189
+    },
+    "filmedRerun": {
+      "encryptedN16CpuWallSeconds": 0.0095,
+      "encryptedN1024MetalWallSeconds": 2.5320
+    },
+    "interpretation": "These are two individual observations, not a timing distribution or stability benchmark."
+  },
+  "claimBoundaries": [
+    "The SING harness owns the key and decrypts in-process to compare with the clear golden model.",
+    "This is not a deployed multiparty voting protocol and does not prove host privacy.",
+    "N=16 is a demonstration parameter with 8.0 modeled classical bits.",
+    "The N=1024 run checks two deterministic rows, not all 32 rows.",
+    "The 175.7-bit figure is modeled, not independently audited.",
+    "exactNoiselessConstruction is not a noisy bootstrapping proof."
+  ]
+}

@@ -2,12 +2,12 @@
 
 React + Vite site for [muleinlabs.com](https://muleinlabs.com).
 
-Primary content today: the HELUT **living textbook**, rendered under MuleinLabs branding (not HELUT site theming).
+Primary content today: the HELUT **living textbook** and a written companion for every canonical **helut-videos episode**, rendered under MuleinLabs branding (not HELUT site theming).
 
 ```bash
 cd site
 npm install
-npm run sync-textbook   # copies ../HELUT/textbook when available
+npm run sync-content   # syncs the textbook and all canonical episode scripts
 npm run dev
 npm run build
 npm run preview

@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" role="img" aria-labelledby="t d">
+  <title id="t">The reproducibility path from source to permanent receipt</title>
+  <desc id="d">The Episode 12 result preserves the Verilog source, generated netlist, six full logs, a curated receipt, commands, dates, and hashes.</desc>
+  <rect width="1920" height="1080" fill="#091522"/>
+  <g transform="translate(990 142)" font-family="Arial,sans-serif">
+    <text x="425" y="14" text-anchor="middle" fill="#9aa8b8" font-size="15" letter-spacing="3">THE PATH BACK FROM SENTENCE TO RUN</text>
+    <g transform="translate(0 48)">
+      <rect width="850" height="92" rx="16" fill="#142738" stroke="#22a89c"/>
+      <text x="24" y="30" fill="#22a89c" font-size="13" letter-spacing="2">1 · SOURCE</text>
+      <text x="24" y="61" fill="#fff" font-size="18" font-family="Courier New,Courier,monospace">Hardware/RTL/Examples/private_majority5.v</text>
+      <text x="826" y="61" text-anchor="end" fill="#9aa8b8" font-size="14">sha256 9df86f15…</text>
+    </g>
+    <path d="M425 140v26" stroke="#66758a" stroke-width="3"/>
+    <g transform="translate(0 166)">
+      <rect width="850" height="92" rx="16" fill="#142738" stroke="#22a89c"/>
+      <text x="24" y="30" fill="#22a89c" font-size="13" letter-spacing="2">2 · GENERATED NETLIST</text>
+      <text x="24" y="61" fill="#fff" font-size="16" font-family="Courier New,Courier,monospace">Generated/Netlists/Examples/private_majority5_netlist.json</text>
+      <text x="826" y="61" text-anchor="end" fill="#9aa8b8" font-size="14">3 LUT cells</text>
+    </g>
+    <path d="M425 258v26" stroke="#66758a" stroke-width="3"/>
+    <g transform="translate(0 284)">
+      <rect width="850" height="92" rx="16" fill="#142738" stroke="#22a89c"/>
+      <text x="24" y="30" fill="#22a89c" font-size="13" letter-spacing="2">3 · FULL RECEIPTS</text>
+      <text x="24" y="61" fill="#fff" font-size="18" font-family="Courier New,Courier,monospace">build/episode12/01 … 06</text>
+      <text x="826" y="61" text-anchor="end" fill="#9aa8b8" font-size="14">synthesis · endpoints · clear · encrypted</text>
+    </g>
+    <path d="M425 376v26" stroke="#66758a" stroke-width="3"/>
+    <g transform="translate(0 402)">
+      <rect width="850" height="112" rx="16" fill="#122b35" stroke="#22a89c" stroke-width="3"/>
+      <text x="24" y="32" fill="#22a89c" font-size="13" letter-spacing="2">4 · PERMANENT CURATED RECEIPT</text>
+      <text x="24" y="66" fill="#fff" font-size="16" font-family="Courier New,Courier,monospace">logs/helut-episode12-private-majority-20260904.log</text>
+      <text x="24" y="92" fill="#9aa8b8" font-size="15">exact commands · observed values · caveats · full-log hashes</text>
+    </g>
+    <text x="425" y="558" text-anchor="middle" fill="#d4833f" font-size="19" font-weight="700">The receipt includes the limit of the claim.</text>
+  </g>
+</svg>

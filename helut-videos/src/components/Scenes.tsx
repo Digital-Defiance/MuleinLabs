@@ -3,11 +3,16 @@ import {
   AbsoluteFill,
   Img,
   interpolate,
+  OffthreadVideo,
+  Sequence,
   staticFile,
   useCurrentFrame,
 } from 'remotion';
 import { FONT_BODY, FONT_DISPLAY } from '../lib/fonts';
-import { storyBackgroundStaticPath } from '../lib/schema';
+import {
+  captureVideoStaticPath,
+  storyBackgroundStaticPath,
+} from '../lib/schema';
 import { SyncedCaptions } from './SyncedCaptions';
 
 /** HELUT site palette — dark panel with copper + teal signal. */
@@ -66,6 +71,134 @@ export const HelutChrome: React.FC<{
       )}
       {children}
     </AbsoluteFill>
+  );
+};
+
+export const CaptureCard: React.FC<{
+  episodeId: string;
+  sceneId: string;
+  videoAsset: string;
+  videoDurationSec: number;
+  sceneDurationInFrames: number;
+  fps: number;
+  label?: string;
+  caption: string;
+}> = ({
+  episodeId,
+  sceneId,
+  videoAsset,
+  videoDurationSec,
+  sceneDurationInFrames,
+  fps,
+  label,
+  caption,
+}) => {
+  const videoFrames = Math.min(
+    sceneDurationInFrames,
+    Math.ceil(videoDurationSec * fps),
+  );
+  const videoSrc = staticFile(captureVideoStaticPath(episodeId, videoAsset));
+
+  return (
+    <HelutChrome>
+      <AbsoluteFill style={{ padding: 18 }}>
+        <div
+          style={{
+            position: 'relative',
+            width: '100%',
+            height: '100%',
+            overflow: 'hidden',
+            borderRadius: 22,
+            border: '1px solid rgba(148,163,184,0.35)',
+            background: '#091522',
+            boxShadow: '0 18px 70px rgba(0,0,0,0.5)',
+          }}
+        >
+          <Sequence durationInFrames={videoFrames} name="literal-terminal-capture">
+            <OffthreadVideo
+              src={videoSrc}
+              muted
+              volume={0}
+              playbackRate={1}
+              style={{
+                position: 'absolute',
+                inset: 0,
+                width: '100%',
+                height: '100%',
+                objectFit: 'contain',
+                background: '#091522',
+              }}
+            />
+          </Sequence>
+
+          {sceneDurationInFrames > videoFrames && (
+            <Sequence
+              from={videoFrames}
+              durationInFrames={sceneDurationInFrames - videoFrames}
+              name="capture-complete"
+            >
+              <AbsoluteFill
+                style={{
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  background:
+                    'radial-gradient(ellipse at 50% 35%, rgba(34,168,156,0.16), transparent 48%), #091522',
+                  textAlign: 'center',
+                }}
+              >
+                <div
+                  style={{
+                    color: COLORS.signal,
+                    fontFamily: FONT_BODY,
+                    fontSize: 24,
+                    fontWeight: 700,
+                    letterSpacing: '0.18em',
+                    textTransform: 'uppercase',
+                  }}
+                >
+                  Capture complete
+                </div>
+                <div
+                  style={{
+                    marginTop: 22,
+                    color: COLORS.text,
+                    fontFamily: FONT_DISPLAY,
+                    fontSize: 54,
+                    fontWeight: 700,
+                  }}
+                >
+                  The static panels keep the receipts readable.
+                </div>
+              </AbsoluteFill>
+            </Sequence>
+          )}
+
+          {label && (
+            <div
+              style={{
+                position: 'absolute',
+                top: 20,
+                right: 22,
+                padding: '7px 12px 8px',
+                borderRadius: 999,
+                border: '1px solid rgba(34,168,156,0.48)',
+                background: 'rgba(6,10,18,0.84)',
+                color: '#d5f5f1',
+                fontFamily: FONT_BODY,
+                fontSize: 18,
+                fontWeight: 700,
+                letterSpacing: '0.09em',
+                textTransform: 'uppercase',
+                boxShadow: '0 4px 18px rgba(0,0,0,0.5)',
+              }}
+            >
+              {label}
+            </div>
+          )}
+        </div>
+      </AbsoluteFill>
+      <SceneCaptions episodeId={episodeId} sceneId={sceneId} text={caption} />
+    </HelutChrome>
   );
 };
 

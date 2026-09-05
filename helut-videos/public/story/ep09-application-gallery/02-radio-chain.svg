@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" role="img" aria-labelledby="t d">
+  <title id="t">Closed-loop radio to netlist match</title>
+  <desc id="d">A GNU Radio flowgraph makes a baseband signal, adds noise, recovers bytes, and feeds them to a Yosys regex netlist that flags the letters D E F. No antenna is used.</desc>
+  <rect width="1920" height="1080" fill="#091522"/>
+  <g transform="translate(1000 158)" font-family="Arial,sans-serif">
+    <text x="415" y="14" text-anchor="middle" fill="#9aa8b8" font-size="15" letter-spacing="3">GNU RADIO OWNS THE SAMPLE CLOCK · HELUT OWNS THE CIRCUIT CLOCK</text>
+
+    <g transform="translate(0 40)">
+      <rect width="196" height="58" rx="12" fill="#142738" stroke="#22a89c"/>
+      <text x="98" y="26" text-anchor="middle" fill="#22a89c" font-size="13" letter-spacing="1">BASEBAND IQ</text>
+      <text x="98" y="47" text-anchor="middle" fill="#fff" font-size="17">generated</text>
+    </g>
+    <path d="M196 109h34" stroke="#66758a" stroke-width="3"/>
+    <g transform="translate(230 40)">
+      <rect width="176" height="58" rx="12" fill="#2b2025" stroke="#d4833f"/>
+      <text x="88" y="26" text-anchor="middle" fill="#d4833f" font-size="13" letter-spacing="1">AWGN</text>
+      <text x="88" y="47" text-anchor="middle" fill="#fff" font-size="17">noise added</text>
+    </g>
+    <path d="M406 109h34" stroke="#66758a" stroke-width="3"/>
+    <g transform="translate(440 40)">
+      <rect width="176" height="58" rx="12" fill="#142738" stroke="#22a89c"/>
+      <text x="88" y="26" text-anchor="middle" fill="#22a89c" font-size="13" letter-spacing="1">RECOVERED</text>
+      <text x="88" y="47" text-anchor="middle" fill="#fff" font-size="17">bytes</text>
+    </g>
+    <path d="M616 109h34" stroke="#66758a" stroke-width="3"/>
+    <g transform="translate(650 40)">
+      <rect width="180" height="58" rx="12" fill="#1b2637" stroke="#d4833f" stroke-width="3"/>
+      <text x="90" y="26" text-anchor="middle" fill="#d4833f" font-size="13" letter-spacing="1">YOSYS NETLIST</text>
+      <text x="90" y="47" text-anchor="middle" fill="#fff" font-size="17">regex matcher</text>
+    </g>
+
+    <path d="M740 98v34" stroke="#66758a" stroke-width="3"/>
+    <rect x="600" y="132" width="230" height="52" rx="12" fill="#122b35" stroke="#22a89c" stroke-width="2"/>
+    <text x="715" y="164" text-anchor="middle" fill="#fff" font-size="20" font-weight="700">★ match on “DEF”</text>
+
+    <g transform="translate(0 212)">
+      <rect width="270" height="76" rx="14" fill="#122b35" stroke="#22a89c"/>
+      <text x="135" y="26" text-anchor="middle" fill="#22a89c" font-size="13" letter-spacing="1">ACT I · CLEAR</text>
+      <text x="135" y="52" text-anchor="middle" fill="#fff" font-size="18">real time</text>
+      <text x="135" y="70" text-anchor="middle" fill="#9aa8b8" font-size="15">oracle tier</text>
+    </g>
+    <g transform="translate(285 212)">
+      <rect width="270" height="76" rx="14" fill="#122b35" stroke="#22a89c"/>
+      <text x="135" y="26" text-anchor="middle" fill="#22a89c" font-size="13" letter-spacing="1">ACT II · BATCH</text>
+      <text x="135" y="52" text-anchor="middle" fill="#fff" font-size="18">10,000 windows</text>
+      <text x="135" y="70" text-anchor="middle" fill="#9aa8b8" font-size="15">throughput</text>
+    </g>
+    <g transform="translate(570 212)">
+      <rect width="260" height="76" rx="14" fill="#282235" stroke="#d4833f"/>
+      <text x="130" y="26" text-anchor="middle" fill="#d4833f" font-size="13" letter-spacing="1">ACT III · FROZEN</text>
+      <text x="130" y="52" text-anchor="middle" fill="#fff" font-size="18">encrypted, demo size</text>
+      <text x="130" y="70" text-anchor="middle" fill="#9aa8b8" font-size="15">slow is the point</text>
+    </g>
+
+    <text x="415" y="334" text-anchor="middle" fill="#d4833f" font-size="19" font-weight="700">No antenna. Nothing intercepted. One machine, closed loop.</text>
+  </g>
+</svg>

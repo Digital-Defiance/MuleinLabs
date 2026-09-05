@@ -5,10 +5,13 @@
   "type": "module",
   "scripts": {
     "sync-textbook": "node scripts/sync-textbook.mjs",
-    "predev": "node scripts/sync-textbook.mjs",
+    "sync-episodes": "node scripts/sync-episodes.mjs",
+    "sync-content": "npm run sync-textbook && npm run sync-episodes",
+    "predev": "npm run sync-content",
     "dev": "vite",
-    "prebuild": "node scripts/sync-textbook.mjs",
+    "prebuild": "npm run sync-content",
     "build": "tsc -b && vite build",
+    "pretypecheck": "npm run sync-episodes",
     "typecheck": "tsc -b",
     "preview": "vite preview"
   },

@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" role="img" aria-labelledby="t d">
+  <title id="t">Statistical, not computational</title>
+  <desc id="d">The batch datapath, the sieve and the evolutionary search are all sound. The scoring function is what fails, and roughly forty-seven bits of plugboard freedom can be fitted to seventy-two letters of anything.</desc>
+  <rect width="1920" height="1080" fill="#091522"/>
+  <g transform="translate(1000 152)" font-family="Arial,sans-serif">
+    <text x="415" y="14" text-anchor="middle" fill="#9aa8b8" font-size="15" letter-spacing="3">WHERE THE FAILURE IS — AND IS NOT</text>
+
+    <g transform="translate(0 42)">
+      <rect width="405" height="188" rx="18" fill="#122b35" stroke="#22a89c" stroke-width="2"/>
+      <text x="202" y="30" text-anchor="middle" fill="#22a89c" font-size="14" letter-spacing="2">SOUND</text>
+      <text x="24" y="70" fill="#fff" font-size="19">· batch datapath</text>
+      <text x="24" y="104" fill="#fff" font-size="19">· plug sieve</text>
+      <text x="24" y="138" fill="#fff" font-size="19">· evolutionary search</text>
+      <text x="202" y="172" text-anchor="middle" fill="#22a89c" font-size="17">all verified correct</text>
+    </g>
+
+    <g transform="translate(425 42)">
+      <rect width="405" height="188" rx="18" fill="#33161b" stroke="#e0574c" stroke-width="2"/>
+      <text x="202" y="30" text-anchor="middle" fill="#e0574c" font-size="14" letter-spacing="2">BLIND</text>
+      <text x="202" y="82" text-anchor="middle" fill="#fff" font-size="24" font-weight="700">the scoring</text>
+      <text x="202" y="112" text-anchor="middle" fill="#fff" font-size="24" font-weight="700">function</text>
+      <text x="202" y="152" text-anchor="middle" fill="#9aa8b8" font-size="18">no hardware fixes</text>
+      <text x="202" y="176" text-anchor="middle" fill="#9aa8b8" font-size="18">a blind judge</text>
+    </g>
+
+    <rect x="0" y="256" width="830" height="80" rx="16" fill="#2b2025" stroke="#d4833f" stroke-width="2"/>
+    <text x="415" y="284" text-anchor="middle" fill="#d4833f" font-size="14" letter-spacing="2">THE NUMBER THIS RETIRES</text>
+    <text x="415" y="316" text-anchor="middle" fill="#fff" font-size="20" font-weight="700">~47 bits of plugboard fitted to 72 letters</text>
+
+    <text x="415" y="384" text-anchor="middle" fill="#9aa8b8" font-size="19">A high plausibility score on 72 letters is not evidence.</text>
+  </g>
+</svg>

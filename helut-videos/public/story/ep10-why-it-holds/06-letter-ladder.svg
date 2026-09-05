@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" role="img" aria-labelledby="t d">
+  <title id="t">Message length threshold for the crib-free attack</title>
+  <desc id="d">HELUT's measured crib-free threshold on this traffic is about 200 letters. The published record for the method is 78 letters. The unsolved target is 72 letters.</desc>
+  <rect width="1920" height="1080" fill="#091522"/>
+  <g transform="translate(1000 158)" font-family="Arial,sans-serif">
+    <text x="415" y="14" text-anchor="middle" fill="#9aa8b8" font-size="15" letter-spacing="3">HOW SHORT A MESSAGE THE METHOD REACHES</text>
+
+    <line x1="40" y1="112" x2="800" y2="112" stroke="#66758a" stroke-width="3"/>
+
+    <g>
+      <line x1="120" y1="96" x2="120" y2="128" stroke="#e0574c" stroke-width="4"/>
+      <text x="120" y="82" text-anchor="middle" fill="#e0574c" font-size="15" font-weight="700">72</text>
+      <text x="120" y="156" text-anchor="middle" fill="#9aa8b8" font-size="15">target</text>
+    </g>
+    <g>
+      <line x1="200" y1="96" x2="200" y2="128" stroke="#d4833f" stroke-width="4"/>
+      <text x="200" y="82" text-anchor="middle" fill="#d4833f" font-size="15" font-weight="700">78</text>
+      <text x="200" y="156" text-anchor="middle" fill="#9aa8b8" font-size="15">published record</text>
+    </g>
+    <g>
+      <line x1="640" y1="96" x2="640" y2="128" stroke="#22a89c" stroke-width="4"/>
+      <text x="640" y="82" text-anchor="middle" fill="#22a89c" font-size="15" font-weight="700">≈200</text>
+      <text x="640" y="156" text-anchor="middle" fill="#9aa8b8" font-size="15">HELUT measured</text>
+    </g>
+
+    <path d="M630 190H130" fill="none" stroke="#66758a" stroke-width="3" stroke-dasharray="9 7"/>
+    <path d="M140 182l-10 8 10 8" fill="none" stroke="#66758a" stroke-width="3"/>
+    <text x="415" y="216" text-anchor="middle" fill="#9aa8b8" font-size="17">the distance that has to be closed</text>
+
+    <rect x="0" y="248" width="830" height="76" rx="16" fill="#2b2025" stroke="#d4833f" stroke-width="2"/>
+    <text x="415" y="276" text-anchor="middle" fill="#d4833f" font-size="14" letter-spacing="2">THE HONEST GAP, AS PRINTED</text>
+    <text x="415" y="308" text-anchor="middle" fill="#fff" font-size="21" font-weight="700">≈2.8× worse than the state of the art</text>
+
+    <text x="415" y="374" text-anchor="middle" fill="#9aa8b8" font-size="19">And the target needs slightly better than the record.</text>
+  </g>
+</svg>

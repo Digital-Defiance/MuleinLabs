@@ -1,0 +1,134 @@
+{
+  "id": "ep11-the-frontier",
+  "compositionId": "Episode11",
+  "title": "The Frontier",
+  "youtubeTitle": "Five Wild Ideas, and the Small Experiment That Would Earn Each One",
+  "description": "The speculative end of HELUT, handled honestly. Five frontier avenues — an encrypted prompt-injection firewall, self-mutating encrypted binaries, encrypted honey-token ledgers, software that evolves its own circuits, and power analysis against FHE as deployed — each paired with the modest first experiment that would earn it a claim row. Includes the dual-use material and the trajectory items. Nothing here is a claim. Epoch C69.",
+  "claimEpoch": "2026-08-20 / C69",
+  "fps": 30,
+  "width": 1920,
+  "height": 1080,
+  "scenes": [
+    {
+      "kind": "title",
+      "id": "title",
+      "eyebrow": "HELUT · Frontier, labelled",
+      "headline": "The frontier",
+      "subhead": "Wild ideas are cheap. Next steps are not.",
+      "backgroundAsset": "01-title.svg",
+      "voiceover": "Every episode so far has stuck to things with receipts. This one deliberately does not. It covers the speculative end of the project: the ideas that are exciting, unproven, and in one case explicitly refused. But each one comes with something that keeps it honest. For every wild idea, the repository also names the small, dull experiment that would earn it a place in the ledger. That pairing is the whole episode, because the difference between a frontier and a fantasy is knowing what your next experiment is.",
+      "durationHintSec": 40
+    },
+    {
+      "kind": "narration",
+      "id": "four-classes",
+      "headline": "How speculation gets filed",
+      "bullets": [
+        "Reproducible claim — you may cite it",
+        "Open hedge — keep the asterisk",
+        "Non-implication — actively prevent the inference",
+        "Frontier — never a fact, ever"
+      ],
+      "backgroundAsset": "02-four-classes.svg",
+      "voiceover": "The project sorts every public sentence into one of four boxes. A reproducible claim can be cited and re-run by someone else. An open hedge can be discussed, but the asterisk travels with it. A non-implication is something you must actively stop people concluding. And then there is the frontier: material that is not a claim at all until it earns a reproduce command. The teaching guidance for these is blunt. Do not lecture them as fact, and never put them in a true-or-false question. Everything after this scene lives in that fourth box.",
+      "durationHintSec": 42
+    },
+    {
+      "kind": "concept",
+      "id": "firewall",
+      "kicker": "Avenue one",
+      "headline": "A firewall that never sees the prompt",
+      "subhead": "First experiment: four gates and a certificate.",
+      "backgroundAsset": "03-firewall.svg",
+      "voiceover": "First idea. Prompt injection against language models is currently fought with other language models and brittle instructions. Suppose instead you evolved a small logic-gate firewall that sits between an untrusted prompt and a local model, and evaluates entirely in the encrypted domain, mutating its own gate topology based on the attacks it successfully blocked. Neither the prompt, nor the weights, nor the defence rules ever appear in the clear. Now the graduating experiment, and notice how much smaller it is: a four-gate encrypted classifier passing a correctness check on synthetic token bits, with a certificate. That comes before any talk of evolution or actual language models.",
+      "durationHintSec": 50
+    },
+    {
+      "kind": "concept",
+      "id": "dark-code",
+      "kicker": "Avenue two · refused as a claim",
+      "headline": "Code that rewrites itself in the dark",
+      "subhead": "Listed as an explicit non-goal, on purpose.",
+      "backgroundAsset": "04-dark-code.svg",
+      "voiceover": "Second idea, and the uncomfortable one. An encrypted processor already boots. What happens if you feed it a program that rewrites its own instructions while staying encrypted? The host would see uniform tensor arithmetic while, inside, code mutates and executes where the operating system cannot inspect, debug, or breakpoint it. The repository describes that honestly as malware-class self-modification running inside an accelerator built for privacy, and then does something better than getting excited: it lists claiming this as an explicit non-goal. The graduating experiment is deliberately mundane. An encrypted instruction fetch on a toy machine smaller than the processor we already ran, accompanied by a written ethics note. It is framed as a privacy-architecture question, not as malware homework.",
+      "durationHintSec": 58
+    },
+    {
+      "kind": "concept",
+      "id": "honey-tokens",
+      "kicker": "Avenue three",
+      "headline": "A wire it cannot read",
+      "subhead": "Then measure what the host still sees.",
+      "backgroundAsset": "05-honey-tokens.svg",
+      "voiceover": "Third idea. Take the batched pattern matcher and put it inside a distributed ledger, so that every time a node synchronises, a large document set is checked against many attacker patterns in a single encrypted pass. If someone queries the store, the store evaluates an encrypted trap and changes state across the mesh, without the storage node learning which file was searched or which trigger fired. The graduating experiment has a twist I like a great deal. Run the pattern matcher at a modest batch with an explicit written non-claim that the node learns nothing, and then go and measure what the host process can still see anyway: message lengths, timings. Honesty before mesh networks.",
+      "durationHintSec": 54
+    },
+    {
+      "kind": "concept",
+      "id": "genetic-hardware",
+      "kicker": "Avenue four",
+      "headline": "Software that invents its own hardware",
+      "subhead": "One circuit, offline, with a stopwatch.",
+      "backgroundAsset": "06-genetic-hardware.svg",
+      "voiceover": "Fourth idea. Rather than writing a circuit by hand and synthesizing it, mutate the truth tables and the connections directly, then compile the result into a running graph. Taken to its conclusion, a machine meeting an unfamiliar data stream would evolve a custom circuit for it, compile that circuit in seconds, and process the stream through hardware it had just invented. The graduating experiment is one offline generation producing a two-gate circuit that matches a fixed specification, with the wall-clock time for synthesis and lowering written down. No claims about doing it on the fly.",
+      "durationHintSec": 46
+    },
+    {
+      "kind": "concept",
+      "id": "power-analysis",
+      "kicker": "Avenue five · parked",
+      "headline": "Encrypted, but still radiating?",
+      "subhead": "Live graphs only. Controlled fixtures only.",
+      "backgroundAsset": "07-power-analysis.svg",
+      "voiceover": "Fifth idea, and the genuinely adversarial one. Homomorphic evaluation is supposed to look like featureless tensor arithmetic from outside. So point a power meter at the actual graph while it runs controlled inputs, align the traces to circuit ticks rather than wall-clock, and ask whether key-dependent structure still leaks through the energy trace. That would be side-channel analysis against encryption as it is really deployed on a GPU, not against a textbook circuit. The guardrails are written down and they are strict: live graphs only, controlled fixtures only, and tick synchronisation is mandatory. No opportunistic capture of other people's workloads. The graduating experiment is almost comically modest: build the harness, emit the tick markers, and publish a log that says no analysis yet. And note the framing — a clean negative is also a result, because it hardens the claim that the graph is power-flat.",
+      "durationHintSec": 66
+    },
+    {
+      "kind": "concept",
+      "id": "legacy-ciphers",
+      "kicker": "Dual use, stated plainly",
+      "headline": "The same tool points backwards",
+      "subhead": "Trajectory only. Not a claim until graded.",
+      "backgroundAsset": "08-legacy-ciphers.svg",
+      "voiceover": "There is a dual-use edge here that deserves saying out loud rather than hinting at. The machinery that melts a truth table does not care what the circuit is for. Two named legacy stream ciphers sit on the roadmap as candidates: one from early mobile telephony, one from early web encryption. Compiling them to circuits and melting their internal state logic would suggest that differentiable hardware can dismantle late twentieth-century telecommunications cryptography about as readily as it handles 1940s machines. The roadmap carries that idea with a parenthesis attached: not a claim until it is graded and reproducible. Which is the correct place for it, and also the reason to talk about it in public rather than quietly.",
+      "durationHintSec": 54
+    },
+    {
+      "kind": "narration",
+      "id": "grand-challenge",
+      "headline": "The far end, labelled as far",
+      "bullets": [
+        "Shallower circuits for encrypted gates",
+        "Smaller circuits for zero-knowledge proofs",
+        "Post-quantum lattice structures"
+      ],
+      "backgroundAsset": "09-grand-challenge.svg",
+      "voiceover": "Beyond the five avenues there is a longer horizon, and the roadmap is careful with it. Point the same continuous-to-discrete engine at the gates that make encrypted computation expensive, and you might find shallower arrangements. Point it at the enormous circuits behind zero-knowledge proofs, and fewer gates with less depth would directly relieve the main bottleneck in private infrastructure. Point it at post-quantum lattice structures, and the ambition gets larger still. Every one of those sentences ends the same way in the source: trajectory only, until receipts exist. Which is exactly how far I am willing to say it here.",
+      "durationHintSec": 48
+    },
+    {
+      "kind": "narration",
+      "id": "the-rules",
+      "headline": "What earns a frontier idea its place",
+      "bullets": [
+        "Label it: frontier, or first experiment",
+        "Name the claim it would become",
+        "Name the false conclusion it must not invite",
+        "If you cannot imagine the evidence, it is not ready"
+      ],
+      "backgroundAsset": "10-the-rules.svg",
+      "voiceover": "The project sets rules for talking about any of this, and they are worth stealing. Label every paragraph as either frontier or first experiment, so nobody can quote you out of context. Name the specific claim the idea would become if it worked. Name the false conclusion it must not invite along the way. And the test that does the most work: if you cannot even imagine what the evidence would look like, the idea is not ready to be written down as a proposal, let alone announced.",
+      "durationHintSec": 40
+    },
+    {
+      "kind": "outro",
+      "id": "outro",
+      "headline": "Frontier, not fantasy",
+      "subhead": "Every idea here arrived with its own next step.",
+      "nextEpisode": "Let's build one",
+      "backgroundAsset": "10-the-rules.svg",
+      "voiceover": "Five ideas, and not one of them is a result. What makes them frontier rather than fantasy is that each arrived with a specific, small, testable next step, and in one case with a refusal to pursue it as a claim at all. If any of them graduates, it will do so quietly, through a log file and a reproduce command, and this series will say so with a date on it. Next time, something completely different. We stop describing and start building: a circuit written from scratch, on camera, running on data it cannot see.",
+      "durationHintSec": 44
+    }
+  ]
+}

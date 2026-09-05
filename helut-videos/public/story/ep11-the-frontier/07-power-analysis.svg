@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" role="img" aria-labelledby="t d">
+  <title id="t">Power analysis against encryption as deployed</title>
+  <desc id="d">Measuring GPU power while a controlled encrypted workload runs, with traces aligned to circuit ticks, asks whether key-dependent structure leaks. Strict guardrails apply and a clean negative is also a result.</desc>
+  <rect width="1920" height="1080" fill="#091522"/>
+  <g transform="translate(1000 146)" font-family="Arial,sans-serif">
+    <text x="415" y="14" text-anchor="middle" fill="#9aa8b8" font-size="15" letter-spacing="3">SUPPOSED TO LOOK FEATURELESS FROM OUTSIDE</text>
+
+    <g transform="translate(0 38)">
+      <rect width="830" height="72" rx="14" fill="#142738" stroke="#66758a" stroke-width="2"/>
+      <polyline points="24,52 74,30 124,58 174,26 224,54 274,32 324,56 374,28 424,52 474,34 524,58 574,30 624,54 674,32 724,56 790,40"
+        fill="none" stroke="#22a89c" stroke-width="3"/>
+      <text x="24" y="22" fill="#9aa8b8" font-size="13" letter-spacing="2">GPU POWER, ALIGNED TO CIRCUIT TICKS</text>
+    </g>
+
+    <g transform="translate(0 128)">
+      <rect width="830" height="94" rx="16" fill="#282235" stroke="#d4833f" stroke-width="2"/>
+      <text x="22" y="26" fill="#d4833f" font-size="14" letter-spacing="2">GUARDRAILS, WRITTEN DOWN</text>
+      <text x="22" y="52" fill="#fff" font-size="18">· live graphs only — no synthetic power models</text>
+      <text x="22" y="76" fill="#fff" font-size="18">· controlled fixtures only · tick sync mandatory</text>
+    </g>
+
+    <g transform="translate(0 240)">
+      <rect width="405" height="86" rx="14" fill="#122b35" stroke="#22a89c"/>
+      <text x="202" y="28" text-anchor="middle" fill="#22a89c" font-size="14" letter-spacing="1">FIRST EXPERIMENT</text>
+      <text x="202" y="56" text-anchor="middle" fill="#fff" font-size="18">build the harness</text>
+      <text x="202" y="76" text-anchor="middle" fill="#9aa8b8" font-size="16">publish “no analysis yet”</text>
+    </g>
+    <g transform="translate(425 240)">
+      <rect width="405" height="86" rx="14" fill="#122b35" stroke="#22a89c"/>
+      <text x="202" y="28" text-anchor="middle" fill="#22a89c" font-size="14" letter-spacing="1">EITHER OUTCOME IS SCIENCE</text>
+      <text x="202" y="56" text-anchor="middle" fill="#fff" font-size="18">a clean negative</text>
+      <text x="202" y="76" text-anchor="middle" fill="#9aa8b8" font-size="16">hardens the claim</text>
+    </g>
+
+    <text x="415" y="384" text-anchor="middle" fill="#d4833f" font-size="19" font-weight="700">No opportunistic capture of other people's workloads.</text>
+  </g>
+</svg>

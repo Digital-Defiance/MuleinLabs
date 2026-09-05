@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" role="img" aria-labelledby="t d">
+  <title id="t">Initial pre-script production-parameter-size Metal SING receipt</title>
+  <desc id="d">In the initial pre-script run, two deterministic endpoint rows at polynomial size 1024 pass in 2.7189 seconds with 175.7 modeled classical bits and an exact-noiseless bootstrap-key caveat.</desc>
+  <rect width="1920" height="1080" fill="#091522"/>
+  <g transform="translate(1000 140)" font-family="Arial,sans-serif">
+    <text x="415" y="14" text-anchor="middle" fill="#9aa8b8" font-size="15" letter-spacing="3">INITIAL PRE-SCRIPT RECEIPT · N=1024 METAL</text>
+    <rect x="0" y="44" width="830" height="242" rx="18" fill="#0d1724" stroke="#22a89c" stroke-width="2"/>
+    <rect x="0" y="44" width="830" height="42" rx="18" fill="#142738"/>
+    <circle cx="24" cy="65" r="6" fill="#e0574c"/><circle cx="44" cy="65" r="6" fill="#d4833f"/><circle cx="64" cy="65" r="6" fill="#22a89c"/>
+    <text x="415" y="71" text-anchor="middle" fill="#9aa8b8" font-size="14">blind-rotate-metal public-ms boolean</text>
+    <g font-family="Courier New,Courier,monospace" font-size="17">
+      <text x="28" y="120" fill="#fff">poly N=1024   LUTs=3   DFFs=0   stimuli=2</text>
+      <text x="48" y="160" fill="#fff">rows</text><text x="760" y="160" text-anchor="end" fill="#fff">2</text>
+      <text x="48" y="194" fill="#fff">wall</text><text x="760" y="194" text-anchor="end" fill="#fff">2.7189 s   (1359.45 ms/row)</text>
+      <text x="48" y="228" fill="#fff">classical bits</text><text x="760" y="228" text-anchor="end" fill="#fff">175.7 modeled</text>
+      <text x="48" y="262" fill="#fff">result</text><text x="760" y="262" text-anchor="end" fill="#22a89c" font-size="24" font-weight="700">PASS</text>
+    </g>
+    <g transform="translate(0 312)">
+      <rect width="260" height="104" rx="15" fill="#122b35" stroke="#22a89c"/>
+      <text x="130" y="30" text-anchor="middle" fill="#22a89c" font-size="13" letter-spacing="2">PARAMETER</text>
+      <text x="130" y="65" text-anchor="middle" fill="#fff" font-size="27" font-weight="700">N=1024</text>
+      <text x="130" y="88" text-anchor="middle" fill="#9aa8b8" font-size="15">Metal path</text>
+    </g>
+    <g transform="translate(285 312)">
+      <rect width="260" height="104" rx="15" fill="#2b2025" stroke="#d4833f"/>
+      <text x="130" y="30" text-anchor="middle" fill="#d4833f" font-size="13" letter-spacing="2">COVERAGE</text>
+      <text x="130" y="65" text-anchor="middle" fill="#fff" font-size="27" font-weight="700">2 / 2</text>
+      <text x="130" y="88" text-anchor="middle" fill="#9aa8b8" font-size="15">not all 32</text>
+    </g>
+    <g transform="translate(570 312)">
+      <rect width="260" height="104" rx="15" fill="#2b2025" stroke="#d4833f"/>
+      <text x="130" y="30" text-anchor="middle" fill="#d4833f" font-size="13" letter-spacing="2">HARDNESS</text>
+      <text x="130" y="65" text-anchor="middle" fill="#fff" font-size="27" font-weight="700">175.7 bits</text>
+      <text x="130" y="88" text-anchor="middle" fill="#9aa8b8" font-size="15">modeled, not audited</text>
+    </g>
+    <rect x="0" y="444" width="830" height="84" rx="14" fill="#2b2025" stroke="#d4833f" stroke-width="2"/>
+    <text x="415" y="476" text-anchor="middle" fill="#d4833f" font-size="15" letter-spacing="2">EXACT-NOISELESS CONSTRUCTION</text>
+    <text x="415" y="506" text-anchor="middle" fill="#fff" font-size="18">production parameter size ≠ noisy-key robustness proof</text>
+  </g>
+</svg>

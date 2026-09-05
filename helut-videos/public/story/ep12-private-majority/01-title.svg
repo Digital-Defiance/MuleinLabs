@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" role="img" aria-labelledby="t d">
+  <title id="t">Five encrypted ballots enter a majority circuit and one decision bit leaves</title>
+  <desc id="d">A five-to-one privacy contract backed by six dated terminal receipts from the Episode 12 experiment.</desc>
+  <rect width="1920" height="1080" fill="#091522"/>
+  <g transform="translate(1000 150)" font-family="Arial,sans-serif">
+    <text x="415" y="14" text-anchor="middle" fill="#9aa8b8" font-size="15" letter-spacing="3">FIVE ENCRYPTED BITS IN · ONE DECISION OUT</text>
+    <g transform="translate(0 52)">
+      <g><rect width="146" height="76" rx="14" fill="#142738" stroke="#22a89c"/><text x="73" y="30" text-anchor="middle" fill="#22a89c" font-size="13" letter-spacing="1">BALLOT 1</text><text x="73" y="56" text-anchor="middle" fill="#fff" font-size="18">ciphertext</text></g>
+      <g transform="translate(171 0)"><rect width="146" height="76" rx="14" fill="#142738" stroke="#22a89c"/><text x="73" y="30" text-anchor="middle" fill="#22a89c" font-size="13" letter-spacing="1">BALLOT 2</text><text x="73" y="56" text-anchor="middle" fill="#fff" font-size="18">ciphertext</text></g>
+      <g transform="translate(342 0)"><rect width="146" height="76" rx="14" fill="#142738" stroke="#22a89c"/><text x="73" y="30" text-anchor="middle" fill="#22a89c" font-size="13" letter-spacing="1">BALLOT 3</text><text x="73" y="56" text-anchor="middle" fill="#fff" font-size="18">ciphertext</text></g>
+      <g transform="translate(513 0)"><rect width="146" height="76" rx="14" fill="#142738" stroke="#22a89c"/><text x="73" y="30" text-anchor="middle" fill="#22a89c" font-size="13" letter-spacing="1">BALLOT 4</text><text x="73" y="56" text-anchor="middle" fill="#fff" font-size="18">ciphertext</text></g>
+      <g transform="translate(684 0)"><rect width="146" height="76" rx="14" fill="#142738" stroke="#22a89c"/><text x="73" y="30" text-anchor="middle" fill="#22a89c" font-size="13" letter-spacing="1">BALLOT 5</text><text x="73" y="56" text-anchor="middle" fill="#fff" font-size="18">ciphertext</text></g>
+    </g>
+    <g stroke="#66758a" stroke-width="3" fill="none"><path d="M73 128L250 205"/><path d="M244 128L330 205"/><path d="M415 128V205"/><path d="M586 128L500 205"/><path d="M757 128L580 205"/></g>
+    <rect x="180" y="205" width="470" height="96" rx="18" fill="#282235" stroke="#d4833f" stroke-width="2"/>
+    <text x="415" y="241" text-anchor="middle" fill="#d4833f" font-size="14" letter-spacing="2">PRIVATE MAJORITY</text>
+    <text x="415" y="277" text-anchor="middle" fill="#fff" font-size="26" font-weight="700">yes_count ≥ 3</text>
+    <path d="M415 301V350" stroke="#66758a" stroke-width="3"/>
+    <rect x="245" y="350" width="340" height="94" rx="18" fill="#122b35" stroke="#22a89c" stroke-width="3"/>
+    <text x="415" y="384" text-anchor="middle" fill="#22a89c" font-size="14" letter-spacing="2">DECRYPTED OUTPUT</text>
+    <text x="415" y="420" text-anchor="middle" fill="#fff" font-size="25" font-weight="700">proposal_passes</text>
+    <rect x="95" y="484" width="640" height="72" rx="14" fill="#101a2b" stroke="#66758a"/>
+    <text x="415" y="514" text-anchor="middle" fill="#9aa8b8" font-size="14" letter-spacing="2">DATED RECEIPT · 2026-09-04</text>
+    <text x="415" y="540" text-anchor="middle" fill="#fff" font-size="18">source · netlist · six command logs · hashes</text>
+  </g>
+</svg>

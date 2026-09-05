@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" role="img" aria-labelledby="t d">
+  <title id="t">Software that invents its own hardware</title>
+  <desc id="d">Mutating truth tables and connections directly, then compiling the result into a running graph, would let a machine evolve a circuit for an unfamiliar stream. The first experiment is one offline generation of a two-gate circuit with a stopwatch.</desc>
+  <rect width="1920" height="1080" fill="#091522"/>
+  <g transform="translate(1000 158)" font-family="Arial,sans-serif">
+    <text x="415" y="14" text-anchor="middle" fill="#9aa8b8" font-size="15" letter-spacing="3">THE LOOP, TAKEN TO ITS CONCLUSION</text>
+
+    <g transform="translate(0 42)">
+      <rect width="196" height="62" rx="12" fill="#282235" stroke="#d4833f"/>
+      <text x="98" y="27" text-anchor="middle" fill="#d4833f" font-size="13" letter-spacing="1">MUTATE</text>
+      <text x="98" y="49" text-anchor="middle" fill="#fff" font-size="17">truth tables</text>
+    </g>
+    <path d="M196 73h32" stroke="#66758a" stroke-width="3"/>
+    <g transform="translate(228 42)">
+      <rect width="186" height="62" rx="12" fill="#282235" stroke="#d4833f"/>
+      <text x="93" y="27" text-anchor="middle" fill="#d4833f" font-size="13" letter-spacing="1">COMPILE</text>
+      <text x="93" y="49" text-anchor="middle" fill="#fff" font-size="17">to a graph</text>
+    </g>
+    <path d="M414 73h32" stroke="#66758a" stroke-width="3"/>
+    <g transform="translate(446 42)">
+      <rect width="186" height="62" rx="12" fill="#142738" stroke="#22a89c"/>
+      <text x="93" y="27" text-anchor="middle" fill="#22a89c" font-size="13" letter-spacing="1">RUN</text>
+      <text x="93" y="49" text-anchor="middle" fill="#fff" font-size="17">the stream</text>
+    </g>
+    <path d="M632 73h32" stroke="#66758a" stroke-width="3"/>
+    <g transform="translate(664 42)">
+      <rect width="166" height="62" rx="12" fill="#142738" stroke="#22a89c"/>
+      <text x="83" y="27" text-anchor="middle" fill="#22a89c" font-size="13" letter-spacing="1">SCORE</text>
+      <text x="83" y="49" text-anchor="middle" fill="#fff" font-size="17">and repeat</text>
+    </g>
+
+    <text x="415" y="140" text-anchor="middle" fill="#9aa8b8" font-size="18">hardware the machine invented seconds earlier</text>
+
+    <path d="M415 158v30" stroke="#66758a" stroke-width="3" stroke-dasharray="8 8"/>
+
+    <g transform="translate(0 188)">
+      <rect width="830" height="94" rx="16" fill="#122b35" stroke="#22a89c" stroke-width="2"/>
+      <text x="415" y="28" text-anchor="middle" fill="#22a89c" font-size="14" letter-spacing="2">FIRST EXPERIMENT</text>
+      <text x="415" y="60" text-anchor="middle" fill="#fff" font-size="21" font-weight="700">one offline generation · a 2-gate circuit</text>
+      <text x="415" y="82" text-anchor="middle" fill="#9aa8b8" font-size="16">wall-clock written down · no on-the-fly claims</text>
+    </g>
+
+    <text x="415" y="342" text-anchor="middle" fill="#d4833f" font-size="19">Offline and timed, before anything is called dynamic.</text>
+  </g>
+</svg>

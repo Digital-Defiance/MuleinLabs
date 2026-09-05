@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" role="img" aria-labelledby="t d">
+  <title id="t">The Mulein width sweep</title>
+  <desc id="d">Across one, two, four, eight and sixteen parallel lanes the engine produces a byte-identical digest, but throughput peaks at four lanes and sixteen lanes are slower than one despite sixteen times the look-up tables.</desc>
+  <rect width="1920" height="1080" fill="#091522"/>
+  <g transform="translate(1000 140)" font-family="Arial,sans-serif">
+    <text x="415" y="14" text-anchor="middle" fill="#9aa8b8" font-size="15" letter-spacing="3">COMPLETE RECEIPTS PER SECOND</text>
+
+    <g transform="translate(60 40)">
+      <line x1="0" y1="200" x2="700" y2="200" stroke="#66758a" stroke-width="2"/>
+      <line x1="0" y1="0" x2="0" y2="200" stroke="#66758a" stroke-width="2"/>
+      <text x="-14" y="8" text-anchor="end" fill="#66758a" font-size="14">290</text>
+      <text x="-14" y="204" text-anchor="end" fill="#66758a" font-size="14">220</text>
+
+      <polyline points="60,161 210,73 360,40 510,46 660,193" fill="none" stroke="#22a89c" stroke-width="4"/>
+      <circle cx="60"  cy="161" r="7" fill="#22a89c"/>
+      <circle cx="210" cy="73"  r="7" fill="#22a89c"/>
+      <circle cx="360" cy="40"  r="11" fill="#fff" stroke="#22a89c" stroke-width="4"/>
+      <circle cx="510" cy="46"  r="7" fill="#22a89c"/>
+      <circle cx="660" cy="193" r="7" fill="#e0574c"/>
+
+      <text x="60"  y="230" text-anchor="middle" fill="#9aa8b8" font-size="16">1</text>
+      <text x="210" y="230" text-anchor="middle" fill="#9aa8b8" font-size="16">2</text>
+      <text x="360" y="230" text-anchor="middle" fill="#fff" font-size="16" font-weight="700">4</text>
+      <text x="510" y="230" text-anchor="middle" fill="#9aa8b8" font-size="16">8</text>
+      <text x="660" y="230" text-anchor="middle" fill="#9aa8b8" font-size="16">16</text>
+      <text x="360" y="252" text-anchor="middle" fill="#9aa8b8" font-size="14" letter-spacing="2">BANK LANES</text>
+
+      <text x="60"  y="150" text-anchor="middle" fill="#9aa8b8" font-size="15">234</text>
+      <text x="360" y="24"  text-anchor="middle" fill="#fff" font-size="17" font-weight="700">276</text>
+      <text x="660" y="182" text-anchor="middle" fill="#e0574c" font-size="15">231</text>
+    </g>
+
+    <g transform="translate(0 330)">
+      <rect width="405" height="72" rx="14" fill="#122b35" stroke="#22a89c"/>
+      <text x="202" y="28" text-anchor="middle" fill="#22a89c" font-size="14" letter-spacing="1">1 LANE</text>
+      <text x="202" y="55" text-anchor="middle" fill="#fff" font-size="19" font-weight="700">45,463 tables</text>
+    </g>
+    <g transform="translate(425 330)">
+      <rect width="405" height="72" rx="14" fill="#2b2025" stroke="#d4833f"/>
+      <text x="202" y="28" text-anchor="middle" fill="#d4833f" font-size="14" letter-spacing="1">16 LANES</text>
+      <text x="202" y="55" text-anchor="middle" fill="#fff" font-size="19" font-weight="700">758,323 tables · slower</text>
+    </g>
+
+    <text x="415" y="446" text-anchor="middle" fill="#22a89c" font-size="18">Every width returns the identical digest — provably the same work.</text>
+    <text x="415" y="478" text-anchor="middle" fill="#d4833f" font-size="19" font-weight="700">Four was selected on measurement, not intuition.</text>
+  </g>
+</svg>

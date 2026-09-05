@@ -2,6 +2,7 @@ import React, { useMemo } from 'react';
 import { AbsoluteFill, Audio, Sequence, staticFile } from 'remotion';
 import { SmartBgm } from '../components/SmartBgm';
 import {
+  CaptureCard,
   ConceptCard,
   NarrationCard,
   OutroCard,
@@ -86,6 +87,18 @@ export const Episode: React.FC<EpisodeProps> = ({ script, audioSeconds }) => {
                 headline={scene.headline}
                 subhead={scene.subhead}
                 kicker={scene.kicker}
+                caption={scene.voiceover}
+              />
+            )}
+            {scene.kind === 'capture' && (
+              <CaptureCard
+                episodeId={script.id}
+                sceneId={scene.id}
+                videoAsset={scene.videoAsset}
+                videoDurationSec={scene.durationHintSec}
+                sceneDurationInFrames={durationInFrames}
+                fps={fps}
+                label={scene.label}
                 caption={scene.voiceover}
               />
             )}

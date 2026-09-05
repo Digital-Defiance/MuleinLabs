@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" role="img" aria-labelledby="t d">
+  <title id="t">Exhaustive clear equivalence over all thirty-two vote patterns</title>
+  <desc id="d">Every possible five-bit input is compared between the clear simulator and the trivial multilinear graph, producing thirty-two matching rows and PASS.</desc>
+  <rect width="1920" height="1080" fill="#091522"/>
+  <g transform="translate(1000 150)" font-family="Arial,sans-serif">
+    <text x="415" y="14" text-anchor="middle" fill="#9aa8b8" font-size="15" letter-spacing="3">THE COMPLETE FIVE-BIT INPUT SPACE</text>
+    <g fill="#22a89c" opacity="0.9">
+      <circle cx="96" cy="82" r="15"/><circle cx="186" cy="82" r="15"/><circle cx="276" cy="82" r="15"/><circle cx="366" cy="82" r="15"/><circle cx="456" cy="82" r="15"/><circle cx="546" cy="82" r="15"/><circle cx="636" cy="82" r="15"/><circle cx="726" cy="82" r="15"/>
+      <circle cx="96" cy="132" r="15"/><circle cx="186" cy="132" r="15"/><circle cx="276" cy="132" r="15"/><circle cx="366" cy="132" r="15"/><circle cx="456" cy="132" r="15"/><circle cx="546" cy="132" r="15"/><circle cx="636" cy="132" r="15"/><circle cx="726" cy="132" r="15"/>
+      <circle cx="96" cy="182" r="15"/><circle cx="186" cy="182" r="15"/><circle cx="276" cy="182" r="15"/><circle cx="366" cy="182" r="15"/><circle cx="456" cy="182" r="15"/><circle cx="546" cy="182" r="15"/><circle cx="636" cy="182" r="15"/><circle cx="726" cy="182" r="15"/>
+      <circle cx="96" cy="232" r="15"/><circle cx="186" cy="232" r="15"/><circle cx="276" cy="232" r="15"/><circle cx="366" cy="232" r="15"/><circle cx="456" cy="232" r="15"/><circle cx="546" cy="232" r="15"/><circle cx="636" cy="232" r="15"/><circle cx="726" cy="232" r="15"/>
+    </g>
+    <text x="96" y="274" text-anchor="middle" fill="#9aa8b8" font-size="16">00000</text>
+    <text x="726" y="274" text-anchor="middle" fill="#9aa8b8" font-size="16">11111</text>
+    <rect x="35" y="310" width="760" height="168" rx="18" fill="#0d1724" stroke="#66758a" stroke-width="2"/>
+    <g font-family="Courier New,Courier,monospace">
+      <text x="62" y="348" fill="#9aa8b8" font-size="16">EQUIV (Metal PBS/multilinear ≡ CleartextNetlistSim)</text>
+      <text x="62" y="386" fill="#fff" font-size="21">rows</text><text x="740" y="386" text-anchor="end" fill="#fff" font-size="21">32</text>
+      <text x="62" y="430" fill="#fff" font-size="21">result</text><text x="740" y="430" text-anchor="end" fill="#22a89c" font-size="27" font-weight="700">PASS</text>
+    </g>
+    <text x="415" y="520" text-anchor="middle" fill="#d4833f" font-size="18">Clear/trivial equivalence only · encryption is the next receipt</text>
+  </g>
+</svg>

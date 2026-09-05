@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" role="img" aria-labelledby="t d">
+  <title id="t">Naval traffic is a dialect, and the model was generic</title>
+  <desc id="d">Naval messages use letters as punctuation, spell numbers as words, and carry fixed procedure markers, so a dialect-matched language model was expected to beat a larger generic one. It was tested and measured null.</desc>
+  <rect width="1920" height="1080" fill="#091522"/>
+  <g transform="translate(1000 152)" font-family="Arial,sans-serif">
+    <text x="415" y="14" text-anchor="middle" fill="#9aa8b8" font-size="15" letter-spacing="3">28.5 MILLION LETTERS OF THE WRONG GERMAN</text>
+
+    <g transform="translate(0 42)">
+      <rect width="830" height="146" rx="16" fill="#282235" stroke="#d4833f" stroke-width="2"/>
+      <text x="24" y="30" fill="#d4833f" font-size="14" letter-spacing="2">HOW NAVAL TRAFFIC ACTUALLY READS</text>
+      <text x="24" y="64" fill="#fff" font-size="19">· letters used as punctuation</text>
+      <text x="24" y="94" fill="#fff" font-size="19">· numbers spelled out as words</text>
+      <text x="24" y="124" fill="#fff" font-size="19">· fixed procedure markers and unit tags</text>
+    </g>
+
+    <path d="M415 188v32" stroke="#66758a" stroke-width="3" stroke-dasharray="8 8"/>
+
+    <g transform="translate(0 220)">
+      <rect width="405" height="84" rx="14" fill="#142738" stroke="#66758a"/>
+      <text x="202" y="30" text-anchor="middle" fill="#9aa8b8" font-size="14" letter-spacing="1">THE HYPOTHESIS</text>
+      <text x="202" y="62" text-anchor="middle" fill="#fff" font-size="19">dialect beats bigger</text>
+    </g>
+    <g transform="translate(425 220)">
+      <rect width="405" height="84" rx="14" fill="#33161b" stroke="#e0574c" stroke-width="2"/>
+      <text x="202" y="30" text-anchor="middle" fill="#e0574c" font-size="14" letter-spacing="1">THE RESULT</text>
+      <text x="202" y="62" text-anchor="middle" fill="#fff" font-size="19" font-weight="700">measured null</text>
+    </g>
+
+    <text x="415" y="352" text-anchor="middle" fill="#d4833f" font-size="20" font-weight="700">A reasoned guess, recorded as a null result.</text>
+  </g>
+</svg>

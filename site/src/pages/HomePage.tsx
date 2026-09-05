@@ -62,11 +62,14 @@ export function HomePage() {
               </Link>
             </li>
             <li>
-              <a href="https://github.com/JessicaMulein/MuleinLabs/tree/main/helut-videos">
+              <Link to="/episodes">
                 <span className="offer-kicker">Studio</span>
-                <strong>helut-videos</strong>
-                <span>Remotion + ElevenLabs concept series for the HELUT stack.</span>
-              </a>
+                <strong>Episode companions</strong>
+                <span>
+                  The complete HELUT concept series, synchronized from the production
+                  scripts with scene notes and narration.
+                </span>
+              </Link>
             </li>
           </ul>
         </div>

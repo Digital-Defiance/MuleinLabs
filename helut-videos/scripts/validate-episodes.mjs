@@ -2,8 +2,9 @@
 /**
  * Local, no-network preflight for episode JSON before TTS or render.
  * Enforces the complete runtime shape consumed by Remotion, then checks IDs,
- * story assets, publication labels, and conservative fallback pacing.
+ * story/capture assets, publication labels, and conservative fallback pacing.
  */
+import { execFileSync } from 'node:child_process';
 import { existsSync } from 'node:fs';
 import { readFile, readdir } from 'node:fs/promises';
 import path from 'node:path';
@@ -65,6 +66,15 @@ const SceneSchema = z.discriminatedUnion('kind', [
     ...atmosphereFields,
   }),
   z.object({
+    kind: z.literal('capture'),
+    id: z.string(),
+    voiceover: z.string(),
+    durationHintSec: z.number().positive(),
+    videoAsset: z.string().min(1),
+    label: z.string().min(1).optional(),
+    ...atmosphereFields,
+  }),
+  z.object({
     kind: z.literal('outro'),
     id: z.string(),
     voiceover: z.string(),
@@ -102,6 +112,49 @@ function storyAssetPath(episodeId, asset) {
   if (trimmed.startsWith('story/')) return path.join(PUBLIC_DIR, trimmed);
   if (trimmed.includes('/')) return path.join(PUBLIC_DIR, 'story', trimmed);
   return path.join(PUBLIC_DIR, 'story', episodeId, trimmed);
+}
+
+function captureAssetPath(episodeId, asset) {
+  const trimmed = String(asset).trim().replace(/^\/+/, '');
+  if (trimmed.startsWith('captures/')) return path.join(PUBLIC_DIR, trimmed);
+  if (trimmed.includes('/')) return path.join(PUBLIC_DIR, 'captures', trimmed);
+  return path.join(PUBLIC_DIR, 'captures', episodeId, trimmed);
+}
+
+let ffprobeAvailable;
+
+/**
+ * A capture scene's durationHintSec is load-bearing twice: it is the narration
+ * floor and the asserted media length used to unmount OffthreadVideo. Probing
+ * keeps those in sync so a later hint bump cannot silently read past EOF.
+ * Returns null when ffprobe is unavailable so this stays a local, optional check.
+ */
+function probeDurationSeconds(mediaPath) {
+  if (ffprobeAvailable === undefined) {
+    try {
+      execFileSync('ffprobe', ['-version'], { stdio: 'ignore' });
+      ffprobeAvailable = true;
+    } catch {
+      ffprobeAvailable = false;
+    }
+  }
+  if (!ffprobeAvailable) return null;
+  try {
+    const out = execFileSync(
+      'ffprobe',
+      [
+        '-v', 'error',
+        '-show_entries', 'format=duration',
+        '-of', 'default=noprint_wrappers=1:nokey=1',
+        mediaPath,
+      ],
+      { encoding: 'utf8' },
+    );
+    const seconds = Number.parseFloat(out.trim());
+    return Number.isFinite(seconds) ? seconds : null;
+  } catch {
+    return null;
+  }
 }
 
 function fail(errors, where, message) {
@@ -202,6 +255,27 @@ async function main() {
         const assetPath = storyAssetPath(episode.id, scene.backgroundAsset);
         if (!existsSync(assetPath)) {
           fail(errors, sceneWhere, `missing background asset ${path.relative(ROOT, assetPath)}`);
+        }
+      }
+
+      if (scene.kind === 'capture') {
+        const assetPath = captureAssetPath(episode.id, scene.videoAsset);
+        if (!existsSync(assetPath)) {
+          fail(errors, sceneWhere, `missing capture asset ${path.relative(ROOT, assetPath)}`);
+        } else {
+          const mediaSeconds = probeDurationSeconds(assetPath);
+          if (mediaSeconds != null) {
+            const tolerance = 1 / (episode.fps || 30);
+            if (Math.abs(mediaSeconds - scene.durationHintSec) > tolerance) {
+              fail(
+                errors,
+                sceneWhere,
+                `durationHintSec ${scene.durationHintSec}s must equal the capture media duration `
+                  + `${mediaSeconds.toFixed(3)}s within one frame (${tolerance.toFixed(4)}s); `
+                  + 'it is both the narration floor and the asserted media length',
+              );
+            }
+          }
         }
       }
     }

@@ -1,0 +1,192 @@
+{
+  "schemaVersion": 1,
+  "captureId": "episode12-picorv32-coda",
+  "transcript": "PICORV32_CODA_TRANSCRIPT.md",
+  "reproduce": {
+    "workingDirectory": "HELUT repository root",
+    "prerequisites": [
+      "swift build -c release --product helut-bench",
+      "no Yosys or Metal device required; both netlists are checked in and the run is CPU-only"
+    ],
+    "commands": [
+      ".build/release/helut-bench --bench Generated/Netlists/Examples/private_majority5_netlist.json --degree 16 --compile-only",
+      ".build/release/helut-bench --bench picorv32_netlist.json --degree 8 --compile-only",
+      ".build/release/helut-bench --bench picorv32_netlist.json --degree 8 --bench-encrypted --cpu-only --sing --ticks 48 --reset-hold 3 --encrypted-mem prog --paths 'blind-rotate public-ms boolean'"
+    ]
+  },
+  "role": "Episode 12 coda: scale contrast against the private-majority circuit",
+  "capturedAt": "2026-09-04T15:23:30-07:00",
+  "captureMethod": {
+    "recorder": "VHS",
+    "terminal": "real Bash pseudo-terminal",
+    "uploaded": false,
+    "tape": {
+      "repo": "helut-videos",
+      "path": "captures/ep12-private-majority/episode12-picorv32-coda.tape",
+      "sha256": "c96e2a75dc05e4b2bab88b894df2b22f6a46d32d4e4d3282c49905a747683ff0",
+      "requestedFrameRate": 30
+    }
+  },
+  "video": {
+    "repo": "helut-videos",
+    "path": "public/captures/ep12-private-majority/episode12-picorv32-coda.mp4",
+    "sha256": "8f2568f6090fe219f231120477d1a76fbbceea8350aa9067364027fa64c998c9",
+    "codec": "h264",
+    "pixelFormat": "yuv420p",
+    "width": 1280,
+    "height": 720,
+    "encodedFrameRate": "25/1",
+    "durationSeconds": 53.8,
+    "sizeBytes": 918787
+  },
+  "toolchain": {
+    "vhs": "vhs version 0.11.0",
+    "ttyd": "ttyd version 1.7.7-unknown",
+    "ffmpeg": "ffmpeg version 9.0.1",
+    "swift": "swift-driver version: 1.148.6 Apple Swift version 6.3.3 (swiftlang-6.3.3.1.3 clang-2100.1.1.101)"
+  },
+  "traceClarification": {
+    "changedFile": {
+      "repo": "HELUT",
+      "path": "Sources/HELUTToolKit/HelutBench.swift",
+      "sha256": "65b146392363aeb6a7e65caab1495a4625fcc63bbe5cd8c3a6a49e0933f11c03"
+    },
+    "problem": "The per-tick LOAD line printed the value sitting on mem_rdata at the moment the load request was first observed. At that tick the host is still driving the pending ROM instruction word, so the line read rdata=0x00000013, the RV32I NOP encoding, even though the load itself was correct.",
+    "cause": "The host serves the RAM word on the tick after the request is observed, inside makePicoRVHostMemInputs, which records it in loadXfers. Only the end-of-run summary consumed loadXfers.",
+    "change": "Additive trace output only: the per-tick line is relabeled 'LOAD req ... bus=0x... (pre-transfer)', a new inline 'LOAD xfer ... served=0x...' line prints the served RAM word, and the LOAD summary now prints requests, xfers, and the served value list.",
+    "notChanged": [
+      "no change to circuit evaluation, encryption, or scheduling",
+      "no change to PASS/FAIL assertions",
+      "no change to any measured metric"
+    ]
+  },
+  "program": {
+    "sourceOfTruth": {
+      "repo": "HELUT",
+      "path": "Sources/HELUTCore/PicoRVHostMem.swift",
+      "sha256": "3b0e706fad8163b25a69383f35c32d5d7b0b48278b44f5ee4f7eb7dfcf1cae7f"
+    },
+    "isa": "RV32I",
+    "memoryModel": "Harvard: instruction fetches always hit a tiny host ROM; stores and loads overlay host RAM",
+    "instructions": [
+      { "address": "0x00", "word": "0x00100093", "asm": "addi x1, x0, 1" },
+      { "address": "0x04", "word": "0x00000013", "asm": "nop" },
+      { "address": "0x08", "word": "0x00102023", "asm": "sw x1, 0(x0)" },
+      { "address": "0x0c", "word": "0x00000013", "asm": "nop" },
+      { "address": "0x10", "word": "0x00002103", "asm": "lw x2, 0(x0)" },
+      { "address": "0x14 and above", "word": "0x00000013", "asm": "nop" }
+    ],
+    "meaningfulInstructionCount": 3,
+    "instructionCountNote": "romWord returns nop for every address at or above 0x14, so the program is three meaningful instructions followed by an unbounded no-op tail rather than a fixed-length sequence."
+  },
+  "scaleContrast": {
+    "measuredLiveInCapture": true,
+    "privateMajority": {
+      "netlist": "Generated/Netlists/Examples/private_majority5_netlist.json",
+      "sha256": "1c06398acb39bb71000dc8085578a4bc252b22a8da6c251463918876a5ee10e5",
+      "module": "private_majority5",
+      "inputs": 5,
+      "luts": 3,
+      "dffs": 0,
+      "outputs": 1
+    },
+    "picorv32": {
+      "netlist": "picorv32_netlist.json",
+      "sha256": "1e179f15813dac117ed01a37fa930a9f4ac5a1e2dfabdf8445407d5e2c1aace3",
+      "module": "picorv32",
+      "inputs": 102,
+      "luts": 4785,
+      "dffs": 1565,
+      "outputs": 307
+    }
+  },
+  "encryptedRun": {
+    "command": ".build/release/helut-bench --bench picorv32_netlist.json --degree 8 --bench-encrypted --cpu-only --sing --ticks 48 --reset-hold 3 --encrypted-mem prog --paths 'blind-rotate public-ms boolean'",
+    "polyDegree": 8,
+    "ringSize2N": 16,
+    "ticks": 48,
+    "resetHold": 3,
+    "path": "blind-rotate public-ms boolean",
+    "backend": "CPU blind rotation",
+    "result": "PASS",
+    "rows": 48,
+    "wallSeconds": 2.4828,
+    "millisecondsPerRow": 51.72,
+    "modeledClassicalBits": 4.0,
+    "meetsModeled128Bits": false,
+    "ingestEpsilonLog2": "-inf",
+    "noisyBkBound": 0,
+    "construction": "exactNoiselessConstruction",
+    "decodable": true,
+    "metalPath": "SKIP (--cpu-only)",
+    "observedBehavior": {
+      "fetchesServed": 14,
+      "uniqueFetchAddresses": 14,
+      "fetchAddresses": ["0x0", "0x4", "0x8", "0xc", "0x10", "0x14", "0x18", "0x1c", "0x20", "0x24", "0x28", "0x2c", "0x30", "0x34"],
+      "storeCount": 1,
+      "storeTick": 16,
+      "storeAddress": "0x00000000",
+      "storeByteEnables": "0xf",
+      "storeData": "0x00000001",
+      "ramWord0AfterStore": 1,
+      "loadRequestTick": 24,
+      "loadBusValueAtRequest": "0x00000013",
+      "loadTransferTick": 25,
+      "loadServedValue": "0x00000001",
+      "loadRequests": 1,
+      "loadTransfers": 1
+    }
+  },
+  "artifacts": [
+    {
+      "repo": "HELUT",
+      "path": "build/episode12b/capture-pass/01-compile-majority.log",
+      "sha256": "f37b5b1db8ca5d2a45782ac8d14f85a43ffe8e44acd663109463822db8ad72b7",
+      "durable": false
+    },
+    {
+      "repo": "HELUT",
+      "path": "build/episode12b/capture-pass/02-compile-picorv32.log",
+      "sha256": "55614a965b4650eaa76b3037519b3d065c67042d2277113aa5ad5769d2ce069a",
+      "durable": false
+    },
+    {
+      "repo": "HELUT",
+      "path": "build/episode12b/capture-pass/03-encrypted-picorv32.log",
+      "sha256": "f71ba221875a7319dc684cbaf93b39065440b387e9e35a58a4411d39c90c41db",
+      "durable": false
+    }
+  ],
+  "artifactNote": "HELUT/build/ is gitignored, so these logs are reproducible build artifacts rather than durable receipts. This manifest and the accompanying transcript are the durable record.",
+  "timingContext": {
+    "observations": [
+      { "label": "archived pre-existing log", "source": "HELUT/logs/helut-encrypted-n8-cpu-sing-picorv32-prog-lw.log", "wallSeconds": 3.7695, "millisecondsPerRow": 78.53 },
+      { "label": "pre-capture verification run", "wallSeconds": 2.4125, "millisecondsPerRow": 50.26 },
+      { "label": "filmed capture run", "wallSeconds": 2.4828, "millisecondsPerRow": 51.72 }
+    ],
+    "interpretation": "Three individual observations on one machine. This is not a timing distribution, a stability claim, or a performance benchmark."
+  },
+  "validation": {
+    "tapeSyntaxValidated": true,
+    "mp4ProbedSuccessfully": true,
+    "allThreeCaptureLogsPresent": true,
+    "contactSheetInspected": true,
+    "terminalTextLegible": true,
+    "scaleContrastLegible": true,
+    "loadStoreEvidenceLegible": true,
+    "verdictScreenLegible": true,
+    "finalHashesVisible": true,
+    "onScreenHashesMatchRecomputedHashes": true
+  },
+  "claimBoundaries": [
+    "N=8 is a demonstration parameter. The run reports 4.0 modeled classical bits and is explicitly not production security.",
+    "The host implements memory. It drives mem_ready/mem_rdata and observes mem_valid/mem_addr/mem_wstrb/mem_wdata, so instruction addresses and memory data are visible to the host and appear in the trace in the clear.",
+    "The SING harness owns the key and decrypts outputs in-process to compare them with a clear golden model.",
+    "The encrypted evaluation covers the synthesized picorv32 netlist, not the host ROM or host RAM.",
+    "This run used CPU blind rotation. The Metal path was skipped by --cpu-only.",
+    "exactNoiselessConstruction is not a noisy bootstrapping-key robustness proof.",
+    "The program is three meaningful instructions in a tiny ROM padded with unbounded no-ops, not a general workload, not an operating system, and not a production encrypted CPU.",
+    "4,785 LUTs and 1,565 DFFs are counts for this synthesized netlist, not a claim about minimal PicoRV32 area.",
+    "The lookup-table comparison against the majority circuit is a scale contrast, not a normalized area metric: the majority netlist was mapped up to four-input tables while this PicoRV32 netlist tops out at three-input tables."
+  ]
+}

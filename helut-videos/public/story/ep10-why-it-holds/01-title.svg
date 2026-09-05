@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" role="img" aria-labelledby="t d">
+  <title id="t">Why the message still holds</title>
+  <desc id="d">The hardware, the search and the sieve all work, so the reason the message remains unbroken lies elsewhere: the machine cannot recognise a correct answer when it is given one.</desc>
+  <defs>
+    <linearGradient id="bgA" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#08111f"/><stop offset="1" stop-color="#16323d"/></linearGradient>
+  </defs>
+  <rect width="1920" height="1080" fill="url(#bgA)"/>
+  <g transform="translate(1005 168)" font-family="Arial,sans-serif">
+    <text x="415" y="14" text-anchor="middle" fill="#9aa8b8" font-size="15" letter-spacing="3">THE QUESTION EPISODE FOUR LEFT OPEN</text>
+
+    <g transform="translate(0 44)">
+      <rect width="265" height="64" rx="12" fill="#122b35" stroke="#22a89c"/>
+      <text x="132" y="26" text-anchor="middle" fill="#22a89c" font-size="13" letter-spacing="1">THE MACHINE</text>
+      <text x="132" y="50" text-anchor="middle" fill="#fff" font-size="18">works</text>
+    </g>
+    <g transform="translate(283 44)">
+      <rect width="264" height="64" rx="12" fill="#122b35" stroke="#22a89c"/>
+      <text x="132" y="26" text-anchor="middle" fill="#22a89c" font-size="13" letter-spacing="1">THE SEARCH</text>
+      <text x="132" y="50" text-anchor="middle" fill="#fff" font-size="18">is fast</text>
+    </g>
+    <g transform="translate(565 44)">
+      <rect width="265" height="64" rx="12" fill="#122b35" stroke="#22a89c"/>
+      <text x="132" y="26" text-anchor="middle" fill="#22a89c" font-size="13" letter-spacing="1">THE SIEVE</text>
+      <text x="132" y="50" text-anchor="middle" fill="#fff" font-size="18">is correct</text>
+    </g>
+
+    <text x="415" y="150" text-anchor="middle" fill="#9aa8b8" font-size="22">so why is the message still unbroken?</text>
+
+    <rect x="40" y="180" width="750" height="96" rx="18" fill="#33161b" stroke="#e0574c" stroke-width="3"/>
+    <text x="415" y="212" text-anchor="middle" fill="#e0574c" font-size="14" letter-spacing="2">THE MEASURED ANSWER</text>
+    <text x="415" y="248" text-anchor="middle" fill="#fff" font-size="24" font-weight="700">it cannot recognise a correct answer</text>
+    <text x="415" y="270" text-anchor="middle" fill="#9aa8b8" font-size="18">even when handed one</text>
+
+    <text x="415" y="330" text-anchor="middle" fill="#d4833f" font-size="20">Not too slow. Unable to tell.</text>
+  </g>
+</svg>

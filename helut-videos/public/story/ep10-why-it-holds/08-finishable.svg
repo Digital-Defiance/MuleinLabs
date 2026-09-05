@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" role="img" aria-labelledby="t d">
+  <title id="t">A true stop is finishable at seventy-two letters</title>
+  <desc id="d">Given a true stop, four forced plug pairs flip the scoring margin positive and eight recover the full key and all plaintext on ten of ten controls. The result is oracle-seeded and is therefore an upper bound, not a break.</desc>
+  <rect width="1920" height="1080" fill="#091522"/>
+  <g transform="translate(1000 152)" font-family="Arial,sans-serif">
+    <text x="415" y="14" text-anchor="middle" fill="#9aa8b8" font-size="15" letter-spacing="3">FORCED PLUG PAIRS SUPPLIED TO A TRUE STOP</text>
+
+    <g transform="translate(20 44)">
+      <text x="0" y="16" fill="#66758a" font-size="14">0</text>
+      <rect x="26" y="0" width="130" height="40" rx="8" fill="#33161b" stroke="#e0574c"/>
+      <text x="91" y="27" text-anchor="middle" fill="#e0574c" font-size="16">negative</text>
+
+      <text x="176" y="16" fill="#66758a" font-size="14">2</text>
+      <rect x="202" y="0" width="130" height="40" rx="8" fill="#33161b" stroke="#e0574c"/>
+      <text x="267" y="27" text-anchor="middle" fill="#e0574c" font-size="16">negative</text>
+
+      <text x="352" y="16" fill="#fff" font-size="14" font-weight="700">4</text>
+      <rect x="378" y="0" width="130" height="40" rx="8" fill="#142738" stroke="#22a89c" stroke-width="3"/>
+      <text x="443" y="27" text-anchor="middle" fill="#22a89c" font-size="16" font-weight="700">flips positive</text>
+
+      <text x="528" y="16" fill="#66758a" font-size="14">8</text>
+      <rect x="554" y="0" width="200" height="40" rx="8" fill="#122b35" stroke="#22a89c" stroke-width="3"/>
+      <text x="654" y="27" text-anchor="middle" fill="#22a89c" font-size="16" font-weight="700">full key + plaintext</text>
+    </g>
+
+    <rect x="0" y="118" width="830" height="70" rx="14" fill="#122b35" stroke="#22a89c" stroke-width="2"/>
+    <text x="415" y="146" text-anchor="middle" fill="#22a89c" font-size="14" letter-spacing="2">AT EIGHT PLUGS</text>
+    <text x="415" y="173" text-anchor="middle" fill="#fff" font-size="21" font-weight="700">100% of plaintext on 10 / 10 controls</text>
+
+    <rect x="0" y="212" width="830" height="94" rx="16" fill="#2b2025" stroke="#d4833f" stroke-width="3"/>
+    <text x="415" y="240" text-anchor="middle" fill="#d4833f" font-size="14" letter-spacing="2">READ THIS PRECISELY</text>
+    <text x="415" y="270" text-anchor="middle" fill="#fff" font-size="20" font-weight="700">the plugs come from the known key</text>
+    <text x="415" y="295" text-anchor="middle" fill="#9aa8b8" font-size="18">it assumes the stop is already the true one</text>
+
+    <text x="415" y="358" text-anchor="middle" fill="#9aa8b8" font-size="19">An upper bound on coupling — not a break.</text>
+  </g>
+</svg>

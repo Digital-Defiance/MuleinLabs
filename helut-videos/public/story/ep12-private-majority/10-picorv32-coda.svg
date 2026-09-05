@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" role="img" aria-labelledby="t d">
+  <title id="t">Encrypted RISC-V processor coda receipt</title>
+  <desc id="d">The same compiler path runs a RISC-V core of 4785 lookup tables and 1565 flip-flops, executing a three-instruction program padded with no-ops under encryption on CPU for 48 ticks, with all rows matching the clear model at demonstration size and four modeled classical bits.</desc>
+  <rect width="1920" height="1080" fill="#091522"/>
+  <g transform="translate(1000 118)" font-family="Arial,sans-serif">
+    <text x="415" y="14" text-anchor="middle" fill="#9aa8b8" font-size="15" letter-spacing="3">EPISODE 12 CODA · ENCRYPTED RISC-V CPU</text>
+
+    <rect x="0" y="40" width="830" height="286" rx="18" fill="#0d1724" stroke="#22a89c" stroke-width="2"/>
+    <rect x="0" y="40" width="830" height="42" rx="18" fill="#142738"/>
+    <circle cx="24" cy="61" r="6" fill="#e0574c"/><circle cx="44" cy="61" r="6" fill="#d4833f"/><circle cx="64" cy="61" r="6" fill="#22a89c"/>
+    <text x="415" y="67" text-anchor="middle" fill="#9aa8b8" font-size="14">blind-rotate public-ms boolean · CPU · 48 ticks</text>
+    <g font-family="Courier New,Courier,monospace" font-size="17">
+      <text x="28" y="112" fill="#fff">poly N=8   LUTs=4785   DFFs=1565   sequential</text>
+      <text x="28" y="146" fill="#9aa8b8">program: addi x1,x0,1 · sw x1,0(x0) · lw x2,0(x0)</text>
+      <text x="48" y="184" fill="#fff">FETCH served</text><text x="782" y="184" text-anchor="end" fill="#fff">14  (unique 14)</text>
+      <text x="48" y="216" fill="#fff">STORE tick 16</text><text x="782" y="216" text-anchor="end" fill="#fff">wdata=0x00000001 → ram0=1</text>
+      <text x="48" y="248" fill="#fff">LOAD  xfer tick 25</text><text x="782" y="248" text-anchor="end" fill="#22a89c">served=0x00000001</text>
+      <text x="48" y="280" fill="#fff">rows / wall</text><text x="782" y="280" text-anchor="end" fill="#fff">48   2.4828 s  (51.72 ms/row)</text>
+      <text x="48" y="312" fill="#fff">result</text><text x="782" y="312" text-anchor="end" fill="#22a89c" font-size="24" font-weight="700">PASS</text>
+    </g>
+
+    <g transform="translate(0 352)">
+      <rect width="405" height="112" rx="15" fill="#122b35" stroke="#22a89c"/>
+      <text x="202" y="30" text-anchor="middle" fill="#22a89c" font-size="13" letter-spacing="2">EARLIER IN THIS EPISODE</text>
+      <text x="202" y="66" text-anchor="middle" fill="#fff" font-size="25" font-weight="700">3 LUTs · 0 DFFs</text>
+      <text x="202" y="94" text-anchor="middle" fill="#9aa8b8" font-size="15">private_majority5 · combinational</text>
+    </g>
+    <g transform="translate(425 352)">
+      <rect width="405" height="112" rx="15" fill="#122b35" stroke="#22a89c"/>
+      <text x="202" y="30" text-anchor="middle" fill="#22a89c" font-size="13" letter-spacing="2">SAME COMPILER PATH</text>
+      <text x="202" y="66" text-anchor="middle" fill="#fff" font-size="25" font-weight="700">4785 LUTs · 1565 DFFs</text>
+      <text x="202" y="94" text-anchor="middle" fill="#9aa8b8" font-size="15">picorv32 · sequential state</text>
+    </g>
+    <text x="415" y="486" text-anchor="middle" fill="#66758a" font-size="14">cell-count scale contrast · mapping widths differ, so not a normalized area metric</text>
+
+    <rect x="0" y="504" width="830" height="112" rx="14" fill="#2b2025" stroke="#d4833f" stroke-width="2"/>
+    <text x="415" y="534" text-anchor="middle" fill="#d4833f" font-size="15" letter-spacing="2">DEMONSTRATION SIZE · CPU ONLY · HOST IS THE MEMORY</text>
+    <text x="415" y="564" text-anchor="middle" fill="#fff" font-size="18">4.0 modeled classical bits · not production security</text>
+    <text x="415" y="592" text-anchor="middle" fill="#fff" font-size="18">host serves ROM and RAM, so it sees addresses and data</text>
+  </g>
+</svg>

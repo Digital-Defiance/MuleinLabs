@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" role="img" aria-labelledby="t d">
+  <title id="t">Encrypted sequential stepping stones</title>
+  <desc id="d">A four-bit counter, a toy instruction set, and one round of the E256 cipher all pass encrypted at production polynomial size. None is a processor and none touches live memory.</desc>
+  <rect width="1920" height="1080" fill="#091522"/>
+  <g transform="translate(1000 158)" font-family="Arial,sans-serif">
+    <text x="415" y="14" text-anchor="middle" fill="#9aa8b8" font-size="15" letter-spacing="3">ENCRYPTED STATE AT PRODUCTION SIZE</text>
+
+    <g transform="translate(0 42)">
+      <rect width="830" height="66" rx="14" fill="#122b35" stroke="#22a89c"/>
+      <text x="24" y="28" fill="#22a89c" font-size="14" letter-spacing="2">COUNTER · 4-BIT</text>
+      <text x="24" y="53" fill="#fff" font-size="20">≈16 s across four stimuli</text>
+      <text x="806" y="44" text-anchor="end" fill="#22a89c" font-size="22" font-weight="700">✓</text>
+    </g>
+    <g transform="translate(0 122)">
+      <rect width="830" height="66" rx="14" fill="#122b35" stroke="#22a89c"/>
+      <text x="24" y="28" fill="#22a89c" font-size="14" letter-spacing="2">TOY INSTRUCTION SET</text>
+      <text x="24" y="53" fill="#fff" font-size="20">no-op and add · ≈20 s</text>
+      <text x="806" y="44" text-anchor="end" fill="#22a89c" font-size="22" font-weight="700">✓</text>
+    </g>
+    <g transform="translate(0 202)">
+      <rect width="830" height="66" rx="14" fill="#122b35" stroke="#22a89c"/>
+      <text x="24" y="28" fill="#22a89c" font-size="14" letter-spacing="2">E256 · ONE ROUND</text>
+      <text x="24" y="53" fill="#fff" font-size="20">58 gates wide · ≈23 s</text>
+      <text x="806" y="44" text-anchor="end" fill="#22a89c" font-size="22" font-weight="700">✓</text>
+    </g>
+
+    <rect x="0" y="292" width="830" height="70" rx="16" fill="#2b2025" stroke="#d4833f" stroke-width="2"/>
+    <text x="415" y="320" text-anchor="middle" fill="#d4833f" font-size="14" letter-spacing="2">WHAT NONE OF THESE ARE</text>
+    <text x="415" y="347" text-anchor="middle" fill="#fff" font-size="19">not a processor · no live memory</text>
+
+    <text x="415" y="408" text-anchor="middle" fill="#9aa8b8" font-size="19">Stepping stones between an adder and a CPU.</text>
+  </g>
+</svg>

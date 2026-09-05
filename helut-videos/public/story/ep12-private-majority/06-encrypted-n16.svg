@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" role="img" aria-labelledby="t d">
+  <title id="t">Initial pre-script exhaustive demonstration-size encrypted SING receipt</title>
+  <desc id="d">In the initial pre-script run, all thirty-two encrypted stimuli at polynomial size sixteen match the clear golden output in 0.0089 seconds, with an explicit eight-bit demonstration-only caveat.</desc>
+  <rect width="1920" height="1080" fill="#091522"/>
+  <g transform="translate(1000 146)" font-family="Arial,sans-serif">
+    <text x="415" y="14" text-anchor="middle" fill="#9aa8b8" font-size="15" letter-spacing="3">INITIAL PRE-SCRIPT RECEIPT · SING</text>
+    <rect x="0" y="44" width="830" height="252" rx="18" fill="#0d1724" stroke="#22a89c" stroke-width="2"/>
+    <rect x="0" y="44" width="830" height="42" rx="18" fill="#142738"/>
+    <circle cx="24" cy="65" r="6" fill="#e0574c"/><circle cx="44" cy="65" r="6" fill="#d4833f"/><circle cx="64" cy="65" r="6" fill="#22a89c"/>
+    <text x="415" y="71" text-anchor="middle" fill="#9aa8b8" font-size="14">HELUT encrypted-netlist bench · CPU</text>
+    <g font-family="Courier New,Courier,monospace" font-size="17">
+      <text x="28" y="120" fill="#fff">poly N=16   LUTs=3   DFFs=0   stimuli=32</text>
+      <text x="28" y="156" fill="#9aa8b8">ENCRYPTED EQUIV (blind-rotate public-ms boolean)</text>
+      <text x="48" y="194" fill="#fff">rows</text><text x="760" y="194" text-anchor="end" fill="#fff">32</text>
+      <text x="48" y="226" fill="#fff">wall</text><text x="760" y="226" text-anchor="end" fill="#fff">0.0089 s   (0.28 ms/row)</text>
+      <text x="48" y="264" fill="#fff">result</text><text x="760" y="264" text-anchor="end" fill="#22a89c" font-size="24" font-weight="700">PASS</text>
+    </g>
+    <g transform="translate(0 320)">
+      <rect width="395" height="98" rx="15" fill="#122b35" stroke="#22a89c"/>
+      <text x="197" y="32" text-anchor="middle" fill="#22a89c" font-size="14" letter-spacing="2">COVERAGE</text>
+      <text x="197" y="67" text-anchor="middle" fill="#fff" font-size="25" font-weight="700">32 / 32 patterns</text>
+      <text x="197" y="88" text-anchor="middle" fill="#9aa8b8" font-size="15">exhaustive at N=16</text>
+    </g>
+    <g transform="translate(435 320)">
+      <rect width="395" height="98" rx="15" fill="#2b2025" stroke="#d4833f"/>
+      <text x="197" y="32" text-anchor="middle" fill="#d4833f" font-size="14" letter-spacing="2">SECURITY MODEL</text>
+      <text x="197" y="67" text-anchor="middle" fill="#fff" font-size="25" font-weight="700">8.0 modeled bits</text>
+      <text x="197" y="88" text-anchor="middle" fill="#9aa8b8" font-size="15">demonstration only</text>
+    </g>
+    <rect x="0" y="444" width="830" height="72" rx="14" fill="#2b2025" stroke="#d4833f"/>
+    <text x="415" y="473" text-anchor="middle" fill="#d4833f" font-size="15" letter-spacing="2">EXACT-NOISELESS BOOTSTRAP KEY</text>
+    <text x="415" y="500" text-anchor="middle" fill="#fff" font-size="18">correctness receipt · not production security · not noisy-BK proof</text>
+  </g>
+</svg>

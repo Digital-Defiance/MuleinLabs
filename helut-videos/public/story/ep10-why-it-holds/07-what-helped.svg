@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" role="img" aria-labelledby="t d">
+  <title id="t">Two changes that moved the threshold</title>
+  <desc id="d">Staging the scorer through index of coincidence then bigrams then trigrams, and fixing one plug before climbing the remaining nine, together close sixty-eight percent of the deficit at seventy-two letters. The margin is still negative.</desc>
+  <rect width="1920" height="1080" fill="#091522"/>
+  <g transform="translate(1000 156)" font-family="Arial,sans-serif">
+    <text x="415" y="14" text-anchor="middle" fill="#9aa8b8" font-size="15" letter-spacing="3">WHAT MEASURABLY HELPED</text>
+
+    <g transform="translate(0 42)">
+      <rect width="830" height="86" rx="16" fill="#122b35" stroke="#22a89c" stroke-width="2"/>
+      <text x="24" y="30" fill="#22a89c" font-size="14" letter-spacing="2">1 · STAGE THE SCORER</text>
+      <text x="24" y="62" fill="#fff" font-size="20">IC → bigrams → trigrams</text>
+      <text x="24" y="80" fill="#9aa8b8" font-size="16">the measures fail at different points, not uniformly</text>
+    </g>
+
+    <g transform="translate(0 144)">
+      <rect width="830" height="86" rx="16" fill="#122b35" stroke="#22a89c" stroke-width="2"/>
+      <text x="24" y="30" fill="#22a89c" font-size="14" letter-spacing="2">2 · FIX ONE PLUG FIRST</text>
+      <text x="24" y="62" fill="#fff" font-size="20">then climb the other nine · repeat for every candidate</text>
+      <text x="24" y="80" fill="#9aa8b8" font-size="16">a wrong first plug poisons everything chosen after it</text>
+    </g>
+
+    <g transform="translate(0 250)">
+      <text x="0" y="18" fill="#9aa8b8" font-size="14" letter-spacing="2">DEFICIT AT 72 LETTERS</text>
+      <rect x="0" y="30" width="830" height="40" rx="8" fill="#101a2b" stroke="#66758a"/>
+      <rect x="2" y="32" width="562" height="36" rx="6" fill="#22a89c"/>
+      <text x="286" y="57" text-anchor="middle" fill="#08111f" font-size="19" font-weight="700">68% closed</text>
+      <text x="700" y="57" text-anchor="middle" fill="#e0574c" font-size="18" font-weight="700">still short</text>
+    </g>
+
+    <text x="415" y="368" text-anchor="middle" fill="#d4833f" font-size="20" font-weight="700">The margin remains negative — and is printed as negative.</text>
+  </g>
+</svg>

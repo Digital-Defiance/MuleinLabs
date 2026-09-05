@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" role="img" aria-labelledby="t d">
+  <title id="t">The true key ranks at the 48.8th percentile</title>
+  <desc id="d">Ranking every candidate message key by index of coincidence places the true key 223,118th of 456,976 — statistically dead centre. Its score of 0.0379 is slightly worse than the random average of 0.0385.</desc>
+  <rect width="1920" height="1080" fill="#091522"/>
+  <g transform="translate(1000 156)" font-family="Arial,sans-serif">
+    <text x="415" y="14" text-anchor="middle" fill="#9aa8b8" font-size="15" letter-spacing="3">RANKED BY INDEX OF COINCIDENCE</text>
+
+    <rect x="0" y="44" width="830" height="52" rx="10" fill="#101a2b" stroke="#66758a"/>
+    <text x="8" y="118" fill="#66758a" font-size="14">best</text>
+    <text x="822" y="118" text-anchor="end" fill="#66758a" font-size="14">worst</text>
+    <rect x="404" y="38" width="6" height="64" fill="#e0574c"/>
+    <circle cx="407" cy="70" r="11" fill="#e0574c"/>
+    <text x="407" y="26" text-anchor="middle" fill="#e0574c" font-size="15" font-weight="700">true key</text>
+
+    <text x="415" y="152" text-anchor="middle" fill="#fff" font-size="28" font-weight="700">223,118 of 456,976</text>
+    <text x="415" y="180" text-anchor="middle" fill="#9aa8b8" font-size="19">the 48.8th percentile</text>
+
+    <g transform="translate(0 208)">
+      <rect width="405" height="80" rx="14" fill="#33161b" stroke="#e0574c" stroke-width="2"/>
+      <text x="202" y="28" text-anchor="middle" fill="#e0574c" font-size="14" letter-spacing="1">TRUE KEY</text>
+      <text x="202" y="62" text-anchor="middle" fill="#fff" font-size="24" font-weight="700">IC 0.0379</text>
+    </g>
+    <g transform="translate(425 208)">
+      <rect width="405" height="80" rx="14" fill="#142738" stroke="#66758a" stroke-width="2"/>
+      <text x="202" y="28" text-anchor="middle" fill="#9aa8b8" font-size="14" letter-spacing="1">RANDOM WRONG KEY</text>
+      <text x="202" y="62" text-anchor="middle" fill="#fff" font-size="24" font-weight="700">IC 0.0385</text>
+    </g>
+
+    <text x="415" y="326" text-anchor="middle" fill="#d4833f" font-size="20" font-weight="700">The correct answer scores worse than noise.</text>
+    <text x="415" y="360" text-anchor="middle" fill="#9aa8b8" font-size="19">A sieve on this statistic does not rank it low. It discards it.</text>
+  </g>
+</svg>

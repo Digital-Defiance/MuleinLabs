@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" role="img" aria-labelledby="t d">
+  <title id="t">Two ciphers, one broken on purpose</title>
+  <desc id="d">One substitution-permutation skeleton built twice, with a real S-box and with an invertible affine one, plus four tests that tell them apart. Runs with nothing but Python.</desc>
+  <rect width="1920" height="1080" fill="#091522"/>
+  <g transform="translate(1000 150)" font-family="Arial,sans-serif">
+    <text x="415" y="14" text-anchor="middle" fill="#9aa8b8" font-size="15" letter-spacing="3">SAME SKELETON · BUILT TWICE</text>
+
+    <g transform="translate(0 40)">
+      <rect width="405" height="96" rx="16" fill="#122b35" stroke="#22a89c" stroke-width="2"/>
+      <text x="202" y="30" text-anchor="middle" fill="#22a89c" font-size="14" letter-spacing="1">SOUND</text>
+      <text x="202" y="62" text-anchor="middle" fill="#fff" font-size="20" font-weight="700">real S-box</text>
+      <text x="202" y="84" text-anchor="middle" fill="#9aa8b8" font-size="16">non-linear</text>
+    </g>
+    <g transform="translate(425 40)">
+      <rect width="405" height="96" rx="16" fill="#33161b" stroke="#e0574c" stroke-width="2"/>
+      <text x="202" y="30" text-anchor="middle" fill="#e0574c" font-size="14" letter-spacing="1">BROKEN ON PURPOSE</text>
+      <text x="202" y="62" text-anchor="middle" fill="#fff" font-size="20" font-weight="700">invertible affine</text>
+      <text x="202" y="84" text-anchor="middle" fill="#9aa8b8" font-size="16">looks fine — is not</text>
+    </g>
+
+    <text x="415" y="176" text-anchor="middle" fill="#9aa8b8" font-size="14" letter-spacing="2">FOUR WAYS TO TELL THEM APART</text>
+
+    <g transform="translate(0 192)">
+      <rect width="405" height="56" rx="12" fill="#142738" stroke="#66758a"/>
+      <text x="20" y="34" fill="#fff" font-size="17">difference table: 4 vs 16</text>
+    </g>
+    <g transform="translate(425 192)">
+      <rect width="405" height="56" rx="12" fill="#142738" stroke="#66758a"/>
+      <text x="20" y="34" fill="#fff" font-size="17">black-box XOR identity</text>
+    </g>
+    <g transform="translate(0 258)">
+      <rect width="405" height="56" rx="12" fill="#142738" stroke="#66758a"/>
+      <text x="20" y="34" fill="#fff" font-size="17">key from one known pair</text>
+    </g>
+    <g transform="translate(425 258)">
+      <rect width="405" height="56" rx="12" fill="#142738" stroke="#66758a"/>
+      <text x="20" y="34" fill="#fff" font-size="17">table affineness check</text>
+    </g>
+
+    <rect x="0" y="338" width="830" height="66" rx="14" fill="#122b35" stroke="#22a89c" stroke-width="2"/>
+    <text x="415" y="365" text-anchor="middle" fill="#22a89c" font-size="14" letter-spacing="2">THE ON-RAMP</text>
+    <text x="415" y="391" text-anchor="middle" fill="#fff" font-size="19" font-weight="700">no Apple silicon · no Swift · just python3</text>
+
+    <text x="415" y="450" text-anchor="middle" fill="#d4833f" font-size="19">Deliberately not a claim row.</text>
+  </g>
+</svg>

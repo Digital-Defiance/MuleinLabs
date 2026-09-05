@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" role="img" aria-labelledby="t d">
+  <title id="t">Self-modifying encrypted code, refused as a claim</title>
+  <desc id="d">A program rewriting its own instructions while encrypted would be invisible to the host operating system. The project describes this as malware-class self-modification and lists claiming it as an explicit non-goal.</desc>
+  <rect width="1920" height="1080" fill="#091522"/>
+  <g transform="translate(1000 150)" font-family="Arial,sans-serif">
+    <text x="415" y="14" text-anchor="middle" fill="#9aa8b8" font-size="15" letter-spacing="3">WHAT THE HOST WOULD SEE</text>
+
+    <g transform="translate(0 40)">
+      <rect width="405" height="104" rx="16" fill="#142738" stroke="#66758a" stroke-width="2"/>
+      <text x="202" y="28" text-anchor="middle" fill="#9aa8b8" font-size="14" letter-spacing="1">FROM OUTSIDE</text>
+      <text x="202" y="62" text-anchor="middle" fill="#fff" font-size="20" font-weight="700">uniform tensor math</text>
+      <text x="202" y="88" text-anchor="middle" fill="#9aa8b8" font-size="16">nothing to inspect</text>
+    </g>
+    <g transform="translate(425 40)">
+      <rect width="405" height="104" rx="16" fill="#2b2025" stroke="#d4833f" stroke-width="2"/>
+      <text x="202" y="28" text-anchor="middle" fill="#d4833f" font-size="14" letter-spacing="1">INSIDE</text>
+      <text x="202" y="62" text-anchor="middle" fill="#fff" font-size="20" font-weight="700">code rewriting itself</text>
+      <text x="202" y="88" text-anchor="middle" fill="#9aa8b8" font-size="16">no debugger reaches it</text>
+    </g>
+
+    <rect x="0" y="168" width="830" height="76" rx="16" fill="#33161b" stroke="#e0574c" stroke-width="3"/>
+    <text x="415" y="196" text-anchor="middle" fill="#e0574c" font-size="14" letter-spacing="2">HOW THE PROJECT FILES IT</text>
+    <text x="415" y="226" text-anchor="middle" fill="#fff" font-size="21" font-weight="700">an explicit non-goal to claim</text>
+
+    <path d="M415 244v30" stroke="#66758a" stroke-width="3" stroke-dasharray="8 8"/>
+
+    <g transform="translate(0 274)">
+      <rect width="830" height="80" rx="16" fill="#122b35" stroke="#22a89c" stroke-width="2"/>
+      <text x="415" y="28" text-anchor="middle" fill="#22a89c" font-size="14" letter-spacing="2">FIRST EXPERIMENT INSTEAD</text>
+      <text x="415" y="56" text-anchor="middle" fill="#fff" font-size="19">encrypted instruction fetch on a smaller toy machine</text>
+      <text x="415" y="74" text-anchor="middle" fill="#9aa8b8" font-size="16">plus a written ethics note</text>
+    </g>
+
+    <text x="415" y="408" text-anchor="middle" fill="#d4833f" font-size="19">A privacy-architecture question — not malware homework.</text>
+  </g>
+</svg>
