@@ -1,0 +1,124 @@
+{
+  "schemaVersion": 1,
+  "captureId": "episode10-rehearsal-ceiling",
+  "role": "historical August sparse-model known-key control receipt playback",
+  "transcript": "REHEARSAL_CEILING_TRANSCRIPT.md",
+  "answers": {
+    "question": "What did the August sparse-model pipeline do on a message whose answer was already known?",
+    "answer": "On a published control cut to 72 letters, the IC-only true-key rank was 223,118 of 456,976, phase two recovered 4/72 letters and 0/10 plugs, and the historical tool printed NO BREAK. Current phase two supersedes those recovery values with 25/72 and 5/10, still NO BREAK."
+  },
+  "reproduce": {
+    "workingDirectory": "helut-videos repository root at /Volumes/Code/MuleinLabs/helut-videos",
+    "prerequisites": [
+      "VHS 0.11.0",
+      "bash",
+      "shasum",
+      "The durable preserved receipt at captures/ep10-why-it-holds/ep10-exhaust-selftest-rehearsal.log"
+    ],
+    "commands": [
+      "vhs validate captures/ep10-why-it-holds/episode10-rehearsal-ceiling.tape",
+      "vhs captures/ep10-why-it-holds/episode10-rehearsal-ceiling.tape"
+    ],
+    "behavior": "Renders deterministic playback of a preserved historical receipt. It runs no benchmark, test suite, synthesis, or cracking run.",
+    "workspacePathConstraint": "The tape records to an absolute path under /Volumes/Code/MuleinLabs and must be adjusted if the workspace is relocated."
+  },
+  "capturedAt": null,
+  "capturedAtBasis": "Rendered during the documentation pass; the underlying August experiment is dated in its preserved receipt",
+  "captureMethod": {
+    "recorder": "VHS",
+    "terminal": "real Bash pseudo-terminal",
+    "mode": "normal-speed playback of a preserved historical receipt",
+    "executedExperimentDuringCapture": false,
+    "uploaded": false,
+    "tape": {
+      "repo": "helut-videos",
+      "path": "captures/ep10-why-it-holds/episode10-rehearsal-ceiling.tape",
+      "sha256": "af1f7546481348706aa32df77e7909cf54436f14af7489b31f1a0c44872e3c6d",
+      "requestedFrameRate": 30
+    }
+  },
+  "video": {
+    "repo": "helut-videos",
+    "path": "public/captures/ep10-why-it-holds/episode10-rehearsal-ceiling.mp4",
+    "sha256": "0af19c29e23c027e51fb4f0c11dfbabb5e69ee28686c845ec1a52d17bcd74ea0",
+    "container": "mov,mp4,m4a,3gp,3g2,mj2",
+    "codec": "h264",
+    "pixelFormat": "yuv420p",
+    "width": 1280,
+    "height": 720,
+    "encodedFrameRate": "25/1",
+    "durationSeconds": 71.48,
+    "sizeBytes": 493953
+  },
+  "artifacts": [
+    {
+      "repo": "HELUT",
+      "path": "logs/exhaust-selftest-revalidate-2026-08-15.log",
+      "kind": "original preserved historical receipt",
+      "sha256": "b16c4ac6fe0571b68d19a37f7215320e6733876fe4968094ceff1c0c59dbb515"
+    },
+    {
+      "repo": "helut-videos",
+      "path": "captures/ep10-why-it-holds/ep10-exhaust-selftest-rehearsal.log",
+      "kind": "durable byte-for-byte copy used by the tape",
+      "sourcePath": "HELUT/logs/exhaust-selftest-revalidate-2026-08-15.log",
+      "byteForByteMatch": true,
+      "sha256": "b16c4ac6fe0571b68d19a37f7215320e6733876fe4968094ceff1c0c59dbb515"
+    }
+  ],
+  "experiment": {
+    "evidenceEpoch": "historical August sparse bigram model",
+    "supersededByCapture": "episode10-objective-correction",
+    "controlMessage": "U534 P1030684, Potsdam 1 May 1945 (published key)",
+    "truth": "UKW B, gamma, IV-III-VIII, rings AACU, message key VYAA, 10 plugs",
+    "letters": 72,
+    "lettersRationale": "same length as the P1030680 target",
+    "backend": "Metal-ic-sweep",
+    "levelOne": {
+      "sieve": "IC over 26^4 message keys",
+      "trueKeyIC": 0.0379,
+      "rank": 223118,
+      "outOf": 456976,
+      "percentile": "top 48.825%",
+      "currentStatus": "unchanged by dense table and objective repairs"
+    },
+    "levelTwo": {
+      "start": "the TRUE rotor setting",
+      "lettersCorrect": "4/72",
+      "bigram": -3.127,
+      "truePlugBigram": -2.8719,
+      "plugsRecovered": "0/10 correct, 7 proposed",
+      "currentSupersedingValues": "25/72 letters, 5/10 true plugs, 7 proposed"
+    },
+    "levelThree": {
+      "historicalDiagnostic": "likeness=0.80",
+      "ic": 0.0556,
+      "cribs": "(none)",
+      "verdict": "NO BREAK",
+      "currentStatus": "The likeness label is retired; current publication assessment remains NO BREAK."
+    },
+    "interpretation": "Preserved as the sparse-model before state. Its phase-two recovery is superseded; it must not be described as the current ceiling."
+  },
+  "validation": {
+    "tapeSyntaxValidated": true,
+    "mp4ProbedSuccessfully": true,
+    "sourceCopiedByteForByte": true,
+    "fullResolutionFramesInspectedAtSeconds": [60],
+    "terminalEvidenceOutputLegible": true,
+    "commandEchoWrapOrOverlapObserved": true,
+    "hiddenSetupVisible": false,
+    "experimentRerunForCapture": false,
+    "episodeSceneDurationMatchesMedia": true
+  },
+  "timingContext": {
+    "interpretation": "The capture replays preserved text at normal speed. Any elapsed-time figures visible on screen are historical observations from the original run on one Apple-silicon host, not fresh measurements and not portable performance contracts."
+  },
+  "claimBoundaries": [
+    "This is playback of a preserved historical receipt. No cracking run was performed for the capture.",
+    "The 4/72 and 0/10 phase-two values belong to the August sparse model and are not current.",
+    "The current repaired-objective values are 25/72 and 5/10, still NO BREAK.",
+    "The historical likeness value is not a probability or current confidence measure.",
+    "The unchanged 223,118/456,976 IC rank remains a valid internal control.",
+    "No claim is made that P1030680 has a key, plaintext, or break."
+  ]
+}

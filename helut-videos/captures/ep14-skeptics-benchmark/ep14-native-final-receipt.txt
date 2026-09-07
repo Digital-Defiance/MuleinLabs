@@ -1,0 +1,51 @@
+=== EP14 FINAL MATCHED NATIVE RECEIPT ===
+Presentation ledger derived from sealed HELUT evidence; no timing rerun.
+
+SOURCE
+Git blob SHA-1: b0dce16ca9844ce499d07ea090ed4ff7cedae6f9
+Source SHA-256: 3ee58213f460cbc8a0a316dc90e6edb9a7af5e77426b839fb1d83e8675e490e2
+Compiled XCTest SHA-256: 5f6ea6aa884e28fccbd2ab1acc872687e5054bf89d933795db4bba6c7ec505ad
+Pre-execution gate: PASS
+XCTest: Executed 1 test, with 0 failures (0 unexpected)
+
+1/3  TWO SCOPES — DO NOT CONFLATE THEM
+NATIVE_BASELINE 65536  0.000921965  0.007094667  0.130x  match 52f209ab0358725
+Historical scope: warmed synchronized HELUT graph vs scalar assign/eval/read/digest.
+Historical graph result is intentionally asymmetric; it is not paired throughput.
+
+NATIVE_PAIRED  65536  0.008544087  0.007421917   16  1.151x  match 52f209ab0358725
+Paired scope: deterministic preparation through strict readback and ordered digest.
+VERDICT: HELUT remained 15.1% slower at B=65,536.
+NATIVE_PAIRED crossover: none through B=65536 against configured parallel Verilator.
+
+2/3  FINAL HELUT PHASE MEDIANS AT B=65,536
+assignment   0.029922 ms
+input pack   0.528932 ms
+graph        0.766039 ms
+strict decode 0.548005 ms
+ordered digest 6.676912 ms
+paired total 8.544087 ms
+native total 7.421917 ms
+remaining paired gap 1.122170 ms
+
+Digest contract: identical ordered lane/wire/value bytes remain inside both paired timers.
+No digest-subtracted or unequal-scope evaluator ratio is claimed.
+
+3/3  DISTINCT-LANE CORRECTNESS AND NEGATIVE CONTROL
+Production distinct receipt: PASS
+lanes=65536 distinct_inputs=65536 checked_output_bits=589824 mismatches=0
+unique_output_signatures=511 digest=fnv1a64-3f03b6872d46d5a5
+
+BATCH_LANES negative control: lane 37 corruption produced 5 mismatch(es)
+digest 2c81f1c165bf1edd -> a06c2874ad01d2c4
+
+BOUNDARY
+One combinational 8-bit ripple adder; one Mac16,5; five unpinned trials per width.
+No paired crossover was observed through B=65,536.
+A separate million-lane HELUT graph sweep uses projected high-width native values.
+No general HDL, sequential, cross-host, CXXRTL, encrypted, or Apple-superiority claim.
+
+SEALED EVIDENCE
+Preregister SHA-256: ccef741e7b42a78517af81579bf878910bebb47dd7344eaf7a572adc298b2890
+Raw log SHA-256: bae12bb19270904133c5fd566c114abd805ae6665acaa4f97640255439566435
+Receipt SHA-256: 6912cb6586fb3885607849be86ab104c427ceb26b13977b38692cbc0844087d8

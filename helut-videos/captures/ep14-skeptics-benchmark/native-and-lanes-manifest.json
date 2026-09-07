@@ -1,0 +1,243 @@
+{
+  "schemaVersion": 1,
+  "captureId": "episode14-native-and-lanes",
+  "role": "sealed matched-native receipt playback",
+  "transcript": "NATIVE_AND_LANES_TRANSCRIPT.md",
+  "reproduce": {
+    "workingDirectory": "helut-videos repository root at /Volumes/Code/MuleinLabs/helut-videos",
+    "prerequisites": [
+      "VHS 0.11.0 for validation and rendering",
+      "bash",
+      "shasum",
+      "The durable presentation ledger at captures/ep14-skeptics-benchmark/ep14-native-final-receipt.txt"
+    ],
+    "commands": [
+      "vhs validate captures/ep14-skeptics-benchmark/episode14-native-and-lanes.tape",
+      "vhs captures/ep14-skeptics-benchmark/episode14-native-and-lanes.tape"
+    ],
+    "behavior": "Validates or renders deterministic playback of a derived presentation ledger bound to sealed evidence. It does not execute XCTest, Verilator, Yosys, helut-bench, or any timing-sensitive command.",
+    "workspacePathConstraint": "The tape records to an absolute path under /Volumes/Code/MuleinLabs and must be adjusted if the workspace is relocated."
+  },
+  "capturedAt": null,
+  "capturedAtBasis": "Pending render; no capture timestamp is claimed",
+  "sourceExperiment": {
+    "executedDuringCapture": false,
+    "executionCount": 1,
+    "host": "Mac16,5 / Apple M4 Max / macOS 26.6.2",
+    "requestedNativeWorkers": 16,
+    "timedTrialsPerPoint": 5,
+    "lanePoints": [
+      1,
+      16,
+      256,
+      1024,
+      4096,
+      16384,
+      32768,
+      65536
+    ],
+    "preExecutionGate": "PASS",
+    "xctest": "Executed 1 test, with 0 failures (0 unexpected)",
+    "allDigestsMatched": true,
+    "allReportedResidualsZero": true
+  },
+  "captureMethod": {
+    "recorder": "VHS",
+    "terminal": "real Bash pseudo-terminal",
+    "mode": "deterministic playback of a presentation ledger derived from sealed evidence",
+    "uploaded": false,
+    "freshBenchmarkCommands": false,
+    "presentationLedger": {
+      "repo": "helut-videos",
+      "path": "captures/ep14-skeptics-benchmark/ep14-native-final-receipt.txt",
+      "sha256": "3e716bbf902cff89859458b898d157a8f2314f62ad165871fc25feaff991dc5c"
+    },
+    "tape": {
+      "repo": "helut-videos",
+      "path": "captures/ep14-skeptics-benchmark/episode14-native-and-lanes.tape",
+      "sha256": "d6909a00fb6478d99472d6a7c1ec7baec607407ecce98f8dc840ef1e014ac4ac",
+      "requestedFrameRate": 30
+    }
+  },
+  "video": {
+    "repo": "helut-videos",
+    "path": "public/captures/ep14-skeptics-benchmark/episode14-native-and-lanes.mp4",
+    "status": "rendered",
+    "sha256": "1190a00091346c46c05fc130d2be0d0359954ab9f41f758ce59df779a7e98318",
+    "container": "mov,mp4,m4a,3gp,3g2,mj2",
+    "codec": "h264",
+    "pixelFormat": "yuv420p",
+    "width": 1280,
+    "height": 720,
+    "encodedFrameRate": "25/1",
+    "durationSeconds": 71.64,
+    "sizeBytes": 754522,
+    "supersededPriorFile": {
+      "sha256": "daf31d5c3c7688a25a1ebf79ddbf482a4dea53e2de66c87d7f0cfdc723b971ac",
+      "provenance": "live-run footage recorded before the final 1.151197x paired receipt",
+      "replacedByThisRender": true
+    }
+  },
+  "sourceBinding": {
+    "repo": "HELUT",
+    "source": {
+      "path": "Tests/HELUTTests/NativeBaselineComparisonTests.swift",
+      "gitBlobSHA1": "b0dce16ca9844ce499d07ea090ed4ff7cedae6f9",
+      "sha256": "3ee58213f460cbc8a0a316dc90e6edb9a7af5e77426b839fb1d83e8675e490e2",
+      "bytes": 47681
+    },
+    "compiledXCTest": {
+      "path": ".build/arm64-apple-macosx/release/helutPackageTests.xctest/Contents/MacOS/helutPackageTests",
+      "sha256": "5f6ea6aa884e28fccbd2ab1acc872687e5054bf89d933795db4bba6c7ec505ad",
+      "bytes": 10655632
+    }
+  },
+  "artifacts": [
+    {
+      "repo": "HELUT",
+      "path": "logs/helut-native-degree-one-pack-20260906T170831Z/preregister.json",
+      "kind": "sealed preregistration",
+      "immutable": true,
+      "sha256": "ccef741e7b42a78517af81579bf878910bebb47dd7344eaf7a572adc298b2890"
+    },
+    {
+      "repo": "HELUT",
+      "path": "logs/helut-native-degree-one-pack-20260906T170831Z/raw.log",
+      "kind": "sole-run raw output banked after session compaction",
+      "immutable": true,
+      "sha256": "bae12bb19270904133c5fd566c114abd805ae6665acaa4f97640255439566435"
+    },
+    {
+      "repo": "HELUT",
+      "path": "logs/helut-native-degree-one-pack-20260906T170831Z/receipt.json",
+      "kind": "sealed benchmark receipt",
+      "immutable": true,
+      "sha256": "6912cb6586fb3885607849be86ab104c427ceb26b13977b38692cbc0844087d8"
+    },
+    {
+      "repo": "HELUT",
+      "path": "logs/helut-native-degree-one-pack-20260906T170831Z/final-handoff.json",
+      "kind": "additive final publication handoff",
+      "sha256": "8987008bd6b862a96a6fc6aba779209af92686f39b27ea56f1c3ea8c00da4301"
+    },
+    {
+      "repo": "HELUT",
+      "path": "logs/helut-native-degree-one-pack-20260906T170831Z/ERRATA.md",
+      "kind": "additive evidence errata",
+      "sha256": "8e54453ca3c51d381bc14edca2a0bb58906d4a84286376766f65aa142fdfb6d5"
+    },
+    {
+      "repo": "HELUT",
+      "path": "logs/helut-native-degree-one-pack-20260906T170831Z/final-source-and-binary.sha256",
+      "kind": "final source and compiled-XCTest hash sidecar",
+      "sha256": "64670e40ad75f8258f612172ef82fc7f105e11f5b5bbc29f9611481e4c367d76"
+    },
+    {
+      "repo": "HELUT",
+      "path": "logs/helut-production-distinct-b65536-20260906T035827Z/receipt.json",
+      "kind": "sealed production distinct-lane correctness receipt",
+      "sha256": "81a8b9161263cf33466e01c9838d49410cab56cbca4e406d45349a3ea9b07c33"
+    },
+    {
+      "repo": "HELUT",
+      "path": "logs/helut-lanes-and-resources-20260905T230507Z.log",
+      "kind": "preserved 256-lane positive and lane-37 corruption-control log",
+      "sha256": "915083f5147877fad31d7c3425f3b3f4519fd37bebf82f2d8a1f9bf7a2de1f2e"
+    }
+  ],
+  "generatedArtifacts": {
+    "bundleDirectory": "HELUT/logs/helut-native-degree-one-pack-20260906T170831Z",
+    "preservedRunDirectory": "/var/folders/s1/v5qk06h56m9fyldr6mkt184w0000gn/T/helut-native-baseline-1AF05933-5ADC-4BAF-9A03-5DCA8E4DDC2A",
+    "bundled": {
+      "emitted.v": "8ba6dc328983119bd3b2236438f3431d5d54f530710fe73d6512359dd51c6a5e",
+      "lut6.v": "4c9d11388c4385f5fecc293d6c54a44abe830878cc2832993ce4ff6de7905e66",
+      "flow.ys": "40dc7c3526448219a5eca28fa8102c90129d3a031f0ab46e9c1ab70f2848952a",
+      "tb.cpp": "2dfd5a6cb66a4c15628f4464625c7b076498e6dee6219fbeedadfffa483c34b2"
+    },
+    "hashIdentifiedButNotBundled": {
+      "resynth.json": {
+        "sha256": "84ba190a62302f886b63f7607480b0e3f50f27b380f139ce91bb178fac8164fb",
+        "bytes": 44729
+      },
+      "obj_dir/sim": {
+        "sha256": "60aab5d844d2b5fc36d6efc20ea0b0fe224a2bde12c4afbe847e4a47e1dfacb9",
+        "bytes": 360784
+      }
+    }
+  },
+  "experiment": {
+    "circuit": {
+      "description": "degree-1 cleartext combinational 8-bit ripple adder",
+      "emittedLUT6": 16,
+      "mappedLUTs": 14,
+      "dffs": 0,
+      "declaredInputBits": 17,
+      "functionalInputBits": 16,
+      "outputBits": 9
+    },
+    "b65536": {
+      "assignmentMedianMilliseconds": 0.029922,
+      "inputPackMedianMilliseconds": 0.528932,
+      "graphMedianMilliseconds": 0.766039,
+      "strictDecodeMedianMilliseconds": 0.548005,
+      "orderedDigestMedianMilliseconds": 6.676912,
+      "helutPairedTotalMilliseconds": 8.544087,
+      "nativeParallelTotalMilliseconds": 7.421917,
+      "helutOverNative": 1.151196786490606,
+      "remainingGapMilliseconds": 1.12217,
+      "digestHex": "52f209ab0358725",
+      "pairedCrossover": false
+    },
+    "distinctLaneCorrectness": {
+      "lanes": 65536,
+      "distinctInputAssignments": 65536,
+      "checkedOutputBits": 589824,
+      "mismatches": 0,
+      "distinctOutputSignatures": 511,
+      "digest": "fnv1a64-3f03b6872d46d5a5",
+      "result": "PASS"
+    },
+    "negativeControl": {
+      "fixtureLanes": 256,
+      "corruptedLane": 37,
+      "mismatches": 5,
+      "digestBefore": "2c81f1c165bf1edd",
+      "digestAfter": "a06c2874ad01d2c4"
+    }
+  },
+  "validation": {
+    "ledgerHashRechecked": true,
+    "tapeHashRechecked": true,
+    "tapeSyntaxValidated": true,
+    "mp4Regenerated": true,
+    "mp4ProbedSuccessfully": true,
+    "contactSheetInspected": false,
+    "fullResolutionFramesInspected": false,
+    "terminalEvidenceOutputLegible": true,
+    "benchmarkRerunForCapture": false,
+    "fullResolutionFramesInspectedAtSeconds": [
+      9,
+      26,
+      45,
+      60
+    ],
+    "commandEchoWrapOrOverlapObserved": true,
+    "hiddenSetupVisible": false,
+    "supersededVideoReplaced": true,
+    "episodeSceneDurationMatchesMedia": true
+  },
+  "timingContext": {
+    "interpretation": "The accepted paired result is HELUT 8.544087 ms versus 16-worker Verilator 7.421917 ms at B=65,536: HELUT remained 15.1% slower, with no paired crossover through B=65,536. This capture is sealed receipt playback, not a fresh timing run."
+  },
+  "claimBoundaries": [
+    "The accepted paired verdict keeps deterministic preparation, execution, strict readback, decode, and the same ordered digest inside both timers.",
+    "The historical graph-only row is intentionally asymmetric and is not the paired throughput verdict.",
+    "No digest-subtracted evaluator ratio or equal-scope NATIVE_EVAL ratio is synthesized from independent medians.",
+    "One degree-1 cleartext combinational 8-bit ripple adder on one Mac16,5 host; five unpinned trials at each of eight widths.",
+    "No paired crossover was observed through B=65,536.",
+    "The million-lane graph sweep is a different fixture with projected high-width native values, not a measured paired crossover.",
+    "The 65,536-lane distinct receipt checked 589,824 output bits with zero mismatches; the corruption control was lane 37 of a separate 256-lane fixture and produced five mismatches.",
+    "No general HDL, sequential, encrypted, CXXRTL, cross-host, best-possible-native, or Apple-superiority conclusion follows.",
+    "The rendered playback shows preserved values only; no benchmark was executed during capture."
+  ]
+}

@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" role="img" aria-labelledby="t d">
+  <title id="t">Where HELUT loses</title>
+  <desc id="d">Four measured limits and one unavailable comparison: paired throughput is 15.1 percent slower than 16-worker Verilator, one instance is roughly four orders of magnitude slower, simplification ties ABC, encrypted evaluation costs hundreds of milliseconds per gate, and no discrete-GPU benchmark exists.</desc>
+  <rect width="1920" height="1080" fill="#091321"/>
+  <g font-family="Arial,sans-serif">
+    <g transform="translate(120 328)">
+      <rect width="820" height="220" rx="22" fill="#321b23" stroke="#e0574c" stroke-width="2"/>
+      <text x="30" y="36" fill="#e0574c" font-size="16" letter-spacing="2">MATCHED END-TO-END WORK</text>
+      <text x="30" y="82" fill="#fff" font-size="31" font-weight="700">8.544 ms vs 7.422 ms</text>
+      <text x="30" y="121" fill="#9aa8b8" font-size="19">HELUT vs 16-worker Verilator at B=65,536</text>
+      <text x="30" y="161" fill="#e0574c" font-size="23" font-weight="700">15.1% slower &#183; no tested crossover</text>
+      <text x="30" y="194" fill="#9aa8b8" font-size="18">preparation + execution + readback + same digest</text>
+    </g>
+
+    <g transform="translate(980 328)">
+      <rect width="820" height="220" rx="22" fill="#321b23" stroke="#e0574c" stroke-width="2"/>
+      <text x="30" y="36" fill="#e0574c" font-size="16" letter-spacing="2">ONE INSTANCE AT A TIME</text>
+      <text x="30" y="82" fill="#fff" font-size="31" font-weight="700">~4 orders of magnitude slower</text>
+      <text x="30" y="123" fill="#9aa8b8" font-size="19">Native wins overwhelmingly at one lane.</text>
+      <text x="30" y="154" fill="#9aa8b8" font-size="19">Fixed submission overhead dominates.</text>
+      <text x="30" y="194" fill="#e0574c" font-size="20" font-weight="700">There is nothing to amortize it against.</text>
+    </g>
+
+    <g transform="translate(120 572)">
+      <rect width="520" height="238" rx="22" fill="#321b23" stroke="#e0574c" stroke-width="2"/>
+      <text x="28" y="36" fill="#e0574c" font-size="15" letter-spacing="2">SIMPLIFICATION VS ABC</text>
+      <text x="28" y="80" fill="#fff" font-size="29" font-weight="700">0 wins &#183; 18 ties</text>
+      <text x="28" y="111" fill="#fff" font-size="23" font-weight="700">&#183; 0 losses</text>
+      <text x="28" y="151" fill="#9aa8b8" font-size="18">Same abc -lut 6 recipe.</text>
+      <text x="28" y="180" fill="#9aa8b8" font-size="18">Both circuits map identically.</text>
+      <text x="28" y="217" fill="#e0574c" font-size="18" font-weight="700">Measured null.</text>
+    </g>
+
+    <g transform="translate(700 572)">
+      <rect width="520" height="238" rx="22" fill="#321b23" stroke="#e0574c" stroke-width="2"/>
+      <text x="28" y="36" fill="#e0574c" font-size="15" letter-spacing="2">ENCRYPTED PATH</text>
+      <text x="28" y="80" fill="#fff" font-size="28" font-weight="700">Hundreds of ms</text>
+      <text x="28" y="111" fill="#fff" font-size="23" font-weight="700">per gate</text>
+      <text x="28" y="151" fill="#9aa8b8" font-size="18">At production parameters.</text>
+      <text x="28" y="180" fill="#9aa8b8" font-size="18">Native-dimension processor</text>
+      <text x="28" y="217" fill="#e0574c" font-size="18" font-weight="700">check still fails.</text>
+    </g>
+
+    <g transform="translate(1280 572)">
+      <rect width="520" height="238" rx="22" fill="#101a2b" stroke="#66758a"/>
+      <text x="28" y="36" fill="#d4833f" font-size="15" letter-spacing="2">NOT MEASURED</text>
+      <text x="28" y="80" fill="#fff" font-size="27" font-weight="700">No discrete-GPU</text>
+      <text x="28" y="111" fill="#fff" font-size="23" font-weight="700">comparison exists</text>
+      <text x="28" y="151" fill="#9aa8b8" font-size="18">No NVIDIA or AMD backend</text>
+      <text x="28" y="180" fill="#9aa8b8" font-size="18">has been benchmarked.</text>
+      <text x="28" y="217" fill="#d4833f" font-size="18" font-weight="700">No architecture claim.</text>
+    </g>
+  </g>
+</svg>

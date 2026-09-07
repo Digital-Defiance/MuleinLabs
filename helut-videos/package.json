@@ -7,6 +7,7 @@
   "scripts": {
     "studio": "remotion studio src/index.ts",
     "render": "remotion render src/index.ts",
+    "prerender:ep00": "npm run pace:ep00:check",
     "render:ep00": "remotion render src/index.ts Episode00 out/ep00-what-is-helut.mp4",
     "render:ep01": "remotion render src/index.ts Episode01 out/ep01-metal-compiler.mp4",
     "render:ep02": "remotion render src/index.ts Episode02 out/ep02-torus-fhe.mp4",
@@ -26,6 +27,8 @@
     "pretts": "npm run check",
     "tts": "node scripts/generate-tts.mjs",
     "tts:pending": "node scripts/tts-pending.mjs",
+    "pace:ep00": "node scripts/derive-ep00-pacing.mjs",
+    "pace:ep00:check": "node scripts/derive-ep00-pacing.mjs --check",
     "episodes:check": "node scripts/validate-episodes.mjs",
     "sync:check": "node scripts/sync-check.mjs",
     "typecheck": "tsc --noEmit -p tsconfig.json",

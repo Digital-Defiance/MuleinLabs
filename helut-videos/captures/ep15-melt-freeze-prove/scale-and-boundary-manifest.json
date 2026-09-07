@@ -1,0 +1,68 @@
+{
+  "schemaVersion": 1,
+  "captureId": "episode15-scale-and-boundary",
+  "role": "live experiment capture",
+  "transcript": "SCALE_AND_BOUNDARY_TRANSCRIPT.md",
+  "summary": "Scaling and boundary screens for the melt/freeze ladder. Full record in SCALE_AND_BOUNDARY_TRANSCRIPT.md.",
+  "reproduce": {
+    "workingDirectory": "helut-videos repository root at /Volumes/Code/MuleinLabs/helut-videos",
+    "prerequisites": [
+      "bash",
+      "xcrun",
+      "yosys",
+      "VHS 0.11.0",
+      "A current `swift build -c release` in the sibling HELUT checkout for tapes that invoke HELUT binaries or the prebuilt XCTest bundle"
+    ],
+    "commands": [
+      "vhs validate captures/ep15-melt-freeze-prove/episode15-scale-and-boundary.tape",
+      "vhs captures/ep15-melt-freeze-prove/episode15-scale-and-boundary.tape"
+    ],
+    "behavior": "Re-records a live execution. Timing-sensitive figures will differ between takes; the pass/fail gates and printed boundaries should not.",
+    "workspacePathConstraint": "The tape uses absolute paths under /Volumes/Code/MuleinLabs and must be adjusted if the workspace is relocated."
+  },
+  "captureMethod": {
+    "recorder": "VHS",
+    "terminal": "real Bash pseudo-terminal",
+    "mode": "live execution recorded during filming",
+    "executedExperimentDuringCapture": true,
+    "uploaded": false,
+    "tape": {
+      "repo": "helut-videos",
+      "path": "captures/ep15-melt-freeze-prove/episode15-scale-and-boundary.tape",
+      "sha256": "1944c9a5601bc6ce654354b2c42be52b06a1d9b34e3142e1e51482fb99aeec22",
+      "requestedFrameRate": 30
+    }
+  },
+  "video": {
+    "repo": "helut-videos",
+    "path": "public/captures/ep15-melt-freeze-prove/episode15-scale-and-boundary.mp4",
+    "sha256": "b4446d44ea1edd4de331f94f7009bca48addf6d9584e8716ec3e73f5637827bc",
+    "container": "mov,mp4,m4a,3gp,3g2,mj2",
+    "codec": "h264",
+    "pixelFormat": "yuv420p",
+    "width": 1280,
+    "height": 720,
+    "encodedFrameRate": "25/1",
+    "durationSeconds": 83.72,
+    "sizeBytes": 632861
+  },
+  "observedOnScreen": [],
+  "validation": {
+    "tapeSyntaxValidated": true,
+    "mp4ProbedSuccessfully": true,
+    "hashesRecomputedFromDisk": true,
+    "episodeSceneDurationMatchesMedia": true,
+    "liveExecutionDuringRecording": true,
+    "commandEchoWrapOrOverlapObserved": true,
+    "priorVisualReviewRecordedIn": "captures/LIVE_CAPTURES.md and the linked transcript",
+    "framesReInspectedThisPass": false
+  },
+  "timingContext": {
+    "interpretation": "Elapsed figures visible on screen are local observations on one Apple-silicon host from the filmed take. They are not deterministic contracts and will vary between runs; the correctness gates and printed boundaries are the durable content."
+  },
+  "claimBoundaries": [
+    "Live run recorded during filming, not archived playback.",
+    "Fixture-scoped scaling observations on one Apple-silicon host.",
+    "No general synthesis, area, or depth claim follows from these screens."
+  ]
+}

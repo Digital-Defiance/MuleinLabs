@@ -1,0 +1,69 @@
+{
+  "schemaVersion": 1,
+  "captureId": "episode01-three-tier-validation",
+  "role": "live experiment capture",
+  "transcript": "CAPTURE_TRANSCRIPT.md",
+  "summary": "Bounded three-tier compiler control: exclusive injected-lane recovery, clear-netlist/oracle parity, FHPQX/SIEGFR reproduction, and SDV isolation among 200 hypotheses.",
+  "reproduce": {
+    "workingDirectory": "helut-videos repository root at /Volumes/Code/MuleinLabs/helut-videos",
+    "prerequisites": [
+      "bash",
+      "VHS 0.11.0",
+      "A current `swift build -c release` in the sibling HELUT checkout for tapes that invoke HELUT binaries or the prebuilt XCTest bundle"
+    ],
+    "commands": [
+      "vhs validate captures/ep01-metal-compiler/episode01-three-tier-validation.tape",
+      "vhs captures/ep01-metal-compiler/episode01-three-tier-validation.tape"
+    ],
+    "behavior": "Re-records a live execution. Timing-sensitive figures will differ between takes; the pass/fail gates and printed boundaries should not.",
+    "workspacePathConstraint": "The tape uses absolute paths under /Volumes/Code/MuleinLabs and must be adjusted if the workspace is relocated."
+  },
+  "captureMethod": {
+    "recorder": "VHS",
+    "terminal": "real Bash pseudo-terminal",
+    "mode": "live execution recorded during filming",
+    "executedExperimentDuringCapture": true,
+    "uploaded": false,
+    "tape": {
+      "repo": "helut-videos",
+      "path": "captures/ep01-metal-compiler/episode01-three-tier-validation.tape",
+      "sha256": "df76e33652e389e32d3ec428f70bebd59dde5dada89c0cd7c08ac114a89f4426",
+      "requestedFrameRate": 30
+    }
+  },
+  "video": {
+    "repo": "helut-videos",
+    "path": "public/captures/ep01-metal-compiler/episode01-three-tier-validation.mp4",
+    "sha256": "454e161bac637999b6a9209f3c7c5f712ab77547e01bfc593a641a5e5475eb50",
+    "container": "mov,mp4,m4a,3gp,3g2,mj2",
+    "codec": "h264",
+    "pixelFormat": "yuv420p",
+    "width": 1280,
+    "height": 720,
+    "encodedFrameRate": "25/1",
+    "durationSeconds": 33.96,
+    "sizeBytes": 428122
+  },
+  "observedOnScreen": [
+    "VALIDATION COMPLETE — tiers 1-3 green."
+  ],
+  "validation": {
+    "tapeSyntaxValidated": true,
+    "mp4ProbedSuccessfully": true,
+    "hashesRecomputedFromDisk": true,
+    "episodeSceneDurationMatchesMedia": true,
+    "liveExecutionDuringRecording": true,
+    "commandEchoWrapOrOverlapObserved": true,
+    "priorVisualReviewRecordedIn": "captures/LIVE_CAPTURES.md and the linked transcript",
+    "framesReInspectedThisPass": false
+  },
+  "timingContext": {
+    "interpretation": "Elapsed figures visible on screen are local observations on one Apple-silicon host from the filmed take. They are not deterministic contracts and will vary between runs; the correctness gates and printed boundaries are the durable content."
+  },
+  "claimBoundaries": [
+    "Live run recorded during filming, not archived playback.",
+    "One named Enigma fixture. This is not arbitrary-Verilog compiler correctness.",
+    "No FHE or encrypted evaluation appears in this capture.",
+    "SDV isolation is among 200 enumerated hypotheses, not an open-world claim."
+  ]
+}

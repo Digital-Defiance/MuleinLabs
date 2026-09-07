@@ -1,0 +1,140 @@
+{
+  "schemaVersion": 1,
+  "captureId": "episode15-abc-comparison",
+  "role": "sealed structural-versus-ABC receipt playback",
+  "transcript": "ABC_COMPARISON_TRANSCRIPT.md",
+  "answers": {
+    "question": "How does this simplification compare with existing methods of simplifying logic?",
+    "answer": "It ties. Across 6 circuits and 3 seeds (18 results) the evolved and hand-designed netlists mapped to identical LUT counts and identical depth under one identical abc -lut 6 recipe: 0 wins, 18 ties, 0 losses."
+  },
+  "reproduce": {
+    "workingDirectory": "helut-videos repository root at /Volumes/Code/MuleinLabs/helut-videos",
+    "prerequisites": [
+      "VHS 0.11.0",
+      "bash",
+      "shasum",
+      "The durable preserved receipt at captures/ep15-melt-freeze-prove/ep15-structural-abc-benchmark.log"
+    ],
+    "commands": [
+      "vhs validate captures/ep15-melt-freeze-prove/episode15-abc-comparison.tape",
+      "vhs captures/ep15-melt-freeze-prove/episode15-abc-comparison.tape"
+    ],
+    "behavior": "Renders deterministic playback of a preserved receipt. It runs no benchmark, no test suite, no synthesis, and no cracking run.",
+    "workspacePathConstraint": "The tape records to an absolute path under /Volumes/Code/MuleinLabs and must be adjusted if the workspace is relocated."
+  },
+  "capturedAt": null,
+  "capturedAtBasis": "Rendered during this documentation pass; the underlying experiment predates it and is dated in the receipt itself",
+  "captureMethod": {
+    "recorder": "VHS",
+    "terminal": "real Bash pseudo-terminal",
+    "mode": "normal-speed playback of a preserved receipt",
+    "executedExperimentDuringCapture": false,
+    "uploaded": false,
+    "tape": {
+      "repo": "helut-videos",
+      "path": "captures/ep15-melt-freeze-prove/episode15-abc-comparison.tape",
+      "sha256": "23b88b7351a9053facec1066c14eb697b408ab130e6415292287b0fac0e4cc6f",
+      "requestedFrameRate": 30
+    }
+  },
+  "video": {
+    "repo": "helut-videos",
+    "path": "public/captures/ep15-melt-freeze-prove/episode15-abc-comparison.mp4",
+    "sha256": "55d9ec7d2744f92c0533713cc8175249bf4b3221a20e7a0e7f3129e2e7c45515",
+    "container": "mov,mp4,m4a,3gp,3g2,mj2",
+    "codec": "h264",
+    "pixelFormat": "yuv420p",
+    "width": 1280,
+    "height": 720,
+    "encodedFrameRate": "25/1",
+    "durationSeconds": 88.84,
+    "sizeBytes": 717372
+  },
+  "artifacts": [
+    {
+      "repo": "HELUT",
+      "path": "logs/helut-structural-abc-20260906T004058Z.log",
+      "kind": "original preserved receipt",
+      "sha256": "e2947a75dc6d693e359c7d88b4d4c6088345ac420852916f1c34a52ef79d2e6f"
+    },
+    {
+      "repo": "helut-videos",
+      "path": "captures/ep15-melt-freeze-prove/ep15-structural-abc-benchmark.log",
+      "kind": "durable byte-for-byte copy used by the tape",
+      "sourcePath": "HELUT/logs/helut-structural-abc-20260906T004058Z.log",
+      "byteForByteMatch": true,
+      "sha256": "e2947a75dc6d693e359c7d88b4d4c6088345ac420852916f1c34a52ef79d2e6f"
+    },
+    {
+      "repo": "HELUT",
+      "path": "logs/helut-structural-abc-20260906T004058Z/report.json",
+      "kind": "structured per-circuit benchmark report",
+      "sha256": "2d22285f2d96b01e5d4659a04ddf37de8e6be1765e45b50863c00e85a1d57e32"
+    }
+  ],
+  "experiment": {
+    "schema": "helut.tensorlut.structural-abc-benchmark.v1",
+    "timestampUTC": "2026-09-06T00:41:15Z",
+    "yosys": "0.68+post c12172fbae8af5e20f6fb52e3d4e92d56ed587b6",
+    "identicalFlowBothSides": "read LUT6 model + emitted candidate; hierarchy -check; proc; flatten; opt; techmap; opt; abc -lut 6; opt_clean; check -assert; write_json",
+    "areaProxy": "post-ABC $lut cell count",
+    "timingProxy": "maximum post-ABC output-cone LUT levels",
+    "proof": "miter -equiv -flatten; sat -prove trigger 0 against independent behavioural RTL",
+    "search": {
+      "population": 96,
+      "generations": 16,
+      "elites": 12,
+      "tournament": 4,
+      "mutationRate": 0.15,
+      "crossoverRate": 0.85,
+      "seeds": 3
+    },
+    "preMappingReductions": {
+      "parity12": "7 LUT d3 -> 3 LUT d2",
+      "decision6": "3 LUT d2 -> 1 LUT d1",
+      "mux8": "15 LUT d4 -> 7 LUT d3",
+      "popcount6": "9 LUT d2 -> 3 LUT d1",
+      "multiplier3x3": "18 LUT d2 -> 6 LUT d1",
+      "adder8": "41 LUT d9 -> 16 LUT d8"
+    },
+    "afterIdenticalMapping": {
+      "mappedLutWins": 0,
+      "mappedLutTies": 18,
+      "mappedLutLosses": 0,
+      "mappedDepthWins": 0,
+      "mappedDepthTies": 18,
+      "mappedDepthLosses": 0,
+      "seedResults": 18,
+      "retainedAndProved": 18,
+      "refuted": 0,
+      "inconclusive": 0,
+      "verdict": "honest null"
+    }
+  },
+  "validation": {
+    "tapeSyntaxValidated": true,
+    "mp4ProbedSuccessfully": true,
+    "sourceCopiedByteForByte": true,
+    "fullResolutionFramesInspectedAtSeconds": [
+      45,
+      62
+    ],
+    "terminalEvidenceOutputLegible": true,
+    "commandEchoWrapOrOverlapObserved": true,
+    "hiddenSetupVisible": false,
+    "experimentRerunForCapture": false,
+    "episodeSceneDurationMatchesMedia": true
+  },
+  "timingContext": {
+    "interpretation": "The capture replays preserved text at normal speed. Any elapsed-time figures visible on screen are historical observations from the original run on one Apple-silicon host, not fresh measurements and not portable performance contracts."
+  },
+  "claimBoundaries": [
+    "This is playback of a preserved receipt. Nothing was re-run for the capture.",
+    "The measured outcome is a null: no retained finalist beat or lost to its identically mapped baseline.",
+    "Pre-mapping LUT reductions are real but are not a simplification win, because ABC removes the same redundancy.",
+    "LUT6 count and LUT-level depth under one ABC flow are implementation proxies only.",
+    "Nothing here establishes physical area, delay, frequency, power, or any general advantage over ABC.",
+    "The 8-bit adder search was sampled at 512 of 65,536 rows; every mapped finalist was still SAT-proved over the full input space.",
+    "Six small fixtures on one host. No claim follows for arbitrary topologies or industrial designs."
+  ]
+}

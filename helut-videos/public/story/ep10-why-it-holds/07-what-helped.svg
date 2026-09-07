@@ -1,32 +1,38 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" role="img" aria-labelledby="t d">
-  <title id="t">Two changes that moved the threshold</title>
-  <desc id="d">Staging the scorer through index of coincidence then bigrams then trigrams, and fixing one plug before climbing the remaining nine, together close sixty-eight percent of the deficit at seventy-two letters. The margin is still negative.</desc>
+  <title id="t">The dense table improved recovery; objective v2 corrected calibration</title>
+  <desc id="d">The dense bigram table moved recovery from four to twenty-one letters. Objective v1 moved it to twenty-five; objective v2 calibrates the exact attack score and recovers the same twenty-five-letter candidate. Every checkpoint remains no break.</desc>
   <rect width="1920" height="1080" fill="#091522"/>
-  <g transform="translate(1000 156)" font-family="Arial,sans-serif">
-    <text x="415" y="14" text-anchor="middle" fill="#9aa8b8" font-size="15" letter-spacing="3">WHAT MEASURABLY HELPED</text>
+  <g transform="translate(1000 142)" font-family="Arial,sans-serif">
+    <text x="415" y="14" text-anchor="middle" fill="#9aa8b8" font-size="15" letter-spacing="3">WHAT THE CORRECTION ACTUALLY CHANGED</text>
 
     <g transform="translate(0 42)">
-      <rect width="830" height="86" rx="16" fill="#122b35" stroke="#22a89c" stroke-width="2"/>
-      <text x="24" y="30" fill="#22a89c" font-size="14" letter-spacing="2">1 · STAGE THE SCORER</text>
-      <text x="24" y="62" fill="#fff" font-size="20">IC → bigrams → trigrams</text>
-      <text x="24" y="80" fill="#9aa8b8" font-size="16">the measures fail at different points, not uniformly</text>
+      <rect width="830" height="96" rx="16" fill="#142738" stroke="#7aa2c8" stroke-width="2"/>
+      <text x="24" y="29" fill="#7aa2c8" font-size="14" letter-spacing="2">1 · WIRE IN THE DENSE BIGRAM TABLE</text>
+      <text x="24" y="62" fill="#fff" font-size="21" font-weight="700">10,359 → 28,508,834 letters</text>
+      <text x="24" y="84" fill="#9aa8b8" font-size="16">235 floor cells → 2 · Python / Ruby / Swift agree</text>
     </g>
 
-    <g transform="translate(0 144)">
-      <rect width="830" height="86" rx="16" fill="#122b35" stroke="#22a89c" stroke-width="2"/>
-      <text x="24" y="30" fill="#22a89c" font-size="14" letter-spacing="2">2 · FIX ONE PLUG FIRST</text>
-      <text x="24" y="62" fill="#fff" font-size="20">then climb the other nine · repeat for every candidate</text>
-      <text x="24" y="80" fill="#9aa8b8" font-size="16">a wrong first plug poisons everything chosen after it</text>
+    <g transform="translate(0 154)">
+      <rect width="830" height="112" rx="16" fill="#122b35" stroke="#22a89c" stroke-width="2"/>
+      <text x="24" y="29" fill="#22a89c" font-size="14" letter-spacing="2">2 · REPAIR, THEN RECALIBRATE THE OBJECTIVE</text>
+      <text x="24" y="63" fill="#fff" font-size="21" font-weight="700">standardized attack + exact trigram</text>
+      <text x="24" y="87" fill="#9aa8b8" font-size="16">v2 attack/trigram weight 0.499350</text>
+      <text x="24" y="107" fill="#9aa8b8" font-size="16">separate fail-closed final assessment · no independence claim</text>
     </g>
 
-    <g transform="translate(0 250)">
-      <text x="0" y="18" fill="#9aa8b8" font-size="14" letter-spacing="2">DEFICIT AT 72 LETTERS</text>
-      <rect x="0" y="30" width="830" height="40" rx="8" fill="#101a2b" stroke="#66758a"/>
-      <rect x="2" y="32" width="562" height="36" rx="6" fill="#22a89c"/>
-      <text x="286" y="57" text-anchor="middle" fill="#08111f" font-size="19" font-weight="700">68% closed</text>
-      <text x="700" y="57" text-anchor="middle" fill="#e0574c" font-size="18" font-weight="700">still short</text>
+    <g transform="translate(0 288)">
+      <text x="0" y="18" fill="#9aa8b8" font-size="14" letter-spacing="2">KNOWN-SHELL RECOVERY</text>
+      <text x="0" y="62" fill="#d4833f" font-size="31" font-weight="700">4</text>
+      <text x="65" y="62" fill="#66758a" font-size="29">→</text>
+      <text x="115" y="62" fill="#7aa2c8" font-size="31" font-weight="700">21</text>
+      <text x="186" y="62" fill="#66758a" font-size="29">→</text>
+      <text x="236" y="62" fill="#22a89c" font-size="31" font-weight="700">25 v1</text>
+      <text x="340" y="62" fill="#66758a" font-size="29">→</text>
+      <text x="390" y="62" fill="#22a89c" font-size="31" font-weight="700">25 v2 / 72</text>
+      <text x="800" y="60" text-anchor="end" fill="#e0574c" font-size="20" font-weight="700">NO BREAK</text>
+      <text x="0" y="91" fill="#9aa8b8" font-size="16">v1 and v2 recover the same candidate; v2 corrects its objective coordinates.</text>
     </g>
 
-    <text x="415" y="368" text-anchor="middle" fill="#d4833f" font-size="20" font-weight="700">The margin remains negative — and is printed as negative.</text>
+    <text x="415" y="420" text-anchor="middle" fill="#9aa8b8" font-size="17">The August 68% exhaustion row is historical and has not been rerun here.</text>
   </g>
 </svg>

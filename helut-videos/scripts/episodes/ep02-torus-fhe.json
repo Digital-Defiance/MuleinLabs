@@ -26,7 +26,7 @@
       "headline": "Wire · accumulator · bootstrap key",
       "subhead": "LWE carries a scalar wire; GLWE carries a polynomial; GGSW controls rotation.",
       "backgroundAsset": "01-sample-stack.svg",
-      "voiceover": "A learning-with-errors sample, shortened to L W E, carries one encrypted scalar wire. A polynomial form called G L W E supplies the rotating accumulator. A G G S W bootstrap key lets the circuit choose a rotation without exposing the control bit. These are different data structures, not three security grades. The errors in that first name are the point: every sample carries deliberate random noise, and that noise is what hides the value. Each operation makes the noise grow, which is why this episode keeps measuring it.",
+      "voiceover": "A learning-with-errors sample, shortened to LWE, carries one encrypted scalar wire. A polynomial form called GLWE supplies the rotating accumulator. A GGSW bootstrap key lets the circuit choose a rotation without exposing the control bit. These are different data structures, not three security grades. The errors in that first name are the point: every sample carries deliberate random noise, and that noise is what hides the value. Each operation makes the noise grow, which is why this episode keeps measuring it.",
       "durationHintSec": 38
     },
     {
@@ -69,6 +69,14 @@
       "durationHintSec": 26
     },
     {
+      "kind": "capture",
+      "id": "revalidation-ledger",
+      "videoAsset": "episode02-revalidation-ledger.mp4",
+      "label": "PRESERVED RECEIPT · post-fix re-validation · prints its own FAIL",
+      "voiceover": "This is the ledger from re-running the rows after the determinism fix, and the useful thing about it is that it fails in public. The first block is noise measurement only. Those rows never touch the fixed tick path, so they are completeness, not the gate. The second block does exercise it. Five encrypted SING rows pass, including wire dimension 512. The last row does not. C56 at test-poly stride seven exits 133, and the ledger prints FAIL next to it rather than dropping it. 15 pass, one fail. Then the file argues with itself in the footer: a nonzero exit is not automatically a broken claim, because some rows are graded negatives. That sentence is the difference between a results table and a receipt.",
+      "durationHintSec": 67.6
+    },
+    {
       "kind": "narration",
       "id": "certificates",
       "headline": "Three questions, three receipts",
@@ -78,8 +86,8 @@
         "Hardness: which exact dimensions were estimated?"
       ],
       "backgroundAsset": "03-three-receipts.svg",
-      "voiceover": "Each published configuration needs three separate answers. Did encrypted output match clear output? Did measured noise stay inside the stated bound? What hardness estimate applies to these exact dimensions? The bar for that noise bound is an error probability of two to the minus sixty-four. One logged configuration clears it with room to spare. A neighbouring one shows why parameters matter: at spacing seven it falls short, and only at spacing fourteen does it clear. Neither result becomes a universal guarantee.",
-      "durationHintSec": 39
+      "voiceover": "Each published configuration needs three separate answers. Did encrypted output match clear output? Did measured noise stay inside the stated bound? What hardness estimate applies to these exact dimensions? The bar for that noise bound is an error probability of two to the minus sixty-four. One logged configuration clears it with room to spare. A neighbouring one shows why the measurement itself matters: at stride seven it falls short, and stride fourteen does not rescue it by itself either. At 32 samples that same configuration reports minus 48 and does not clear; it only clears once the sample count rises, reaching minus 93.8 at 192 samples. So the bound is sample-starved before it is wrong, and neither result becomes a universal guarantee.",
+      "durationHintSec": 48
     },
     {
       "kind": "narration",

@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" role="img" aria-labelledby="t d">
+  <title id="t">Where HELUT does well</title>
+  <desc id="d">Three defensible results: checked batch correctness at 65,536 lanes, near-flat warmed graph cost across a 65,536-times range of work, and search with independent proof including one flip-flop.</desc>
+  <rect width="1920" height="1080" fill="#091321"/>
+  <g font-family="Arial,sans-serif">
+    <g transform="translate(120 328)">
+      <rect width="820" height="220" rx="22" fill="#132638" stroke="#22a89c" stroke-width="2"/>
+      <text x="30" y="36" fill="#22a89c" font-size="16" letter-spacing="2">CHECKED BATCH CORRECTNESS</text>
+      <text x="30" y="80" fill="#fff" font-size="28" font-weight="700">65,536 lanes &#183; 589,824 bits</text>
+      <text x="30" y="118" fill="#9aa8b8" font-size="19">Each lane is checked against its own clear oracle.</text>
+      <text x="30" y="151" fill="#22a89c" font-size="22" font-weight="700">0 mismatches across all output bits</text>
+      <text x="30" y="190" fill="#9aa8b8" font-size="18">Corrupt lane 37 &#8594; digest moves &#183; 5 mismatches</text>
+    </g>
+
+    <g transform="translate(980 328)">
+      <rect width="820" height="220" rx="22" fill="#132638" stroke="#22a89c" stroke-width="2"/>
+      <text x="30" y="36" fill="#22a89c" font-size="16" letter-spacing="2">COST SHAPE</text>
+      <text x="30" y="80" fill="#fff" font-size="28" font-weight="700">Near-flat warmed graph cost</text>
+      <text x="30" y="120" fill="#9aa8b8" font-size="19">Fixed submission overhead dominates across</text>
+      <text x="30" y="149" fill="#9aa8b8" font-size="19">a 65,536&#215; range of work.</text>
+      <text x="30" y="190" fill="#d4833f" font-size="20" font-weight="700">A scalar loop rises linearly.</text>
+    </g>
+
+    <g transform="translate(120 572)">
+      <rect width="820" height="238" rx="22" fill="#132638" stroke="#22a89c" stroke-width="2"/>
+      <text x="30" y="36" fill="#22a89c" font-size="16" letter-spacing="2">THE DISTINCTIVE OPERATION</text>
+      <text x="30" y="80" fill="#fff" font-size="28" font-weight="700">Erase, rediscover, re-prove</text>
+      <text x="30" y="120" fill="#9aa8b8" font-size="19">Search recovers a missing function.</text>
+      <text x="30" y="151" fill="#9aa8b8" font-size="19">An independent proof checker confirms it</text>
+      <text x="30" y="180" fill="#9aa8b8" font-size="19">over the entire input space, not a sample.</text>
+      <text x="30" y="218" fill="#22a89c" font-size="19" font-weight="700">Now includes one flip-flop, proven by induction.</text>
+    </g>
+
+    <g transform="translate(980 572)">
+      <rect width="820" height="238" rx="22" fill="#101a2b" stroke="#66758a"/>
+      <text x="30" y="36" fill="#d4833f" font-size="16" letter-spacing="2">READ THE SCOPE</text>
+      <text x="30" y="80" fill="#fff" font-size="28" font-weight="700">Amortization, not throughput</text>
+      <text x="30" y="120" fill="#9aa8b8" font-size="19">Small fixtures · one host</text>
+      <text x="30" y="151" fill="#9aa8b8" font-size="19">The flat-cost result uses asymmetric graph-only timing.</text>
+      <text x="30" y="180" fill="#9aa8b8" font-size="19">The matched end-to-end comparison follows next.</text>
+      <text x="30" y="218" fill="#d4833f" font-size="19" font-weight="700">Do not read this card as a crossover claim.</text>
+    </g>
+  </g>
+</svg>

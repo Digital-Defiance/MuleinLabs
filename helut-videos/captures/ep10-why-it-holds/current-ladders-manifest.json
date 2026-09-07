@@ -1,0 +1,168 @@
+{
+  "schemaVersion": 1,
+  "captureId": "episode10-current-ladders",
+  "role": "current objective-v2-binary naval A/B and oracle seed ranking-control receipt playback",
+  "transcript": "CURRENT_LADDERS_TRANSCRIPT.md",
+  "answers": {
+    "question": "Do naval specialization, oracle plug seeds, or objective v2 change the current 72-letter staged-ranking boundary?",
+    "answer": "Naval is slightly worse than generic at 72 letters: 4/30 and -0.2496 versus 5/30 and -0.2306. Four oracle-correct plugs flip the seed-ladder median margin to +0.3308, but that is an upper bound, not a break. These staged commands do not consume EnigmaSearchObjective, so every v2-binary stdout hash is byte-identical to the preceding v1-binary bundle."
+  },
+  "sourceEvidence": {
+    "bundleSchema": "helut.enigma-dependent-rerun.v2",
+    "bundleManifest": "HELUT/logs/enigma-dependent-rerun-20260907T030037Z/manifest.json",
+    "bundleManifestSha256": "ea7d064e80b69e5a85ae7c54209413c6155d0ff175768a7f1179eca651b1c634",
+    "binarySearchObjectiveId": "helut-enigma-search-n72-correlation-discounted-z-06f8694e-e08a5659-v2",
+    "objectiveAttestationManifest": "HELUT/logs/enigma-objective-calibration-20260907T025406Z/manifest.json",
+    "objectiveAttestationManifestSha256": "de1421265886b5a08880a68aa609b2c3308e8c65900ea7cc63a658a363eafe1e",
+    "commandsConsumeSearchObjective": false,
+    "allRawStdoutByteIdenticalToPriorBundle": true
+  },
+  "reproduce": {
+    "workingDirectory": "helut-videos repository root at /Volumes/Code/MuleinLabs/helut-videos",
+    "prerequisites": [
+      "VHS 0.11.0",
+      "bash",
+      "shasum",
+      "The durable byte-for-byte receipt copies listed in artifacts"
+    ],
+    "commands": [
+      "vhs validate captures/ep10-why-it-holds/episode10-current-ladders.tape",
+      "vhs captures/ep10-why-it-holds/episode10-current-ladders.tape"
+    ],
+    "behavior": "Renders deterministic playback of sealed receipts. It runs no benchmark, test suite, synthesis, or cracking command.",
+    "workspacePathConstraint": "The tape records to an absolute path under /Volumes/Code/MuleinLabs and must be adjusted if the workspace is relocated."
+  },
+  "capturedAt": "2026-09-07T03:41:06Z",
+  "capturedAtBasis": "Recorded after v2 tape validation, rendering, probing, hashing, and full-resolution frame inspection",
+  "captureMethod": {
+    "recorder": "VHS",
+    "terminal": "real Bash pseudo-terminal",
+    "mode": "normal-speed playback of sealed objective-v2-binary control receipts",
+    "executedExperimentDuringCapture": false,
+    "uploaded": false,
+    "tape": {
+      "repo": "helut-videos",
+      "path": "captures/ep10-why-it-holds/episode10-current-ladders.tape",
+      "sha256": "5e3de6f93ac53dd87c94f2bdd4708a18f32f69f9dc1c8a2773a248d3407c1c0a",
+      "requestedFrameRate": 30
+    }
+  },
+  "video": {
+    "repo": "helut-videos",
+    "path": "public/captures/ep10-why-it-holds/episode10-current-ladders.mp4",
+    "sha256": "d3a376de251950d978061b67819b3301db5ac938a6e44eb12a8c5e75bd6f6284",
+    "container": "mov,mp4,m4a,3gp,3g2,mj2",
+    "codec": "h264",
+    "pixelFormat": "yuv420p",
+    "width": 1280,
+    "height": 720,
+    "encodedFrameRate": "25/1",
+    "durationSeconds": 68.6,
+    "sizeBytes": 594360
+  },
+  "artifacts": [
+    {
+      "repo": "HELUT",
+      "path": "logs/enigma-dependent-rerun-20260907T030037Z/manifest.json",
+      "kind": "sealed objective-v2 dependent-rerun manifest",
+      "sha256": "ea7d064e80b69e5a85ae7c54209413c6155d0ff175768a7f1179eca651b1c634"
+    },
+    {
+      "repo": "HELUT",
+      "path": "logs/enigma-objective-calibration-20260907T025406Z/manifest.json",
+      "kind": "sealed objective-v2 attestation manifest",
+      "sha256": "de1421265886b5a08880a68aa609b2c3308e8c65900ea7cc63a658a363eafe1e"
+    },
+    {
+      "repo": "HELUT",
+      "path": "logs/enigma-dependent-rerun-20260907T030037Z/ostwald-naval-ab-normalized.log",
+      "kind": "sealed source normalized naval A/B",
+      "sha256": "83a366f6e63d4f6b1d1a0e2254d54542e10051e6568308eb1a999ecd32e2a579"
+    },
+    {
+      "repo": "helut-videos",
+      "path": "captures/ep10-why-it-holds/ep10-ostwald-naval-ab-current.log",
+      "kind": "durable byte-for-byte copy used by the tape",
+      "sourcePath": "HELUT/logs/enigma-dependent-rerun-20260907T030037Z/ostwald-naval-ab-normalized.log",
+      "byteForByteMatch": true,
+      "sha256": "83a366f6e63d4f6b1d1a0e2254d54542e10051e6568308eb1a999ecd32e2a579"
+    },
+    {
+      "repo": "HELUT",
+      "path": "logs/enigma-dependent-rerun-20260907T030037Z/ostwald-bombe-seed-ladder-normalized.log",
+      "kind": "sealed source normalized seed ladder",
+      "sha256": "03c4544ce30e336a1b6c945ec2f5f392c994823835bbcce984312f293ca5e077"
+    },
+    {
+      "repo": "helut-videos",
+      "path": "captures/ep10-why-it-holds/ep10-ostwald-seed-ladder-current.log",
+      "kind": "durable byte-for-byte copy used by the tape",
+      "sourcePath": "HELUT/logs/enigma-dependent-rerun-20260907T030037Z/ostwald-bombe-seed-ladder-normalized.log",
+      "byteForByteMatch": true,
+      "sha256": "03c4544ce30e336a1b6c945ec2f5f392c994823835bbcce984312f293ca5e077"
+    },
+    {
+      "repo": "HELUT",
+      "path": "logs/enigma-dependent-rerun-20260907T030037Z/comparison.md",
+      "kind": "sealed source interpretation",
+      "sha256": "aeb41dece51edd838af7ce489cea9bd9e367715c27f9201fc8cb520638b56e95"
+    },
+    {
+      "repo": "helut-videos",
+      "path": "captures/ep10-why-it-holds/ep10-enigma-dependent-comparison.md",
+      "kind": "durable byte-for-byte copy used by the tape",
+      "sourcePath": "HELUT/logs/enigma-dependent-rerun-20260907T030037Z/comparison.md",
+      "byteForByteMatch": true,
+      "sha256": "aeb41dece51edd838af7ce489cea9bd9e367715c27f9201fc8cb520638b56e95"
+    }
+  ],
+  "experiment": {
+    "benchmarkBoundary": "legacy staged IC -> dense bigram -> trigram ranking; does not consume EnigmaSearchObjective and emits no final publication verdict",
+    "objectiveDependency": {
+      "searchObjectiveConsumed": false,
+      "genericStdoutByteIdenticalToPriorBundle": true,
+      "navalStdoutByteIdenticalToPriorBundle": true,
+      "allFiveSeedStdoutByteIdenticalToPriorBundle": true
+    },
+    "targetLength": 72,
+    "generic72": {"controls": 30, "wins": 5, "winPercent": 17, "medianMargin": -0.2306, "medianPlugs": "1/10", "medianLettersCorrectPercent": 7},
+    "naval72": {"controls": 30, "wins": 4, "winPercent": 13, "medianMargin": -0.2496, "medianPlugs": "1/10", "medianLettersCorrectPercent": 7},
+    "generic252": {"controls": 3, "wins": 3, "winPercent": 100, "medianMargin": 0.9273},
+    "naval252": {"controls": 3, "wins": 3, "winPercent": 100, "medianMargin": 1.1531},
+    "seedRows": [
+      {"oraclePlugs": 0, "winPercent": 20, "medianMargin": -0.1226, "medianPlugs": "1/10", "medianLettersCorrectPercent": 7},
+      {"oraclePlugs": 2, "winPercent": 30, "medianMargin": -0.1005, "medianPlugs": "3/10", "medianLettersCorrectPercent": 11},
+      {"oraclePlugs": 4, "winPercent": 50, "medianMargin": 0.3308, "medianPlugs": "6/10", "medianLettersCorrectPercent": 47},
+      {"oraclePlugs": 6, "winPercent": 90, "medianMargin": 0.6656, "medianPlugs": "8/10", "medianLettersCorrectPercent": 85},
+      {"oraclePlugs": 8, "winPercent": 100, "medianMargin": 1.0488, "medianPlugs": "10/10", "medianLettersCorrectPercent": 100}
+    ],
+    "interpretation": "Naval specialization does not rescue the target-length row. Four oracle-correct plugs flip the median sign, but the ladder assumes the true stop. Objective-v2 did not change these rows because their scorer does not consume it."
+  },
+  "validation": {
+    "tapeSyntaxValidated": true,
+    "mp4ProbedSuccessfully": true,
+    "sourcesCopiedByteForByte": true,
+    "fullResolutionFramesInspectedAtSeconds": [8, 23, 42, 60],
+    "terminalEvidenceOutputLegible": true,
+    "fullReceiptHashesVisible": true,
+    "completeDependencyDisclaimerVisible": true,
+    "completeSeedLadderVisible": true,
+    "commandEchoWrapOrOverlapObserved": false,
+    "hiddenSetupVisible": false,
+    "experimentRerunForCapture": false,
+    "correctedRenderReprobedAndReinspected": true,
+    "episodeSceneDurationMatchesMedia": true
+  },
+  "timingContext": {
+    "interpretation": "The capture replays sealed text at normal speed. It contains no fresh experiment timing and makes no performance claim."
+  },
+  "claimBoundaries": [
+    "This is playback of sealed receipts. No ranking or cracking experiment was performed for the capture.",
+    "The Ostwald tables retain the legacy staged scorer for historical comparability.",
+    "These commands do not consume EnigmaSearchObjective; objective-v2 did not change their rows.",
+    "The generic/naval rows are ranking measurements, not final publication verdicts.",
+    "The seed ladder supplies oracle-correct plugs at truth and random plugs at decoys.",
+    "The four-plug sign flip is an upper bound on finishing a true stop, not a way to find one.",
+    "P1030680 has no key, plaintext, or break."
+  ]
+}

@@ -66,6 +66,7 @@ export const Episode: React.FC<EpisodeProps> = ({ script, audioSeconds }) => {
                 eyebrow={scene.eyebrow}
                 headline={scene.headline}
                 subhead={scene.subhead}
+                layout={scene.layout}
                 caption={scene.voiceover}
               />
             )}
@@ -87,6 +88,7 @@ export const Episode: React.FC<EpisodeProps> = ({ script, audioSeconds }) => {
                 headline={scene.headline}
                 subhead={scene.subhead}
                 kicker={scene.kicker}
+                layout={scene.layout}
                 caption={scene.voiceover}
               />
             )}

@@ -1,0 +1,69 @@
+{
+  "schemaVersion": 1,
+  "captureId": "episode09-radio-match",
+  "role": "live experiment capture",
+  "transcript": "../LIVE_CAPTURES.md",
+  "summary": "Pattern-match selftest and two feeds: 3 input ports over 24 bits, 1 output bit, selftest hits at [4, 9] PASS; the positive stream matches at bytes 10 and 23 and the negative stream fires nothing.",
+  "reproduce": {
+    "workingDirectory": "helut-videos repository root at /Volumes/Code/MuleinLabs/helut-videos",
+    "prerequisites": [
+      "bash",
+      "VHS 0.11.0",
+      "A current `swift build -c release` in the sibling HELUT checkout for tapes that invoke HELUT binaries or the prebuilt XCTest bundle"
+    ],
+    "commands": [
+      "vhs validate captures/ep09-application-gallery/episode09-radio-match.tape",
+      "vhs captures/ep09-application-gallery/episode09-radio-match.tape"
+    ],
+    "behavior": "Re-records a live execution. Timing-sensitive figures will differ between takes; the pass/fail gates and printed boundaries should not.",
+    "workspacePathConstraint": "The tape uses absolute paths under /Volumes/Code/MuleinLabs and must be adjusted if the workspace is relocated."
+  },
+  "captureMethod": {
+    "recorder": "VHS",
+    "terminal": "real Bash pseudo-terminal",
+    "mode": "live execution recorded during filming",
+    "executedExperimentDuringCapture": true,
+    "uploaded": false,
+    "tape": {
+      "repo": "helut-videos",
+      "path": "captures/ep09-application-gallery/episode09-radio-match.tape",
+      "sha256": "6cbdc8020a446f2fe2e7d19b21e3813982ac6fd977add964bbf9bcc9c85f0b8c",
+      "requestedFrameRate": 30
+    }
+  },
+  "video": {
+    "repo": "helut-videos",
+    "path": "public/captures/ep09-application-gallery/episode09-radio-match.mp4",
+    "sha256": "68d47a29713759913bc66d357941094bc392cbd9b86f7963e9efad4751ef11cb",
+    "container": "mov,mp4,m4a,3gp,3g2,mj2",
+    "codec": "h264",
+    "pixelFormat": "yuv420p",
+    "width": 1280,
+    "height": 720,
+    "encodedFrameRate": "25/1",
+    "durationSeconds": 60.28,
+    "sizeBytes": 394716
+  },
+  "observedOnScreen": [
+    "feed XXDEFYYDEFZZ -> hits at [4, 9] PASS"
+  ],
+  "validation": {
+    "tapeSyntaxValidated": true,
+    "mp4ProbedSuccessfully": true,
+    "hashesRecomputedFromDisk": true,
+    "episodeSceneDurationMatchesMedia": true,
+    "liveExecutionDuringRecording": true,
+    "commandEchoWrapOrOverlapObserved": true,
+    "priorVisualReviewRecordedIn": "captures/LIVE_CAPTURES.md and the linked transcript",
+    "framesReInspectedThisPass": false
+  },
+  "timingContext": {
+    "interpretation": "Elapsed figures visible on screen are local observations on one Apple-silicon host from the filmed take. They are not deterministic contracts and will vary between runs; the correctness gates and printed boundaries are the durable content."
+  },
+  "claimBoundaries": [
+    "Live run recorded during filming, not archived playback.",
+    "Clear Boolean oracle only. No antenna, no over-the-air signal, nothing intercepted.",
+    "The circuit is a fixed three-byte ASCII literal, not a general regex engine.",
+    "No GNU Radio is required for this capture and encrypted evaluation is not shown."
+  ]
+}

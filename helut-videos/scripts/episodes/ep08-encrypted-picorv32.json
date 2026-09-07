@@ -20,6 +20,14 @@
       "durationHintSec": 28
     },
     {
+      "kind": "capture",
+      "id": "encrypted-cpu",
+      "videoAsset": "episode08-encrypted-cpu.mp4",
+      "label": "LIVE RUN · recorded 2026-09-05 · N=64 CPU · demonstration parameter, not production",
+      "voiceover": "That is PicoRV32, a real RISC-V core, not a teaching example. Yosys mapped it to 2,006 lookup tables and 1,565 flip-flops, and the flip-flops are the hard part, because state has to survive every tick. Now it runs encrypted, and the decrypted result is compared against a clear oracle. Result: PASS, one row, about 176 milliseconds. Then read the two lines above that verdict, because those are the honest ones. Classical bits, 32, and the harness prints its own answer to whether that clears 128: no. The bootstrap key is an exact-noiseless construction. So this is a real processor computing correctly on encrypted state at a demonstration parameter, not a secure one.",
+      "durationHintSec": 47.0
+    },
+    {
       "kind": "concept",
       "id": "the-netlist",
       "kicker": "The circuit under test",

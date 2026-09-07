@@ -3,7 +3,7 @@
   "compositionId": "Episode04",
   "title": "The P1030680 Bombe",
   "youtubeTitle": "The P1030680 Bombe: What We Built, Tested, and Still Do Not Know",
-  "description": "Why an Enigma message appears in a HELUT series, and what this chosen application built: historical Bombe context, the blind P1030684 control, Welchman diagonal board, Mulein Board, 628-Future bank, and completed Phase 51.16 bounded stripe. The campaign uses HELUT's cleartext compiler and batch engine; it produced zero BREAK gates, no key, plaintext, or decrypt. Epoch C69.",
+  "description": "Why an Enigma message appears in a HELUT series, and what this chosen application built: historical Bombe context, the blind P1030684 control, Welchman diagonal board, Mulein Board, 628-Future bank, and completed Phase 51.16 bounded stripe. A live known-control grade shows injected substitutions recovered at matching tolerance with 0 of 192 host/Metal mismatches, then shows a synthetic four-letter deletion whose correct splice recovers 25 of 25 deductions while explicitly reporting that board specificity is unmeasured. These are mechanism controls, not target evidence. The campaign uses HELUT's cleartext compiler and batch engine; it produced zero BREAK gates, no key, plaintext, or decrypt. Epoch C69.",
   "claimEpoch": "2026-08-20 / C69",
   "fps": 30,
   "width": 1920,
@@ -18,6 +18,14 @@
       "backgroundAsset": "01-title.svg",
       "voiceover": "Why is an Enigma message in a HELUT series? I chose it as a concrete, demanding way to exercise the cleartext compiler and batch engine. The target, P1030680, is a 72-letter Enigma M4 message from the M-Thetis network, sent in May 1945. Its printed starting-position table is missing. HELUT tests explicit plaintext guesses, correction patterns, and rotor settings against that message. This episode separates a local stop, a physically valid candidate, and an actual break.",
       "durationHintSec": 37
+    },
+    {
+      "kind": "capture",
+      "id": "mechanism-controls-live",
+      "videoAsset": "episode04-mechanism-controls.mp4",
+      "label": "LIVE RUN · recorded 2026-09-06 · published-key control · no P1030680 data",
+      "voiceover": "Before touching the target, grade the machine on published-key P1030684. Top table: inject zero, 1, then 2 wrong letters. The exact board loses the damaged cases; matching tolerance keeps the true lane. Host and Metal agree, every row reads 0 of 192 mismatches, and this control retains one survivor at each tolerance. Second screen: remove a synthetic four-letter group. The ordinary menu becomes illegal; the correct spliced geometry recovers all 25 forced deductions. Now the line that protects the claim: all 28 wrong splices died under Enigma's self-encipherment rule before reaching the board, so board specificity is unmeasured here. That is a finding, not an embarrassment. These screens grade mechanisms and expose a gap. They contain no P1030680 data, and they do not establish target corruption.",
+      "durationHintSec": 54.28
     },
     {
       "kind": "concept",
@@ -79,8 +87,8 @@
       "headline": "628 Futures share one M4 trail",
       "subhead": "Each Future is one fully specified crib and correction geometry.",
       "backgroundAsset": "06-future-bank.svg",
-      "voiceover": "A Future is one fully specified crib and correction geometry. The current manifest contains 628: 314 unchanged alignments and 314 hypotheses with a four-letter gap. One shared 80-step-by-26-letter Enigma trail feeds four parallel lanes. Each lane emits a compact receipt. The host rejects duplicates and replays every hit before a break gate can open. The implementation agrees across four tested surfaces on the known control. This is a cleartext search path, not FHE.",
-      "durationHintSec": 39
+      "voiceover": "A Future is one fully specified crib and correction geometry. The current manifest contains 628: 314 unchanged alignments and 314 hypotheses with a four-letter gap. One shared 80-step-by-26-letter Enigma trail feeds four parallel lanes. On the known control, the fresh end-to-end suite agrees across source RTL, post-Yosys RTL, clear JSON, and TensorLUT, then catches wrong delta, setting, and seed controls plus bounded combined indel-and-garble repairs. The host deduplicates and verifies each compact target receipt. That is not final replay: 41 exact post-gap hits still await geometry-aware full-message replay, and 4,103 one-edge repairs await correction replay before any break gate. This is a cleartext mechanism grade, not FHE and not P1030680 evidence.",
+      "durationHintSec": 50
     },
     {
       "kind": "narration",

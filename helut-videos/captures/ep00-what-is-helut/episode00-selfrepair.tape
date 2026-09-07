@@ -1,0 +1,47 @@
+Output "/Volumes/Code/MuleinLabs/helut-videos/public/captures/ep00-what-is-helut/episode00-selfrepair.mp4"
+
+Require bash
+Require swift
+Require yosys
+
+Set Shell "bash"
+Set FontSize 18
+Set FontFamily "Menlo"
+Set Width 1280
+Set Height 720
+Set Padding 24
+Set Framerate 30
+Set Theme {"background":"#091522","foreground":"#e7edf4","black":"#091522","brightBlack":"#66758a","red":"#e0574c","brightRed":"#e0574c","green":"#22a89c","brightGreen":"#22a89c","yellow":"#d4833f","brightYellow":"#d4833f","blue":"#7aa2c8","brightBlue":"#7aa2c8","magenta":"#b58cc7","brightMagenta":"#b58cc7","cyan":"#22a89c","brightCyan":"#22a89c","white":"#e7edf4","brightWhite":"#ffffff"}
+Set WindowBar "Rings"
+Set WindowBarSize 36
+Set TypingSpeed 2ms
+
+Hide
+Type "cd /Volumes/Code/MuleinLabs/HELUT; export PS1='helut$ '; export LC_ALL=C; export F=Tests/HELUTTests/TensorLUTYosysRoundTripTests.swift; clear" Enter
+Sleep 1s
+Show
+
+Type "echo 'EPISODE 0 / LIVE RUN - NOT A REPLAY'" Enter
+Type "echo '1/4  THE CIRCUIT, WITH ITS CARRY LOGIC DELETED'" Enter
+Type@1ms "sed -n '/func meltedAdderNetlist/,/^    }/p' $F" Enter
+Sleep 17s
+
+Type "clear" Enter
+Type "echo '2/4  ONE COMMAND. IT IS A REAL TEST RUN.'" Enter
+Hide
+Type "prove() { swift test -c release --filter TensorLUTYosysRoundTripTests/$1 2>&1 | grep -E 'Executed 1 test|^TENSORLUT' | fold -s -w 104; }" Enter
+Show
+Type "type prove | tail -n +2" Enter
+Sleep 12s
+
+Type "clear" Enter
+Type "echo '3/4  ERASED CIRCUIT FAILS. SEARCH REDISCOVERS IT. YOSYS CONFIRMS.'" Enter
+Type "prove testSearchedEliteResynthesizesToTargetFunction" Enter
+Sleep 20s
+
+Type "clear" Enter
+Type "echo '4/4  PROVEN OVER THE WHOLE INPUT SPACE, THEN BROKEN ON PURPOSE'" Enter
+Type "prove testSearchedEliteIsFormallyEquivalentToBehavioralAdder" Enter
+Sleep 14s
+Type "prove testFormalProofRefutesCorruptedSearchedElite" Enter
+Sleep 18s

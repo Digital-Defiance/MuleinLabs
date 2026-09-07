@@ -1,0 +1,125 @@
+{
+  "schemaVersion": 1,
+  "captureId": "episode05-fixture-receipt",
+  "role": "E256 fixture-v4 validation receipt playback",
+  "transcript": "FIXTURE_RECEIPT_TRANSCRIPT.md",
+  "answers": {
+    "question": "Is the described architecture actually pinned by anything?",
+    "answer": "Yes, as implementation parity: compatibility key, XOR-center formula, absolute byte counter, reciprocal decrypt, and two bus paths each carrying 2,304 table bytes and a 1,024-byte payload. It is explicitly not a security proof."
+  },
+  "reproduce": {
+    "workingDirectory": "helut-videos repository root at /Volumes/Code/MuleinLabs/helut-videos",
+    "prerequisites": [
+      "VHS 0.11.0",
+      "bash",
+      "shasum",
+      "The durable preserved receipt at captures/ep05-enigma256-architecture/ep05-e256-fixture-v4-validation.json"
+    ],
+    "commands": [
+      "vhs validate captures/ep05-enigma256-architecture/episode05-fixture-receipt.tape",
+      "vhs captures/ep05-enigma256-architecture/episode05-fixture-receipt.tape"
+    ],
+    "behavior": "Renders deterministic playback of a preserved receipt. It runs no benchmark, no test suite, no synthesis, and no cracking run.",
+    "workspacePathConstraint": "The tape records to an absolute path under /Volumes/Code/MuleinLabs and must be adjusted if the workspace is relocated."
+  },
+  "capturedAt": null,
+  "capturedAtBasis": "Rendered during this documentation pass; the underlying experiment predates it and is dated in the receipt itself",
+  "captureMethod": {
+    "recorder": "VHS",
+    "terminal": "real Bash pseudo-terminal",
+    "mode": "normal-speed playback of a preserved receipt",
+    "executedExperimentDuringCapture": false,
+    "uploaded": false,
+    "tape": {
+      "repo": "helut-videos",
+      "path": "captures/ep05-enigma256-architecture/episode05-fixture-receipt.tape",
+      "sha256": "18ad819280e09de347e4afa8738c9d71fa16ef25ca3e0039d1431e064a126558",
+      "requestedFrameRate": 30
+    }
+  },
+  "video": {
+    "repo": "helut-videos",
+    "path": "public/captures/ep05-enigma256-architecture/episode05-fixture-receipt.mp4",
+    "sha256": "63a70767481cf70455d4c39b6b4589a7776a5fec0a916a0b5474138b6f60f40c",
+    "container": "mov,mp4,m4a,3gp,3g2,mj2",
+    "codec": "h264",
+    "pixelFormat": "yuv420p",
+    "width": 1280,
+    "height": 720,
+    "encodedFrameRate": "25/1",
+    "durationSeconds": 72.36,
+    "sizeBytes": 771600
+  },
+  "artifacts": [
+    {
+      "repo": "HELUT",
+      "path": "logs/e256-v2-gen0-fixture-v4-validation.json",
+      "kind": "original preserved receipt",
+      "sha256": "4943851d070b536e3ce2ce909905547c7793f48b8b1c3f3c281740a1d49921a6"
+    },
+    {
+      "repo": "helut-videos",
+      "path": "captures/ep05-enigma256-architecture/ep05-e256-fixture-v4-validation.json",
+      "kind": "durable byte-for-byte copy used by the tape",
+      "sourcePath": "HELUT/logs/e256-v2-gen0-fixture-v4-validation.json",
+      "byteForByteMatch": true,
+      "sha256": "4943851d070b536e3ce2ce909905547c7793f48b8b1c3f3c281740a1d49921a6"
+    }
+  ],
+  "experiment": {
+    "schema": "E256-VALIDATION-1",
+    "family": "E256",
+    "suiteVersion": 2,
+    "generation": 0,
+    "fixtureSchemaVersion": 4,
+    "centerFormula": "A_i^-1(A_i(x) XOR k_i)",
+    "centerConstruction": "conjugated_xor_counter_prf_v1",
+    "absoluteCounter": "uint64_be_block_counter_start_0",
+    "directedCenterAndCounter": "PASS",
+    "reciprocalDecrypt": "PASS",
+    "busPaths": {
+      "axi_stream": {
+        "tableBytes": 2304,
+        "payloadBytes": 1024,
+        "status": 0
+      },
+      "axi_lite": {
+        "tableBytes": 2304,
+        "payloadBytes": 1024,
+        "status": 0
+      }
+    },
+    "tables": 9,
+    "katBytes": 1024,
+    "traceFiles": 10,
+    "artifacts": 25,
+    "humanReview": "pending",
+    "finding": "E256-003",
+    "findingState": "OPEN"
+  },
+  "validation": {
+    "tapeSyntaxValidated": true,
+    "mp4ProbedSuccessfully": true,
+    "sourceCopiedByteForByte": true,
+    "fullResolutionFramesInspectedAtSeconds": [
+      40
+    ],
+    "terminalEvidenceOutputLegible": true,
+    "commandEchoWrapOrOverlapObserved": true,
+    "hiddenSetupVisible": false,
+    "experimentRerunForCapture": false,
+    "episodeSceneDurationMatchesMedia": true
+  },
+  "timingContext": {
+    "interpretation": "The capture replays preserved text at normal speed. Any elapsed-time figures visible on screen are historical observations from the original run on one Apple-silicon host, not fresh measurements and not portable performance contracts."
+  },
+  "claimBoundaries": [
+    "This is playback of a preserved validation receipt, not a live run.",
+    "It is bounded implementation and parity evidence, not an IND-CPA or HMAC security proof.",
+    "Human review is pending and audit finding E256-003 remains OPEN.",
+    "AI semantic review is not human acceptance and does not close E256-003.",
+    "The receipt validates the counter in RTL; it does not implement HMAC in RTL.",
+    "Rotor-pool sizing, state-seed width, and serial-access counts are design-document claims and are not proved by this receipt.",
+    "TensorLUT artifacts here are narrow synthesized cones, not the full E256 core."
+  ]
+}

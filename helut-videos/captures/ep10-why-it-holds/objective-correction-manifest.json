@@ -1,0 +1,156 @@
+{
+  "schemaVersion": 1,
+  "captureId": "episode10-objective-correction",
+  "role": "current objective-v2 known-shell correction receipt playback",
+  "transcript": "OBJECTIVE_CORRECTION_TRANSCRIPT.md",
+  "answers": {
+    "question": "What changed across the sparse, dense, objective-v1, and objective-v2 checkpoints on the same 72-letter known-shell control?",
+    "answer": "Recovery moved from 4/72 letters and 0/10 true plugs to 21/72 and 4/10 with the dense table, then 25/72 and 5/10 under objective v1. Objective v2 corrects exact attack-score calibration while recovering the same 25/72, 5/10 candidate. The Level-1 rank remains 223,118/456,976 and every checkpoint remains NO BREAK."
+  },
+  "sourceEvidence": {
+    "bundleSchema": "helut.enigma-dependent-rerun.v2",
+    "bundleManifest": "HELUT/logs/enigma-dependent-rerun-20260907T030037Z/manifest.json",
+    "bundleManifestSha256": "ea7d064e80b69e5a85ae7c54209413c6155d0ff175768a7f1179eca651b1c634",
+    "searchObjectiveId": "helut-enigma-search-n72-correlation-discounted-z-06f8694e-e08a5659-v2",
+    "objectiveAttestationManifest": "HELUT/logs/enigma-objective-calibration-20260907T025406Z/manifest.json",
+    "objectiveAttestationManifestSha256": "de1421265886b5a08880a68aa609b2c3308e8c65900ea7cc63a658a363eafe1e",
+    "supersededObjectiveId": "helut-enigma-search-n72-correlation-discounted-z-06f8694e-e08a5659-v1",
+    "supersededReceiptsPreserved": true
+  },
+  "reproduce": {
+    "workingDirectory": "helut-videos repository root at /Volumes/Code/MuleinLabs/helut-videos",
+    "prerequisites": [
+      "VHS 0.11.0",
+      "bash",
+      "shasum",
+      "The durable byte-for-byte receipt copies listed in artifacts"
+    ],
+    "commands": [
+      "vhs validate captures/ep10-why-it-holds/episode10-objective-correction.tape",
+      "vhs captures/ep10-why-it-holds/episode10-objective-correction.tape"
+    ],
+    "behavior": "Renders deterministic playback of sealed receipts. It runs no benchmark, test suite, synthesis, or cracking command.",
+    "workspacePathConstraint": "The tape records to an absolute path under /Volumes/Code/MuleinLabs and must be adjusted if the workspace is relocated."
+  },
+  "capturedAt": "2026-09-07T03:41:06Z",
+  "capturedAtBasis": "Recorded after v2 tape validation, rendering, probing, hashing, and full-resolution frame inspection",
+  "captureMethod": {
+    "recorder": "VHS",
+    "terminal": "real Bash pseudo-terminal",
+    "mode": "normal-speed playback of sealed objective-v2 receipts",
+    "executedExperimentDuringCapture": false,
+    "uploaded": false,
+    "tape": {
+      "repo": "helut-videos",
+      "path": "captures/ep10-why-it-holds/episode10-objective-correction.tape",
+      "sha256": "b65ef696ed30e0c0604d6c2f5a5ff6a2f2010254bcc71e6fc2502f8ff8d25f57",
+      "requestedFrameRate": 30
+    }
+  },
+  "video": {
+    "repo": "helut-videos",
+    "path": "public/captures/ep10-why-it-holds/episode10-objective-correction.mp4",
+    "sha256": "6a9ba6fbf4d7e868153fd2d4158885088f19f1f65f7f917e53ef65131c5e0cca",
+    "container": "mov,mp4,m4a,3gp,3g2,mj2",
+    "codec": "h264",
+    "pixelFormat": "yuv420p",
+    "width": 1280,
+    "height": 720,
+    "encodedFrameRate": "25/1",
+    "durationSeconds": 66.6,
+    "sizeBytes": 714758
+  },
+  "artifacts": [
+    {
+      "repo": "HELUT",
+      "path": "logs/enigma-dependent-rerun-20260907T030037Z/manifest.json",
+      "kind": "sealed objective-v2 dependent-rerun manifest",
+      "sha256": "ea7d064e80b69e5a85ae7c54209413c6155d0ff175768a7f1179eca651b1c634"
+    },
+    {
+      "repo": "HELUT",
+      "path": "logs/enigma-objective-calibration-20260907T025406Z/manifest.json",
+      "kind": "sealed objective-v2 attestation manifest",
+      "sha256": "de1421265886b5a08880a68aa609b2c3308e8c65900ea7cc63a658a363eafe1e"
+    },
+    {
+      "repo": "HELUT",
+      "path": "logs/enigma-dependent-rerun-20260907T030037Z/comparison.md",
+      "kind": "sealed source comparison",
+      "sha256": "aeb41dece51edd838af7ce489cea9bd9e367715c27f9201fc8cb520638b56e95"
+    },
+    {
+      "repo": "helut-videos",
+      "path": "captures/ep10-why-it-holds/ep10-enigma-dependent-comparison.md",
+      "kind": "durable byte-for-byte copy used by the tape",
+      "sourcePath": "HELUT/logs/enigma-dependent-rerun-20260907T030037Z/comparison.md",
+      "byteForByteMatch": true,
+      "sha256": "aeb41dece51edd838af7ce489cea9bd9e367715c27f9201fc8cb520638b56e95"
+    },
+    {
+      "repo": "HELUT",
+      "path": "logs/enigma-dependent-rerun-20260907T030037Z/exhaust-selftest-normalized.log",
+      "kind": "sealed source normalized objective-v2 self-test",
+      "sha256": "8375011de24b9f23eb0f66e4c9ca5b0f248b04b352d37810bcf4dbdd2aebe610"
+    },
+    {
+      "repo": "helut-videos",
+      "path": "captures/ep10-why-it-holds/ep10-exhaust-selftest-current.log",
+      "kind": "durable byte-for-byte copy used by the tape",
+      "sourcePath": "HELUT/logs/enigma-dependent-rerun-20260907T030037Z/exhaust-selftest-normalized.log",
+      "byteForByteMatch": true,
+      "sha256": "8375011de24b9f23eb0f66e4c9ca5b0f248b04b352d37810bcf4dbdd2aebe610"
+    }
+  ],
+  "experiment": {
+    "controlMessage": "U534 P1030684, first 72 letters",
+    "levelOneRank": "223118/456976 at every checkpoint",
+    "checkpoints": [
+      {"model": "sparse August control", "status": "historical", "lettersCorrect": "4/72", "truePlugsRecovered": "0/10", "plugsProposed": 7, "verdict": "NO BREAK"},
+      {"model": "dense raw-bigram probe", "status": "historical", "lettersCorrect": "21/72", "truePlugsRecovered": "4/10", "plugsProposed": 9, "verdict": "NO BREAK"},
+      {"model": "objective v1", "status": "superseded", "lettersCorrect": "25/72", "truePlugsRecovered": "5/10", "plugsProposed": 7, "candidateObjective": 5.9117, "truthObjective": 6.8812, "verdict": "NO BREAK"},
+      {"model": "objective v2", "status": "current", "lettersCorrect": "25/72", "truePlugsRecovered": "5/10", "plugsProposed": 7, "candidateObjective": 6.7292, "truthObjective": 7.7110, "verdict": "NO BREAK"}
+    ],
+    "v1ToV2": {
+      "candidatePlaintextByteIdentical": true,
+      "lettersPlugsAndVerdictIdentical": true,
+      "objectiveCoordinatesChanged": true
+    },
+    "diagnostic": "bigram-position=1.08 is unbounded and is not probability or confidence",
+    "finalAssessment": {
+      "kind": "separate fail-closed policy gate",
+      "claimedStatisticallyIndependent": false,
+      "failsClosedWithoutExactTrigram": true,
+      "result": "NO BREAK"
+    },
+    "interpretation": "Objective v2 corrects full attack-score calibration while preserving the v1 candidate; the separate fail-closed final assessment remains closed."
+  },
+  "validation": {
+    "tapeSyntaxValidated": true,
+    "mp4ProbedSuccessfully": true,
+    "sourcesCopiedByteForByte": true,
+    "fullResolutionFramesInspectedAtSeconds": [8, 24, 40, 58],
+    "terminalEvidenceOutputLegible": true,
+    "fullReceiptHashesVisible": true,
+    "objectiveModelIdVisible": true,
+    "knownShellNotTargetCeilingBoundaryVisible": true,
+    "commandEchoWrapOrOverlapObserved": false,
+    "sealedReceiptContentModified": false,
+    "hiddenSetupVisible": false,
+    "experimentRerunForCapture": false,
+    "episodeSceneDurationMatchesMedia": true
+  },
+  "timingContext": {
+    "interpretation": "The capture replays sealed text at normal speed. It contains no fresh experiment timing and makes no performance claim."
+  },
+  "claimBoundaries": [
+    "This is playback of sealed receipts. No cracking run was performed for the capture.",
+    "Sparse and dense-only rows are historical; objective v1 is superseded; objective v2 is current.",
+    "Objective v1 and v2 recover the same candidate; v2 corrects objective coordinates.",
+    "The unchanged IC rank is an internal control, not evidence of improvement.",
+    "bigram-position is a diagnostic coordinate, not probability or confidence.",
+    "The final assessment is separate and fail-closed, not claimed statistically independent.",
+    "The current final assessment is NO BREAK.",
+    "No claim is made that P1030680 has a key, plaintext, or break."
+  ]
+}

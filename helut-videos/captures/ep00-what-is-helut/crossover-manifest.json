@@ -1,0 +1,149 @@
+{
+  "schemaVersion": 1,
+  "captureId": "episode00-crossover",
+  "role": "live experiment capture",
+  "transcript": "CAPTURE_TRANSCRIPT.md",
+  "reproduce": {
+    "workingDirectory": "HELUT repository root at /Volumes/Code/MuleinLabs/HELUT",
+    "prerequisites": [
+      "Apple silicon macOS host with a Metal device",
+      "Swift 6.3 toolchain",
+      "Yosys 0.68+ with ABC",
+      "Verilator 5.052",
+      "VHS 0.11.0 for re-recording"
+    ],
+    "commands": [
+      "swift test -c release --filter NativeBaselineComparisonTests",
+      "vhs captures/ep00-what-is-helut/episode00-crossover.tape"
+    ],
+    "behavior": "Builds the Verilator model and runs both backends during recording. Live, not playback.",
+    "workspacePathConstraint": "The tape uses absolute paths under /Volumes/Code/MuleinLabs and must be adjusted if the workspace moves."
+  },
+  "capturedAt": "2026-09-05T16:30:59-07:00",
+  "capturedAtBasis": "MP4 filesystem modification time at capture completion",
+  "captureMethod": {
+    "recorder": "VHS",
+    "terminal": "real Bash pseudo-terminal",
+    "mode": "live execution of the comparison test",
+    "uploaded": false,
+    "shellHelper": {
+      "name": "bench",
+      "definedHidden": true,
+      "shownOnScreen": true,
+      "body": "swift test -c release --filter NativeBaselineComparisonTests 2>&1 | grep -E '^NATIVE_BASELINE' | fold -s -w 104",
+      "rationale": "Keeps the typed command inside the terminal width. Its definition is echoed on screen before use."
+    },
+    "tape": {
+      "repo": "helut-videos",
+      "path": "captures/ep00-what-is-helut/episode00-crossover.tape",
+      "sha256": "8c79be77eba4af405b0510b282a82479f30a668543435c1ee0cb216555452c3a",
+      "requestedFrameRate": 30
+    }
+  },
+  "video": {
+    "repo": "helut-videos",
+    "path": "public/captures/ep00-what-is-helut/episode00-crossover.mp4",
+    "sha256": "1253f3933e7e2dc949aa9f665411142459fe0aeb89525eee0058eb993286218e",
+    "container": "mov,mp4,m4a,3gp,3g2,mj2",
+    "codec": "h264",
+    "pixelFormat": "yuv420p",
+    "width": 1280,
+    "height": 720,
+    "encodedFrameRate": "25/1",
+    "durationSeconds": 38.36,
+    "sizeBytes": 638113
+  },
+  "toolchain": {
+    "vhs": "vhs version 0.11.0",
+    "ffmpeg": "ffmpeg version 9.0.1",
+    "yosys": "Yosys 0.68+post (git sha1 c12172fbae8af5e20f6fb52e3d4e92d56ed587b6, Release, AppleClang clang++ 21.0.0.21000101)",
+    "verilator": "Verilator 5.052 2026-09-05",
+    "swift": "swift-driver version: 1.148.6 Apple Swift version 6.3.3"
+  },
+  "methodology": {
+    "sharedArtifact": "one emitted LUT6 Verilog file produced by TensorLUTEmitter",
+    "verilatorLineage": "simulates that Verilog directly, compiled to native C++ at -O3",
+    "helutLineage": "executes the $lut netlist yosys derives from the same file via abc -lut 6",
+    "equivalenceOfForms": "established separately by SAT in TensorLUTMeltScalingTests",
+    "stimulus": "identical assignments in identical order on both sides",
+    "verification": "both sides fold outputs into one FNV-1a digest over (lane, wire, value); a mismatch invalidates the timings and fails the test",
+    "digestOrdering": "by wire id rather than port-name string, because lexicographic name ordering differs between languages",
+    "excluded": "build and compile time on both sides",
+    "helutWarmup": "graph warmed before measurement; cold first-run JIT reported separately",
+    "verilatorTiming": "self-timed inside the binary, so process startup is excluded",
+    "trialsPerPoint": 5,
+    "statistic": "median"
+  },
+  "circuit": {
+    "description": "8-bit ripple-carry adder on fixed topology",
+    "emittedLUT6": 16,
+    "resynthesizedLUTs": 14,
+    "inputBits": 16,
+    "outputBits": 9,
+    "inputSpace": 65536,
+    "sequential": false
+  },
+  "measurements": {
+    "note": "Values from this recorded run. Run-to-run variance of a few percent is expected and a separate run is preserved in HELUT/logs/helut-native-baseline-20260905T231427Z.log.",
+    "unit": "seconds, median of 5 timed passes",
+    "rows": [
+      { "lanes": 1, "helut": 0.002573967, "verilator": 0.000000250, "ratio": 10295.9, "digestsMatch": true },
+      { "lanes": 16, "helut": 0.002650976, "verilator": 0.000002209, "ratio": 1200.6, "digestsMatch": true },
+      { "lanes": 256, "helut": 0.002681017, "verilator": 0.000026209, "ratio": 102.3, "digestsMatch": true },
+      { "lanes": 1024, "helut": 0.003088951, "verilator": 0.000105750, "ratio": 29.2, "digestsMatch": true },
+      { "lanes": 4096, "helut": 0.003085971, "verilator": 0.000441875, "ratio": 7.0, "digestsMatch": true },
+      { "lanes": 16384, "helut": 0.003169894, "verilator": 0.001655167, "ratio": 1.9, "digestsMatch": true },
+      { "lanes": 32768, "helut": 0.003816962, "verilator": 0.003416541, "ratio": 1.1, "digestsMatch": true },
+      { "lanes": 65536, "helut": 0.002204061, "verilator": 0.006897500, "ratio": 0.3, "digestsMatch": true }
+    ],
+    "crossoverLanes": 65536,
+    "parityNearLanes": 32768,
+    "helutCostShape": "essentially flat across a 65,536x range of work; dominated by fixed per-submission overhead",
+    "verilatorCostShape": "linear in lane count"
+  },
+  "laterEvidenceAddendum": {
+    "status": "historical capture retained unchanged",
+    "recordedRowsChanged": false,
+    "recordedTapeOrVideoHashChanged": false,
+    "interpretation": "This film remains a dated live observation of the earlier asymmetric graph-only comparison and its first tested historical win at B=65,536. It is not the current paired throughput verdict.",
+    "acceptedPairedEvidence": {
+      "sourceGitBlobSHA1": "b0dce16ca9844ce499d07ea090ed4ff7cedae6f9",
+      "sourceSHA256": "3ee58213f460cbc8a0a316dc90e6edb9a7af5e77426b839fb1d83e8675e490e2",
+      "compiledXCTestSHA256": "5f6ea6aa884e28fccbd2ab1acc872687e5054bf89d933795db4bba6c7ec505ad",
+      "receiptPath": "HELUT/logs/helut-native-degree-one-pack-20260906T170831Z/receipt.json",
+      "receiptSHA256": "6912cb6586fb3885607849be86ab104c427ceb26b13977b38692cbc0844087d8",
+      "helutPairedMillisecondsAtB65536": 8.544087,
+      "nativeParallelMillisecondsAtB65536": 7.421917,
+      "nativeWorkers": 16,
+      "helutOverNative": 1.151196786490606,
+      "helutPercentSlower": 15.1,
+      "remainingGapMilliseconds": 1.12217,
+      "pairedCrossoverThroughB65536": false,
+      "digestInsideBothPairedTimers": true
+    },
+    "publicationBoundary": "Use the later paired receipt for current performance wording. Do not replace or reinterpret the values visibly recorded in this historical MP4, and do not derive a digest-subtracted evaluator ratio."
+  },
+  "validation": {
+    "tapeSyntaxValidated": true,
+    "mp4ProbedSuccessfully": true,
+    "liveExecutionDuringRecording": true,
+    "fullResolutionFramesInspectedAtSeconds": [8, 34],
+    "terminalEvidenceOutputLegible": true,
+    "commandEchoWrapOrOverlapObserved": true,
+    "hiddenSetupVisible": false,
+    "allEightWidthsVisible": true,
+    "allDigestsMatchedOnScreen": true,
+    "crossoverLineVisible": true,
+    "boundaryNoteVisible": true
+  },
+  "claimBoundaries": [
+    "This is a live run recorded on 2026-09-05, not playback of an archived log.",
+    "Verilator is single-threaded here and loops lanes sequentially. This is not a claim about Verilator's best achievable throughput; threading or batching it in C++ would move the crossover.",
+    "One combinational circuit on one machine. Nothing follows about sequential designs, larger circuits, or any other host.",
+    "Build and compile time are excluded on both sides, and HELUT is warmed before measurement, so this is steady-state cost rather than end-to-end time.",
+    "HELUT loses by roughly four orders of magnitude at a single instance. The result is a crossover, not a win.",
+    "The two backends execute different but provably equivalent forms of the same circuit: Verilator the LUT6 Verilog, HELUT the post-ABC $lut netlist.",
+    "Timings are local observations, not benchmark distributions.",
+    "Typed command echoes visibly wrap or overlap at some prompt boundaries; the projected table remains legible."
+  ]
+}

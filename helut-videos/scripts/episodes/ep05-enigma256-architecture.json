@@ -80,6 +80,14 @@
       "durationHintSec": 37
     },
     {
+      "kind": "capture",
+      "id": "fixture-receipt",
+      "videoAsset": "episode05-fixture-receipt.mp4",
+      "label": "PRESERVED RECEIPT · fixture-v4 parity evidence · not a security proof",
+      "voiceover": "The architecture I just described is pinned by a validation receipt, so none of it has to be taken on trust. The identity block names the compatibility key, so a mismatched profile is rejected rather than silently accepted. The state rules are printed as formulas: the conjugated XOR center, and an absolute byte counter that starts at zero. The hardware validates that counter and the directed center, and decryption is checked as reciprocal. Then the byte path, twice. Stream bus and lite bus each carry the same 2,304 bytes of tables and the same 1,024-byte payload. The last screen is the part I care about most. Human review is pending, finding E256-003 is open, and the receipt states in its own text that AI review is not acceptance. This is implementation parity, not a security proof.",
+      "durationHintSec": 72.36
+    },
+    {
       "kind": "concept",
       "id": "one-byte-in-time",
       "kicker": "One accepted byte",

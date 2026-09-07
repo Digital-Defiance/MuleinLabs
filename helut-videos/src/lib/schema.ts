@@ -49,6 +49,8 @@ export const SceneSchema = z.discriminatedUnion('kind', [
     eyebrow: z.string().optional(),
     headline: z.string(),
     subhead: z.string().optional(),
+    /** Keeps title copy left of unusually wide right-side artwork. */
+    layout: z.literal('narrow-left').optional(),
     ...atmosphereFields,
   }),
   z.object({
@@ -69,6 +71,8 @@ export const SceneSchema = z.discriminatedUnion('kind', [
     headline: z.string(),
     subhead: z.string().optional(),
     kicker: z.string().optional(),
+    /** Reserves a compact live-copy header above full-width middle-band art. */
+    layout: z.literal('art-band').optional(),
     ...atmosphereFields,
   }),
   /** Literal foreground footage. durationHintSec is the source-duration floor. */

@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" role="img" aria-labelledby="t d">
+  <title id="t">What HELUT is, without adjectives</title>
+  <desc id="d">Yosys produces a lookup-table netlist; HELUT evaluates it as tensors, which enables search, encrypted evaluation, and checked batches. It is not a Verilog simulator.</desc>
+  <rect width="1920" height="1080" fill="#091321"/>
+  <g font-family="Arial,sans-serif">
+    <g transform="translate(120 328)">
+      <rect width="1680" height="72" rx="14" fill="#101a2b" stroke="#66758a"/>
+      <text x="26" y="30" fill="#9aa8b8" font-size="18">Verilog</text>
+      <text x="112" y="30" fill="#66758a" font-size="18">&#8594;</text>
+      <text x="148" y="30" fill="#fff" font-size="18" font-weight="700">Yosys</text>
+      <text x="218" y="30" fill="#66758a" font-size="18">&#8594;</text>
+      <text x="254" y="30" fill="#9aa8b8" font-size="18">LUTs + flip-flops</text>
+      <text x="26" y="56" fill="#22a89c" font-size="18">HELUT picks up here</text>
+      <text x="850" y="44" fill="#fff" font-size="22" font-weight="700">The same netlist becomes a tensor program</text>
+    </g>
+
+    <g transform="translate(120 424)">
+      <rect width="520" height="216" rx="22" fill="#132638" stroke="#22a89c" stroke-width="2"/>
+      <text x="28" y="36" fill="#22a89c" font-size="16" letter-spacing="2">OPERATION ONE</text>
+      <text x="28" y="76" fill="#fff" font-size="25" font-weight="700">Search a truth table</text>
+      <text x="28" y="114" fill="#9aa8b8" font-size="18">continuous values &#8594; search</text>
+      <text x="28" y="142" fill="#9aa8b8" font-size="18">&#8594; freeze back to binary</text>
+      <text x="28" y="178" fill="#9aa8b8" font-size="18">Yosys + SAT check the result</text>
+      <text x="28" y="204" fill="#22a89c" font-size="17" font-weight="700">not a simulator operation</text>
+    </g>
+
+    <g transform="translate(700 424)">
+      <rect width="520" height="216" rx="22" fill="#132638" stroke="#22a89c" stroke-width="2"/>
+      <text x="28" y="36" fill="#22a89c" font-size="16" letter-spacing="2">OPERATION TWO</text>
+      <text x="28" y="76" fill="#fff" font-size="25" font-weight="700">Evaluate encrypted</text>
+      <text x="28" y="114" fill="#9aa8b8" font-size="18">one representation serves</text>
+      <text x="28" y="142" fill="#9aa8b8" font-size="18">cleartext and homomorphic</text>
+      <text x="28" y="178" fill="#9aa8b8" font-size="18">evaluation of the same netlist</text>
+      <text x="28" y="204" fill="#d4833f" font-size="17" font-weight="700">slow and small today</text>
+    </g>
+
+    <g transform="translate(1280 424)">
+      <rect width="520" height="216" rx="22" fill="#132638" stroke="#22a89c" stroke-width="2"/>
+      <text x="28" y="36" fill="#22a89c" font-size="16" letter-spacing="2">OPERATION THREE</text>
+      <text x="28" y="76" fill="#fff" font-size="25" font-weight="700">Batch instances</text>
+      <text x="28" y="114" fill="#9aa8b8" font-size="18">65,536 distinct inputs</text>
+      <text x="28" y="142" fill="#9aa8b8" font-size="18">589,824 output bits checked</text>
+      <text x="28" y="178" fill="#22a89c" font-size="18" font-weight="700">0 mismatches</text>
+      <text x="28" y="204" fill="#9aa8b8" font-size="17">corrupt a lane, digest moves</text>
+    </g>
+
+    <g transform="translate(120 666)">
+      <rect width="1680" height="144" rx="22" fill="#321b23" stroke="#e0574c" stroke-width="2"/>
+      <text x="30" y="30" fill="#e0574c" font-size="16" letter-spacing="2">WHAT IT IS NOT</text>
+      <text x="30" y="68" fill="#fff" font-size="27" font-weight="700">Not a Verilog simulator, and not trying to be</text>
+      <text x="30" y="104" fill="#9aa8b8" font-size="20">No four-state logic · no X or Z · no timing or delay model · no behavioural Verilog front end</text>
+      <text x="30" y="132" fill="#9aa8b8" font-size="19">For bit-accurate HDL simulation, use Verilator.</text>
+    </g>
+  </g>
+</svg>

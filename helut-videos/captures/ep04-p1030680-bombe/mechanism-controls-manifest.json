@@ -1,0 +1,70 @@
+{
+  "schemaVersion": 1,
+  "captureId": "episode04-mechanism-controls",
+  "role": "live experiment capture",
+  "transcript": "CAPTURE_TRANSCRIPT.md",
+  "summary": "Known-control garble and indel grades: exact closure loses one- and two-substitution controls, matching tolerance recovers them, 0 of 192 host/GPU mismatches, and the correct synthetic splice recovers 25 of 25 deductions.",
+  "reproduce": {
+    "workingDirectory": "helut-videos repository root at /Volumes/Code/MuleinLabs/helut-videos",
+    "prerequisites": [
+      "bash",
+      "VHS 0.11.0",
+      "A current `swift build -c release` in the sibling HELUT checkout for tapes that invoke HELUT binaries or the prebuilt XCTest bundle"
+    ],
+    "commands": [
+      "vhs validate captures/ep04-p1030680-bombe/episode04-mechanism-controls.tape",
+      "vhs captures/ep04-p1030680-bombe/episode04-mechanism-controls.tape"
+    ],
+    "behavior": "Re-records a live execution. Timing-sensitive figures will differ between takes; the pass/fail gates and printed boundaries should not.",
+    "workspacePathConstraint": "The tape uses absolute paths under /Volumes/Code/MuleinLabs and must be adjusted if the workspace is relocated."
+  },
+  "captureMethod": {
+    "recorder": "VHS",
+    "terminal": "real Bash pseudo-terminal",
+    "mode": "live execution recorded during filming",
+    "executedExperimentDuringCapture": true,
+    "uploaded": false,
+    "tape": {
+      "repo": "helut-videos",
+      "path": "captures/ep04-p1030680-bombe/episode04-mechanism-controls.tape",
+      "sha256": "23b2d4623b59ea74e16d57176c6469d23679fe253415044752930c798b13f958",
+      "requestedFrameRate": 30
+    }
+  },
+  "video": {
+    "repo": "helut-videos",
+    "path": "public/captures/ep04-p1030680-bombe/episode04-mechanism-controls.mp4",
+    "sha256": "da0563db903749c5b115b8c55ce5c53b015ba155a7f0340aec9ca659736b8001",
+    "container": "mov,mp4,m4a,3gp,3g2,mj2",
+    "codec": "h264",
+    "pixelFormat": "yuv420p",
+    "width": 1280,
+    "height": 720,
+    "encodedFrameRate": "25/1",
+    "durationSeconds": 54.28,
+    "sizeBytes": 504511
+  },
+  "observedOnScreen": [
+    "0/192 host/GPU mismatches",
+    "BOARD-SPECIFICITY IS UNMEASURED HERE"
+  ],
+  "validation": {
+    "tapeSyntaxValidated": true,
+    "mp4ProbedSuccessfully": true,
+    "hashesRecomputedFromDisk": true,
+    "episodeSceneDurationMatchesMedia": true,
+    "liveExecutionDuringRecording": true,
+    "commandEchoWrapOrOverlapObserved": true,
+    "priorVisualReviewRecordedIn": "captures/LIVE_CAPTURES.md and the linked transcript",
+    "framesReInspectedThisPass": false
+  },
+  "timingContext": {
+    "interpretation": "Elapsed figures visible on screen are local observations on one Apple-silicon host from the filmed take. They are not deterministic contracts and will vary between runs; the correctness gates and printed boundaries are the durable content."
+  },
+  "claimBoundaries": [
+    "Live run recorded during filming, not archived playback.",
+    "No P1030680 target data appears in this capture.",
+    "Board specificity is explicitly unmeasured: all wrong splices died under legality before board evaluation.",
+    "This is known-control mechanism qualification, not target evidence."
+  ]
+}

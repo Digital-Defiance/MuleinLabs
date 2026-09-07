@@ -16,7 +16,7 @@
       "headline": "One callsign. Three acts.",
       "subhead": "Local IQ. Recovered bytes. A circuit says yes.",
       "backgroundAsset": "01-title.svg",
-      "voiceover": "This episode begins with a demonstration callsign and ends with a receipt. I built a circuit that recognizes exactly six ASCII bytes: A B zero C D E. Then I gave the same circuit three deliberately different jobs. First, match callsigns recovered from a local GNU Radio loop through the clear Boolean oracle. Second, repeat recovered windows through that same clear path. Third, freeze one callsign and evaluate that one window on the encrypted demonstration path. Those are three acts, not one blended claim. The signal is local, the footage is literal, and every boundary stays on screen.",
+      "voiceover": "This episode begins with a demonstration callsign and ends with a receipt. I built a circuit that recognizes exactly six ASCII bytes: AB0CDE. Then I gave the same circuit three deliberately different jobs. First, match callsigns recovered from a local GNU Radio loop through the clear Boolean oracle. Second, repeat recovered windows through that same clear path. Third, freeze one callsign and evaluate that one window on the encrypted demonstration path. Those are three acts, not one blended claim. The signal is local, the footage is literal, and every boundary stays on screen.",
       "durationHintSec": 44
     },
     {
@@ -26,7 +26,7 @@
       "headline": "A radio chain with no radio link",
       "subhead": "CQ CQ CQ DE AB0CDE AB0CDE K · 27 bytes out, 27 bytes back",
       "backgroundAsset": "02-loop-and-payload.svg",
-      "voiceover": "Here is the channel before any circuit sees a byte. GNU Radio starts from a finite vector in memory. It maps bits to plus or minus one, repeats each symbol four times, creates complex baseband samples, passes them through the channel-model block, hard-slices the result, and finds an A A fifty-five preamble to recover byte alignment. The transmitted payload is C Q, C Q, C Q, D E, A B zero C D E, A B zero C D E, K. For the filmed receipt, noise voltage is zero point zero. Twenty-seven bytes went in and the same twenty-seven came back, with zero byte differences. This is a deterministic local loop. There was no antenna, no over-the-air signal, and nothing was intercepted.",
+      "voiceover": "Here is the channel before any circuit sees a byte. GNU Radio starts from a finite vector in memory. It maps bits to plus or minus one, repeats each symbol four times, creates complex baseband samples, passes them through the channel-model block, hard-slices the result, and finds an 0xAA55 preamble to recover byte alignment. The transmitted payload is CQ CQ CQ DE AB0CDE AB0CDE K. For the filmed receipt, noise voltage is 0.0. 27 bytes went in and the same 27 came back, with zero byte differences. This is a deterministic local loop. There was no antenna, no over-the-air signal, and nothing was intercepted.",
       "durationHintSec": 54
     },
     {
@@ -36,7 +36,7 @@
       "headline": "Six bytes become forty-eight wires",
       "subhead": "Exact ASCII literal · 47 two-input lookup tables · one match bit",
       "backgroundAsset": "03-fixed-circuit.svg",
-      "voiceover": "The detector is intentionally concrete. Six eight-bit ports are compared with the ASCII values for A, B, zero, C, D, and E. That makes forty-eight input bits and one match output. Yosys and ABC lower the authored Verilog into forty-seven two-input lookup-table cells, and the Yosys check pass reports zero problems. HELUT does not receive a string search function. It receives that generated lookup-table graph. The rolling helper learns its six-byte window from ports named char zero through char five, packs each byte least-significant bit first, and ticks the netlist. This is an exact, case-sensitive, fixed-literal circuit. Calling it a general regular-expression engine would claim something we did not build.",
+      "voiceover": "The detector is intentionally concrete. Six eight-bit ports are compared with the ASCII values for A, B, zero, C, D, and E. That makes 48 input bits and one match output. Yosys and ABC lower the authored Verilog into 47 two-input lookup-table cells, and the Yosys check pass reports zero problems. HELUT does not receive a string search function. It receives that generated lookup-table graph. The rolling helper learns its six-byte window from ports named char zero through char five, packs each byte least-significant bit first, and ticks the netlist. This is an exact, case-sensitive, fixed-literal circuit. Calling it a general regular-expression engine would claim something we did not build.",
       "durationHintSec": 54
     },
     {
@@ -46,7 +46,7 @@
       "headline": "Both callsigns land exactly",
       "subhead": "Match completion indices: [17, 24]",
       "backgroundAsset": "04-act-one-clear.svg",
-      "voiceover": "After GNU Radio stops, Python feeds the recovered payload to HELUT one byte at a time. The first five bytes only warm the six-byte window. A match appears when the final E arrives. In this payload, the first callsign occupies zero-based byte positions twelve through seventeen. The second occupies nineteen through twenty-four. So the expected completion positions are seventeen and twenty-four. The clear netlist oracle reports exactly that list. The runner also scans the recovered bytes in software and compares against the callsign positions in the transmitted payload. Both comparisons must agree or the command exits with failure. In the filmed run, the recovered bytes were exact and both callsign windows survived.",
+      "voiceover": "After GNU Radio stops, Python feeds the recovered payload to HELUT one byte at a time. The first five bytes only warm the six-byte window. A match appears when the final E arrives. In this payload, the first callsign occupies zero-based byte positions 12 through 17. The second occupies 19 through 24. So the expected completion positions are 17 and 24. The clear netlist oracle reports exactly that list. The runner also scans the recovered bytes in software and compares against the callsign positions in the transmitted payload. Both comparisons must agree or the command exits with failure. In the filmed run, the recovered bytes were exact and both callsign windows survived.",
       "durationHintSec": 51
     },
     {
@@ -56,7 +56,7 @@
       "headline": "Ten thousand calls, one at a time",
       "subhead": "22 unique windows · 908 expected · 908 observed",
       "backgroundAsset": "05-act-two-scalar.svg",
-      "voiceover": "Act two asks a different question: can the host-to-library hinge repeat the clear circuit many times and keep the answer straight? A twenty-seven-byte payload contains twenty-two overlapping six-byte windows. The runner cycles those windows in order until it has made ten thousand scalar calls. Ten thousand is four hundred fifty-four complete cycles of twenty-two, plus twelve extra windows. Each complete cycle contains the two callsigns, and those first twelve remainder windows contain neither. Four hundred fifty-four times two gives nine hundred eight expected hits. HELUT reports nine hundred eight. The filmed wall observation is one hundred thirteen point three four milliseconds. But this is not batch acceleration. It is a clear scalar host loop, not a native tensor batch and not encrypted throughput.",
+      "voiceover": "Act two asks a different question: can the host-to-library hinge repeat the clear circuit many times and keep the answer straight? A 27-byte payload contains 22 overlapping six-byte windows. The runner cycles those windows in order until it has made 10,000 scalar calls. 10,000 is 454 complete cycles of 22, plus 12 extra windows. Each complete cycle contains the two callsigns, and those first 12 remainder windows contain neither. 454 times 2 gives 908 expected hits. HELUT reports 908. The filmed wall observation is 113.34 milliseconds. But this is not batch acceleration. It is a clear scalar host loop, not a native tensor batch and not encrypted throughput.",
       "durationHintSec": 58
     },
     {
@@ -66,7 +66,7 @@
       "headline": "Encrypt one callsign, not the stream",
       "subhead": "AB0CDE · N=8 demonstration · result 1",
       "backgroundAsset": "06-act-three-encrypted.svg",
-      "voiceover": "Only act three enters the encrypted demonstration mode. The runner selects the first recovered A B zero C D E window, opens the fixed-seed N eight engine, and then starts the stopwatch around the six feed calls. Five calls warm the window; the sixth evaluates the circuit. The decrypted demonstration result is one, matching the expected bit. The filmed evaluation observation is one point one milliseconds, but engine and key setup happened before that timer. N eight is a tiny demonstration parameter, not production security. One frozen window is not an encrypted radio stream. The honest result is narrower and still useful: this generated forty-seven-table circuit returns the right bit on one encrypted demonstration input.",
+      "voiceover": "Only act three enters the encrypted demonstration mode. The runner selects the first recovered AB0CDE window, opens the fixed-seed N=8 engine, and then starts the stopwatch around the six feed calls. Five calls warm the window; the sixth evaluates the circuit. The decrypted demonstration result is one, matching the expected bit. The filmed evaluation observation is 1.1 milliseconds, but engine and key setup happened before that timer. N=8 is a tiny demonstration parameter, not production security. One frozen window is not an encrypted radio stream. The honest result is narrower and still useful: this generated 47-table circuit returns the right bit on one encrypted demonstration input.",
       "durationHintSec": 56
     },
     {
@@ -74,7 +74,7 @@
       "id": "filmed-run",
       "videoAsset": "episode13-ab0cde.mp4",
       "label": "Literal run · 2026-09-04 · normal speed",
-      "voiceover": "This is the literal run, not a reconstruction. First, the authored Verilog and its hash. Next, Yosys reloads the generated netlist: forty-eight input bits, forty-seven lookup tables, one output, and zero check problems. Then GNU Radio creates the local I Q stream and recovers all twenty-seven bytes. HELUT reports the callsign at completion positions seventeen and twenty-four. The final screen separates the other acts: ten thousand clear scalar windows, nine hundred eight expected and observed hits; then one A B zero C D E window on the N eight encrypted demonstration path. The tape ends with the no-antenna verdict and hashes of the source, netlist, runner, and full raw log.",
+      "voiceover": "This is the literal run, not a reconstruction. First, the authored Verilog and its hash. Next, Yosys reloads the generated netlist: 48 input bits, 47 lookup tables, one output, and zero check problems. Then GNU Radio creates the local IQ stream and recovers all 27 bytes. HELUT reports the callsign at completion positions 17 and 24. The final screen separates the other acts: 10,000 clear scalar windows, 908 expected and observed hits; then one AB0CDE window on the N=8 encrypted demonstration path. The tape ends with the no-antenna verdict and hashes of the source, netlist, runner, and full raw log.",
       "durationHintSec": 48.24
     },
     {
@@ -88,7 +88,7 @@
         "1 AB0CDE window · encrypted-demo N=8 · result 1"
       ],
       "backgroundAsset": "07-receipt.svg",
-      "voiceover": "The durable receipt now fits in four rows. Radio first: twenty-seven transmitted bytes, twenty-seven recovered bytes, zero differences, and callsign completions at seventeen and twenty-four. Circuit next: six exact bytes become forty-eight input bits, forty-seven two-input lookup tables, and one result bit. Repetition next: ten thousand clear scalar window evaluations, built from twenty-two unique windows, produce nine hundred eight expected and observed hits. Encryption last: one recovered A B zero C D E window enters the N eight demonstration path and returns one. The tape, M P four, authored source, canonical netlist, runner, transcript, manifest, and complete unfiltered log all have hashes. The raw log is preserved beside the capture rather than existing only under an ignored build directory.",
+      "voiceover": "The durable receipt now fits in four rows. Radio first: 27 transmitted bytes, 27 recovered bytes, zero differences, and callsign completions at 17 and 24. Circuit next: six exact bytes become 48 input bits, 47 two-input lookup tables, and one result bit. Repetition next: 10,000 clear scalar window evaluations, built from 22 unique windows, produce 908 expected and observed hits. Encryption last: one recovered AB0CDE window enters the N=8 demonstration path and returns one. The tape, MP4, authored source, canonical netlist, runner, transcript, manifest, and complete unfiltered log all have hashes. The raw log is preserved beside the capture rather than existing only under an ignored build directory.",
       "durationHintSec": 52
     },
     {
@@ -103,7 +103,7 @@
         "Not an encrypted stream or production security"
       ],
       "backgroundAsset": "08-claim-boundary.svg",
-      "voiceover": "Now draw the box around the result. The source was a local vector and no antenna was used, so this is not reception or interception. The channel-model block was present, but noise voltage was zero for deterministic footage, so the run does not establish tolerance to noise. The circuit recognizes one fixed literal, so it is not a general regex engine. Acts one and two use the clear Boolean oracle. Ten thousand means scalar calls over twenty-two repeating source windows, not a native tensor batch and not encrypted throughput. Act three encrypts one window at N eight; it is not an encrypted stream, and N eight is not a production security parameter. Finally, every timing number is one local observation. The receipts prove execution and agreement, not a performance distribution.",
+      "voiceover": "Now draw the box around the result. The source was a local vector and no antenna was used, so this is not reception or interception. The channel-model block was present, but noise voltage was zero for deterministic footage, so the run does not establish tolerance to noise. The circuit recognizes one fixed literal, so it is not a general regex engine. Acts one and two use the clear Boolean oracle. 10,000 means scalar calls over 22 repeating source windows, not a native tensor batch and not encrypted throughput. Act three encrypts one window at N=8; it is not an encrypted stream, and N=8 is not a production security parameter. Finally, every timing number is one local observation. The receipts prove execution and agreement, not a performance distribution.",
       "durationHintSec": 59
     },
     {
@@ -112,7 +112,7 @@
       "headline": "One fixed circuit, bounded three ways",
       "subhead": "Signal recovered. Callsign matched. Claims kept separate.",
       "backgroundAsset": "07-receipt.svg",
-      "voiceover": "That separation is the point. GNU Radio recovered a recognizable payload through a local baseband loop. A generated lookup-table circuit found both copies of the callsign on the clear path. The same clear circuit survived ten thousand scalar invocations with the exact expected count. Then one recovered window crossed the encrypted demonstration path and returned the right bit. None of those facts needs an antenna story, a batch-performance story, or a production-security story to be interesting. The source, netlist, literal footage, full output, commands, and hashes are preserved. A B zero C D E went through the machine, and the path back to every sentence is still there.",
+      "voiceover": "That separation is the point. GNU Radio recovered a recognizable payload through a local baseband loop. A generated lookup-table circuit found both copies of the callsign on the clear path. The same clear circuit survived 10,000 scalar invocations with the exact expected count. Then one recovered window crossed the encrypted demonstration path and returned the right bit. None of those facts needs an antenna story, a batch-performance story, or a production-security story to be interesting. The source, netlist, literal footage, full output, commands, and hashes are preserved. AB0CDE went through the machine, and the path back to every sentence is still there.",
       "durationHintSec": 44
     }
   ]

@@ -1,0 +1,128 @@
+{
+  "schemaVersion": 1,
+  "captureId": "episode06-evidence-ladder",
+  "role": "E256 evidence-ladder and open-finding receipt playback",
+  "transcript": "EVIDENCE_LADDER_TRANSCRIPT.md",
+  "answers": {
+    "question": "What does the audit ladder actually contain, and what does it still not close?",
+    "answer": "Four independent implementations agree on one fixture, with a five-check formal certificate and 49 publication-guard checks at zero failures. The optimizer verdict is a bounded failure, human review is pending, and E256-003 stays open."
+  },
+  "reproduce": {
+    "workingDirectory": "helut-videos repository root at /Volumes/Code/MuleinLabs/helut-videos",
+    "prerequisites": [
+      "VHS 0.11.0",
+      "bash",
+      "shasum",
+      "The durable preserved receipt at captures/ep06-e256-evolution-audit/ep06-e256-fixture-v4-validation.json"
+    ],
+    "commands": [
+      "vhs validate captures/ep06-e256-evolution-audit/episode06-evidence-ladder.tape",
+      "vhs captures/ep06-e256-evolution-audit/episode06-evidence-ladder.tape"
+    ],
+    "behavior": "Renders deterministic playback of a preserved receipt. It runs no benchmark, no test suite, no synthesis, and no cracking run.",
+    "workspacePathConstraint": "The tape records to an absolute path under /Volumes/Code/MuleinLabs and must be adjusted if the workspace is relocated."
+  },
+  "capturedAt": null,
+  "capturedAtBasis": "Rendered during this documentation pass; the underlying experiment predates it and is dated in the receipt itself",
+  "captureMethod": {
+    "recorder": "VHS",
+    "terminal": "real Bash pseudo-terminal",
+    "mode": "normal-speed playback of a preserved receipt",
+    "executedExperimentDuringCapture": false,
+    "uploaded": false,
+    "tape": {
+      "repo": "helut-videos",
+      "path": "captures/ep06-e256-evolution-audit/episode06-evidence-ladder.tape",
+      "sha256": "9928e3f459bbe39852d027c107e0204a2e6fca260d874598000aeba7be79ae65",
+      "requestedFrameRate": 30
+    }
+  },
+  "video": {
+    "repo": "helut-videos",
+    "path": "public/captures/ep06-e256-evolution-audit/episode06-evidence-ladder.mp4",
+    "sha256": "e16273f6ede8b01286adb706b09a23ba9607eb5e859a61e2e44039eb0289becc",
+    "container": "mov,mp4,m4a,3gp,3g2,mj2",
+    "codec": "h264",
+    "pixelFormat": "yuv420p",
+    "width": 1280,
+    "height": 720,
+    "encodedFrameRate": "25/1",
+    "durationSeconds": 69.0,
+    "sizeBytes": 556525
+  },
+  "artifacts": [
+    {
+      "repo": "HELUT",
+      "path": "logs/e256-v2-gen0-fixture-v4-validation.json",
+      "kind": "original preserved receipt",
+      "sha256": "4943851d070b536e3ce2ce909905547c7793f48b8b1c3f3c281740a1d49921a6"
+    },
+    {
+      "repo": "helut-videos",
+      "path": "captures/ep06-e256-evolution-audit/ep06-e256-fixture-v4-validation.json",
+      "kind": "durable byte-for-byte copy used by the tape",
+      "sourcePath": "HELUT/logs/e256-v2-gen0-fixture-v4-validation.json",
+      "byteForByteMatch": true,
+      "sha256": "4943851d070b536e3ce2ce909905547c7793f48b8b1c3f3c281740a1d49921a6"
+    }
+  ],
+  "experiment": {
+    "implementations": [
+      "swift_fixture_suite",
+      "direct_rtl",
+      "native_nlff_rtl",
+      "rust_reference"
+    ],
+    "ladder": {
+      "katBytes": 1024,
+      "tables": 9,
+      "traceFiles": 10,
+      "artifacts": 25,
+      "reciprocalDecrypt": "PASS",
+      "yosysParity": "8/8 full-adder rows; 16 counter transitions; 1024 toy-ISA transitions"
+    },
+    "formalCertificate": {
+      "tests": 1,
+      "failures": 0,
+      "checks": [
+        "bounded scramble bijection",
+        "frozen reciprocity",
+        "128-byte stream round-trip",
+        "plugboard and XOR-center involutions plus fixed-point law",
+        "exact fixture-v4 native-profile integrity"
+      ]
+    },
+    "publicationGuardSuite": {
+      "tests": 49,
+      "failures": 0
+    },
+    "optimizerVerdict": "blue_hold",
+    "optimizerInterpretation": "bounded optimizer failure; not security evidence or a work-factor estimate",
+    "humanReview": "pending",
+    "findingState": "OPEN"
+  },
+  "validation": {
+    "tapeSyntaxValidated": true,
+    "mp4ProbedSuccessfully": true,
+    "sourceCopiedByteForByte": true,
+    "fullResolutionFramesInspectedAtSeconds": [
+      40
+    ],
+    "terminalEvidenceOutputLegible": true,
+    "commandEchoWrapOrOverlapObserved": true,
+    "hiddenSetupVisible": false,
+    "experimentRerunForCapture": false,
+    "episodeSceneDurationMatchesMedia": true
+  },
+  "timingContext": {
+    "interpretation": "The capture replays preserved text at normal speed. Any elapsed-time figures visible on screen are historical observations from the original run on one Apple-silicon host, not fresh measurements and not portable performance contracts."
+  },
+  "claimBoundaries": [
+    "This is playback of a preserved validation receipt, not a live run.",
+    "Four agreeing implementations is a parity result, not a security result.",
+    "The optimizer outcome is a bounded failure and is labelled in the file as not security evidence.",
+    "Human review is pending and audit finding E256-003 remains OPEN.",
+    "The v1 autopsy figures narrated in this episode are not printed by this receipt and are not shown on screen.",
+    "The 49-check publication guard suite is a different suite from the 47-test canonical Swift suite in the same file."
+  ]
+}

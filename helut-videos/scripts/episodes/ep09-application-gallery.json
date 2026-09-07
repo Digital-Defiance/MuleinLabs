@@ -20,13 +20,21 @@
       "durationHintSec": 30
     },
     {
+      "kind": "capture",
+      "id": "radio-match",
+      "videoAsset": "episode09-radio-match.mp4",
+      "label": "LIVE RUN · recorded 2026-09-05 · clear Boolean oracle · no antenna",
+      "voiceover": "Start with the demo that needs no explanation. That circuit began as Verilog. Yosys mapped it to lookup tables, and HELUT loaded the netlist. It has no string-search function anywhere in it. First it announces its own shape: the module, 3 input ports over 24 bits, 1 output bit, then checks itself against a known answer and passes. Then bytes go in one at a time. Watch the right-hand column. The match bit fires at byte 10, which is the F in DEFCON, and again at byte 23. Nothing else moves. Last screen, the honest half: give it a stream containing none of the three bytes it knows and nothing fires at all. A detector that always says yes is not a detector. This is the clear Boolean path, no antenna, nothing intercepted, and it is a fixed three-byte literal rather than a general pattern engine.",
+      "durationHintSec": 60.28
+    },
+    {
       "kind": "concept",
       "id": "radio",
       "kicker": "Closed loop · no antenna",
       "headline": "Matching bytes off a signal",
       "subhead": "Baseband, noise, recovered bytes, then a netlist.",
       "backgroundAsset": "02-radio-chain.svg",
-      "voiceover": "Start with the demo that needs no explanation. A GNU Radio flowgraph generates a baseband signal, adds noise, and recovers bytes. Those bytes feed a Yosys netlist compiled from Verilog: a three-character regular-expression matcher. When the letters D, E, F arrive, the circuit flags a match. No antenna is involved and nothing is intercepted; it is a closed loop on one machine. The same demo then runs ten thousand windows as a batch to show throughput, and finally freezes a single window under encryption at demonstration size, where being slow is the entire point.",
+      "voiceover": "Start with the demo that needs no explanation. A GNU Radio flowgraph generates a baseband signal, adds noise, and recovers bytes. Those bytes feed a Yosys netlist compiled from Verilog: a three-character regular-expression matcher. When the letters D, E, F arrive, the circuit flags a match. No antenna is involved and nothing is intercepted; it is a closed loop on one machine. The same demo then runs 10,000 windows as a batch to show throughput, and finally freezes a single window under encryption at demonstration size, where being slow is the entire point.",
       "durationHintSec": 42
     },
     {
@@ -86,7 +94,7 @@
       "headline": "Garble and Indel",
       "subhead": "A suspect letter is not the same as a missing one.",
       "backgroundAsset": "08-blasters.svg",
-      "voiceover": "The subsystem around that engine has deliberately memorable names, and they encode a real distinction. A transcript can be wrong in two different ways, and conflating them causes bad science. If a recorded letter is merely suspect, that is edge-erasure tolerance, handled by the Tolerant Closure, informally the Garble Blaster nine thousand. If letters are missing or extra, the whole rotor alignment shifts, which is splice geometry, handled by the Splice Engine, informally the Indel Blaster nine thousand. Different fault, different repair, separate receipts. A survivor from either one is a repair hypothesis, not a result.",
+      "voiceover": "The subsystem around that engine has deliberately memorable names, and they encode a real distinction. A transcript can be wrong in two different ways, and conflating them causes bad science. If a recorded letter is merely suspect, that is edge-erasure tolerance, handled by the Tolerant Closure, informally the Garble Blaster 9000. If letters are missing or extra, the whole rotor alignment shifts, which is splice geometry, handled by the Splice Engine, informally the Indel Blaster 9000. Different fault, different repair, separate receipts. A survivor from either one is a repair hypothesis, not a result.",
       "durationHintSec": 44
     },
     {

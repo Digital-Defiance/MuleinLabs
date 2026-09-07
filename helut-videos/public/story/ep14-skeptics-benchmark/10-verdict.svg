@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" role="img" aria-labelledby="title desc">
-  <title id="title">Episode 14 verdict separates proved and implemented work from unproved and unclaimed conclusions</title>
-  <desc id="desc">A ledger marks supported Yosys LUT and DFF execution, tested clear-to-Metal agreement, and shared-buffer workflows as present, while native speedup, lane-distinct batch throughput, full HDL semantics, and Apple exclusivity remain unproved or unclaimed.</desc>
+  <title id="title">Episode 14 verdict separates bounded proofs from the paired native result and open comparisons</title>
+  <desc id="desc">Supported Yosys execution and lane-distinct correctness are proved in bounded receipts. The matched paired benchmark leaves HELUT 15.1 percent slower at 65,536 lanes. Full HDL semantics, sequential lane throughput, CXXRTL, and Apple superiority remain open or unclaimed.</desc>
   <rect width="1920" height="1080" fill="#091522"/>
   <g transform="translate(986 94)" font-family="Arial, sans-serif">
     <text x="434" y="18" text-anchor="middle" fill="#9aa8b8" font-size="15" letter-spacing="3">CURRENT VERDICT · CLAIM LEDGER</text>
@@ -15,21 +15,21 @@
       <rect y="102" width="816" height="86" rx="14" fill="#122b35" stroke="#22a89c" stroke-width="2"/>
       <rect y="102" width="138" height="86" rx="14" fill="#22a89c"/>
       <text x="69" y="153" text-anchor="middle" fill="#091522" font-size="15" font-weight="700" letter-spacing="2">PROVED</text>
-      <text x="164" y="144" fill="#fff" font-size="19" font-weight="700">Tested clear and Metal outputs agree</text>
-      <text x="164" y="169" fill="#9aa8b8" font-size="15">bounded receipts · including the filmed Enigma transcript</text>
-      <rect y="204" width="816" height="86" rx="14" fill="#122b35" stroke="#22a89c" stroke-width="2"/>
-      <rect y="204" width="138" height="86" rx="14" fill="#22a89c"/>
-      <text x="69" y="255" text-anchor="middle" fill="#091522" font-size="13" font-weight="700" letter-spacing="1">IMPLEMENTED</text>
-      <text x="164" y="246" fill="#fff" font-size="19" font-weight="700">Shared-buffer CPU / GPU workflows on unified memory</text>
-      <text x="164" y="271" fill="#9aa8b8" font-size="15">architectural capability · not a speed result</text>
+      <text x="164" y="144" fill="#fff" font-size="19" font-weight="700">65,536 distinct assignments · 589,824 bits agree</text>
+      <text x="164" y="169" fill="#9aa8b8" font-size="15">zero mismatches · corruption control moves digest</text>
+      <rect y="204" width="816" height="86" rx="14" fill="#142738" stroke="#7aa2c8" stroke-width="2"/>
+      <rect y="204" width="138" height="86" rx="14" fill="#7aa2c8"/>
+      <text x="69" y="255" text-anchor="middle" fill="#091522" font-size="13" font-weight="700" letter-spacing="1">MEASURED</text>
+      <text x="164" y="246" fill="#fff" font-size="19" font-weight="700">Paired HELUT is 15.1% slower at B=65,536</text>
+      <text x="164" y="271" fill="#9aa8b8" font-size="15">digest inside both timers · no crossover through tested width</text>
       <rect y="324" width="816" height="76" rx="14" fill="#2b2025" stroke="#d4833f" stroke-width="2"/>
       <rect y="324" width="162" height="76" rx="14" fill="#d4833f"/>
       <text x="81" y="369" text-anchor="middle" fill="#091522" font-size="13" font-weight="700" letter-spacing="1">NOT PROVED</text>
-      <text x="188" y="370" fill="#fff" font-size="19" font-weight="700">Speedup over native HDL execution</text>
+      <text x="188" y="370" fill="#fff" font-size="19" font-weight="700">Paired speedup over native HDL execution</text>
       <rect y="416" width="816" height="76" rx="14" fill="#2b2025" stroke="#d4833f" stroke-width="2"/>
       <rect y="416" width="162" height="76" rx="14" fill="#d4833f"/>
-      <text x="81" y="461" text-anchor="middle" fill="#091522" font-size="13" font-weight="700" letter-spacing="1">NOT PROVED</text>
-      <text x="188" y="462" fill="#fff" font-size="19" font-weight="700">Lane-distinct useful batch throughput</text>
+      <text x="81" y="461" text-anchor="middle" fill="#091522" font-size="13" font-weight="700" letter-spacing="1">STILL OPEN</text>
+      <text x="188" y="462" fill="#fff" font-size="19" font-weight="700">Sequential lane state · authored RTL · CXXRTL</text>
       <rect y="508" width="816" height="76" rx="14" fill="#2b2025" stroke="#d4833f" stroke-width="2"/>
       <rect y="508" width="162" height="76" rx="14" fill="#d4833f"/>
       <text x="81" y="553" text-anchor="middle" fill="#091522" font-size="13" font-weight="700" letter-spacing="1">NOT CLAIMED</text>

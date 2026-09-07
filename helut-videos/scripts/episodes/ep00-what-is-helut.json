@@ -2,8 +2,8 @@
   "id": "ep00-what-is-helut",
   "compositionId": "Episode00",
   "title": "What is HELUT?",
-  "youtubeTitle": "What is HELUT? Living Research on Circuits, Torus FHE, and TensorLUT",
-  "description": "A plain-language map of HELUT: one Yosys-to-Metal compiler substrate, two core research paths, chosen application case studies, and a living claim ledger that gets corrected in public. Epoch C69. Site: https://helut.digitaldefiance.org · Source: https://github.com/Digital-Defiance/HELUT",
+  "youtubeTitle": "What HELUT Actually Is: Circuits You Can Search, and Where It Loses",
+  "description": "A direct answer, not a pitch. Yosys turns Verilog into a netlist of lookup tables and flip-flops; HELUT evaluates that netlist as tensors on Apple silicon. That buys three operations an event-driven simulator does not have: the truth tables become continuous so they can be searched and then re-proved by Yosys and SAT, the same representation runs on encrypted data, and many independent instances ride in one submission. The episode opens on a live run where the carry logic is deleted from a two-bit adder, rediscovered by search, re-synthesized by Yosys, and proven equivalent to behavioural addition over the entire input space, with a corrupted value collapsing the proof. Then it states the losses without cushioning. On matched end-to-end work HELUT measured 8.544 ms against 7.422 ms for 16-worker Verilator at B=65,536: 15.1 percent slower, with no paired crossover through that width, and roughly four orders of magnitude behind at a single instance. On simplification it ties rather than wins: the discovered and hand-designed circuits map identically under one abc -lut 6 recipe, 0 wins, 18 ties, 0 losses. The encrypted path costs hundreds of milliseconds per gate and native-dimension processor checks still fail. No discrete-GPU comparison exists, so no cross-architecture claim is made; unified memory is presented as why host-orchestrated GPU search is practical on hardware you can buy, not as a measured win. What is proven: 65,536 distinct lanes with 589,824 output bits checked and zero mismatches, and one flip-flop repair proven by induction. Epoch C69. Site: https://helut.digitaldefiance.org · Source: https://github.com/Digital-Defiance/HELUT",
   "claimEpoch": "2026-08-20 / C69",
   "fps": 30,
   "width": 1920,
@@ -12,71 +12,127 @@
     {
       "kind": "title",
       "id": "title",
-      "eyebrow": "HELUT · Concept series",
+      "eyebrow": "HELUT · living research · dated claims",
       "headline": "What is HELUT?",
-      "subhead": "Living research · living silicon · a dated ledger",
+      "subhead": "Circuits you can search, not just run.",
       "backgroundAsset": "01-substrate-map.svg",
-      "voiceover": "This is living research on living silicon. Every claim in this series carries a date, because the ledger changes as evidence arrives. HELUT stands for Homomorphic Edge Look-Up Tensors: a Swift and Metal research prototype that treats a digital circuit as something you can compute, search, and encrypt on Apple silicon.",
-      "durationHintSec": 24
+      "voiceover": "HELUT stands for Homomorphic Edge Look-Up Tensors, and the name is the least useful thing about it. Here is the idea. A lookup table stores the output for every possible input, and those entries are normally exact zeros and ones. HELUT lets them melt into fractions, searches for values that hit a target, freezes them back to binary, and then hands the result to something that had no stake in the answer. Yosys turns your Verilog into lookup tables and flip-flops. HELUT picks up from there and treats that circuit as something you can search.",
+      "durationHintSec": 38
     },
     {
-      "kind": "narration",
-      "id": "substrate-not-application",
-      "headline": "A substrate, not one application",
-      "bullets": [
-        "Yosys netlist: wires, look-up tables, flip-flops",
-        "Many independent circuit instances in one batch",
-        "Applications inherit capabilities—not claims"
-      ],
-      "backgroundAsset": "01-substrate-map.svg",
-      "voiceover": "Yosys is an open-source synthesis tool. It turns a circuit description into a parts list called a netlist: wires, look-up tables, and flip-flops. A look-up table stores a small truth table, which lists the output for every possible input. HELUT compiles those supported parts, adds a batch dimension for independent circuit instances, and runs them on Metal. Once a problem fits that shape, it can become a case study.",
-      "durationHintSec": 31
+      "kind": "capture",
+      "id": "cold-open",
+      "videoAsset": "episode00-selfrepair.mp4",
+      "label": "LIVE RUN · recorded 2026-09-05 · not a replay",
+      "voiceover": "Watch this. That's a two-bit adder, written as four lookup tables. The first two compute the low sum and the low carry. I deleted the other two. Not disconnected, deleted. Their truth tables are all zeros, so the carry logic is simply gone. Now one command. Real test, running live, under two seconds. The broken circuit misses 14 of 48 output bits. Then the search rediscovers the missing tables. Then Yosys, which had no part in that search, re-synthesizes the result and confirms it computes exact two-bit addition on all 16 inputs. Then a SAT solver proves it across the entire input space. Not sampled. Every case. Last screen, I corrupt one rediscovered value on purpose. The proof collapses and hands back a counterexample. A check that cannot fail is not a check. Verilator is faster than this at simulating circuits. It cannot do that.",
+      "durationHintSec": 80.28
     },
     {
       "kind": "concept",
-      "id": "two-core-paths",
-      "kicker": "One substrate · two core paths",
-      "headline": "Torus FHE · TensorLUT",
-      "subhead": "Applications use it without redefining it.",
+      "id": "the-objection",
+      "kicker": "The audience's objections, taken seriously",
+      "headline": "The questions everyone keeps asking",
+      "subhead": "Why tensors · faster than native · why this chip · versus ABC",
       "backgroundAsset": "01-substrate-map.svg",
-      "voiceover": "The Metal compiler is shared infrastructure. One core research path evaluates circuit wires under torus fully homomorphic encryption. Another, TensorLUT, searches the truth tables that define hardware. The cleartext compiler and batch engine also power concrete applications. Later in this series, I show one I chose: using historical Enigma as a difficult search problem. That application does not define HELUT.",
-      "durationHintSec": 27
+      "voiceover": "These are not questions from one forum or one commenter. Engineers, viewers, and Redditors who work with hardware descriptions keep asking the same four, and they are the right questions. Simulators already reproduce Verilog accurately, so what does turning a circuit into tensors solve? Is it faster than compiling that description to native code? If it is not, why should anyone care which chip it runs on? And how does the simplification compare with the logic optimization that already exists? Episode zero is the general answer for everyone, including the two places where the answer is that we lose.",
+      "durationHintSec": 40
+    },
+    {
+      "kind": "concept",
+      "id": "plain-answer",
+      "kicker": "The plain answer",
+      "headline": "A netlist you can search",
+      "subhead": "Three operations a simulator does not have",
+      "layout": "art-band",
+      "backgroundAsset": "04-plain-answer.svg",
+      "voiceover": "So what is it, without adjectives. Yosys turns Verilog into a netlist of lookup tables and flip-flops. HELUT takes that netlist and evaluates it as tensors. That buys three operations an event-driven simulator has no notion of. One: the tables become continuous, so you can search them. Erase a function, rediscover it, freeze it back, and let Yosys and a SAT solver check the result. Two: the same representation runs on encrypted data, so one netlist serves both cleartext and homomorphic evaluation. Three: many independent instances ride in a single submission, and every one of them gets checked. What it is not, equally plainly: there is no four-state logic, no X or Z, no timing model, and no behavioural Verilog front end. If you want bit-accurate simulation, use Verilator. For that job, it is the better tool. That will not change.",
+      "durationHintSec": 66
+    },
+    {
+      "kind": "capture",
+      "id": "speed",
+      "videoAsset": "episode00-crossover.mp4",
+      "label": "DATED LIVE TAKE · warmed graph vs scalar Verilator · digests matched",
+      "voiceover": "Same circuit and stimulus; matching digests or the timings are void. This footage preserves the dated asymmetric scope: HELUT's warmed graph against one scalar Verilator loop. Native wins dramatically at one lane; this take first shows a graph-only HELUT win at 65,536. That is amortization, not end-to-end throughput. The final paired receipt keeps preparation, execution, strict readback, and the ordered digest inside both timers, with Verilator on 16 workers. At 65,536 HELUT remains 15.1 percent slower, with no paired crossover. Episode 14 shows the sealed current verdict.",
+      "durationHintSec": 38.36
+    },
+    {
+      "kind": "concept",
+      "id": "where-it-wins",
+      "kicker": "Results I will defend",
+      "headline": "Where it does well",
+      "subhead": "Checked batching · flat graph cost · search with independent proof",
+      "layout": "art-band",
+      "backgroundAsset": "05-where-it-wins.svg",
+      "voiceover": "Where it does well. These are the results I will defend. First: checked batch correctness. I ran 65,536 distinct assignments and compared all 589,824 output bits against their own clear oracles. Zero mismatches. Then I corrupted one lane. The digest moved, and the mismatch was reported. Second: cost shape. The warmed graph stays close to flat across a 65,536-fold range of work. Fixed submission overhead dominates it. A scalar loop, by contrast, climbs linearly. Read that as amortization, not throughput. I will show you why on the next screen. Third: the operation nothing else offers. Erase a function. Rediscover it by search. Then have an independent proof checker confirm it over the whole input space. That now includes one flip-flop, proven by induction.",
+      "durationHintSec": 64
+    },
+    {
+      "kind": "concept",
+      "id": "where-it-loses",
+      "kicker": "Stated plainly",
+      "headline": "Where it loses",
+      "subhead": "Paired throughput · single instance · simplification · encrypted cost",
+      "layout": "art-band",
+      "backgroundAsset": "06-where-it-loses.svg",
+      "voiceover": "Now the losses. If you only remember one screen from this episode, make it this one. On matched end-to-end work, both timers include preparation, execution, readback, and the same ordered digest. At 65,536 lanes, HELUT measured 8.544 milliseconds. Sixteen-worker Verilator measured 7.422 milliseconds. That is 15.1 percent slower, with no crossover at any width I have tested. At a single instance it loses by roughly four orders of magnitude. On simplification it does not win either. Run the discovered circuit and the hand-designed one through the same ABC recipe, and they tie: zero wins, 18 ties, zero losses. The encrypted path costs hundreds of milliseconds per gate at production parameters. The native-dimension processor check still fails. I have never benchmarked against a discrete graphics card. I cannot tell you this chip beats that one.",
+      "durationHintSec": 70
+    },
+    {
+      "kind": "concept",
+      "id": "why-apple",
+      "kicker": "The lynchpin, made mechanical",
+      "headline": "Why unified memory is load-bearing",
+      "subhead": "host builds → GPU evaluates wide → host inspects → repeat",
+      "layout": "art-band",
+      "backgroundAsset": "07-research-bets.svg",
+      "voiceover": "People hear this next part as brand loyalty, so here is the mechanism instead. This workload is a loop. The host builds candidates, the GPU evaluates them wide, the host inspects the results and breeds the next round, and that repeats thousands of times. On a discrete card every one of those boundaries is a staged copy across a bus, and the accelerator is capped at its own memory. Here the host code, the hand-written Metal shaders, and Metal Performance Shaders Graph all allocate from one physical pool, and the GPU can draw on machine memory. That is why large candidate tensors are practical at all. Capacity is usable, though not free: at degree 1024 with a thousand lanes, resident memory peaked near 6 gigabytes and the tick rate fell to 13.6 per second from about 69. So this is an argument about what is possible on hardware you can buy, not a measurement that the architecture wins. I have never run that comparison.",
+      "durationHintSec": 72
+    },
+    {
+      "kind": "concept",
+      "id": "binarity-trap",
+      "kicker": "The failure worth showing",
+      "headline": "A clean-looking answer that was wrong",
+      "subhead": "Fully binary · target fitness -16 · independently refuted",
+      "backgroundAsset": "02-evidence-boundaries.svg",
+      "voiceover": "Here is the part I find most useful. It is a failure. When I erased an entire small circuit instead of part of one, the search came back fully binary. Every value snapped cleanly to zero or one. But target fitness was -16, so the objective already said the answer was wrong. The independent proof checker then refuted it over the full input domain, turning that warning into an external check. So zero fractional entries means discrete, not correct. More search did fix this same fixture, 500 generations instead of 120. That makes it a budget-sensitive failure rather than a hard wall, and it is exactly why binarity, fitness, and independent proof must stay separate.",
+      "durationHintSec": 44
     },
     {
       "kind": "narration",
-      "id": "what-runs",
-      "headline": "What runs today",
+      "id": "whats-open",
+      "headline": "What is not settled",
       "bullets": [
-        "Supported Yosys circuits → CPU and Metal graphs",
-        "Cleartext batches, encrypted LUTs, TensorLUT search",
-        "Application case studies keep separate claims"
-      ],
-      "backgroundAsset": "01-substrate-map.svg",
-      "voiceover": "Today the repository compiles supported Yosys circuits to CPU and Metal graphs. It runs cleartext batches, encrypted look-up-table demonstrations, and TensorLUT synthesis experiments. It has also booted a processor core under encryption, one clock tick at a time. I used the cleartext batch path for the P1030680 Enigma campaign, and a later rotor-inspired experiment called E256 grew out of it.",
-      "durationHintSec": 30
-    },
-    {
-      "kind": "narration",
-      "id": "non-claims",
-      "headline": "The non-claims are part of the result",
-      "bullets": [
-        "No claim to have invented torus FHE",
-        "Enigma application: no P1030680 decrypt",
-        "E256 offshoot: no production-security claim"
+        "Sequential repair now proven: 1 flip-flop, by induction",
+        "Batch lanes now distinct: 589,824 bits checked, 0 mismatches",
+        "Discovered circuits: same LUT count as hand-designed, 6 vs 6",
+        "Encrypted path: hundreds of milliseconds per gate"
       ],
       "backgroundAsset": "02-evidence-boundaries.svg",
-      "voiceover": "HELUT did not invent torus fully homomorphic encryption. In the Enigma application, it has not decrypted P1030680. The later E256 offshoot is not approved for real secrets, and cross-implementation parity is not a security proof. Even the hardness estimates are configuration-specific: of eight compared parameter sets, only four agree with the reference estimator inside the stated tolerance.",
-      "durationHintSec": 30
+      "voiceover": "What is not settled, and two things that just stopped being open. The live repair demonstration was combinational, but the proof loop is no longer limited to combinational circuits: a state transition behind a flip-flop has now been erased, rediscovered, and proven by induction, with a reset-to-divergence trace when you corrupt it. That result covers one flip-flop, not a processor, so keep the claim narrow. The batch benchmark used to feed every lane the same data, which made its scaling table a memory-traffic measurement rather than throughput. That one is closed too: the shipped path carries 65,536 distinct inputs and checks all 589,824 output bits against per-lane oracles, with 0 mismatches. In a separate 256-lane negative control, corrupting lane 37 moves the digest and surfaces five mismatches. Still closed as a null: put the searched circuit and the hand-designed one through the same ABC recipe and they tie, 18 runs out of 18, so there is no area win to claim. And the encrypted path is still slow and still small, hundreds of milliseconds for a single gate at production parameters. Each has a specific experiment attached. That is the difference between an open question and a hand-wave.",
+      "durationHintSec": 78
     },
     {
       "kind": "concept",
-      "id": "living-research",
+      "id": "research-bets",
+      "kicker": "Why pursue it anyway",
+      "headline": "A research position, stated as one",
+      "subhead": "Where it may still win · where I may be wrong",
+      "layout": "art-band",
+      "backgroundAsset": "07-research-bets.svg",
+      "voiceover": "So why keep going? Given all that, the question is fair. The bridge is proven and the operations are real, while none of them has beaten an incumbent yet. Both halves of that sentence matter. This is a research position, not a product. Here is where I think it can still win. Encrypted evaluation, because sharing one representation between cleartext and ciphertext is a structural advantage rather than a constant factor. And repair rather than minimization: ABC minimizes a function you already have, while search can recover one you have lost. Those are different jobs, and only the second is open ground. One result keeps me at it. It is the shape of the gap. Across the eight widths I tested, the paired gap narrows every single time. It starts at 77 times native at one lane. Then 3.9 at 1,024; 1.63 at 16,384; 1.35 at 32,768; and 1.151 at 65,536. Eight steps, no reversal. I ran out of fixture before I ran out of trend, because 65,536 is every input a 16-bit adder has. Whether that continues is a prediction, not a result. Here is where I may well be wrong. Cleartext throughput may never cross, because the digest both sides must compute is already 78 percent of my time. Simplification may stay a null. And the encrypted processor may stay out of reach at native dimensions. Naming them now costs me nothing. Discovering them in public later would cost a lot.",
+      "durationHintSec": 106
+    },
+    {
+      "kind": "concept",
+      "id": "ledger",
       "kicker": "Living ledger · dated claims",
-      "headline": "Deliberately unfinished",
-      "subhead": "Re-measured, corrected, withdrawn, replaced.",
+      "headline": "Corrected in public",
+      "subhead": "Re-measured · withdrawn · replaced",
       "backgroundAsset": "03-living-ledger.svg",
-      "voiceover": "This project is deliberately unfinished. The claim sheet is a living ledger: results get measured again, and some get withdrawn. One encrypted failure turned out to be a nondeterminism bug rather than a limit. Seven timing rows had understated the code by about two times. The work is a search for new levers, new applications, and better evidence. When a claim breaks, it gets fixed in public, with the correction recorded.",
-      "durationHintSec": 31
+      "voiceover": "Which is why every claim in this series carries a date. The ledger changes as evidence arrives. Results get measured again and some get withdrawn. One encrypted failure turned out to be a nondeterminism bug rather than a limit. Seven old measurements made the code look roughly half as fast as the remeasurement showed. HELUT did not invent torus fully homomorphic encryption, and it has not broken the P1030680 message. The E256 offshoot is not fit for real secrets. I would rather show you the boundary. I will not sell you the middle.",
+      "durationHintSec": 40
     },
     {
       "kind": "outro",
@@ -85,8 +141,8 @@
       "subhead": "One Yosys circuit, from JSON to a Metal graph.",
       "nextEpisode": "The compiler substrate",
       "backgroundAsset": "03-living-ledger.svg",
-      "voiceover": "Next, we follow one supported Yosys circuit from JSON into a Metal graph. That shared compiler makes the later cleartext, encrypted, and TensorLUT paths easier to understand.",
-      "durationHintSec": 17
+      "voiceover": "Next time, one Yosys circuit from JSON into a Metal graph. That shared compiler is what every other claim in this series stands on, and it is where the receipts start.",
+      "durationHintSec": 18
     }
   ]
 }

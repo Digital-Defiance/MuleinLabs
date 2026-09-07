@@ -1,0 +1,72 @@
+{
+  "schemaVersion": 1,
+  "captureId": "episode15-freeze-and-roundtrip",
+  "role": "live experiment capture",
+  "transcript": "CAPTURE_TRANSCRIPT.md",
+  "summary": "Two suites via the prebuilt release bundle: TensorFreezeMaskTests (6 tests, 1.39 s) and TensorLUTYosysRoundTripTests (14.39 s), including the two TENSORLUT_SEQUENTIAL_EQUIV lines that close the no-flip-flops-in-the-proof-loop item.",
+  "reproduce": {
+    "workingDirectory": "helut-videos repository root at /Volumes/Code/MuleinLabs/helut-videos",
+    "prerequisites": [
+      "bash",
+      "xcrun",
+      "yosys",
+      "VHS 0.11.0",
+      "A current `swift build -c release` in the sibling HELUT checkout for tapes that invoke HELUT binaries or the prebuilt XCTest bundle"
+    ],
+    "commands": [
+      "vhs validate captures/ep15-melt-freeze-prove/episode15-freeze-and-roundtrip.tape",
+      "vhs captures/ep15-melt-freeze-prove/episode15-freeze-and-roundtrip.tape"
+    ],
+    "behavior": "Re-records a live execution. Timing-sensitive figures will differ between takes; the pass/fail gates and printed boundaries should not.",
+    "workspacePathConstraint": "The tape uses absolute paths under /Volumes/Code/MuleinLabs and must be adjusted if the workspace is relocated."
+  },
+  "captureMethod": {
+    "recorder": "VHS",
+    "terminal": "real Bash pseudo-terminal",
+    "mode": "live execution recorded during filming",
+    "executedExperimentDuringCapture": true,
+    "uploaded": false,
+    "tape": {
+      "repo": "helut-videos",
+      "path": "captures/ep15-melt-freeze-prove/episode15-freeze-and-roundtrip.tape",
+      "sha256": "bfcbbcc2ce432ae9510dede2037700d0821aecd5a1ee09be228b1e725592ad5e",
+      "requestedFrameRate": 30
+    }
+  },
+  "video": {
+    "repo": "helut-videos",
+    "path": "public/captures/ep15-melt-freeze-prove/episode15-freeze-and-roundtrip.mp4",
+    "sha256": "7b6e842ff61f0ccd900b86df40290ab4c5e6ab4bbff3799f3f94311397df8f6f",
+    "container": "mov,mp4,m4a,3gp,3g2,mj2",
+    "codec": "h264",
+    "pixelFormat": "yuv420p",
+    "width": 1280,
+    "height": 720,
+    "encodedFrameRate": "25/1",
+    "durationSeconds": 60.68,
+    "sizeBytes": 671651
+  },
+  "observedOnScreen": [
+    "TENSORLUT_SEQUENTIAL_EQUIV ok: erased transition refuted; search recovered q_next=q XOR x behind 1 DFF",
+    "TENSORLUT_SEQUENTIAL_EQUIV negative control: one discovered INIT bit flipped; induction left Q unproved"
+  ],
+  "validation": {
+    "tapeSyntaxValidated": true,
+    "mp4ProbedSuccessfully": true,
+    "hashesRecomputedFromDisk": true,
+    "episodeSceneDurationMatchesMedia": true,
+    "liveExecutionDuringRecording": true,
+    "commandEchoWrapOrOverlapObserved": true,
+    "priorVisualReviewRecordedIn": "captures/LIVE_CAPTURES.md and the linked transcript",
+    "framesReInspectedThisPass": false
+  },
+  "timingContext": {
+    "interpretation": "Elapsed figures visible on screen are local observations on one Apple-silicon host from the filmed take. They are not deterministic contracts and will vary between runs; the correctness gates and printed boundaries are the durable content."
+  },
+  "claimBoundaries": [
+    "Live run recorded during filming, not archived playback.",
+    "Sequential repair is one flip-flop on a toy toggle fixture, not a processor.",
+    "XCTest buffers stdout across tests, so the eight result lines appear in a non-obvious order; each line is self-contained.",
+    "Runs the prebuilt release XCTest bundle, so a current release build is required."
+  ]
+}

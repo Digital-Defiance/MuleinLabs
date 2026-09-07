@@ -3,7 +3,7 @@
   "compositionId": "Episode14",
   "title": "The Skeptic's Benchmark",
   "youtubeTitle": "Does Tensorized Verilog Actually Help? An Honest HELUT Benchmark",
-  "description": "A technically informed skeptic asks the right questions: what problem does tensorizing a synthesized circuit solve, is it more efficient than native HDL execution, and why target Apple silicon? This episode answers with the current receipt, the current gaps, and the architectural case for unified memory. A 688-LUT, 26-DFF Enigma M3 netlist runs through HELUT's trivial, noise-free N=1024 Metal path and agrees exactly with the clear oracle on a 25-letter transcript, in three of three runs. The saved log separates compile, first-tick JIT, steady ticks, stream time, and resident memory, and it reports a median with its spread rather than one number. Apple silicon matters here because host orchestration, Metal shaders, and MPSGraph allocate through shared buffers in one physical memory pool, which suits iterative Enigma candidate, scoring, and survivor workflows without claiming that synchronization is free. The episode does not claim encryption, distinct-lane batch throughput, superiority over Verilator, CXXRTL, or a discrete GPU, or a cross-platform result. It pre-registers the comparisons required to answer those questions honestly. Epoch C69.",
+  "description": "A technically informed skeptic asks the right questions: what problem does tensorizing a synthesized circuit solve, is it more efficient than native HDL execution, and why target Apple silicon? This episode answers with a sealed matched-circuit receipt rather than a selected timing. On one 8-bit ripple adder, the historical warmed-graph comparison shows graph amortization against scalar Verilator, but the accepted paired scope counts deterministic preparation, synchronized execution, strict readback, and the same ordered digest on both sides. At B=65,536 HELUT measured 8.544 milliseconds versus 7.422 milliseconds for 16-worker Verilator: HELUT remained 15.1 percent slower, with no paired crossover through that width. The digest is required shared work inside both timers and is not subtracted to synthesize a separate evaluator ratio. A separate HELUT graph sweep reaches 1,048,576 lanes, but high-width native values are projections on another fixture, not same-width paired results. The episode also preserves the lane-distinct correctness gate: 65,536 distinct assignments, 589,824 checked output bits, zero mismatches, and a corruption control that moves the digest. A 688-LUT, 26-DFF Enigma M3 netlist separately runs through HELUT's trivial, noise-free N=1024 Metal path and agrees with the clear oracle on a 25-letter transcript. Apple silicon matters here because host orchestration, Metal shaders, and MPSGraph share one physical memory pool; that is an architectural rationale, not a measured win over a discrete GPU. No encryption, sequential-lane throughput, general HDL superiority, CXXRTL result, Apple exclusivity, or cross-platform conclusion is claimed. Epoch C69.",
   "claimEpoch": "2026-08-20 / C69",
   "fps": 30,
   "width": 1920,
@@ -14,38 +14,36 @@
       "id": "title",
       "eyebrow": "HELUT · objection accepted · receipts first",
       "headline": "Does tensorized Verilog actually help?",
-      "subhead": "Start with the null hypothesis: native wins.",
+      "subhead": "The method behind the number, not the pitch.",
       "backgroundAsset": "01-title.svg",
-      "voiceover": "A skeptic on Reddit asked the three questions this project has to answer. Hardware simulators already reproduce Verilog and V H D L accurately, so why turn a circuit into tensors? Is that actually faster than compiling H D L to native code? And if it is not, why should anyone care which chip it runs on? I will take those in order, starting from the assumption that native execution wins. What follows is one measured receipt, one caveat that undercuts the most quotable number in the repository, and a written-down experiment that could kill the performance thesis outright.",
-      "durationHintSec": 52
-    },
-    {
-      "kind": "concept",
-      "id": "not-an-hdl-simulator",
-      "kicker": "Define the object before timing it",
-      "headline": "HELUT does not simulate arbitrary Verilog",
-      "subhead": "Yosys first · two-state LUT and DFF netlist second",
-      "backgroundAsset": "02-supported-subset.svg",
-      "voiceover": "First, remove a category error. HELUT is not a replacement for an event-driven H D L simulator. Yosys does the front-end and synthesis work, and A B C, the logic mapper Yosys calls, packs the resulting gates into lookup tables. HELUT picks up after that, from a two-state netlist of lookup tables, flip-flops, and ports. It has no model of behavioral Verilog, propagation delay, signal strength, or the four-state X and Z values a real simulator tracks. Bit accuracy, then, is not the selling point. Verilator and Icarus already own that job. The open question is what a restricted Boolean graph gains by being tensors: batching independent instances, reuse on a Metal graph substrate, sharing one representation with the encrypted path, or turning truth tables into a continuous search space.",
-      "durationHintSec": 58
-    },
-    {
-      "kind": "concept",
-      "id": "what-tensors-add",
-      "kicker": "Two axes · two different meanings",
-      "headline": "Batch instances and wire degree",
-      "subhead": "B copies of a circuit · N coefficients per encoded wire",
-      "backgroundAsset": "03-two-axes.svg",
-      "voiceover": "The tensor representation adds two independent axes. B is how many copies of the circuit ride along together. N is how many coefficients stand in for a single logical wire. N equals one is the smallest Boolean shape there is. N equals one thousand twenty-four matches the polynomial size the encrypted side of this project uses, though a constant-filled, noise-free vector at that size is still not encrypted data. Those axes give experiments a graph-shaped substrate that scalar simulation was never designed around. What they do not give is a speedup. A tensor can expose parallel work. Whether the machine then executes that work efficiently is a measurement, not a definition.",
-      "durationHintSec": 55
+      "voiceover": "Episode zero answers what HELUT is and where it loses. This episode is the receipt underneath that answer: how the comparison was built, what it cost to make it fair, and every correction I had to publish along the way. If you want the number without the method, you already have it. HELUT is 15.1 percent slower than 16-worker Verilator on matched work. What follows is why I trust that figure more than the flattering one I started with.",
+      "durationHintSec": 38
     },
     {
       "kind": "capture",
-      "id": "current-receipt",
-      "videoAsset": "episode14-current-receipt.mp4",
-      "label": "ARCHIVED RECEIPT PLAYBACK · preserved 2026-09-05 log · not a fresh timing run",
-      "voiceover": "Here is what the repository can defend today. The synthesized Enigma M three graph holds six hundred eighty-eight lookup tables, twenty-six flip-flops, ten inputs, and eight outputs. I ran the N one thousand twenty-four, B one configuration three times on an M four Max. Median compile: zero point zero three eight three seconds. The first tick cost zero point three zero seven four seconds, because that tick pays to build and specialize the Metal kernels, the just-in-time cost. The nine ticks after it averaged zero point zero one four eight seconds, which the harness prints as sixty-seven point four nine ticks per second. Then a clear oracle, an independent scalar simulator in Swift that reads the same netlist and never touches the G P U, and the Metal path both produced K E I N E B E S O N D E R E N E R E I G N I S S E. All twenty-five letters matched, in all three runs. Why a median instead of a single number? Because the same netlist and tensor shape logged sixty-six to seventy-two ticks per second in archived August runs, and three cold passes earlier today logged about fifty-one. One number here would be fiction.",
-      "durationHintSec": 83.48
+      "id": "native-and-lanes",
+      "videoAsset": "episode14-native-and-lanes.mp4",
+      "label": "SEALED RECEIPT PLAYBACK · final source and receipt hashes shown · no timing rerun",
+      "voiceover": "Same circuit lineage on both sides. Same deterministic stimulus. Every digest matches, or the timings are void. Read the two scopes separately. BASELINE is the historical flattering row: HELUT's warmed synchronized graph call against a scalar native loop that also assigns, evaluates, reads, and hashes. It demonstrates sampled graph amortization, not end-to-end throughput. PAIRED is the accepted verdict: deterministic preparation, all input writes, synchronized execution, strict output readback, and the ordered digest counted on both sides, with Verilator using 16 persistent workers. At 65,536 lanes HELUT is 8.544 milliseconds and native is 7.422. HELUT remains 15.1 percent slower, and there is no paired crossover through the largest tested width. The next screen is correctness rather than speed: 65,536 different assignments and 589,824 output bits checked against their own oracles, with zero mismatches. Last, the teeth: corrupt lane 37 of 256 and the digest changes and the checker reports five mismatches. A gate that cannot fail is decoration.",
+      "durationHintSec": 71.64
+    },
+    {
+      "kind": "concept",
+      "id": "the-scope",
+      "kicker": "What is being compared",
+      "headline": "A two-state netlist, not a Verilog simulator",
+      "subhead": "Yosys and ABC do the front end · B batches instances · N is wire degree",
+      "backgroundAsset": "02-supported-subset.svg",
+      "voiceover": "First, what is actually in the comparison. HELUT is not a replacement for an event-driven simulator. Yosys does the front end and synthesis, ABC packs the gates into lookup tables, and HELUT starts from that two-state netlist of tables, flip-flops and ports. It has no model of behavioural Verilog, propagation delay, signal strength, or the X and Z values a real simulator tracks. So bit accuracy is not the selling point; Verilator and Icarus already own that. What the tensor form adds is two axes. B is how many independent copies of the circuit ride along together. N is how many coefficients stand in for one logical wire, where N equals one is plain Boolean and N equals 1,024 matches the polynomial size the encrypted side uses. Those axes expose parallel work. Whether the machine executes that work faster than a compiler does is the measurement, not the definition.",
+      "durationHintSec": 74
+    },
+    {
+      "kind": "capture",
+      "id": "enigma-live",
+      "videoAsset": "episode14-enigma-live.mp4",
+      "label": "LIVE RUN · recorded 2026-09-05 · not a replay",
+      "voiceover": "Same experiment, running now, not replayed. A synthesized Enigma rotor machine: 688 lookup tables, 26 flip-flops, 10 inputs, 8 outputs, evaluated as tensors at polynomial size 1024. Read the labels first, because the tool volunteers its own limits. Batch mode: legacy broadcast. Encoding: constant-fill, trivial, noise-free. That is not encrypted data and nothing pretends otherwise. Compile lands under 40 milliseconds. The first tick costs about 0.3 seconds because it pays to build and specialize the Metal kernels, and the 9 ticks after it average roughly 15 milliseconds. Then the gate that matters. A clear oracle written in Swift, which never touches the GPU, and the Metal path both produce the same 25 letters: KEINEBESONDERENEREIGNISSE. Result, PASS. Second screen, three more runs back to back: 66.5, 67.1, and 67.2 ticks per second. The run before them read 68.5. That spread across four passes in one sitting is why a single number here would be fiction.",
+      "durationHintSec": 63.88
     },
     {
       "kind": "concept",
@@ -54,38 +52,48 @@
       "headline": "The existing batch sweep repeats one feed",
       "subhead": "B=1000 is not yet 1000 independently checked vectors",
       "backgroundAsset": "05-batch-caveat.svg",
-      "voiceover": "Now the caveat that undercuts the most quotable number in the repository. The clock benchmark fills every batch lane with the same encoded value. Enable is held at one, reset follows a scripted schedule, and every other primary input sits at zero. Output tensors do get written, but the timed loop never reads them back and never hashes them per lane. So the existing B scaling table measures graph shape, allocation, synchronization, and memory pressure. It does not measure useful throughput over one thousand distinct vectors, and describing it as a thousand-way verified simulation would be a lie. Three things have to change before a batching claim is allowed: every lane doing independent work, a canonical checksum over ordered outputs and final state, and a deliberately corrupted bit that makes the checksum fail.",
-      "durationHintSec": 58
-    },
-    {
-      "kind": "concept",
-      "id": "native-gap",
-      "kicker": "The Reddit question, answered literally",
-      "headline": "Is it faster than native HDL?",
-      "subhead": "Current answer: the repository has not established that",
-      "backgroundAsset": "06-native-gap.svg",
-      "voiceover": "There is no Verilator benchmark in this repository, and none for C X X R T L, the C plus plus simulation backend Yosys ships, either. Not over the same synthesized artifact, not over the same stimulus. The clear Swift simulator is an oracle: a per-bit interpreter walking dictionaries. It is deliberately simple so it can be trusted, which also makes it useless as a performance baseline. Every timing table in the repo compares HELUT against other HELUT configurations. So the literal answer to the question is that HELUT has not established that tensor execution beats H D L compiled to native code. That gap is testable, which is the only reason it is worth admitting out loud. A credible series shows native winning where native wins, prices the setup and the memory, and saves the word crossover for a point where the same checked work actually changes the ordering.",
-      "durationHintSec": 60
-    },
-    {
-      "kind": "concept",
-      "id": "benchmark-contract",
-      "kicker": "Pre-register before measuring",
-      "headline": "Same circuit. Same work. Same digest.",
-      "subhead": "Verilator · post-ABC native · HELUT · repeated trials",
-      "backgroundAsset": "07-benchmark-contract.svg",
-      "voiceover": "The missing comparison has a contract, and writing it down before measuring is the whole point. Three circuits: a tiny combinational control, a medium lookup-table workload, and a sequential design with independent state per lane. Two native baselines: one built from authored R T L, one built from the same post-A B C graph HELUT consumes, so nobody can blame the mapper for the result. One corpus, deterministic and lane-distinct, fed to every backend. Outputs consumed inside the timed region, then hashed outside it, over ordered outputs and final state. Flip one expected bit and the checksum gate has to fail, or the gate is decoration. Then sweep batch size with total useful work held constant, and report all of it: build time, graph compile, first tick, steady compute, end-to-end break-even, vectors per second, peak resident memory, the spread across repeated trials, and every crash or out-of-memory point.",
+      "voiceover": "Now the caveat that used to undercut the most quotable number here, and the receipt that closed it. The old clock benchmark filled every batch lane with the same encoded value. Output tensors were written, but the timed loop never read them back and never hashed them per lane. That scaling table measured graph shape, allocation, and memory pressure, not useful work, and calling it a thousand-way verified simulation would have been a lie. Three things had to change before any batching claim was allowed: every lane doing independent work, a canonical checksum over ordered outputs, and a deliberately corrupted bit that makes the checksum fail. All three exist now. At B=65,536 the distinct-lane path carries 65,536 different input assignments, checks all 589,824 output bits against per-lane clear oracles, and reports 0 mismatches under one digest, with 511 distinct output signatures. And it has teeth: corrupting one lane moves the digest and surfaces the mismatch. That is verified batching, not proof of superior throughput.",
       "durationHintSec": 68
     },
     {
       "kind": "concept",
-      "id": "why-apple-silicon",
-      "kicker": "The architectural reason · one memory pool",
-      "headline": "Unified memory is the big win",
-      "subhead": "Host code · Metal shaders · MPSGraph · shared buffers",
-      "backgroundAsset": "08-unified-memory.svg",
-      "voiceover": "Why Apple silicon? The practical answer is that it is the hardware I own, and a lot of other people own it too. The architectural answer is unified memory. HELUT's host code, its hand-written Metal compute shaders, and Metal Performance Shaders Graph all allocate through shared Metal buffers backed by one physical memory pool, instead of treating C P U memory and discrete V R A M as two separately staged worlds. The host writes inputs and state, a shader or a graph reads those same allocations, and the host inspects results after synchronization. The G P U also draws on the machine's whole memory capacity rather than a fixed V R A M budget. None of that makes movement or synchronization free, and none of it is a speedup. What it does is make tightly coupled, memory-hungry hybrid experiments practical on hardware you can buy in a shop.",
-      "durationHintSec": 64
+      "id": "native-gap",
+      "kicker": "The Reddit question, answered both ways",
+      "headline": "Is it faster than native HDL?",
+      "subhead": "Historical graph amortizes · paired scope remains 15.1% short",
+      "backgroundAsset": "06-native-gap.svg",
+      "voiceover": "For most of this project's life nobody had measured the native comparison. Now there is a Verilator baseline over the same emitted circuit lineage, the same deterministic assignments, and the same digest gate. The historical rows preserve the old scope: one warmed synchronized HELUT graph call versus a scalar Verilator loop that assigns, evaluates, reads, and hashes. Those rows can show a sampled HELUT win at large B, but the comparison is intentionally asymmetric and the sampled threshold moves between runs. The paired row is the result to hand a skeptic. It counts deterministic assignment and input packing, synchronized execution, strict readback and materialization, and the ordered digest on both sides, with native using 16 persistent workers. At B=65,536 HELUT measured 8.544 milliseconds versus native at 7.422. That is 1.151 times native, or 15.1 percent slower. No paired crossover was observed through B=65,536.",
+      "durationHintSec": 78
+    },
+    {
+      "kind": "concept",
+      "id": "where-the-time-went",
+      "kicker": "Profile first · preserve every failed claim",
+      "headline": "We recovered the host path; native still leads",
+      "subhead": "32.414 ms → 8.544 ms HELUT · 1.122 ms paired gap remains",
+      "backgroundAsset": "06-native-gap.svg",
+      "voiceover": "The useful result is not just the final ratio; it is the recovery path. The original decomposed HELUT paired median at 65,536 lanes was 32.414 milliseconds. Flat lane-major output storage removed tens of thousands of tiny allocations. Precomputed port metadata and exact pointer decoding repaired assignment, packing, and readback overhead. A cost-selected constant-fill Shannon graph reduced the live logical arithmetic in this fixture from 1,116 operations to 194. Finally, an exact degree-one input pack kept every one of the 1,114,112 writes but cut the packing median from 1.240 milliseconds to 0.529. The final HELUT median is 8.544 milliseconds. Its phase medians are 0.030 for assignment, 0.529 for packing, 0.766 for graph execution, 0.548 for strict decode, and 6.677 for the ordered digest. Native is still ahead by 1.122 milliseconds. No one non-digest micro-phase is large enough to close that gap alone, so the next work is a combination, not a relabeled timer. One more thing the table says out loud: the paired ratio narrows at every width tested, from 77 times native at a single lane to 1.151 at 65,536, with no reversal. That is eight steps in one direction. It is also where the fixture ends, because 65,536 is the entire input space of a 16-bit adder, so a wider test needs a bigger circuit rather than a bigger batch.",
+      "durationHintSec": 116
+    },
+    {
+      "kind": "concept",
+      "id": "the-shared-constant",
+      "kicker": "The correction that matters",
+      "headline": "Shared work stays in the contract",
+      "subhead": "Digest inside both timers · no post-hoc subtraction",
+      "backgroundAsset": "07-benchmark-contract.svg",
+      "voiceover": "A previous draft tried to turn the shared digest into a separate evaluator headline. That was not defensible. Both backends hash the same lane, wire, and value words in the same order: 12 bytes per output bit, about 7.1 million bytes at 65,536 lanes. The accepted paired contract includes that work inside both timers. It is real output consumption and a correctness gate, not a tax we may remove after seeing the result. Native's narrower prepared timer excludes assignment and digest while including worker synchronization, evaluation, and output collection. HELUT's graph timer is a different boundary. Subtracting independent medians or comparing those unequal phases does not produce an honest native-evaluation ratio. The claim is therefore the direct paired result: 15.1 percent behind, digest included, no crossover through the tested range.",
+      "durationHintSec": 82
+    },
+    {
+      "kind": "concept",
+      "id": "benchmark-contract",
+      "kicker": "The contract was written first · one row is filled",
+      "headline": "Same circuit. Same work. Same digest.",
+      "subhead": "One combinational result · sequential and broader baselines still open",
+      "backgroundAsset": "07-benchmark-contract.svg",
+      "voiceover": "The accepted comparison was frozen before its one retained run. One emitted Verilog circuit feeds both lineages. The lane corpus is deterministic and exhaustive at 65,536. HELUT rewrites every input buffer, executes one synchronized graph, strictly reads and materializes every output, and computes the canonical ordered digest. Native prepares every assignment, evaluates and stores every output with a persistent 16-worker pool, and computes the same digest. All of that stays inside the paired boundary. Five timed passes are retained at each of eight widths, and every raw array remains visible. This fills one bounded row: one combinational 8-bit ripple adder on one Mac. Still open are a sequential design with independent state per lane, an authored-RTL baseline beside the artifact-matched one, CXXRTL, other hosts, and a constant-total-work sweep. Naming the open rows is part of the result.",
+      "durationHintSec": 77
     },
     {
       "kind": "concept",
@@ -94,7 +102,7 @@
       "headline": "Build candidates on the CPU; sweep them on the GPU",
       "subhead": "Settings · tables · ciphertext · scores · survivors · repeat",
       "backgroundAsset": "09-enigma-unified-memory.svg",
-      "voiceover": "Enigma makes that pattern concrete. Host code organizes rotor, ring, and starting-position settings, plugboard pairs, and candidate populations. Wide Metal kernels sweep many settings or scoring lanes at once. The host then filters survivors, tightens constraints, breeds the next generation, and starts another round. With shared buffers those phases can live in one memory pool instead of paying a staging tax at every boundary. Large candidate tensors can spend real unified memory. But capacity is not throughput, and the repository has a receipt that proves it. At N one thousand twenty-four and B one thousand, resident memory peaked near six gigabytes and the tick rate fell to thirteen point six two per second, against roughly sixty-nine at B equals one. So the defensible claim is that unified memory opens this design space. Beating a discrete G P U inside it is a separate measurement nobody here has taken.",
+      "voiceover": "Enigma makes that pattern concrete. Host code organizes rotor, ring, and starting-position settings, plugboard pairs, and candidate populations. Wide Metal kernels sweep many settings or scoring lanes at once. The host then filters survivors, tightens constraints, breeds the next generation, and starts another round. With shared buffers those phases can live in one memory pool instead of paying a staging tax at every boundary. Large candidate tensors can spend real unified memory. But capacity is not throughput, and the repository has a receipt that proves it. At N=1024 and B=1000, resident memory peaked near 6 gigabytes and the tick rate fell to 13.62 per second, against roughly 69 at B=1. So the defensible claim is that unified memory opens this design space. Beating a discrete GPU inside it is a separate measurement nobody here has taken.",
       "durationHintSec": 66
     },
     {
@@ -103,14 +111,17 @@
       "headline": "The current verdict",
       "bullets": [
         "Proved: supported Yosys LUT/DFF graphs execute on Metal",
-        "Proved: clear oracle and Metal outputs agree, 3 of 3 runs",
-        "Implemented: shared-buffer CPU/GPU workflows on unified memory",
-        "Open: native speedup, lane-distinct batch throughput",
-        "Not claimed: full HDL semantics or Apple exclusivity"
+        "Proved: 589,824 lane-distinct output bits, 0 mismatches",
+        "Measured: historical warmed graph can amortize against scalar native",
+        "Measured: paired HELUT is 15.1% slower at B=65,536",
+        "Required: identical ordered digest remains inside both timers",
+        "Observed: no paired crossover through B=65,536",
+        "Separate: million-lane HELUT graph sweep uses projected high-width native",
+        "Not claimed: encrypted speed, sequential lanes, Apple exclusivity"
       ],
       "backgroundAsset": "10-verdict.svg",
-      "voiceover": "So what does HELUT actually solve today? It bridges supported Yosys lookup-table graphs into a Metal tensor substrate, and on the circuit I tested, that substrate agrees with an independent clear oracle. It also gives host-orchestrated, G P U-evaluated experiments a shared-buffer home on one commodity memory pool. Those two facts establish that the bridge works, and they explain why this target is interesting. Neither one establishes superiority over native simulation. The batch result is not yet lane-distinct throughput. The Apple result is an architectural argument, not a verdict on architectures. Every open row on this list has a specific experiment attached to it, which is the only reason I am comfortable leaving them open.",
-      "durationHintSec": 58
+      "voiceover": "So what does HELUT actually solve today? It bridges supported Yosys lookup-table graphs into a Metal tensor substrate, and that substrate agrees with independent clear checks bit for bit on the bounded receipts. The batch axis is verified rather than broadcast: 65,536 assignments, 589,824 output bits, zero mismatches, and a digest that moves under deliberate corruption. On performance, the historical warmed graph can amortize against a scalar native loop, but that is not the paired verdict. Under the accepted end-to-end boundary HELUT is 15.1 percent slower than 16-worker Verilator at 65,536 lanes, with no paired crossover through that width. The shared digest stays inside both timers, and no 12-fold evaluator result is synthesized from unequal phase boundaries. A separate HELUT graph sweep reaches a million lanes, but its high-width native line is projected on another fixture. Cleartext paired superiority remains unproved. The tensor path remains valuable for shared encrypted machinery and searchable truth tables, where the next episodes put different claims under different gates.",
+      "durationHintSec": 88
     },
     {
       "kind": "outro",
@@ -119,8 +130,8 @@
       "subhead": "Next: melt the truth tables, freeze them again, and inspect the proof.",
       "nextEpisode": "Episode 15 · Melt. Freeze. Prove.",
       "backgroundAsset": "11-outro.svg",
-      "voiceover": "The tensor path gets more interesting when the circuit is not merely executed. A lookup table can be lifted out of zeros and ones into continuous values, searched against a target, and pushed back toward discrete hardware. That is melt and freeze, and it arrives with its own bill. Did the frozen circuit stay correct? Did the topology change? Did the resource count improve? Will Yosys take the emitted result back? And what happens when the search refuses to go binary? Episode fifteen puts the passing two-bit control, the round-trip checker, its negative control, and the failed M four run on the same screen.",
-      "durationHintSec": 52
+      "voiceover": "The tensor path gets more interesting when the circuit is not merely executed. A lookup table can be lifted out of zeros and ones into continuous values, searched against a target, and pushed back toward discrete hardware. That is melt and freeze, and it arrives with its own bill. Did the frozen circuit stay correct? Did the topology change? Did the resource count improve? Will Yosys take the emitted result back? And what happens when the search refuses to go binary? Episode 15 puts the passing two-bit control, the round-trip checker, its negative control, and the failed M4 run on the same screen. It also answers the last question a skeptic asked me: how this compares with logic simplification that already exists. The combined search-and-map flow has been measured against an identical ABC recipe, and it came back a tie on every run.",
+      "durationHintSec": 55
     }
   ]
 }

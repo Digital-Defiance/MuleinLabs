@@ -3,7 +3,7 @@
   "compositionId": "Episode03",
   "title": "TensorLUT",
   "youtubeTitle": "HELUT TensorLUT: Searching and Emitting Truth Tables",
-  "description": "TensorLUT turns supported Yosys LUT truth tables into continuous search variables, evaluates them on Metal, and emits discrete Verilog only when bounded checks pass. C44 and C48 stay scoped; this is not a P1030680 decrypt. Epoch C69.",
+  "description": "TensorLUT turns supported Yosys LUT truth tables into continuous search variables, evaluates them on Metal, and emits discrete Verilog only when bounded checks pass. A live proof ladder shows six implementation-level certificate checks; 2, 4, and 6 melted LUTs of an 8-LUT adder proving at one budget; all 8 returning a binary but wrong result at that budget; and the same 8-of-8 fixture proving with a larger budget. Analytic completeness remains narrow, while bounded SAT-backed fixtures now extend beyond two tables. This is not arbitrary-topology completeness and not a P1030680 decrypt. Epoch C69.",
   "claimEpoch": "2026-08-20 / C69",
   "fps": 30,
   "width": 1920,
@@ -18,6 +18,14 @@
       "backgroundAsset": "01-melt-freeze-snap.svg",
       "voiceover": "Another HELUT research path is TensorLUT. A look-up table normally has a fixed truth table, stored in a value called INIT. TensorLUT treats those entries as search variables, relaxes them to continuous values, and optimizes the circuit on Metal.",
       "durationHintSec": 22
+    },
+    {
+      "kind": "capture",
+      "id": "proof-ladder-live",
+      "videoAsset": "episode03-proof-ladder.mp4",
+      "label": "LIVE RUN · recorded 2026-09-06 · certificate plus bounded search fixtures",
+      "voiceover": "Read this as two ladders. First, the formal certificate: six implementation-level checks for the objective, emitter, involution structure, and freeze mask. That is not a convergence theorem. Second, a fixed 4-bit adder. Erase 2 of its 8 tables and the searched circuit proves. Erase 4, it proves. Erase 6, it proves. Erase all 8 at the same 120-generation budget and it returns fully binary but wrong: REFUTED, fitness -16. Third screen, same full erase with 500 generations: PROVED. So the old sentence that evidence stops at two tables is no longer true. The analytic theorem stays narrow; end-to-end SAT-backed fixtures now extend beyond two. Arbitrary topology and guaranteed convergence remain open.",
+      "durationHintSec": 63.84
     },
     {
       "kind": "concept",
@@ -46,10 +54,10 @@
       "id": "theorem",
       "kicker": "Bounded bridge",
       "headline": "Continuous does not automatically mean discrete",
-      "subhead": "C44 covers one observed LUT; C48 demonstrates a two-LUT cascade.",
+      "subhead": "The analytic result is narrow; SAT-backed fixtures now extend beyond two LUTs.",
       "backgroundAsset": "02-bounded-bridge.svg",
-      "voiceover": "The formal result is bounded, and the boundary is precise. For one fully observed look-up table, there is a proof that it returns to its target truth table from anywhere inside the snap basin: the region where every entry is already nearer its goal than its opposite. A second certificate extends that to a two-table cascade and emits Verilog. The ladder currently stops at two tables. Arbitrary multi-table netlists are the open frontier, not a solved case.",
-      "durationHintSec": 37
+      "voiceover": "The analytic result is bounded, and the boundary is precise. For one fully observed look-up table, there is a proof that it returns to its target truth table from anywhere inside the snap basin: the region where every entry is already nearer its goal than its opposite. A second certificate extends that analytic bridge to a two-table cascade and emits Verilog. That analytic completeness ladder still stops there. End-to-end evidence now goes farther: fixed ripple adders with 2, 4, and 6 of 8 tables melted prove; all 8 fail at the smaller budget and prove at 500 generations; and a 2-of-16 repair trained on 64 rows proves over all 65,536 inputs. Those are bounded deterministic fixtures, not arbitrary netlists or a convergence theorem.",
+      "durationHintSec": 58
     },
     {
       "kind": "narration",

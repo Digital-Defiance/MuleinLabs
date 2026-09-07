@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" role="img" aria-labelledby="t d">
+  <title id="t">Why pursue this research, and where it may fail</title>
+  <desc id="d">The bridge is proven while no operation has beaten an incumbent. Possible advantages are encrypted evaluation with one representation and repair of a lost function. Open risks are cleartext throughput, simplification, and encrypted processing at native dimensions. Unified memory supports the host-GPU search loop.</desc>
+  <rect width="1920" height="1080" fill="#091321"/>
+  <g font-family="Arial,sans-serif">
+    <g transform="translate(120 328)">
+      <rect width="1680" height="84" rx="16" fill="#101a2b" stroke="#66758a"/>
+      <text x="30" y="35" fill="#fff" font-size="25" font-weight="700">The bridge is proven. No operation has beaten an incumbent yet.</text>
+      <text x="30" y="66" fill="#9aa8b8" font-size="19">Both halves are load-bearing. This is a research position, not a product claim.</text>
+    </g>
+
+    <g transform="translate(120 434)">
+      <rect width="820" height="220" rx="22" fill="#132638" stroke="#22a89c" stroke-width="2"/>
+      <text x="30" y="36" fill="#22a89c" font-size="16" letter-spacing="2">WHERE IT MAY STILL WIN</text>
+      <text x="30" y="78" fill="#fff" font-size="26" font-weight="700">Encrypted evaluation</text>
+      <text x="30" y="108" fill="#9aa8b8" font-size="18">One representation for cleartext and ciphertext.</text>
+      <text x="30" y="151" fill="#fff" font-size="26" font-weight="700">Repair, not minimization</text>
+      <text x="30" y="181" fill="#9aa8b8" font-size="18">ABC minimizes a function you have.</text>
+      <text x="30" y="208" fill="#22a89c" font-size="18">Search can recover one you have lost.</text>
+    </g>
+
+    <g transform="translate(980 434)">
+      <rect width="820" height="220" rx="22" fill="#321b23" stroke="#d4833f" stroke-width="2"/>
+      <text x="30" y="36" fill="#d4833f" font-size="16" letter-spacing="2">WHERE IT MAY BE WRONG</text>
+      <text x="30" y="78" fill="#fff" font-size="24" font-weight="700">Cleartext throughput may never cross</text>
+      <text x="30" y="107" fill="#9aa8b8" font-size="18">the shared digest already consumes 78% of the time</text>
+      <text x="30" y="151" fill="#fff" font-size="23" font-weight="700">Simplification may stay a null</text>
+      <text x="30" y="184" fill="#fff" font-size="23" font-weight="700">Native encrypted processing may stay out of reach</text>
+      <text x="30" y="211" fill="#9aa8b8" font-size="18">These are predictions, not hidden results.</text>
+    </g>
+
+    <g transform="translate(120 676)">
+      <rect width="1680" height="134" rx="22" fill="#132638" stroke="#22a89c" stroke-width="2"/>
+      <text x="30" y="30" fill="#22a89c" font-size="16" letter-spacing="2">WHY UNIFIED MEMORY IS LOAD-BEARING</text>
+      <text x="30" y="64" fill="#fff" font-size="25" font-weight="700">host builds &#8594; GPU evaluates wide &#8594; host inspects &#8594; repeat</text>
+      <text x="30" y="94" fill="#9aa8b8" font-size="18">Host code, Metal shaders, and MPSGraph share one physical pool; large candidate tensors remain practical.</text>
+      <text x="30" y="120" fill="#d4833f" font-size="18">Capacity is usable, not free: N=1024, B=1000 peaked near 6 GB and fell from ~69 to 13.6 ticks/s.</text>
+    </g>
+  </g>
+</svg>

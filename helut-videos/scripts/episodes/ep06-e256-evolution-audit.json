@@ -36,8 +36,8 @@
       "headline": "Passing tests hid a collapsing machine",
       "subhead": "Thirty-five checks passed while the old recurrence lost almost all rank.",
       "backgroundAsset": "03-v1-autopsy.svg",
-      "voiceover": "Earlier E256 generations passed 35 of 35 tests while hiding structural failures. Their state transition lost rank; after 59 clocks, only rank five remained. About one in 32 sampled seeds locked at zero. One nonlinear formula also correlated with a linear input. Those profiles and their grades are quarantined. The lesson is not that evolution saved the cipher. It is that implementations can agree while testing the wrong invariant.",
-      "durationHintSec": 36
+      "voiceover": "Earlier E256 generations passed their whole test set while hiding structural failures. Their state transition lost rank as it clocked, a sampled fraction of seeds locked at zero, and one nonlinear formula correlated perfectly with a linear input. That last one is the only figure here I can still point at in a retained receipt, where normalized linear correlation reads one against a bound of 0.035. The specific counts I quote for the rest come from development notes whose logs were not kept, so treat them as history rather than evidence. Those profiles and their grades are quarantined. The lesson is not that evolution saved the cipher. It is that implementations can agree while testing the wrong invariant.",
+      "durationHintSec": 50
     },
     {
       "kind": "concept",
@@ -58,6 +58,14 @@
       "backgroundAsset": "05-evidence-ladder.svg",
       "voiceover": "The live fixture covers 1,024 payload bytes, nine tables, ten traces, and 25 artifacts. Swift, direct RTL, two bus paths, and an internal Rust consumer agree on that fixture. The publication suite reports 49 passing checks, plus one bounded five-part certificate. This is useful implementation evidence. It is not independent cryptanalysis, a confidentiality proof, or an external known-answer test.",
       "durationHintSec": 35
+    },
+    {
+      "kind": "capture",
+      "id": "evidence-ladder-receipt",
+      "videoAsset": "episode06-evidence-ladder.mp4",
+      "label": "PRESERVED RECEIPT · four implementations · one row left open",
+      "voiceover": "Here is that ladder as a file rather than a slide. Four independent implementations are listed with their own status: the Swift fixture suite, direct RTL, the native nonlinear feedback RTL, and a Rust reference that nobody shares code with. Under the Rust row is the ladder itself: 1,024 bytes of known answers, nine tables, ten trace files, 25 artifacts, and a reciprocal decrypt that passes. Then the formal certificate, which is exactly one test with five named checks, followed by 49 publication guard checks with zero failures. And then the screen I insisted on keeping. The optimizer verdict on this profile is a bounded failure, labelled in the file as not security evidence. Human review is pending and the audit finding is still open. Four agreeing implementations is a strong parity result and a weak security claim.",
+      "durationHintSec": 69.0
     },
     {
       "kind": "narration",

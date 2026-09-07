@@ -1,0 +1,112 @@
+{
+  "schemaVersion": 1,
+  "captureId": "episode02-revalidation-ledger",
+  "role": "post-determinism-fix re-validation ledger playback",
+  "transcript": "REVALIDATION_LEDGER_TRANSCRIPT.md",
+  "answers": {
+    "question": "After the determinism fix, which encrypted rows actually pass?",
+    "answer": "15 pass and 1 fails. The failing row (C56 SING N=1024 publicMS B=1 k=7, rc=133) is printed in the ledger rather than omitted."
+  },
+  "reproduce": {
+    "workingDirectory": "helut-videos repository root at /Volumes/Code/MuleinLabs/helut-videos",
+    "prerequisites": [
+      "VHS 0.11.0",
+      "bash",
+      "shasum",
+      "The durable preserved receipt at captures/ep02-torus-fhe/ep02-revalidation-summary.txt"
+    ],
+    "commands": [
+      "vhs validate captures/ep02-torus-fhe/episode02-revalidation-ledger.tape",
+      "vhs captures/ep02-torus-fhe/episode02-revalidation-ledger.tape"
+    ],
+    "behavior": "Renders deterministic playback of a preserved receipt. It runs no benchmark, no test suite, no synthesis, and no cracking run.",
+    "workspacePathConstraint": "The tape records to an absolute path under /Volumes/Code/MuleinLabs and must be adjusted if the workspace is relocated."
+  },
+  "capturedAt": null,
+  "capturedAtBasis": "Rendered during this documentation pass; the underlying experiment predates it and is dated in the receipt itself",
+  "captureMethod": {
+    "recorder": "VHS",
+    "terminal": "real Bash pseudo-terminal",
+    "mode": "normal-speed playback of a preserved receipt",
+    "executedExperimentDuringCapture": false,
+    "uploaded": false,
+    "tape": {
+      "repo": "helut-videos",
+      "path": "captures/ep02-torus-fhe/episode02-revalidation-ledger.tape",
+      "sha256": "2a4f6b49619a80d85bd4b8be0c1a44e70023c95b344fcd882a06bfb03f9abe4f",
+      "requestedFrameRate": 30
+    }
+  },
+  "video": {
+    "repo": "helut-videos",
+    "path": "public/captures/ep02-torus-fhe/episode02-revalidation-ledger.mp4",
+    "sha256": "b045b03cca4f8a294d01650b6c611d06ecdca2578a727d4610a566aa64ea375e",
+    "container": "mov,mp4,m4a,3gp,3g2,mj2",
+    "codec": "h264",
+    "pixelFormat": "yuv420p",
+    "width": 1280,
+    "height": 720,
+    "encodedFrameRate": "25/1",
+    "durationSeconds": 67.6,
+    "sizeBytes": 504272
+  },
+  "artifacts": [
+    {
+      "repo": "HELUT",
+      "path": "logs/revalidate-2026-08-16/SUMMARY.txt",
+      "kind": "original preserved receipt",
+      "sha256": "aadf4bffcf85d979bcc64e865724329630aa019268a6a9fd2895e449178d17f2"
+    },
+    {
+      "repo": "helut-videos",
+      "path": "captures/ep02-torus-fhe/ep02-revalidation-summary.txt",
+      "kind": "durable byte-for-byte copy used by the tape",
+      "sourcePath": "HELUT/logs/revalidate-2026-08-16/SUMMARY.txt",
+      "byteForByteMatch": true,
+      "sha256": "aadf4bffcf85d979bcc64e865724329630aa019268a6a9fd2895e449178d17f2"
+    }
+  ],
+  "experiment": {
+    "startedUTC": "2026-08-16T18:53:32Z",
+    "finishedUTC": "2026-08-16T19:51:57Z",
+    "commit": "2a42593",
+    "passRows": 15,
+    "failRows": 1,
+    "noiseRowsScope": "do not exercise tick(); completeness only",
+    "singRowsScope": "these DO exercise the fixed tick() path",
+    "singRows": [
+      "PASS C33 SING N=1024 covering-crypto B=1",
+      "PASS C34 SING N=1024 covering-b4 B=1",
+      "PASS C36 SING N=1024 covering-b1 B=32",
+      "PASS C37 SING N=1024 covering-b1 sigma=24",
+      "PASS C41 SING N=512 covering-b1 sigma=128",
+      "FAIL C56 SING N=1024 publicMS B=1 k=7 (rc=133)"
+    ],
+    "kSemantics": "k is the test-poly stride, confirmed verbatim in logs/c60-target-cone-b2-k7-sigma128-cpu-metal-2026-08-20.log",
+    "ledgerSelfWarning": "A nonzero exit is not automatically a broken claim -- some rows are graded negatives and some flags may have moved. Read the log before concluding."
+  },
+  "validation": {
+    "tapeSyntaxValidated": true,
+    "mp4ProbedSuccessfully": true,
+    "sourceCopiedByteForByte": true,
+    "fullResolutionFramesInspectedAtSeconds": [
+      40
+    ],
+    "terminalEvidenceOutputLegible": true,
+    "commandEchoWrapOrOverlapObserved": true,
+    "hiddenSetupVisible": false,
+    "experimentRerunForCapture": false,
+    "episodeSceneDurationMatchesMedia": true
+  },
+  "timingContext": {
+    "interpretation": "The capture replays preserved text at normal speed. Any elapsed-time figures visible on screen are historical observations from the original run on one Apple-silicon host, not fresh measurements and not portable performance contracts."
+  },
+  "claimBoundaries": [
+    "This is playback of a preserved ledger. No encrypted run was performed for the capture.",
+    "The per-row wall-clock seconds are local Apple-silicon observations, not portable timings.",
+    "Noise-measurement rows are completeness evidence and are not the functional gate.",
+    "The k=7 failure is a real open row and is shown as FAIL.",
+    "Native-dimension noisy PicoRV32 SING remains failed/open and is not recovered by these rows.",
+    "A passing SING row at a given N does not mean the separate 2^-64 noise bar clears at that N."
+  ]
+}

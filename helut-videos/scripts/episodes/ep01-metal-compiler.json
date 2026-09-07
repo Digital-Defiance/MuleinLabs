@@ -3,7 +3,7 @@
   "compositionId": "Episode01",
   "title": "The compiler substrate",
   "youtubeTitle": "How HELUT Compiles Yosys Circuits into One Metal Graph",
-  "description": "How HELUT parses supported Yosys LUT and flip-flop cells, lowers dependency waves into a Metal Performance Shaders Graph, and uses a batch dimension for independent circuit evaluation and later application experiments. Epoch C69. Cleartext fitness is not encrypted throughput.",
+  "description": "How HELUT parses supported Yosys LUT and flip-flop cells, lowers dependency waves into a Metal Performance Shaders Graph, and uses a batch dimension for independent circuit evaluation and later application experiments. A live three-tier Enigma control recovers one injected lane exclusively, checks the clear netlist against an independent oracle, reproduces the FHPQX historical prefix and crib, and isolates SDV among 200 hypotheses. That receipt is one named validation fixture, not arbitrary-Verilog correctness and not FHE. Epoch C69. Cleartext fitness is not encrypted throughput.",
   "claimEpoch": "2026-08-20 / C69",
   "fps": 30,
   "width": 1920,
@@ -18,6 +18,14 @@
       "backgroundAsset": "01-compiler-flow.svg",
       "voiceover": "HELUT begins with a supported Yosys circuit. It turns each look-up table and flip-flop into tensor operations, then builds one Metal Performance Shaders Graph. A batch dimension lets that graph evaluate many independent circuit states in parallel.",
       "durationHintSec": 21
+    },
+    {
+      "kind": "capture",
+      "id": "three-tier-validation-live",
+      "videoAsset": "episode01-three-tier-validation.mp4",
+      "label": "LIVE RUN · recorded 2026-09-06 · one bounded Enigma fixture · not FHE",
+      "voiceover": "Before the diagram, grade one named path. Tier 1 recovers only injected lane 42, then checks HELUT's clear netlist against an independent Enigma oracle. Tier 2 reproduces the FHPQX historical prefix and finds SIEGFR. Tier 3 ranks SDV above 199 decoys. All three go green, live. This is a strong compiler control because each stage can fail for a different reason. It is not a proof of arbitrary Verilog, and nothing on this screen is FHE.",
+      "durationHintSec": 33.96
     },
     {
       "kind": "concept",

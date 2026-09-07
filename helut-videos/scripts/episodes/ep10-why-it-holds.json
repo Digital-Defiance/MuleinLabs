@@ -3,7 +3,7 @@
   "compositionId": "Episode10",
   "title": "Why It Holds",
   "youtubeTitle": "We Handed the Machine the Answer and It Walked Away: Why P1030680 Holds",
-  "description": "The honest answer to why P1030680 is still unbroken. A known-key rehearsal shows the true key ranking at the 48.8th percentile by index of coincidence, and a plugboard climb started from the true rotor setting walking away to a wrong optimum that scores better. The blocker is statistical, not computational. Also the measured crib-free length threshold, the 68 percent the partial exhaustion closed, and why the real bottleneck is corpus size. Epoch C69.",
+  "description": "A measured correction to why P1030680 remains unbroken. The August sparse-model receipt is preserved as history: 4 of 72 letters and 0 of 10 plugs. The independently attested dense bigram table moved the same known-shell control to 21 of 72 and 4 of 10. Objective v1 reached 25 of 72 and 5 of 10, but normalized the full attack score with raw-bigram moments; objective v2 calibrates the exact attack score and its paired trigram relationship. V1 and v2 recover the same candidate, the IC-only rank remains 223,118 of 456,976, and every checkpoint remains NO BREAK. The final assessment is a separate fail-closed policy gate, not a claim of statistical independence. Current target-length generic/naval rows and the oracle plug-seeding ladder are shown as objective-independent controls from sealed deterministic receipts. P1030680 remains unbroken. Epoch C69.",
   "claimEpoch": "2026-08-20 / C69",
   "fps": 30,
   "width": 1920,
@@ -12,12 +12,12 @@
     {
       "kind": "title",
       "id": "title",
-      "eyebrow": "HELUT · Campaign, answered",
+      "eyebrow": "HELUT · Campaign, corrected",
       "headline": "Why it holds",
-      "subhead": "Not a compute problem. A measurement problem.",
+      "subhead": "A real defect moved the numbers. Its calibration audit moved the model—not the verdict.",
       "backgroundAsset": "01-title.svg",
-      "voiceover": "An earlier episode covered the P1030680 campaign: the machine, the boards, the bounded negative result. It left the obvious question unanswered. The hardware works, the search is fast, the sieve is correct, so why is this message still unbroken? There is a measured answer, and it is not the one most people guess. The problem is not that the machine is too slow. The problem is that it cannot recognise the right answer when it is handed one.",
-      "durationHintSec": 34
+      "voiceover": "An earlier cut gave a clean answer for why P1030680 still holds: the hardware was fast enough, but the scorer could not recognise the right answer even when it started there. That diagnosis survived. The sparse bigram table was a real wiring defect, and repairing it moved the known-key rehearsal substantially. Then the first repaired objective failed its own calibration audit: it standardized the complete attack score with raw-bigram statistics. Objective v2 fixes that error and recovers the same candidate. This episode preserves every stage, puts the correction beside it, and refuses to turn better coordinates into a victory. The target still has no key and no plaintext.",
+      "durationHintSec": 50
     },
     {
       "kind": "concept",
@@ -26,104 +26,128 @@
       "headline": "Give the machine a message you can check",
       "subhead": "A published key, truncated to the target's length.",
       "backgroundAsset": "02-rehearsal.svg",
-      "voiceover": "The test is straightforward. Take a different message from the same network on the same day, one whose key was published decades ago, so the answer is known. Then truncate it to 72 letters, the exact length of the unsolved target. Now run the full attack pipeline against it. If the machine can find a key it is allowed to know, the method is sound and the target is merely hard. If it cannot, the method itself is the problem. There are two checks, and both are graded numbers rather than impressions.",
-      "durationHintSec": 40
-    },
-    {
-      "kind": "concept",
-      "id": "level-one",
-      "kicker": "Check one · the sieve",
-      "headline": "The true key ranks dead centre",
-      "subhead": "48.8th percentile. The statistic has no signal at all.",
-      "backgroundAsset": "03-level-one.svg",
-      "voiceover": "First check. Hand the machine the correct wheels and rings, so the only unknown is the message key, and rank every candidate by index of coincidence, the standard statistic for spotting German-like text. The true key comes back at the 48.8th percentile. Not in the top ten, not in the top thousand: statistically dead centre. Its score is 0.0379, and a random wrong key averages 0.0385. The correct answer scores very slightly worse than noise. That means any sieve built on this statistic does not merely rank the answer poorly. It discards it.",
-      "durationHintSec": 44
-    },
-    {
-      "kind": "concept",
-      "id": "level-two",
-      "kicker": "Check two · the climb",
-      "headline": "Started on the answer",
-      "subhead": "The wrong optimum scores better than the truth.",
-      "backgroundAsset": "04-level-two.svg",
-      "voiceover": "Second check, and it is the one that settles the argument. Skip the search entirely. Place the machine directly on the true rotor setting, then let it climb for the plugboard from there. It is starting on the answer. It recovers four letters out of 72 and zero plug pairs out of ten, and it settles on a wrong configuration scoring minus 3.127 where the truth scores minus 2.872. The wrong answer scores better. The climb did not fail to find the summit; it walked downhill away from it, because by its own measure downhill was up.",
-      "durationHintSec": 44
-    },
-    {
-      "kind": "narration",
-      "id": "verdict",
-      "headline": "The blocker is statistical, not computational",
-      "bullets": [
-        "GPU sweep, sieve, and search are all sound",
-        "The objective function cannot see the answer",
-        "~47 bits of plugboard freedom overfit to 72 letters"
-      ],
-      "backgroundAsset": "05-verdict.svg",
-      "voiceover": "That is the finding, and the repository states it plainly: the blocker is statistical, not computational. The batch datapath is correct. The sieve logic is correct. The evolutionary search is correct. What fails is the scoring function, and no amount of hardware fixes a blind judge. It also retires a tempting number. A high plausibility score on a 72-letter decrypt means nothing, because roughly 47 bits of plugboard freedom can be fitted to 72 letters of anything. Without strong cribs, that score is not evidence.",
-      "durationHintSec": 40
-    },
-    {
-      "kind": "concept",
-      "id": "crib-free-ladder",
-      "kicker": "The other engine",
-      "headline": "How short can a message be?",
-      "subhead": "Measured 200. Published record 78. Target 72.",
-      "backgroundAsset": "06-letter-ladder.svg",
-      "voiceover": "There is a second attack that needs no crib at all. Instead of guessing plaintext, it climbs the plugboard at every candidate rotor setting and ranks each setting by how good a score the climb reaches. Published work with this method has reached messages of about 100 letters, and the shortest success on record is 78 letters on a three-rotor army machine. Measured on this traffic, HELUT's own threshold is about 200 letters. So the honest gap is stated in the ledger: 200 measured, 78 published, 72 needed. Roughly two-point-eight times worse than the state of the art, and the target requires being slightly better than it.",
-      "durationHintSec": 48
-    },
-    {
-      "kind": "concept",
-      "id": "what-helped",
-      "kicker": "Two things that moved it",
-      "headline": "Better scoring, and one fixed plug",
-      "subhead": "68 percent of the deficit closed. Still negative.",
-      "backgroundAsset": "07-what-helped.svg",
-      "voiceover": "Two changes measurably improved that threshold. The first was staging the scorer: index of coincidence, then bigrams, then trigrams, because the measures fail at different points rather than uniformly. HELUT's climb had been using bigrams alone. The second is the named contribution of the published method. Rather than climbing ten plugs from nothing, fix one plug and climb the remaining nine, then repeat for every candidate. A wrong first plug poisons everything chosen after it, and one of the fixed candidates is the true plug, so that run begins in a far better basin. Together they close 68 percent of the deficit at 72 letters. The margin is still negative, and the ledger prints it as negative.",
-      "durationHintSec": 52
-    },
-    {
-      "kind": "concept",
-      "id": "finishable",
-      "kicker": "The upper bound",
-      "headline": "A true stop is finishable",
-      "subhead": "Four plugs flip the margin. Eight recover everything.",
-      "backgroundAsset": "08-finishable.svg",
-      "voiceover": "One result cuts the other way, and it is genuinely encouraging. If the machine is given a true stop plus a handful of correct plug pairs, it can finish the job at 72 letters. Four forced plugs flip the margin from negative to positive. Eight recover the complete key and 100 percent of the plaintext, on ten out of ten controls. But read that precisely, because it is easy to over-read. Those plugs come from the known key, so the result assumes the stop being seeded from is already the true one. It is an upper bound on how well finding and finishing could couple, not a break, and the ledger labels it exactly that way.",
+      "voiceover": "The test is straightforward. Take a different message from the same network on the same day, one whose key was published decades ago, and truncate it to 72 letters, the exact length of the unsolved target. Then grade the pipeline in layers. First, can the index-of-coincidence sieve rank the true message key? Second, if we skip the search and start on the true rotor setting, can the plugboard climb stay near the answer? Third, does a separate fail-closed final assessment accept the recovered text? Those are different questions, but they are not claimed to be statistically independent evidence streams. Keeping the roles separate is what made the defects visible.",
       "durationHintSec": 50
     },
     {
       "kind": "concept",
+      "id": "level-one",
+      "kicker": "Check one · the invariant",
+      "headline": "The true key still ranks dead centre",
+      "subhead": "223,118 of 456,976 · unchanged by every scorer repair",
+      "backgroundAsset": "03-level-one.svg",
+      "voiceover": "First check. Hand the machine the correct wheels and rings, so the only unknown is the message key, and rank all 456,976 candidates by index of coincidence. The true key is number 223,118: the top 48.825 percent, statistically the middle of the pile. That number is identical in the sparse run, the dense-table probe, superseded objective v1, and current objective v2, because this first level uses only index of coincidence. It is our internal control. The language-model and calibration repairs did not quietly change the sieve, and the sieve still has no useful signal at 72 letters.",
+      "durationHintSec": 50
+    },
+    {
+      "kind": "concept",
+      "id": "level-two",
+      "kicker": "Check two · sparse, dense, v1, v2",
+      "headline": "The repair moved the climb; v2 fixed its calibration",
+      "subhead": "4 → 21 → 25 → 25 letters. Every row still says NO BREAK.",
+      "backgroundAsset": "04-level-two.svg",
+      "voiceover": "Now skip the search and start directly on the true rotor setting. The preserved August scorer recovered four letters out of 72 and no true plugs. Wiring in the dense bigram table moved it to 21 letters and four true plugs. Objective v1 moved recovery again, to 25 letters and five of ten true plugs, with seven proposed. Its calibration was still wrong: the full bigram, index-of-coincidence, and crib attack score had been normalized with raw-bigram moments. Objective v2 calibrates that exact attack score and its paired trigram relationship. It changes the objective coordinates but recovers the same 25-letter, five-plug candidate. All four checkpoints remain visibly incomplete, and the separate fail-closed final assessment prints NO BREAK.",
+      "durationHintSec": 58
+    },
+    {
+      "kind": "capture",
+      "id": "rehearsal-receipt",
+      "videoAsset": "episode10-rehearsal-ceiling.mp4",
+      "label": "HISTORICAL RECEIPT · August sparse model · preserved, not relabeled",
+      "voiceover": "This is the original sparse-model receipt. It is staying in the episode because corrections should preserve the before state, not erase it. The control, true key, and 72-letter length are printed at the top. Level one lands at rank 223,118. Level two recovers four letters and zero true plugs. Level three prints NO BREAK and the old diagnostic name, likeness. Those are authentic August results, but they are no longer the current scorer result. Read this footage as the baseline that exposed the problem. The next receipt shows the dense probe, superseded objective v1, and current objective v2 side by side.",
+      "durationHintSec": 71.48
+    },
+    {
+      "kind": "capture",
+      "id": "objective-correction-receipt",
+      "videoAsset": "episode10-objective-correction.mp4",
+      "label": "CURRENT RECEIPT · sealed playback · sparse → dense → v1 → v2",
+      "voiceover": "Here is the current correction, played from sealed receipts rather than recomputed for the camera. The first screen fixes the four-step chronology: four letters and zero plugs under the sparse August model; 21 and four with the dense table; 25 and five under superseded objective v1; and the same 25 and five under current objective v2. V2 changes the recovered candidate's objective from 5.9117 to 6.7292 and the truth coordinate from 6.8812 to 7.7110. The invariant level-one rank remains 223,118. Bigram position equals 1.08 is a diagnostic coordinate, not probability or confidence. The separate fail-closed final assessment still says NO BREAK.",
+      "durationHintSec": 66.6
+    },
+    {
+      "kind": "narration",
+      "id": "verdict",
+      "headline": "Ranking improved; assessment stayed fail-closed",
+      "bullets": [
+        "IC-only rank unchanged: 223,118 / 456,976",
+        "Objective v1 and v2: same 25/72, 5/10 candidate",
+        "Separate fail-closed final assessment: NO BREAK"
+      ],
+      "backgroundAsset": "05-verdict.svg",
+      "voiceover": "The finding is now more precise. The first-level sieve is still statistically blind. The second-level climb was handicapped first by a sparse bigram table. Objective v1 then combined attack and trigram evidence but calibrated the complete bigram, index-of-coincidence, and crib attack score with raw-bigram moments and used raw-bigram-to-trigram correlation. Objective v2 calibrates the exact attack-score population and its paired trigram correlation on the same frozen 400 controls. Python and Ruby auditors agree bit for bit, and Swift locks those values in regression tests. Publication then uses a separate policy gate with Core structure checks and the exact hash-bound trigram model. It fails closed if trigram evidence is unavailable. Better ranking is not promoted into confidence, and no claim of statistical independence is made.",
+      "durationHintSec": 62
+    },
+    {
+      "kind": "concept",
+      "id": "crib-free-ladder",
+      "kicker": "The other engine · ranking benchmark",
+      "headline": "The 72-letter margin stays negative",
+      "subhead": "Historical crossing ≈200; current target row −0.2306.",
+      "backgroundAsset": "06-letter-ladder.svg",
+      "voiceover": "There is also a crib-free attack that climbs the plugboard at candidate rotor settings and ranks the resulting scores. This legacy staged benchmark does not consume the Enigma search objective, so it is a control rather than evidence that objective v2 changed the ladder. The August curve crossed zero at about 200 letters; that remains a historical baseline, not a newly measured current threshold. The current rerun sampled 72, 100, 140, 180, and 252 letters. At the target length the generic model wins five of 30 controls and its median margin is minus 0.2306. The published 78-letter record and the 72-letter target remain the challenge; the current target row is still negative.",
+      "durationHintSec": 58
+    },
+    {
+      "kind": "concept",
+      "id": "what-helped",
+      "kicker": "The measured correction",
+      "headline": "Fix the data path, then calibrate the whole attack",
+      "subhead": "4 → 21 → 25 → 25 letters; still NO BREAK.",
+      "backgroundAsset": "07-what-helped.svg",
+      "voiceover": "The audit has three steps. First, replace the 10,359-letter historical bigram sample with the 28.5-million-letter fixture that was already present. The old table put 235 of 676 cells on one finite smoothing floor; the dense table observes 674 cells and leaves only J X and Q Y there. Python, Ruby, and Swift agree on those dense scores bit for bit. Second, objective v1 combines standardized evidence with the exact trigram model and moves recovery from 21 letters to 25. Third, inspect what was actually standardized. The numerator was the complete attack score, including the bigram score, distance from the index-of-coincidence target, and configured crib matches, but v1 used raw-bigram moments. Objective v2 calibrates the exact attack score and its paired trigram relationship. It recovers the same candidate with corrected coordinates. The August claim that partial exhaustion closed 68 percent belongs only to that sparse-model A B test; it has not been rerun here.",
+      "durationHintSec": 72
+    },
+    {
+      "kind": "concept",
+      "id": "finishable",
+      "kicker": "The oracle-seeded upper bound",
+      "headline": "A true stop is still finishable",
+      "subhead": "K=4: +0.3308. K=8: complete recovery.",
+      "backgroundAsset": "08-finishable.svg",
+      "voiceover": "The oracle-seeded ladder was rerun with the objective-v2 binary, but its staged scorer does not consume the Enigma search objective, so every stdout receipt is byte-identical to the v1-binary bundle. With no oracle plugs, the 72-letter median margin is minus 0.1226. Seed four genuinely correct plugs at the true setting and four random plugs at each decoy, and the median flips to plus 0.3308, with six of ten plugs and 47 percent of letters recovered. Seed eight and all ten controls recover all ten plugs and all plaintext, at plus 1.0488. Those plugs come from the known key. This proves a true Bombe stop carrying enough correct plug structure is finishable. It does not find that stop or break P1030680.",
+      "durationHintSec": 64
+    },
+    {
+      "kind": "concept",
       "id": "wrong-german",
-      "kicker": "A reasoned guess that measured null",
-      "headline": "It was the wrong German",
-      "subhead": "It spells its numbers and punctuates with letters.",
+      "kicker": "A target-length null",
+      "headline": "Naval German does not rescue 72 letters",
+      "subhead": "Generic: 5/30, −0.2306 · naval: 4/30, −0.2496",
       "backgroundAsset": "09-wrong-german.svg",
-      "voiceover": "Here is a good failure. If the scorer is starving, the obvious fix is a better language model, and the available one is 28.5 million letters of generic German. But naval traffic is not generic German. It is a dialect: X and Y serve as punctuation, numbers are spelled out as words, U-boats are marked with a triple U, and procedure markers repeat fixed letter groups. So a naval-dialect model should beat a bigger generic one. It was a reasoned hypothesis, it was tested, and it measured null. That is recorded as a null result rather than quietly dropped.",
-      "durationHintSec": 44
+      "voiceover": "The naval-dialect hypothesis was reasonable and remains worth recording precisely. Naval traffic uses X and Y as punctuation, spells numbers, and repeats procedure markers. But at 72 letters the current generic model wins five of 30 controls with a median margin of minus 0.2306, while the leave-one-out naval model wins four with minus 0.2496. Slightly worse, not a rescue. At 252 letters both already win every control, and naval improves the positive margin from plus 0.9273 to plus 1.1531. Like the seed ladder, this staged A B command does not consume the Enigma search objective; its v2-binary output is byte-identical to v1. The generic corpus is not wrong data: it powers the dense bigrams and generic trigram model.",
+      "durationHintSec": 64
+    },
+    {
+      "kind": "capture",
+      "id": "current-ladders-receipt",
+      "videoAsset": "episode10-current-ladders.mp4",
+      "label": "CURRENT RECEIPT · objective-v2 binary controls · ranking only",
+      "voiceover": "These are current binary-bound controls, again played from sealed text. The generic and leave-one-out naval tables show the 72-letter failure and the already-winning 252-letter case side by side. The second table walks oracle seeds from zero through eight plugs. The sign flips at four. Every generic, naval, and seed stdout hash exactly matches the preceding v1-binary bundle because these legacy staged scorers do not consume the Enigma search objective. That is a dependency boundary, not evidence that objective v2 changed these rows. The final screen states the claim boundary: ranking benchmark, not publication verdict; oracle upper bound, not a way to find a stop. P1030680 still has no key, plaintext, or break.",
+      "durationHintSec": 68.6
     },
     {
       "kind": "narration",
       "id": "the-real-bottleneck",
-      "headline": "The bottleneck is data, not silicon",
+      "headline": "The defect was real. So is the remaining wall.",
       "bullets": [
-        "Corpus is ~10,300 letters — about 15 counts per bigram cell",
-        "Published work uses tables built from millions",
-        "Crib logic eliminates by contradiction instead of fitting"
+        "IC rank is unchanged: the first-level sieve still misses truth",
+        "Objective v2 reaches 25/72 and 5/10, then fails closed",
+        "Next lever: real Bombe-forced plugs, not oracle plugs"
       ],
       "backgroundAsset": "10-bottleneck.svg",
-      "voiceover": "So what would actually move it? The top priority is not a bigger machine. The German corpus behind the scorer is about 10,300 letters, which gives roughly 15 counts per bigram cell and is far too thin for trigrams, while published attacks use tables built from millions of letters. That is a data problem, and it gates everything else. Second, climb at every rotor setting rather than after a sieve, because check one proved the sieve throws the answer away. And third, the deterministic route: crib logic with a diagonal board eliminates plugboard hypotheses by contradiction instead of fitting them. Historically, that is the method that actually worked.",
-      "durationHintSec": 52
+      "voiceover": "So what remains after fixing the wire and calibrating the full attack score? First, the index-of-coincidence sieve still puts the true message key in the middle. An all-setting climb can avoid that sieve, but it must separate truth from a vast population of fitted noise. Second, the objective-v2 known-shell candidate is better than the sparse baseline but incomplete: 25 letters and five true plugs are not a readable message, and the separate fail-closed assessment correctly rejects it. Third, the strongest measured lever assumes information we do not possess. Four oracle-correct plugs flip the sign, but the target needs a real Bombe stop to supply them. The next improvement has to move one of those measured boundaries. More corpus wiring is no longer the answer, and a high bigram position is not evidence by itself.",
+      "durationHintSec": 66
     },
     {
       "kind": "outro",
       "id": "outro",
-      "headline": "Two numbers are the gate",
-      "subhead": "Any proposed improvement has to move them.",
+      "headline": "Three numbers are the gate",
+      "subhead": "223,118 · 25/72 · 5/10 · and still NO BREAK",
       "nextEpisode": "The frontier",
       "backgroundAsset": "05-verdict.svg",
-      "voiceover": "The rehearsal leaves behind a gate that any future idea has to pass. Move the percentile, or move the climb that walks away from its own answer. An improvement that does neither is decoration, however clever it sounds. P1030680 remains unbroken, and the reason is now specific rather than vague: the search space is affordable and the measurement is not yet good enough to navigate it. Next, the speculative work, and the first experiment that would earn each idea a place in the ledger.",
-      "durationHintSec": 40
+      "voiceover": "The correction leaves three numbers any future idea has to move: the unchanged rank of 223,118, the current 25 recovered letters, and five recovered plugs. Or it has to replace oracle seeds with structure from a real stop. An improvement that moves none of those is decoration. P1030680 remains unbroken. The August sparse receipt and superseded v1 evidence remain visible, while the objective-v2 receipt sits beside them with corrected calibration and the same candidate. That is what a defect should do to a living research narrative: change the coordinates, narrow the explanation, preserve provenance, and leave the verdict exactly where the evidence puts it.",
+      "durationHintSec": 54
     }
   ]
 }

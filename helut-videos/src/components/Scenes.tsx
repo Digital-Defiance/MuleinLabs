@@ -214,6 +214,64 @@ const SceneCaptions: React.FC<{
   />
 );
 
+const MULEINLABS_LOGO = new URL(
+  '../../../site/public/logo.png',
+  import.meta.url,
+).href;
+
+const MuleinLabsLockup: React.FC = () => (
+  <div
+    style={{
+      position: 'absolute',
+      top: 48,
+      left: 120,
+      display: 'flex',
+      alignItems: 'center',
+      gap: 20,
+    }}
+  >
+    <Img
+      src={MULEINLABS_LOGO}
+      style={{
+        width: 96,
+        height: 96,
+        objectFit: 'cover',
+        borderRadius: 22,
+        border: '1px solid rgba(79,209,197,0.46)',
+        boxShadow: '0 10px 34px rgba(0,0,0,0.42)',
+      }}
+    />
+    <div>
+      <div
+        style={{
+          color: COLORS.text,
+          fontFamily: FONT_BODY,
+          fontSize: 32,
+          fontWeight: 750,
+          letterSpacing: '-0.02em',
+          textShadow: '0 3px 18px rgba(0,0,0,0.75)',
+        }}
+      >
+        MuleinLabs
+      </div>
+      <div
+        style={{
+          marginTop: 6,
+          color: '#7de5dc',
+          fontFamily: FONT_BODY,
+          fontSize: 16,
+          fontWeight: 700,
+          letterSpacing: '0.16em',
+          textTransform: 'uppercase',
+          textShadow: '0 2px 14px rgba(0,0,0,0.75)',
+        }}
+      >
+        HELUT research series
+      </div>
+    </div>
+  </div>
+);
+
 export const TitleCard: React.FC<{
   eyebrow?: string;
   headline: string;
@@ -222,6 +280,7 @@ export const TitleCard: React.FC<{
   episodeId: string;
   sceneId: string;
   backgroundAsset?: string;
+  layout?: 'narrow-left';
 }> = ({
   eyebrow,
   headline,
@@ -230,12 +289,17 @@ export const TitleCard: React.FC<{
   episodeId,
   sceneId,
   backgroundAsset,
+  layout,
 }) => {
   const frame = useCurrentFrame();
   const opacity = interpolate(frame, [0, 12], [0, 1], {
     extrapolateRight: 'clamp',
   });
-  const copyWidth = backgroundAsset ? 980 : 1500;
+  const copyWidth = backgroundAsset
+    ? layout === 'narrow-left'
+      ? 820
+      : 980
+    : 1500;
 
   return (
     <HelutChrome episodeId={episodeId} backgroundAsset={backgroundAsset}>
@@ -246,6 +310,7 @@ export const TitleCard: React.FC<{
           opacity,
         }}
       >
+        <MuleinLabsLockup />
         <div style={{ maxWidth: copyWidth }}>
           {eyebrow && (
             <div
@@ -365,6 +430,7 @@ export const ConceptCard: React.FC<{
   episodeId: string;
   sceneId: string;
   backgroundAsset?: string;
+  layout?: 'art-band';
 }> = ({
   headline,
   subhead,
@@ -373,19 +439,21 @@ export const ConceptCard: React.FC<{
   episodeId,
   sceneId,
   backgroundAsset,
+  layout,
 }) => {
   const frame = useCurrentFrame();
   const opacity = interpolate(frame, [0, 12], [0, 1], {
     extrapolateRight: 'clamp',
   });
-  const copyWidth = backgroundAsset ? 980 : 1400;
+  const artBand = layout === 'art-band';
+  const copyWidth = artBand ? 1400 : backgroundAsset ? 980 : 1400;
 
   return (
     <HelutChrome episodeId={episodeId} backgroundAsset={backgroundAsset}>
       <AbsoluteFill
         style={{
           justifyContent: 'flex-start',
-          padding: '112px 100px 260px',
+          padding: artBand ? '56px 100px 260px' : '112px 100px 260px',
           opacity,
         }}
       >
@@ -399,7 +467,8 @@ export const ConceptCard: React.FC<{
                 fontFamily: FONT_BODY,
                 fontSize: 24,
                 fontWeight: 600,
-                marginBottom: 20,
+                lineHeight: artBand ? 1.2 : undefined,
+                marginBottom: artBand ? 12 : 20,
                 textShadow: '0 2px 14px rgba(0,0,0,0.65)',
               }}
             >
@@ -408,6 +477,7 @@ export const ConceptCard: React.FC<{
           )}
           <div
             style={{
+              maxWidth: artBand ? 980 : undefined,
               fontFamily: FONT_DISPLAY,
               fontSize: 64,
               fontWeight: 700,
@@ -420,12 +490,14 @@ export const ConceptCard: React.FC<{
           {subhead && (
             <div
               style={{
-                marginTop: 22,
+                maxWidth: artBand ? 1400 : undefined,
+                marginTop: artBand ? 12 : 22,
                 fontFamily: FONT_BODY,
                 fontSize: 32,
                 fontWeight: 400,
                 color: COLORS.muted,
                 lineHeight: 1.38,
+                whiteSpace: artBand ? 'nowrap' : undefined,
                 textShadow: '0 2px 16px rgba(0,0,0,0.7)',
               }}
             >

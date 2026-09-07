@@ -1,0 +1,144 @@
+{
+  "schemaVersion": 1,
+  "captureId": "episode00-selfrepair",
+  "role": "live experiment capture",
+  "transcript": "CAPTURE_TRANSCRIPT.md",
+  "reproduce": {
+    "workingDirectory": "HELUT repository root at /Volumes/Code/MuleinLabs/HELUT",
+    "prerequisites": [
+      "Apple silicon macOS host with a Metal device",
+      "Swift 6.3 toolchain",
+      "Yosys 0.68+ with ABC and the bundled minisat",
+      "VHS 0.11.0 for re-recording",
+      "Release test binary already built, so the capture shows a run rather than a compile"
+    ],
+    "commands": [
+      "swift test -c release --filter TensorLUTYosysRoundTripTests/testSearchedEliteResynthesizesToTargetFunction",
+      "swift test -c release --filter TensorLUTYosysRoundTripTests/testSearchedEliteIsFormallyEquivalentToBehavioralAdder",
+      "swift test -c release --filter TensorLUTYosysRoundTripTests/testFormalProofRefutesCorruptedSearchedElite",
+      "vhs captures/ep00-what-is-helut/episode00-selfrepair.tape"
+    ],
+    "behavior": "Executes the real release test suite during recording. This is a live run, not playback of a preserved log.",
+    "workspacePathConstraint": "The tape cds to an absolute path under /Volumes/Code/MuleinLabs and records to another; both must be adjusted if the workspace moves."
+  },
+  "capturedAt": "2026-09-05T16:29:19-07:00",
+  "capturedAtBasis": "MP4 filesystem modification time at capture completion",
+  "captureMethod": {
+    "recorder": "VHS",
+    "terminal": "real Bash pseudo-terminal",
+    "mode": "live execution of the release test suite",
+    "uploaded": false,
+    "shellHelper": {
+      "name": "prove",
+      "definedHidden": true,
+      "shownOnScreen": true,
+      "body": "swift test -c release --filter TensorLUTYosysRoundTripTests/$1 2>&1 | grep -E 'Executed 1 test|^TENSORLUT' | fold -s -w 104",
+      "rationale": "A thin wrapper so the typed command fits the terminal width without wrapping. Its definition is printed on screen with `type prove` so nothing is concealed."
+    },
+    "tape": {
+      "repo": "helut-videos",
+      "path": "captures/ep00-what-is-helut/episode00-selfrepair.tape",
+      "sha256": "2c09142dd5795846543764c626202fb78694c81114ab0da1b8407ad546aa0d3c",
+      "requestedFrameRate": 30
+    }
+  },
+  "video": {
+    "repo": "helut-videos",
+    "path": "public/captures/ep00-what-is-helut/episode00-selfrepair.mp4",
+    "sha256": "5e3a05203fc51dd6e2375585e95271d2cb811af4184a0ab13c7bf4fe0b6338a5",
+    "container": "mov,mp4,m4a,3gp,3g2,mj2",
+    "codec": "h264",
+    "pixelFormat": "yuv420p",
+    "width": 1280,
+    "height": 720,
+    "encodedFrameRate": "25/1",
+    "durationSeconds": 80.28,
+    "sizeBytes": 863742
+  },
+  "toolchain": {
+    "vhs": "vhs version 0.11.0",
+    "ffmpeg": "ffmpeg version 9.0.1",
+    "yosys": "Yosys 0.68+post (git sha1 c12172fbae8af5e20f6fb52e3d4e92d56ed587b6, Release, AppleClang clang++ 21.0.0.21000101)",
+    "swift": "swift-driver version: 1.148.6 Apple Swift version 6.3.3",
+    "satSolver": "minisat, via the yosys `sat` pass"
+  },
+  "sourceVerification": {
+    "repo": "HELUT",
+    "path": "Tests/HELUTTests/TensorLUTYosysRoundTripTests.swift",
+    "fixtureShownOnScreen": "meltedAdderNetlist()",
+    "erasedCells": [2, 3],
+    "erasedTruthTable": "String(repeating: \"0\", count: 8)",
+    "preservedCells": {
+      "0": "0110 (XOR, low sum)",
+      "1": "1000 (AND, low carry)"
+    }
+  },
+  "experiment": {
+    "circuit": {
+      "description": "two-bit adder as four LUT cells on fixed topology",
+      "lutCells": 4,
+      "dffs": 0,
+      "primaryInputBits": 4,
+      "outputBits": 3,
+      "inputSpace": 16
+    },
+    "erasedBaseline": {
+      "result": "FAIL",
+      "failedOutputBits": 14,
+      "totalOutputBits": 48,
+      "purpose": "proves the fixture is genuinely broken, so a later pass is not vacuous"
+    },
+    "search": {
+      "kind": "evolutionary search over Float32 LUT INIT values on fixed topology",
+      "populationSize": 48,
+      "generations": 120,
+      "rngSeed": "0x7A6E17",
+      "meltedLUTs": [2, 3],
+      "mutableFloats": 128,
+      "frozenTablesVerifiedByteIdentical": true,
+      "topologyMutated": false
+    },
+    "enumeratedCheck": {
+      "result": "PASS",
+      "outputBitsCompared": 48,
+      "inputAssignments": 16,
+      "reference": "the target truth table, not the source netlist",
+      "resynthesizedBy": "yosys, abc -lut 6"
+    },
+    "formalCheck": {
+      "result": "PROVED",
+      "method": "yosys `miter -equiv -flatten` plus `sat -prove trigger 0`",
+      "reference": "behavioural Verilog `+` golden model, independent of the LUT representation",
+      "coverage": "entire input space, not sampled",
+      "provenArtifact": "the post abc -lut 6 $lut netlist"
+    },
+    "negativeControl": {
+      "result": "REFUTED",
+      "perturbation": "one discovered INIT entry in the melt region flipped",
+      "outcome": "SAT produced a counterexample"
+    }
+  },
+  "validation": {
+    "tapeSyntaxValidated": true,
+    "mp4ProbedSuccessfully": true,
+    "liveExecutionDuringRecording": true,
+    "fullResolutionFramesInspectedAtSeconds": [10, 32, 58, 78],
+    "terminalEvidenceOutputLegible": true,
+    "commandEchoWrapOrOverlapObserved": true,
+    "hiddenSetupVisible": false,
+    "erasedFixtureVisible": true,
+    "erasedBaselineFailureVisible": true,
+    "formalProofVisible": true,
+    "negativeControlVisible": true
+  },
+  "claimBoundaries": [
+    "This is a live run recorded on 2026-09-05, not playback of an archived log.",
+    "The circuit is a four-LUT two-bit adder. Nothing here establishes behaviour at production scale.",
+    "The search moves LUT INIT values on fixed topology; it does not add, remove, or rewire cells.",
+    "The proof covers a combinational design. No flip-flops are in this loop.",
+    "The SAT proof is against a behavioural adder reference for this function; it is not a general equivalence claim about arbitrary searched circuits.",
+    "Discovered circuits map to the same LUT count as hand-designed ones under abc -lut 6, so no area or depth improvement is claimed.",
+    "Elapsed test times are local observations on one Apple M4 Max, not benchmark distributions.",
+    "Typed command echoes visibly wrap or overlap at some prompt boundaries; the projected result lines and the on-screen wrapper definition remain legible."
+  ]
+}

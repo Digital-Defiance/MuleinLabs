@@ -86,6 +86,13 @@ function spellDigits(digits) {
   return [...String(digits)].map((digit) => UNDER_20[Number(digit)]).join(' ');
 }
 
+/** `7A6E17` → `seven A six E one seven`. Hex nibbles are read, never summed. */
+function spellHex(chars) {
+  return [...String(chars).toUpperCase()]
+    .map((ch) => (/\d/.test(ch) ? UNDER_20[Number(ch)] : ch))
+    .join(' ');
+}
+
 /**
  * @param {string} text
  * @returns {string}
@@ -100,9 +107,23 @@ export function speakable(text) {
     'digital defiance dot O R G',
   );
 
+  // Use the American-English letter name while captions retain the symbol.
+  out = out.replace(/\bZ\b/g, 'zee');
+
   // Campaign and profile identifiers should never be guessed as cardinals.
   out = out.replace(/\bP(\d{7})\b/g, (_, digits) => `P ${spellDigits(digits)}`);
   out = out.replace(/\bU[-‑–]?(\d{3})\b/gi, (_, digits) => `U ${spellDigits(digits)}`);
+  // Hex literals (seeds, preambles) before any cardinal rule can claim them.
+  out = out.replace(/\b0x([0-9a-fA-F]+)\b/g, (_, hex) => `hexadecimal ${spellHex(hex)}`);
+  // The demo callsign and its full transmitted payload. Captions keep AB0CDE.
+  out = out.replace(
+    /\bCQ CQ CQ DE AB0CDE AB0CDE K\b/g,
+    'C Q, C Q, C Q, D E, A B zero C D E, A B zero C D E, K',
+  );
+  out = out.replace(/\bAB0CDE\b/g, 'A B zero C D E');
+  // Recovered Enigma plaintext is German words, not twenty-five spelled letters.
+  out = out.replace(/\bKEINEBESONDERENEREIGNISSE\b/g, 'keine besonderen Ereignisse');
+  out = out.replace(/\bM3\b/g, 'M three');
   out = out.replace(/\bM4\b/g, 'M four');
   out = out.replace(/\bE256\b/g, 'E two fifty-six');
   out = out.replace(/\bfixture-v(\d+)\b/gi, (_, n) => `fixture V ${speakableNumber(n)}`);
@@ -122,6 +143,8 @@ export function speakable(text) {
   out = out.replace(/\b\d{1,3}(?:,\d{3})+\b/g, (value) =>
     speakableNumber(value.replaceAll(',', '')),
   );
+  // A leading hyphen on a figure is a sign, not a dash. Must precede decimals.
+  out = out.replace(/(^|[\s(])-(?=\d)/g, '$1minus ');
   out = out.replace(/\b(\d+)\.(\d+)\b/g, (_, whole, fraction) =>
     `${speakableNumber(whole)} point ${spellDigits(fraction)}`,
   );
@@ -133,6 +156,7 @@ export function speakable(text) {
 
   // Common HELUT symbols / subscripts that leak into prose.
   out = out.replace(/\bN\s*=\s*(\d+)\b/g, (_, n) => `N equals ${speakableNumber(n)}`);
+  out = out.replace(/\bB\s*=\s*(\d+)\b/g, (_, n) => `B equals ${speakableNumber(n)}`);
   out = out.replace(/\bB\s*≈\s*(\d+)k\b/gi, (_, n) => `B about ${speakableNumber(n)} thousand`);
   out = out.replace(/\bF\s*[_-]?crypto\b/gi, 'F crypto');
   out = out.replace(/\bF<sub>crypto<\/sub>\s*=\s*0\b/gi, 'F crypto equals zero');
