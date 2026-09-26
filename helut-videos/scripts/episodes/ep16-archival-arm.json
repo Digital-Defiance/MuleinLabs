@@ -3,7 +3,7 @@
   "compositionId": "Episode16",
   "title": "The Archival Arm",
   "youtubeTitle": "Selm Merel Wenselaers and the Quest for P1030680",
-  "description": "Selm Merel Wenselaers, historian and curator in Amsterdam and Antwerp, joined the P1030680 campaign and leads its archival arm. She reconstructed the last days of U-534 and separated recovery from recipient. She established that 1 May 1945 uses Quelle, Tafel A, and put the indicator pairs on a photograph. Rotor VIII on the fast wheel, across three same-day nets, is read with her allocation lists as a question about how that day issued its keys. She found the crib filter that had dropped 99 percent of the corpus, chose the menus, and required a constellation so two linked stages were not glued into a sentence. Those questions ran and came back empty inside their printed scope: 28 of 28 twice, the BLEIBTBESETZT window, the NEUSTADT constellation, and the VIII-fast middle-ring arm. The Mulein stripe episode 4 left open was then consumed: 81 exact hits are split-menu ghosts, and 4,101 repairs climbed to no break. A four-plug closer greets a known message in about 38 minutes only when the rotors are already right. P1030680 remains unbroken. The next document is a 1 May key table, the Kenngruppenbuch, a second Thetis signal, or the Grund table. Epoch C70.",
+  "description": "Selm Merel Wenselaers, historian and curator in Amsterdam and Antwerp, joined the P1030680 campaign and leads its archival arm. She reconstructed the last days of U-534 and separated recovery from recipient. She established that 1 May 1945 uses Quelle, Tafel A (Tauschtafelplan Bruno, Prüfnr. 1772a), and put the indicator pairs on a photograph (Prüfnr. 2499; edition compatibility open): VROL NMKA → EACH/SEDM → ACH → K-Buch column 645. Rotor VIII on the fast wheel, across three same-day nets (about 1.6 percent if each chose freely), is read with her allocation lists as a question about how that day issued its keys. She found the crib filter that had dropped 99 percent of the corpus, chose the menus, and required a constellation so two linked stages were not glued into a sentence. Those questions ran and came back empty inside their printed scope: 28 of 28 twice, the BLEIBTBESETZT window, the NEUSTADT constellation, and the VIII-fast middle-ring arm (42 of 336 wheel orders; the other 294 stay open). The stripe the first cut of episode 4 left open was then consumed: 81 exact hits are split-menu ghosts, and 4,101 repairs (4,103 less two duplicate-shell skips) climbed to no break. A four-plug closer greets a known message in about 38 minutes only when the rotors are already right. Two further sweeps finished empty: the Thetis-register right-ring arm, 73 of 73, and the catalog from menu 418 under VIII-fast, 451 of 451. P1030680 remains unbroken. The next document is a 1 May key table, the Kenngruppenbuch (M.Dv.Nr. 98), a second Thetis signal, or the Grund table. Epoch C70.",
   "claimEpoch": "2026-09-26 / C70",
   "fps": 30,
   "width": 1920,
@@ -16,8 +16,8 @@
       "headline": "The archival arm",
       "subhead": "Selm Merel Wenselaers joined the quest.",
       "backgroundAsset": "01-title.svg",
-      "voiceover": "This episode is about a person who joined the campaign and changed it. Selm Merel Wenselaers is a historian and curator in Amsterdam and Antwerp. She leads the archival arm, alongside the mechanical search. The message is still P1030680: 72 letters, working assignment M-Thetis, 1 May 1945, and still unbroken. What changed is the quest. She put the history of that day in hand. Who the sheet was found with. Which table the indicators used. How the keys of 1 May were assigned. Then the machine ran the questions she made worth running. This is that arc, in one piece. It ends where she says the next document is.",
-      "durationHintSec": 45
+      "voiceover": "This episode is about a person who joined the campaign and changed it. Selm Merel Wenselaers is a historian and curator in Amsterdam and Antwerp, and she leads the campaign's archival arm. The target is still P1030680: 72 letters, working assignment M-Thetis, 1 May 1945, still unbroken. What changed is the quest. She put the history of that day in hand: whose papers the sheet was found among, which table the indicators used, and how the keys of 1 May were assigned. Then the machine ran the questions she made worth running.",
+      "durationHintSec": 47
     },
     {
       "kind": "concept",
@@ -26,8 +26,8 @@
       "headline": "Found with the boat. Not proved for the boat.",
       "subhead": "Kiel, Helsingør, Copenhagen, Anholt. Recovery is not address.",
       "backgroundAsset": "02-last-days.svg",
-      "voiceover": "She reconstructed the last days of U-534. Kiel, then Helsingør and Copenhagen, then Anholt, from 1 May through 5 May 1945. That map is team work, and it is credited to her. The sheet we are attacking survives among that boat's papers. She separated those two facts. Survival in the file is recovery. It is not proof that the signal was addressed to U-534. An intercepted training-network signal, heard by the boat and meant for someone else, is now an open hypothesis. A British interrogation report from April 1945, source-reported and not independently confirmed, makes a radio-watch snapshot more plausible than a folder of messages for U-534. It does not name Thetis. She also keeps a training command from being casually equated with this net. Scheduled radio reception during Baltic working-up is wartime practice in the sources she brought. It is not an identification. The campaign is stronger because the recipient is now a question with a historian on it, rather than an assumption copied from an archive label.",
-      "durationHintSec": 68
+      "voiceover": "She reconstructed the last days of U-534: Kiel, then Helsingør and Copenhagen, then Anholt, from 1 May through 5 May 1945. The sheet we are attacking survives among that boat's papers, and she separated two facts that had been fused. Survival in the file is recovery, not proof the signal was addressed to U-534. A training-network signal the boat overheard, meant for someone else, is now an open hypothesis. A British interrogation report from April 1945, built on prisoner statements it says need confirming, describes boats in Baltic training having to come up and listen to scheduled broadcasts. That makes a radio-watch snapshot more plausible than a folder of messages for U-534. It never names Thetis, and she does not let the training command, or a naval intercept station named Thetis, be equated with the key net M-Thetis. The recipient is now a question with a historian on it, not an assumption copied from an archive label.",
+      "durationHintSec": 78
     },
     {
       "kind": "concept",
@@ -36,8 +36,8 @@
       "headline": "Neustadt and scuttling are one process.",
       "subhead": "Demolition parties stay. Crews transfer. Do not invent the sentence.",
       "backgroundAsset": "03-one-process.svg",
-      "voiceover": "She changed what the plaintext is allowed to be. From named primary reports, a Volksliste III cohort was ordered toward Travemünde, with demolition parties left aboard and the rest of the crews sent to the training division at Neustadt. The war diary of U-3521, as she reports it, has the crew leaving on 2 May except for the demolition party, and traveling to Neustadt. Those reports carry archive identifiers, and the scans are not yet in the receipt pile. Her standard, which is now the campaign's, is that a named file is not the same thing as a page in hand. What they already did to the search is concrete. Neustadt and scuttling are one process, not two competing cribs. The machine is not allowed to glue them into a sentence nobody is attested to have sent. And it is not allowed to drop either string. Neustadt is eight letters. The rules already forbade sweeping it alone. Her history is why it still had to be tested.",
-      "durationHintSec": 64
+      "voiceover": "She also changed what the plaintext is allowed to be. A crib is a guessed stretch of plaintext, and the campaign sweeps one only if it is attested in real traffic and at least 16 letters long. From named primary reports, fifteen boats were ordered toward Travemünde, with demolition parties left aboard and the rest of the crews sent to the training division at Neustadt. The war diary of U-3521, as she reports it, has the crew leaving for Neustadt on 2 May, except the demolition party. The scans are not yet in hand, and her standard, now the campaign's, is that a named file is not a page in hand. The effect on the search is concrete. Neustadt and scuttling are one process, not two competing cribs. The machine may not glue them into a sentence nobody is attested to have sent, and it may not drop either string. Neustadt is eight letters, half the minimum. Her history is why it still had to be tested.",
+      "durationHintSec": 80
     },
     {
       "kind": "concept",
@@ -46,8 +46,8 @@
       "headline": "VROL NMKA is not the word Thetis.",
       "subhead": "Key group, procedure group, book group. FORT is four letters.",
       "backgroundAsset": "04-indicators.svg",
-      "voiceover": "She recovered the procedure, and it stops a misreading that would have wasted the indicators. In the naval key system, a key group names the key and its range. A procedure group is typed under the daily key to produce the message key. Book groups are encrypted again and sent on the air. The two encrypted groups stand at the start and are repeated at the end. That is why VROL NMKA must not be read as the plaintext word Thetis. A different table, Tafel D, is not applied to those groups. She also recovered the manual's rule for a split message. The marker FORT is inserted in the parts. FORT is four letters. The break bar requires an attested crib of 16. A four-letter marker is not a menu, and 72 letters is not evidence that this message is one part of a longer one. The document she says to hunt is the Kenngruppenbuch, navy manual M Dv number 98. A shore station named Thetis is a separate question from the key-net M-Thetis. She does not equate them.",
-      "durationHintSec": 68
+      "voiceover": "She brought in the navy's own indicator procedure, from the manual. A key group names which key a message uses. A procedure group, typed under the daily key, produces the message key. Both come from a book of groups, are enciphered again with a letter-pair table, and go on the air at the start of the message, repeated at the end. So the indicators point toward Thetis through a lookup in that book, not by spelling anything. VROL NMKA cannot be read as the plaintext word Thetis. The manual's rule for split messages inserts the marker FORT, but FORT is four letters, far too short to be a crib, and 72 letters is no evidence that this message is part of a longer one. The document she says to hunt is that book: the Kenngruppenbuch.",
+      "durationHintSec": 66
     },
     {
       "kind": "concept",
@@ -56,18 +56,84 @@
       "headline": "1 May is Quelle, Tafel A.",
       "subhead": "Day 1 is a printed A. The pairs are on a photograph.",
       "backgroundAsset": "05-tafel-a.svg",
-      "voiceover": "Tafel A is the documentary result. On a scan of the exchange-table plan called Tauschtafelplan Bruno, proof number 1772a, kennwort Quelle, column six is annotated May 1945, and day one is a clean printed A. That is which key-group table P1030680 uses. She then put the pairs on a photograph, from the Quelle double-letter booklet, proof number 2499, pages 3 and 4. The target indicators read off that page. V R maps to E S. O L maps to A E. N M maps to C D. K A maps to H M. So VROL NMKA becomes EACH and SEDM, and the chain continues to ACH. Before this, those indicators were worth less than one bit, because the printed starting-position table is gone. The pairs are now a photograph, not a remembered mapping. The open edition question is part of the result, because it is the question she defined. The May plan in hand is proof number 1772a. The booklet is proof number 2499. Same kennwort. Not shown to be the same edition. It does not date the M-Thetis assignment. It is not a key. Day three of that May column carries a handwritten mark, and it does not inherit A. A complete Tafel A, under the layout that reproduces the photographed ACH chain, decodes every indicator in the scraped corpus. ACH occurs only on this message. No solved message in the scrape carries it, so there is no sister key to try.",
-      "durationHintSec": 94
+      "voiceover": "Tafel A is the documentary result. On a scan of the exchange-table plan Tauschtafelplan Bruno, kennwort Quelle, the column for May 1945 has day one as a clean printed A. That settles which letter-pair table P1030680 uses. She then put the pairs themselves on a photograph, from a Quelle letter-pair booklet. It turns V R into E S, O L into A E, N M into C D, and K A into H M. Stack the results and read across: the first letters spell EACH, the second SEDM. Drop the first letter of that first row and the key group is ACH, which the book places in column 645. The indicators still buy less than one bit toward the key, because the Grund table of starting positions is gone. What changed is provenance: a photograph, not a remembered mapping. One question stays open, and she defined it: the plan and the booklet share a kennwort but not a proof number, so they are not shown to be the same edition. None of this dates the M-Thetis assignment or yields a key. Across all 48 indicators in the campaign's corpus, which is one collection rather than the archives, ACH occurs only on this message, so there is no sister key to try.",
+      "durationHintSec": 104
     },
     {
       "kind": "concept",
       "id": "viii-fast",
       "kicker": "The historical result",
       "headline": "Rotor eight, on every fast wheel.",
-      "subhead": "Three nets. About 1.6 percent if they chose freely. Her lists make it history.",
+      "subhead": "Three nets agree. About 1.6 percent if each chose freely. Her lists make it history.",
       "backgroundAsset": "06-viii-fast.svg",
-      "voiceover": "Rotor eight on the fast wheel is the historical result, and it belongs with the allocation lists she brought. Every daily key recovered from the 1 May scrape puts rotor eight in the fast position, on three separate nets. Potsdam is wheels 4, 3, 8, across 31 messages. The second net is 5, 6, 8, across 16. The third is 5, 2, 8, on the one message that net contributes. If those nets chose their wheel order independently, the chance they all agree on eight is about 1.6 percent. That is tighter than the old convention that any of rotors 6, 7, or 8 sits on the right. Mechanically it is 42 wheel orders out of 336. It is why a middle-ring sweep that had been priced at about 28 hours could be run in about 6 and a half, and that sweep came back empty. A negative there does not close the other 294 orders. Historically it is the question of whether 1 May assigned the fast wheel from one key table. An earlier list called Forelle is reported to put column 645 with Aegir. The later list used by Hörenberg puts that column with Thetis. Changing allocation lists can reconcile the names without changing the book column. The date and provenance of the later list are still open, so M-Thetis stays the working assignment. Three nets is a thin sample, and these are the keys that happened to be broken. The notable fact is that the rotor agreement and her two lists are the same problem. How this day issued its keys.",
-      "durationHintSec": 100
+      "voiceover": "Rotor eight on the fast wheel is the historical result, and it belongs with her allocation lists. Every daily key recovered for 1 May puts rotor eight in the fast position, on three separate nets. If each net picked its wheel order independently, the chance that all three would land on the same fast wheel is about 1.6 percent. Mechanically, rotor eight on the fast wheel leaves 42 of the 336 wheel orders, which is what made the middle-ring sweep affordable. It reorders the search. It does not close the other 294. Historically, it asks whether 1 May issued its fast wheel from one shared key table, and her lists bear on the same question. An earlier allocation list, called Forelle, is reported to give book column 645 to Aegir. The later list shown by Michael Hörenberg's Breaking German Navy Ciphers project gives it to Thetis. Lists changed over time, so both can be true. The later list's date and provenance are still open, so M-Thetis stays a working assignment. Three nets is a thin sample, and these are only the keys that happened to be broken. The rotor agreement and her lists are the same problem: how this day issued its keys.",
+      "durationHintSec": 96
+    },
+    {
+      "kind": "concept",
+      "id": "the-filter",
+      "kicker": "The journey · she made the inventory runnable",
+      "headline": "99 percent of the corpus never became a menu.",
+      "subhead": "She found the filter from outside and chose the menus that can force a board.",
+      "backgroundAsset": "08-filter.svg",
+      "voiceover": "She also found the hole in the crib catalog, from outside. The tool that builds the catalog kept a phrase only when two or more decrypts carried it, which discarded 99 percent of the distinct phrases: 152,938 that appear only once. The catalog held what operators repeated, not the range of what they wrote. Those phrases expand to 2.6 million legal placements, too many to sweep blind. An internal audit had measured that gap in August, left a small test unrun, and never published it. On 22 September she spotted the same filter independently, brought three historically motivated phrases, and reproduced the placements of the longest one exactly. Then she chose menus. A menu is the graph of constraints that one crib placement gives the Bombe, and its closed loops are what let it reject wrong settings. Of four placements tied for the most loops, she picked the two that stay in one connected piece. The other two split apart, which is the ghost shape from episode 4. She knew the phrases came from other nets, not Thetis. They were still the right experiment, because that dormant inventory had never had a historian on it.",
+      "durationHintSec": 95
+    },
+    {
+      "kind": "narration",
+      "id": "her-menus",
+      "headline": "28 of 28, and then 28 of 28 again",
+      "bullets": [
+        "Exact board: 0 raw stops over 4.471×10¹¹ settings",
+        "Missing four-letter group: the same empty result",
+        "One mis-read letter: priced at ~20 h, not run, ranked below a document"
+      ],
+      "backgroundAsset": "09-menus.svg",
+      "voiceover": "Those three phrases ran: a Lübeck strongpoint from the second net, a march to Neustadt that had already set off, and an order to set off for Neustadt immediately. That gave 28 placements, swept across every ring setting of the fast wheel, with the middle wheel's ring held at A. All 28 died at the board: zero stops, meaning not one of 447 billion settings survived. Rerun as if a four-letter group had gone missing, the kind of error found on a sister message, all 28 died again. Both readings of the transcript are closed for these placements. A single mis-read letter is still open. It was not run: on these menus it projects to zero stops, would cost about 20 hours, and ranks below a document. The negative is about these alignments in this ciphertext, and it proves her selection could be measured, which the unrun August test never was.",
+      "durationHintSec": 71
+    },
+    {
+      "kind": "concept",
+      "id": "two-anchors",
+      "kicker": "The journey · no invented sentence",
+      "headline": "Two anchors. Nothing asserted in the gap.",
+      "subhead": "Bleibt besetzt is verbatim. Neustadt rides with it, not inside a fake line.",
+      "backgroundAsset": "10-constellation.svg",
+      "voiceover": "The same-day radio phrase did not have to be reconstructed. She brought bleibt besetzt, remains occupied, with its FFFTTT prefix, and the repository already holds that string exactly, in message P1030668. The test used the exact 40-letter window around it: four alignments, each one connected piece. With rotor eight on the fast wheel and both the middle and fast rings swept, all four died at the board. That rules out those alignments in P1030680, inside 42 wheel orders. It does not touch the phrase in P1030668. Neustadt still could not be swept alone, and she would not invent a sentence joining it to the radio phrase. So the campaign learned a constellation: one menu that combines two separate anchors and asserts nothing about the gap between them. All 24 such menus died with zero stops. The history of the order stands. What failed is the claim that both strings sit verbatim in this ciphertext at those offsets. Those runs held the middle ring at A, which on wide spans leaves 12 to 23 percent of keys untested, and she ranked sweeping that remainder below a document.",
+      "durationHintSec": 99
+    },
+    {
+      "kind": "concept",
+      "id": "middle-ring",
+      "kicker": "The arm she and the machine both named",
+      "headline": "The likeliest orders came back empty.",
+      "subhead": "24 catalog placements, 42 of 336 orders. No ring gap inside that prior. The rest stay open.",
+      "backgroundAsset": "11-middle-ring.svg",
+      "voiceover": "The middle ring was the arm she and the mechanical side independently named next. Holding the middle wheel's ring at A misses any key whose middle wheel turns over inside the crib: roughly 8 to 15 percent of keys on a crib of 30 to 40 letters. The arm was graded first, and the blind control still breaks with both rings swept. Against this message, it ran the 24 strongest placements from the recurrence catalog, with rotor eight on the fast wheel. All 24 died, with zero stops. For those placements, inside those 42 orders, no ring gap remains. The other 294 orders stay open, so this is not wheel-order coverage. These are the historically likeliest orders, run because the rotor agreement and her lists made likelihood a question about a shared key table, and they came back empty.",
+      "durationHintSec": 66
+    },
+    {
+      "kind": "narration",
+      "id": "the-stripe",
+      "headline": "The stripe from episode 4, finished",
+      "bullets": [
+        "81 exact hits: split-menu ghosts, no consistent board",
+        "4,101 repairs climbed (two duplicates skipped), 3.33 million climbs, no break",
+        "Best −3.0390 is not a near miss against 12 noise samples"
+      ],
+      "backgroundAsset": "12-stripe.svg",
+      "voiceover": "This closes a loop from earlier in the series. The first cut of episode 4 stopped mid-stripe: one shell, meaning one fixed choice of wheels and rings, all 628 Futures, settings zero through 255, and thousands of candidates waiting to be replayed. That replay is done. All 81 exact hits are ghosts: their menus split into pieces that no single ten-plug board can satisfy. The 4,103 repaired candidates, less two duplicates, were climbed in three passes, the last alone running 3.33 million plugboard climbs. Every crib check failed. The best score beat a floor of 12 random settings, but after millions of climbs that is multiple comparisons, not a near miss. The lesson is procedural: a manifest should refuse disconnected Futures before a single setting runs.",
+      "durationHintSec": 63
+    },
+    {
+      "kind": "concept",
+      "id": "the-closer",
+      "kicker": "A closer that waits on her setting",
+      "headline": "38 minutes, once the rotors are already right.",
+      "subhead": "Known message greets. Wrong setting does not. This target was not entered.",
+      "backgroundAsset": "13-closer.svg",
+      "voiceover": "The software closer is real, but it can only finish what the history starts. Give it the true rotor setting of the known message P1030684, and it tries every four-plug board, climbs the rest, and in about 38 minutes one candidate clears the bar: the known plaintext, all 10 plugs. At a wrong setting, the same budget finds nothing. Letter frequency cannot shortcut those four plugs: in 32 controls, the commonest letters never held all four. Pointed at P1030680 without a known setting, the same brute force would take about 33 years per shell, so it was not launched. A true Bombe stop is finishable at this length. Finding the stop is the historical problem. Two other sweeps finished empty in the same stretch, and they are listed in the description.",
+      "durationHintSec": 68
     },
     {
       "kind": "narration",
@@ -79,74 +145,8 @@
         "She sees the scope before the next GPU tranche"
       ],
       "backgroundAsset": "07-quest.svg",
-      "voiceover": "That is the quest she redefined. For years the compute went into whether a placement had been run. She moved the weight onto whether the hypothesis is the right historical object. 72 letters of German are enough, on the arithmetic. The full key is about 86 bits. The redundancy in 72 letters is about 230 bits. Unicity sits near 27 letters. Exactly one key yields German. Every negative so far is a failure of search, not a shortage of information. The plugboard was a daily setting, so a second Thetis signal from the same day would constrain the same board with 144 letters instead of 72. Four correct plugs already flip the margin on a known message. She keeps the stories of this ciphertext separate, so the machine cannot collapse them. An ordinary M-Thetis message whose key is missing. A genuine Thetis signal heard by U-534 and meant for someone else. A repeat enciphered on an earlier day. An officer cipher inside an outer key. A stale key on a real circuit. A local training circuit, which she states is unproven. The sheet fields that choose among those stories never enter the bombe: reception time, frequency, callsign, a repeat mark, and the sheets on either side of this one. The documents that would move the search are a 1 May key table, the Kenngruppenbuch, a second Thetis message, and the Grund table. She has live enquiries out. A real reply outranks another GPU tranche. Before that tranche, the completed scope goes back to her. That gate is how the team works.",
-      "durationHintSec": 99
-    },
-    {
-      "kind": "concept",
-      "id": "the-filter",
-      "kicker": "The journey · she made the inventory runnable",
-      "headline": "99 percent of the corpus never became a menu.",
-      "subhead": "She found the filter from outside and chose the menus that can force a board.",
-      "backgroundAsset": "08-filter.svg",
-      "voiceover": "She also found the hole in the crib catalog, from outside, and she turned it into an experiment. The miner kept a phrase only when two or more decrypts carried it. That is 99 percent of the distinct windows: 152,938 phrases that appear once, never eligible. They expand to more than 2.6 million legal placements, so brute force is not a campaign. The catalog is the register repeated across the corpus, not the register. An internal audit had measured that surface in August 2026 and left a 24-placement fixture unrun. It never reached the public journal. On 22 September she independently spotted the same filter, supplied three historically motivated phrases, and reproduced the legal placements of the 29-letter phrase exactly, including the starts. The two menus she transcribed by hand are the only single-component menus among four that tied for the most loops. The other two in that tie split into pieces, which is the ghost shape this campaign already knew how to waste time on. She picked the ones that can actually force a plugboard. The blind control that recovered a known key was 27 edges and 8 loops. Her best 29-letter placements are 29 edges and 9 loops, one component. The 40-letter lead reaches 20 loops, which ties the strongest menu the recurrence catalog ever had. Topology is not historical probability. She knew they were other nets' language, not Thetis. They were still the right experiment, because the dormant inventory had no historian on it.",
-      "durationHintSec": 96
-    },
-    {
-      "kind": "narration",
-      "id": "her-menus",
-      "headline": "28 of 28, and then 28 of 28 again",
-      "bullets": [
-        "Exact board: 0 raw stops over 4.471×10¹¹ settings",
-        "Missing four-letter group: the same empty result",
-        "A mis-read letter is priced, and historically deprioritised"
-      ],
-      "backgroundAsset": "09-menus.svg",
-      "voiceover": "Those three phrases ran. A Lübeck strongpoint from the second net. A march to Neustadt that had already been set off. And the order to set off for Neustadt immediately. 28 legal placements. Under a right-ring sweep, with the middle ring pinned at A, all 28 died at the board. Zero raw stops over 447 billion settings. Nothing reached the plug sieve, and nothing reached the soft band. Then the same 28 were tested as if a four-letter group had gone missing before the crib, which shifts every step number and leaves the menu shape alone. 28 of 28 died again, the same settings count, zero raw stops. Both readings of the transcript are closed for these phrases at these placements. The recording as printed, and a missing group. What that does not close is a single mis-read letter. Tolerance one on these menus was measured, and it corrected a prior. Menus that contradict everywhere at tolerance zero have no neighborhood left for tolerance to widen. All 24 qualifying menus project zero stops. The cost would be about 8 times, near 20 hours, and it is historically deprioritised. The phrases remain other nets' register. The negative is about these alignments in this recorded ciphertext. It is also the proof that her selection could be measured, which the unrun August fixture never was.",
-      "durationHintSec": 84
-    },
-    {
-      "kind": "concept",
-      "id": "two-anchors",
-      "kicker": "The journey · no invented sentence",
-      "headline": "Two anchors. Nothing asserted in the gap.",
-      "subhead": "Bleibt besetzt is verbatim. Neustadt rides with it, not inside a fake line.",
-      "backgroundAsset": "10-constellation.svg",
-      "voiceover": "The clean radio phrase did not have to be reconstructed. She brought the same-day language bleibt besetzt, with its FFFTTT prefix. The repository already contains that string exact, in message P1030668. A corrupted sister copy exists, and it is no longer the foundation. The short core is a weak menu, so the fixture uses the exact 40-letter window around it from that source. Four alignments, each one component, 18 loops. Under the rotor-eight prior, with the middle ring unpinned and the right ring swept, all four died at the board. Zero raw stops. That does not falsify the radio finding in P1030668. It falsifies those four alignments in P1030680, inside 42 wheel orders, not all of them. Neustadt still could not be swept alone. Because she would not invent a sentence joining the radio phrase to the town, the campaign had to learn a constellation. One menu that unions only the absolute crib constraints of two separate anchors, and asserts no plaintext in the gap. 24 such menus, 27 edges, 7 to 9 loops. They ran to completion. 24 of 24 dead, zero raw stops, and no soft-band candidate at all, so the quarantine file was never written. The Volksliste history stands. What failed is the narrower claim that both strings sit verbatim in this ciphertext at those offsets. A pinned middle ring still leaves about 12 to 23 percent of keys untested on those wide spans. She had already ranked a swept version of that residual below a document from the archives.",
-      "durationHintSec": 103
-    },
-    {
-      "kind": "concept",
-      "id": "middle-ring",
-      "kicker": "The arm she and the machine both named",
-      "headline": "The likeliest orders came back empty.",
-      "subhead": "42 of 336. No residual ring gap inside that prior. The rest stay open.",
-      "backgroundAsset": "11-middle-ring.svg",
-      "voiceover": "The middle ring was the arm she and the mechanical side independently named next. With the ring pinned at A, any key whose middle wheel turns over inside the span is unreachable. That hole is about 8 percent for one notch and about 15 percent for two, and it is larger when her constellations stretch across 40 to 67 letters. Unpinning it costs about 6.5 to 11.4 times a right-ring pass, not 26 times, because lanes that never hit a notch are already covered by the ring-A partner. The blind control still breaks under full middle and right coverage. Against this message, the strongest placements were run with rotor eight on the fast wheel. Placement one was already dead at every wheel order. Placements 2 through 24 then died: 23 of 23, zero raw stops, zero quarantine. The banner still printed that those 42 orders have no residual ring gap. The other 294 orders remain open. This is not wheel-order coverage. It is the historically likeliest orders, run because the rotor agreement and her lists made that likelihood a question about a shared key table, and they came back empty.",
-      "durationHintSec": 74
-    },
-    {
-      "kind": "narration",
-      "id": "the-stripe",
-      "headline": "The stripe episode 4 left open is finished",
-      "bullets": [
-        "81 exact hits: split-menu ghosts, no consistent board",
-        "4,101 repairs climbed, 3.33 million climbs, no break",
-        "Best −3.0390 is not a near miss against 12 noise samples"
-      ],
-      "backgroundAsset": "12-stripe.svg",
-      "voiceover": "Episode 4 left the Mulein bank mid-sentence. It had covered one shell, all 628 futures, and settings 0 through 255. Thousands of candidates, no break gate, and the instruction on screen was to replay them before widening. That replay is finished. All 81 exact hits are split-menu ghosts. 40 were already killed by the ten-plug sieve. The other 41, the ones that looked like they needed a geometry-aware decrypt, have no consistent ten-plug board either. Their source futures carry 2 to 5 components. They never reach the language bar. The missing replay was not the binding constraint. The 4,103 repaired candidates were then climbed. 38 single-component repairs, then 824 on Metal, including split menus, then 4,101 on the CPU, identity and gapped repairs together, 3.33 million climbs. No break. Every crib check failed. The best score was minus 3.0390, index of coincidence 0.0544. A 12-sample noise floor sat at minus 3.4564. Beating 12 random settings after millions of climbs is multiple comparisons, not a near miss. No new silicon was justified. The next manifest should have refused those futures on connectivity before a setting ran.",
-      "durationHintSec": 80
-    },
-    {
-      "kind": "concept",
-      "id": "the-closer",
-      "kicker": "A closer that waits on her setting",
-      "headline": "38 minutes, once the rotors are already right.",
-      "subhead": "Known message greets. Wrong setting does not. This target was not entered.",
-      "backgroundAsset": "13-closer.svg",
-      "voiceover": "The software closer is real, and it is not a substitute for her. If the rotors are already the true ones, enumerating every four-plug board and climbing the rest recovers a known message. On published message P1030684, at the true setting, 164 million starts, about 38 minutes, one candidate clears the bar. The known 72-letter plaintext, all 10 plugs, index of coincidence 0.0657. The same budget on a wrong setting stays crib bad. No break. Letter frequency cannot find those four plugs. 0 of 32 controls have four true plugs among the eight hottest ciphertext letters. Pointing this brute at P1030680 without a locked setting is about 33 years per shell, and it was not launched. A true bombe stop is finishable at this length, because four correct plugs flip the margin. Finding the stop is the historical problem. Two other sweeps belong in one breath, because they finished empty and they are not the story. The Thetis-register right-ring arm is done, 73 of 73, no break. One head looked German through the crib and like noise after. A naval-register model scores that decrypt with shuffled text, not with held-out naval German. The catalog from menu 418, under rotor eight on the fast wheel only, is done, 451 of 451, no break. The best physical tail is still under the bar.",
-      "durationHintSec": 90
+      "voiceover": "Which brings the campaign to the quest she redefined. The compute had been going into whether a placement had been run. She moved the weight onto whether the hypothesis is the right historical object. The arithmetic says 72 letters are enough. The key is about 86 bits, the redundancy in 72 letters of German is about 230 bits, and unicity sits near 27 letters, so only the true key should read as German. If the transcript is sound, every negative so far is a failure of search, not of information. A second Thetis signal from the same day would put 144 letters against the same daily plugboard. She keeps the stories of this ciphertext separate: an ordinary M-Thetis message with a missing key, a signal overheard and meant for someone else, a repeat from an earlier day, an officer cipher inside an outer key, a stale key, or a training circuit she marks unproven. The sheet fields that would choose among them never enter the Bombe: reception time, frequency, callsign, a repeat mark, and the neighboring sheets. So the documents that would move the search are a 1 May key table, the Kenngruppenbuch, a second Thetis message, and the Grund table. She has live enquiries out. A real reply outranks another GPU tranche, and before that tranche, the completed scope goes back to her. That gate is how the team works.",
+      "durationHintSec": 108
     },
     {
       "kind": "outro",
@@ -154,8 +154,8 @@
       "headline": "The next move is a document.",
       "subhead": "P1030680 remains unbroken. She sees the scope before the next tranche.",
       "backgroundAsset": "07-quest.svg",
-      "voiceover": "P1030680 remains unbroken. Selm Merel Wenselaers changed the history, the journey, and the quest. The history is the last days of the boat, the open recipient, Tafel A on a photograph, and rotor eight as a question about how 1 May issued its keys. The journey is the filter she found, the menus she chose, the constellation she required, and the empty sweeps those questions earned, including the stripe this series had left waiting. The quest is the next document. A 1 May key table. The Kenngruppenbuch. A second Thetis signal. Or the Grund table. The machine can greet a known message in about 38 minutes once a setting is locked. It cannot invent the setting. The next GPU tranche waits until she has seen the scope. That is the campaign.",
-      "durationHintSec": 53
+      "voiceover": "P1030680 remains unbroken. Selm Merel Wenselaers changed the history, the journey, and the quest. The history is the boat's last days, an open recipient, Tafel A on a photograph, and rotor eight as a question about how 1 May issued its keys. The journey is the filter she found, the menus she chose, and the empty sweeps her questions earned. The quest is the next document. The machine can finish a message once a setting is locked. It cannot invent the setting.",
+      "durationHintSec": 42
     }
   ]
 }

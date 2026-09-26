@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" role="img" aria-labelledby="t d">
   <title id="t">Quelle Tafel A</title>
-  <desc id="d">1 May uses Tafel A. Indicator pairs are photographed.</desc>
+  <desc id="d">1 May uses Tafel A. The photographed pairs stack into EACH over SEDM. Drop the first letter and the key group is ACH.</desc>
   <defs>
     <radialGradient id="bg" cx="78%" cy="30%" r="75%">
       <stop offset="0" stop-color="#173f4a"/>
@@ -9,7 +9,28 @@
     </radialGradient>
   </defs>
   <rect width="1920" height="1080" fill="url(#bg)"/>
-  <g transform="translate(1040 150)"><rect width="760" height="132" rx="16" fill="#122b35" stroke="#22a89c" stroke-width="2"/><text x="28" y="28" fill="#22a89c" font-family="Arial,sans-serif" font-size="15" letter-spacing="2">1 MAY · QUELLE</text><text x="28" y="64" fill="#f4f6f8" font-family="Arial,sans-serif" font-size="26">Tafel A · day 1 printed</text><text x="28" y="96" fill="#f4f6f8" font-family="Arial,sans-serif" font-size="26">Proof 1772a selects it</text></g>
-  <g transform="translate(1040 300)"><rect width="760" height="132" rx="16" fill="#2b2116" stroke="#d4833f" stroke-width="2"/><text x="28" y="28" fill="#d4833f" font-family="Arial,sans-serif" font-size="15" letter-spacing="2">PHOTOGRAPHED PAIRS</text><text x="28" y="64" fill="#f4f6f8" font-family="Arial,sans-serif" font-size="26">VR→ES   OL→AE</text><text x="28" y="96" fill="#f4f6f8" font-family="Arial,sans-serif" font-size="26">NM→CD   KA→HM</text></g>
-  <g transform="translate(1040 450)"><rect width="760" height="132" rx="16" fill="#33161b" stroke="#e0574c" stroke-width="2"/><text x="28" y="28" fill="#e0574c" font-family="Arial,sans-serif" font-size="15" letter-spacing="2">STILL OPEN</text><text x="28" y="64" fill="#f4f6f8" font-family="Arial,sans-serif" font-size="26">Booklet is proof 2499</text><text x="28" y="96" fill="#f4f6f8" font-family="Arial,sans-serif" font-size="26">Same kennwort, edition unshown</text></g>
+  <g transform="translate(1040 120)">
+    <rect width="760" height="100" rx="16" fill="#122b35" stroke="#22a89c" stroke-width="2"/>
+    <text x="28" y="28" fill="#22a89c" font-family="Arial,sans-serif" font-size="15" letter-spacing="2">1 MAY · QUELLE · TAFEL A</text>
+    <text x="28" y="68" fill="#f4f6f8" font-family="Arial,sans-serif" font-size="26">Day 1 printed A · edition still open</text>
+  </g>
+  <g transform="translate(1040 248)" font-family="ui-monospace, monospace">
+    <rect width="760" height="250" rx="16" fill="#2b2116" stroke="#d4833f" stroke-width="2"/>
+    <text x="28" y="32" fill="#d4833f" font-family="Arial,sans-serif" font-size="15" letter-spacing="2">STACK THE PAIRS</text>
+    <text x="28" y="78" fill="#9aa8b8" font-size="22">VR  OL  NM  KA</text>
+    <text x="28" y="128" fill="#f4f6f8" font-size="40" letter-spacing="10">E  A  C  H</text>
+    <text x="28" y="176" fill="#f4f6f8" font-size="40" letter-spacing="10">S  E  D  M</text>
+    <text x="430" y="128" fill="#d4833f" font-family="Arial,sans-serif" font-size="20">first letters</text>
+    <text x="430" y="176" fill="#9aa8b8" font-family="Arial,sans-serif" font-size="20">second letters</text>
+  </g>
+  <g transform="translate(1040 526)">
+    <rect width="760" height="132" rx="16" fill="#122b35" stroke="#22a89c" stroke-width="2"/>
+    <text x="28" y="36" fill="#22a89c" font-family="Arial,sans-serif" font-size="15" letter-spacing="2">DROP THE FIRST LETTER</text>
+    <text x="28" y="84" fill="#f4f6f8" font-family="ui-monospace, monospace" font-size="32">EACH  →  ACH  ·  column 645</text>
+  </g>
+  <g transform="translate(1040 686)">
+    <rect width="760" height="100" rx="16" fill="#33161b" stroke="#e0574c" stroke-width="2"/>
+    <text x="28" y="40" fill="#e0574c" font-family="Arial,sans-serif" font-size="15" letter-spacing="2">STILL OPEN</text>
+    <text x="28" y="74" fill="#f4f6f8" font-family="Arial,sans-serif" font-size="24">Plan 1772a · booklet 2499 · same kennwort</text>
+  </g>
 </svg>

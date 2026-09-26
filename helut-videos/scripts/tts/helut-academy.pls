@@ -79,4 +79,21 @@
   <lexeme><grapheme>Stecker</grapheme><alias>shtecker</alias></lexeme>
   <lexeme><grapheme>Regenbogen</grapheme><alias>ray gen boh gen</alias></lexeme>
   <lexeme><grapheme>RTL</grapheme><alias>R T L</alias></lexeme>
+  <!-- Episode 16 (archival arm). Batched in one edit because every sync mints a new
+       dictionary version and stales every clip in the series. Audition before syncing. -->
+  <lexeme><grapheme>bombe</grapheme><alias>bomb</alias></lexeme>
+  <lexeme><grapheme>Kennwort</grapheme><alias>ken-vort</alias></lexeme>
+  <lexeme><grapheme>kennwort</grapheme><alias>ken-vort</alias></lexeme>
+  <lexeme><grapheme>bleibt</grapheme><alias>blypt</alias></lexeme>
+  <lexeme><grapheme>besetzt</grapheme><alias>buh-zetst</alias></lexeme>
+  <lexeme><grapheme>Helsingør</grapheme><alias>hel-sing-ur</alias></lexeme>
+  <lexeme><grapheme>Travemünde</grapheme><alias>trah-veh-mewn-deh</alias></lexeme>
+  <lexeme><grapheme>Lübeck</grapheme><alias>lew-beck</alias></lexeme>
+  <lexeme><grapheme>Hörenberg</grapheme><alias>hur-en-berg</alias></lexeme>
+  <lexeme><grapheme>Aegir</grapheme><alias>ay-geer</alias></lexeme>
+  <!-- A collaborator's name is not guessed. Ask Selm how she says it, then uncomment
+       these in the same edit as the rest, before the one sync.
+  <lexeme><grapheme>Merel</grapheme><alias>?</alias></lexeme>
+  <lexeme><grapheme>Wenselaers</grapheme><alias>?</alias></lexeme>
+  -->
 </lexicon>

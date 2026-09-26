@@ -3,7 +3,7 @@
   "compositionId": "Episode04",
   "title": "The P1030680 Bombe",
   "youtubeTitle": "The P1030680 Bombe: What We Built, Tested, and Still Do Not Know",
-  "description": "Why an Enigma message appears in a HELUT series, and what this chosen application built: historical Bombe context, the blind P1030684 control, Welchman diagonal board, Mulein Board, 628-Future bank, and completed Phase 51.16 bounded stripe. A live known-control grade shows injected substitutions recovered at matching tolerance with 0 of 192 host/Metal mismatches, then shows a synthetic four-letter deletion whose correct splice recovers 25 of 25 deductions while explicitly reporting that board specificity is unmeasured. These are mechanism controls, not target evidence. The campaign uses HELUT's cleartext compiler and batch engine; it produced zero BREAK gates, no key, plaintext, or decrypt. The exact hits and the one-edge repairs from that stripe were later consumed: 81 split-menu ghosts, and 4,101 climbs with no break. Epoch C70.",
+  "description": "Why an Enigma message appears in a HELUT series, and what this chosen application built: historical Bombe context, the blind P1030684 control, Welchman diagonal board, Mulein Board, 628-Future bank, and completed Phase 51.16 bounded stripe. A live known-control grade shows injected substitutions recovered at matching tolerance with 0 of 192 host/Metal mismatches, then shows a synthetic four-letter deletion whose correct splice recovers 25 of 25 deductions while explicitly reporting that board specificity is unmeasured. These are mechanism controls, not target evidence. The campaign uses HELUT's cleartext compiler and batch engine; it produced zero BREAK gates, no key, plaintext, or decrypt. The exact hits and the one-edge repairs from that stripe were later consumed: 81 split-menu ghosts, and 4,101 climbs with no break (episode 16). Epoch C70.",
   "claimEpoch": "2026-09-26 / C70",
   "fps": 30,
   "width": 1920,
@@ -87,7 +87,7 @@
       "headline": "628 Futures share one M4 trail",
       "subhead": "Each Future is one fully specified crib and correction geometry.",
       "backgroundAsset": "06-future-bank.svg",
-      "voiceover": "A Future is one fully specified crib and correction geometry. The current manifest contains 628: 314 unchanged alignments and 314 hypotheses with a four-letter gap. One shared 80-step-by-26-letter Enigma trail feeds four parallel lanes. On the known control, the fresh end-to-end suite agrees across source RTL, post-Yosys RTL, clear JSON, and TensorLUT, then catches wrong delta, setting, and seed controls plus bounded combined indel-and-garble repairs. The host deduplicates and verifies each compact target receipt. Those candidates were later graded. All 81 exact hits were split-menu ghosts, and 4,101 one-edge repairs were climbed with no break. This is a cleartext mechanism grade, not FHE and not a decrypt.",
+      "voiceover": "A Future is one fully specified crib and correction geometry. The current manifest contains 628: 314 unchanged alignments and 314 hypotheses with a four-letter gap. One shared 80-step-by-26-letter Enigma trail feeds four parallel lanes. On the known control, the fresh end-to-end suite agrees across source RTL, post-Yosys RTL, clear JSON, and TensorLUT, then catches wrong delta, setting, and seed controls plus bounded combined indel-and-garble repairs. The host deduplicates and verifies each compact target receipt. Those candidates were graded later in the campaign. This is a cleartext mechanism grade, not FHE and not a decrypt.",
       "durationHintSec": 50
     },
     {
@@ -100,7 +100,7 @@
         "One fixed shell; settings 256–456,975 and other shells remain open"
       ],
       "backgroundAsset": "07-bounded-stripe.svg",
-      "voiceover": "The setting-zero preflight checked all 628 Futures and retained 15 one-edge repair candidates. It opened no break gate. Production then covered settings one through 255 on the same fixed shell. It checked 4,163,640 receipts and retained 4,184 host-verified candidates; that count excludes the 15 preflight repairs. Forty exact identity hits failed plugboard completion. Forty-one exact post-gap hits were later graded the same way: no consistent ten-plug board. The 4,101 one-edge repairs were climbed, and none of them broke. No candidate reached a break gate. The run produced no scored plaintext, key, or decrypt.",
+      "voiceover": "The setting-zero preflight checked all 628 Futures and retained 15 one-edge repair candidates. It opened no break gate. Production then covered settings one through 255 on the same fixed shell. It checked 4,163,640 receipts and retained 4,184 host-verified candidates; that count excludes the 15 preflight repairs. Forty exact identity hits failed plugboard completion. Forty-one exact post-gap hits were later graded the same way: no consistent ten-plug board. The one-edge repairs were climbed, and none of them broke. No candidate reached a break gate. The run produced no scored plaintext, key, or decrypt.",
       "durationHintSec": 55
     },
     {
@@ -110,7 +110,7 @@
       "headline": "The stripe was consumed",
       "subhead": "Ghosts and an empty climb. Wider settings stay open. The archive is next.",
       "backgroundAsset": "08-replay-next.svg",
-      "voiceover": "For this shell, settings 256 through 456,975 remain open, as do all other shells. More than 82 percent of candidates in the leading four-letter-gap family paired with translated identity states. That does not eliminate a real gap at another boundary. It does make another same-shaped stripe low-information. The exact hits and the repairs have since been consumed: ghosts, and a climb with no break. The next move is archival. The long episode is the historian who joined the campaign and changed the quest.",
+      "voiceover": "For this shell, settings 256 through 456,975 remain open, as do all other shells. More than 82 percent of candidates in the leading four-letter-gap family paired with translated identity states. That does not eliminate a real gap at another boundary. It does make another same-shaped stripe low-information. With the stripe consumed, the next move is archival, not another stripe of the same shape.",
       "durationHintSec": 40
     },
     {
@@ -120,7 +120,7 @@
       "subhead": "One HELUT application ends with public receipts—not a decrypt.",
       "backgroundAsset": "08-replay-next.svg",
       "nextEpisode": "E256 — Turning Enigma Inside Out",
-      "voiceover": "This campaign is one application of HELUT, not the definition of the project. The tested machine recovered the known control. For the target, it covered one shell, all 628 hypotheses, and only settings zero through 255. No break gate opened, and P1030680 remains unbroken. Next, I follow a separate idea that grew from the attack lessons: E256, an experimental rotor-inspired offshoot.",
+      "voiceover": "This campaign is one application of HELUT, not the definition of the project. The tested machine recovered the known control. For the target, it covered one shell, all 628 hypotheses, and only settings zero through 255. No break gate opened, and P1030680 remains unbroken. Its archival thread continues in episode 16. Next, I follow a separate idea that grew from the attack lessons: E256, an experimental rotor-inspired offshoot.",
       "durationHintSec": 33
     }
   ]

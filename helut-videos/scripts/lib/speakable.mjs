@@ -112,7 +112,8 @@ export function speakable(text) {
 
   // Campaign and profile identifiers should never be guessed as cardinals.
   out = out.replace(/\bP(\d{7})\b/g, (_, digits) => `P ${spellDigits(digits)}`);
-  out = out.replace(/\bU[-‑–]?(\d{3})\b/gi, (_, digits) => `U ${spellDigits(digits)}`);
+  // Three- and four-digit boats alike: U-534, U-3521.
+  out = out.replace(/\bU[-‑–]?(\d{3,4})\b/gi, (_, digits) => `U ${spellDigits(digits)}`);
   // Hex literals (seeds, preambles) before any cardinal rule can claim them.
   out = out.replace(/\b0x([0-9a-fA-F]+)\b/g, (_, hex) => `hexadecimal ${spellHex(hex)}`);
   // The demo callsign and its full transmitted payload. Captions keep AB0CDE.
@@ -123,6 +124,11 @@ export function speakable(text) {
   out = out.replace(/\bAB0CDE\b/g, 'A B zero C D E');
   // Recovered Enigma plaintext is German words, not twenty-five spelled letters.
   out = out.replace(/\bKEINEBESONDERENEREIGNISSE\b/g, 'keine besonderen Ereignisse');
+  out = out.replace(/\bBLEIBTBESETZT\b/g, 'bleibt besetzt');
+  // Naval indicator groups and their Tafel A read-out are letters, never words
+  // (EACH must not be "each"). Captions keep the groups as written.
+  out = out.replace(/\bVROL NMKA\b/g, 'V R O L, N M K A');
+  out = out.replace(/\b(?:VROL|NMKA|EACH|SEDM|ACH|FFFTTT)\b/g, (group) => [...group].join(' '));
   out = out.replace(/\bM3\b/g, 'M three');
   out = out.replace(/\bM4\b/g, 'M four');
   out = out.replace(/\bE256\b/g, 'E two fifty-six');
