@@ -88,7 +88,7 @@
       ],
       "backgroundAsset": "03-three-receipts.svg",
       "voiceover": "Each published configuration needs three separate answers. Did encrypted output match clear output? Did measured noise stay inside the stated bound? What hardness estimate applies to these exact dimensions? The bar for that noise bound is an error probability of two to the minus sixty-four. One logged configuration clears it with room to spare. A neighbouring one shows why the measurement itself matters: unsigned digits at stride seven fall short, and raising that unsigned configuration to stride fourteen does not rescue it by itself. At 32 samples it reports minus 48 and does not clear; it only clears once the sample count rises, reaching minus 93.8 at 192 samples. Balanced gadget digits, same covering base and same stride seven, are a different receipt: the full adder then clears at about minus 72.7, and all eight rows match. Neither result is a universal guarantee.",
-      "durationHintSec": 48
+      "durationHintSec": 56
     },
     {
       "kind": "narration",

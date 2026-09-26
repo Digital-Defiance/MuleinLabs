@@ -13,14 +13,6 @@
       "claimEpoch": "2026-08-20 / C69",
       "scenes": [
         {
-          "kind": "capture",
-          "id": "cold-open",
-          "voiceover": "Watch this. That's a two-bit adder, written as four lookup tables. The first two compute the low sum and the low carry. I deleted the other two. Not disconnected, deleted. Their truth tables are all zeros, so the carry logic is simply gone. Now one command. Real test, running live, under two seconds. The broken circuit misses 14 of 48 output bits. Then the search rediscovers the missing tables. Then Yosys, which had no part in that search, re-synthesizes the result and confirms it computes exact two-bit addition on all 16 inputs. Then a SAT solver proves it across the entire input space. Not sampled. Every case. Last screen, I corrupt one rediscovered value on purpose. The proof collapses and hands back a counterexample. A check that cannot fail is not a check. Verilator is faster than this at simulating circuits. It cannot do that.",
-          "durationHintSec": 80.28,
-          "label": "LIVE RUN · recorded 2026-09-05 · not a replay",
-          "videoAsset": "episode00-selfrepair.mp4"
-        },
-        {
           "kind": "title",
           "id": "title",
           "voiceover": "HELUT stands for Homomorphic Edge Look-Up Tensors, and the name is the least useful thing about it. Here is the idea. A lookup table stores the output for every possible input, and those entries are normally exact zeros and ones. HELUT lets them melt into fractions, searches for values that hit a target, freezes them back to binary, and then hands the result to something that had no stake in the answer. Yosys turns your Verilog into lookup tables and flip-flops. HELUT picks up from there and treats that circuit as something you can search.",
@@ -28,6 +20,14 @@
           "eyebrow": "HELUT · living research · dated claims",
           "headline": "What is HELUT?",
           "subhead": "Circuits you can search, not just run."
+        },
+        {
+          "kind": "capture",
+          "id": "cold-open",
+          "voiceover": "Watch this. That's a two-bit adder, written as four lookup tables. The first two compute the low sum and the low carry. I deleted the other two. Not disconnected, deleted. Their truth tables are all zeros, so the carry logic is simply gone. Now one command. Real test, running live, under two seconds. The broken circuit misses 14 of 48 output bits. Then the search rediscovers the missing tables. Then Yosys, which had no part in that search, re-synthesizes the result and confirms it computes exact two-bit addition on all 16 inputs. Then a SAT solver proves it across the entire input space. Not sampled. Every case. Last screen, I corrupt one rediscovered value on purpose. The proof collapses and hands back a counterexample. A check that cannot fail is not a check. Verilator is faster than this at simulating circuits. It cannot do that.",
+          "durationHintSec": 80.28,
+          "label": "LIVE RUN · recorded 2026-09-05 · not a replay",
+          "videoAsset": "episode00-selfrepair.mp4"
         },
         {
           "kind": "concept",
@@ -41,7 +41,7 @@
         {
           "kind": "concept",
           "id": "plain-answer",
-          "voiceover": "So what is it, without adjectives. Yosys turns Verilog into a netlist of lookup tables and flip-flops. HELUT takes that netlist and evaluates it as tensors. That buys three operations an event-driven simulator has no notion of. One: the tables become continuous, so you can search them. Erase a function, rediscover it, freeze it back, and let Yosys and a SAT solver check the result. Two: the same representation runs on encrypted data, so one netlist serves both cleartext and homomorphic evaluation. Three: many independent instances ride in a single submission, and every one of them gets checked. What it is not, equally plainly: there is no four-state logic, no X or Z, no timing model, and no behavioural Verilog front end. If you want bit-accurate simulation, use Verilator. It is better at that and it always will be.",
+          "voiceover": "So what is it, without adjectives. Yosys turns Verilog into a netlist of lookup tables and flip-flops. HELUT takes that netlist and evaluates it as tensors. That buys three operations an event-driven simulator has no notion of. One: the tables become continuous, so you can search them. Erase a function, rediscover it, freeze it back, and let Yosys and a SAT solver check the result. Two: the same representation runs on encrypted data, so one netlist serves both cleartext and homomorphic evaluation. Three: many independent instances ride in a single submission, and every one of them gets checked. What it is not, equally plainly: there is no four-state logic, no X or Z, no timing model, and no behavioural Verilog front end. If you want bit-accurate simulation, use Verilator. For that job, it is the better tool. That will not change.",
           "durationHintSec": 66,
           "headline": "A netlist you can search",
           "subhead": "Three operations a simulator does not have",
@@ -58,16 +58,16 @@
         {
           "kind": "concept",
           "id": "where-it-wins",
-          "voiceover": "Where it does well, and these are the rows I will defend. Batched correctness that is actually checked: 65,536 distinct assignments, all 589,824 output bits compared against their own clear oracles, zero mismatches, and a negative control where corrupting one lane moves the digest and reports the mismatch. Second, cost shape. The warmed graph is close to flat across a 65,536-fold range of work, because it is dominated by fixed submission overhead, while a scalar loop climbs linearly. Read that as amortization, not throughput, and I will show you why on the next screen. Third, the operation nothing else offers: erase a function, rediscover it by search, and have an independent prover confirm it over the whole input space. That now includes one flip-flop, proven by induction.",
+          "voiceover": "Where it does well. These are the results I will defend. First: checked batch correctness. I ran 65,536 distinct assignments and compared all 589,824 output bits against their own clear oracles. Zero mismatches. Then I corrupted one lane. The digest moved, and the mismatch was reported. Second: cost shape. The warmed graph stays close to flat across a 65,536-fold range of work. Fixed submission overhead dominates it. A scalar loop, by contrast, climbs linearly. Read that as amortization, not throughput. I will show you why on the next screen. Third: the operation nothing else offers. Erase a function. Rediscover it by search. Then have an independent proof checker confirm it over the whole input space. That now includes one flip-flop, proven by induction.",
           "durationHintSec": 64,
           "headline": "Where it does well",
           "subhead": "Checked batching · flat graph cost · search with independent proof",
-          "kicker": "Rows I will defend"
+          "kicker": "Results I will defend"
         },
         {
           "kind": "concept",
           "id": "where-it-loses",
-          "voiceover": "Now the losses. If you only remember one screen from this episode, make it this one. On matched end-to-end work, counting preparation, execution, readback and the same ordered digest on both sides, HELUT measured 8.544 milliseconds against 7.422 for 16-worker Verilator at 65,536 lanes. That is 15.1 percent slower, with no crossover at any width I have tested. At a single instance it loses by roughly four orders of magnitude. On simplification it does not win either: run the discovered circuit and the hand-designed one through the same ABC recipe and they tie, zero wins, 18 ties, zero losses. The encrypted path costs hundreds of milliseconds per gate at production parameters, and the native-dimension processor check still fails. And I have never benchmarked against a discrete graphics card, so I cannot tell you this chip beats that one.",
+          "voiceover": "Now the losses. If you only remember one screen from this episode, make it this one. On matched end-to-end work, both timers include preparation, execution, readback, and the same ordered digest. At 65,536 lanes, HELUT measured 8.544 milliseconds. Sixteen-worker Verilator measured 7.422 milliseconds. That is 15.1 percent slower, with no crossover at any width I have tested. At a single instance it loses by roughly four orders of magnitude. On simplification it does not win either. Run the discovered circuit and the hand-designed one through the same ABC recipe, and they tie: zero wins, 18 ties, zero losses. The encrypted path costs hundreds of milliseconds per gate at production parameters. The native-dimension processor check still fails. I have never benchmarked against a discrete graphics card. I cannot tell you this chip beats that one.",
           "durationHintSec": 70,
           "headline": "Where it loses",
           "subhead": "Paired throughput · single instance · simplification · encrypted cost",
@@ -85,7 +85,7 @@
         {
           "kind": "concept",
           "id": "binarity-trap",
-          "voiceover": "Here is the part I find most useful, and it is a failure. When I erased an entire small circuit instead of part of one, the search came back fully binary. Every value snapped cleanly to zero or one. But target fitness was -16, so the objective already said the answer was wrong. The independent prover then refuted it over the full input domain, turning that warning into an external check. So zero fractional entries means discrete, not correct. More search did fix this same fixture, 500 generations instead of 120. That makes it a budget-sensitive failure rather than a hard wall, and it is exactly why binarity, fitness, and independent proof must stay separate.",
+          "voiceover": "Here is the part I find most useful. It is a failure. When I erased an entire small circuit instead of part of one, the search came back fully binary. Every value snapped cleanly to zero or one. But target fitness was -16, so the objective already said the answer was wrong. The independent proof checker then refuted it over the full input domain, turning that warning into an external check. So zero fractional entries means discrete, not correct. More search did fix this same fixture, 500 generations instead of 120. That makes it a budget-sensitive failure rather than a hard wall, and it is exactly why binarity, fitness, and independent proof must stay separate.",
           "durationHintSec": 44,
           "headline": "A clean-looking answer that was wrong",
           "subhead": "Fully binary · target fitness -16 · independently refuted",
@@ -94,8 +94,8 @@
         {
           "kind": "narration",
           "id": "whats-open",
-          "voiceover": "What is not settled, and two things that just stopped being open. Everything in that cold open was combinational, but the proof loop is not limited to it any more: a state transition behind a flip-flop has now been erased, rediscovered, and proven by induction, with a reset-to-divergence trace when you corrupt it. One flip-flop, not a processor, so read it narrowly. The batch benchmark used to feed every lane the same data, which made its scaling table a memory-traffic measurement rather than throughput. That one is closed too: the shipped path carries 65,536 distinct inputs and checks all 589,824 output bits against per-lane oracles, with 0 mismatches. In a separate 256-lane negative control, corrupting lane 37 moves the digest and surfaces five mismatches. Still closed as a null: put the searched circuit and the hand-designed one through the same ABC recipe and they tie, 18 runs out of 18, so there is no area win to claim. And the encrypted path is still slow and still small, hundreds of milliseconds for a single gate at production parameters. Each has a specific experiment attached. That is the difference between an open question and a hand-wave.",
-          "durationHintSec": 76,
+          "voiceover": "What is not settled, and two things that just stopped being open. The live repair demonstration was combinational, but the proof loop is no longer limited to combinational circuits: a state transition behind a flip-flop has now been erased, rediscovered, and proven by induction, with a reset-to-divergence trace when you corrupt it. That result covers one flip-flop, not a processor, so keep the claim narrow. The batch benchmark used to feed every lane the same data, which made its scaling table a memory-traffic measurement rather than throughput. That one is closed too: the shipped path carries 65,536 distinct inputs and checks all 589,824 output bits against per-lane oracles, with 0 mismatches. In a separate 256-lane negative control, corrupting lane 37 moves the digest and surfaces five mismatches. Still closed as a null: put the searched circuit and the hand-designed one through the same ABC recipe and they tie, 18 runs out of 18, so there is no area win to claim. And the encrypted path is still slow and still small, hundreds of milliseconds for a single gate at production parameters. Each has a specific experiment attached. That is the difference between an open question and a hand-wave.",
+          "durationHintSec": 78,
           "headline": "What is not settled",
           "bullets": [
             "Sequential repair now proven: 1 flip-flop, by induction",
@@ -107,7 +107,7 @@
         {
           "kind": "concept",
           "id": "research-bets",
-          "voiceover": "So why keep going, given all that. Because the bridge is proven and the operations are real, while none of them has beaten an incumbent yet. Both halves of that sentence matter, and it is a research position rather than a product. Where I think it can still win. Encrypted evaluation, because sharing one representation between cleartext and ciphertext is a structural advantage rather than a constant factor. And repair rather than minimization: ABC minimizes a function you already have, while search can recover one you have lost. Those are different jobs, and only the second is open ground. There is also one number that keeps me at it. Across the eight widths I tested, the paired gap narrows every single time: 77 times native at one lane, 3.9 at 1,024, 1.63 at 16,384, 1.35 at 32,768, and 1.151 at 65,536. Eight steps, no reversal. I ran out of fixture before I ran out of trend, because 65,536 is every input a 16-bit adder has. Whether that continues is a prediction, not a result. Where I may well be wrong. Cleartext throughput may never cross, because the digest both sides must compute is already 78 percent of my time. Simplification may stay a null. And the encrypted processor may stay out of reach at native dimensions. Naming them now costs me nothing. Discovering them in public later would cost a lot.",
+          "voiceover": "So why keep going? Given all that, the question is fair. The bridge is proven and the operations are real, while none of them has beaten an incumbent yet. Both halves of that sentence matter. This is a research position, not a product. Here is where I think it can still win. Encrypted evaluation, because sharing one representation between cleartext and ciphertext is a structural advantage rather than a constant factor. And repair rather than minimization: ABC minimizes a function you already have, while search can recover one you have lost. Those are different jobs, and only the second is open ground. One result keeps me at it. It is the shape of the gap. Across the eight widths I tested, the paired gap narrows every single time. It starts at 77 times native at one lane. Then 3.9 at 1,024; 1.63 at 16,384; 1.35 at 32,768; and 1.151 at 65,536. Eight steps, no reversal. I ran out of fixture before I ran out of trend, because 65,536 is every input a 16-bit adder has. Whether that continues is a prediction, not a result. Here is where I may well be wrong. Cleartext throughput may never cross, because the digest both sides must compute is already 78 percent of my time. Simplification may stay a null. And the encrypted processor may stay out of reach at native dimensions. Naming them now costs me nothing. Discovering them in public later would cost a lot.",
           "durationHintSec": 106,
           "headline": "A research position, stated as one",
           "subhead": "Where it may still win · where I may be wrong",
@@ -116,8 +116,8 @@
         {
           "kind": "concept",
           "id": "ledger",
-          "voiceover": "Which is why every claim in this series carries a date. The ledger changes as evidence arrives. Results get measured again and some get withdrawn. One encrypted failure turned out to be a nondeterminism bug rather than a limit, and seven timing rows had understated the code by half. HELUT did not invent torus fully homomorphic encryption, and it has not broken the P1030680 message. The E256 offshoot is not fit for real secrets. I would rather show you the boundary than sell you the middle.",
-          "durationHintSec": 37,
+          "voiceover": "Which is why every claim in this series carries a date. The ledger changes as evidence arrives. Results get measured again and some get withdrawn. One encrypted failure turned out to be a nondeterminism bug rather than a limit. Seven old measurements made the code look roughly half as fast as the remeasurement showed. HELUT did not invent torus fully homomorphic encryption, and it has not broken the P1030680 message. The E256 offshoot is not fit for real secrets. I would rather show you the boundary. I will not sell you the middle.",
+          "durationHintSec": 40,
           "headline": "Corrected in public",
           "subhead": "Re-measured · withdrawn · replaced",
           "kicker": "Living ledger · dated claims"
@@ -241,14 +241,6 @@
       "claimEpoch": "2026-08-20 / C69",
       "scenes": [
         {
-          "kind": "capture",
-          "id": "three-tier-validation-live",
-          "voiceover": "Before the diagram, grade one named path. Tier 1 recovers only injected lane 42, then checks HELUT's clear netlist against an independent Enigma oracle. Tier 2 reproduces the FHPQX historical prefix and finds SIEGFR. Tier 3 ranks SDV above 199 decoys. All three go green, live. This is a strong compiler control because each stage can fail for a different reason. It is not a proof of arbitrary Verilog, and nothing on this screen is FHE.",
-          "durationHintSec": 33.96,
-          "label": "LIVE RUN · recorded 2026-09-06 · one bounded Enigma fixture · not FHE",
-          "videoAsset": "episode01-three-tier-validation.mp4"
-        },
-        {
           "kind": "title",
           "id": "title",
           "voiceover": "HELUT begins with a supported Yosys circuit. It turns each look-up table and flip-flop into tensor operations, then builds one Metal Performance Shaders Graph. A batch dimension lets that graph evaluate many independent circuit states in parallel.",
@@ -256,6 +248,14 @@
           "eyebrow": "HELUT · Shared substrate",
           "headline": "The compiler substrate",
           "subhead": "Yosys JSON → supported cells → one reusable Metal graph"
+        },
+        {
+          "kind": "capture",
+          "id": "three-tier-validation-live",
+          "voiceover": "Before the diagram, grade one named path. Tier 1 recovers only injected lane 42, then checks HELUT's clear netlist against an independent Enigma oracle. Tier 2 reproduces the FHPQX historical prefix and finds SIEGFR. Tier 3 ranks SDV above 199 decoys. All three go green, live. This is a strong compiler control because each stage can fail for a different reason. It is not a proof of arbitrary Verilog, and nothing on this screen is FHE.",
+          "durationHintSec": 33.96,
+          "label": "LIVE RUN · recorded 2026-09-06 · one bounded Enigma fixture · not FHE",
+          "videoAsset": "episode01-three-tier-validation.mp4"
         },
         {
           "kind": "concept",
@@ -515,14 +515,6 @@
       "claimEpoch": "2026-08-20 / C69",
       "scenes": [
         {
-          "kind": "capture",
-          "id": "proof-ladder-live",
-          "voiceover": "Read this as two ladders. First, the formal certificate: six implementation-level checks for the objective, emitter, involution structure, and freeze mask. That is not a convergence theorem. Second, a fixed 4-bit adder. Erase 2 of its 8 tables and the searched circuit proves. Erase 4, it proves. Erase 6, it proves. Erase all 8 at the same 120-generation budget and it returns fully binary but wrong: REFUTED, fitness -16. Third screen, same full erase with 500 generations: PROVED. So the old sentence that evidence stops at two tables is no longer true. The analytic theorem stays narrow; end-to-end SAT-backed fixtures now extend beyond two. Arbitrary topology and guaranteed convergence remain open.",
-          "durationHintSec": 63.84,
-          "label": "LIVE RUN · recorded 2026-09-06 · certificate plus bounded search fixtures",
-          "videoAsset": "episode03-proof-ladder.mp4"
-        },
-        {
           "kind": "title",
           "id": "title",
           "voiceover": "Another HELUT research path is TensorLUT. A look-up table normally has a fixed truth table, stored in a value called INIT. TensorLUT treats those entries as search variables, relaxes them to continuous values, and optimizes the circuit on Metal.",
@@ -530,6 +522,14 @@
           "eyebrow": "HELUT · Circuit search",
           "headline": "TensorLUT",
           "subhead": "Search the truth tables, then demand discrete hardware."
+        },
+        {
+          "kind": "capture",
+          "id": "proof-ladder-live",
+          "voiceover": "Read this as two ladders. First, the formal certificate: six implementation-level checks for the objective, emitter, involution structure, and freeze mask. That is not a convergence theorem. Second, a fixed 4-bit adder. Erase 2 of its 8 tables and the searched circuit proves. Erase 4, it proves. Erase 6, it proves. Erase all 8 at the same 120-generation budget and it returns fully binary but wrong: REFUTED, fitness -16. Third screen, same full erase with 500 generations: PROVED. So the old sentence that evidence stops at two tables is no longer true. The analytic theorem stays narrow; end-to-end SAT-backed fixtures now extend beyond two. Arbitrary topology and guaranteed convergence remain open.",
+          "durationHintSec": 63.84,
+          "label": "LIVE RUN · recorded 2026-09-06 · certificate plus bounded search fixtures",
+          "videoAsset": "episode03-proof-ladder.mp4"
         },
         {
           "kind": "concept",
@@ -639,14 +639,6 @@
       "claimEpoch": "2026-08-20 / C69",
       "scenes": [
         {
-          "kind": "capture",
-          "id": "mechanism-controls-live",
-          "voiceover": "Before touching the target, grade the machine on published-key P1030684. Top table: inject zero, 1, then 2 wrong letters. The exact board loses the damaged cases; matching tolerance keeps the true lane. Host and Metal agree, every row reads 0 of 192 mismatches, and this control retains one survivor at each tolerance. Second screen: remove a synthetic four-letter group. The ordinary menu becomes illegal; the correct spliced geometry recovers all 25 forced deductions. Now the line that protects the claim: all 28 wrong splices died under Enigma's self-encipherment rule before reaching the board, so board specificity is unmeasured here. That is a finding, not an embarrassment. These screens grade mechanisms and expose a gap. They contain no P1030680 data, and they do not establish target corruption.",
-          "durationHintSec": 54.28,
-          "label": "LIVE RUN · recorded 2026-09-06 · published-key control · no P1030680 data",
-          "videoAsset": "episode04-mechanism-controls.mp4"
-        },
-        {
           "kind": "title",
           "id": "title",
           "voiceover": "Why is an Enigma message in a HELUT series? I chose it as a concrete, demanding way to exercise the cleartext compiler and batch engine. The target, P1030680, is a 72-letter Enigma M4 message from the M-Thetis network, sent in May 1945. Its printed starting-position table is missing. HELUT tests explicit plaintext guesses, correction patterns, and rotor settings against that message. This episode separates a local stop, a physically valid candidate, and an actual break.",
@@ -654,6 +646,14 @@
           "eyebrow": "HELUT application · Campaign evidence",
           "headline": "The P1030680 Bombe",
           "subhead": "Why this problem · what we built · why the message remains unbroken"
+        },
+        {
+          "kind": "capture",
+          "id": "mechanism-controls-live",
+          "voiceover": "Before touching the target, grade the machine on published-key P1030684. Top table: inject zero, 1, then 2 wrong letters. The exact board loses the damaged cases; matching tolerance keeps the true lane. Host and Metal agree, every row reads 0 of 192 mismatches, and this control retains one survivor at each tolerance. Second screen: remove a synthetic four-letter group. The ordinary menu becomes illegal; the correct spliced geometry recovers all 25 forced deductions. Now the line that protects the claim: all 28 wrong splices died under Enigma's self-encipherment rule before reaching the board, so board specificity is unmeasured here. That is a finding, not an embarrassment. These screens grade mechanisms and expose a gap. They contain no P1030680 data, and they do not establish target corruption.",
+          "durationHintSec": 54.28,
+          "label": "LIVE RUN · recorded 2026-09-06 · published-key control · no P1030680 data",
+          "videoAsset": "episode04-mechanism-controls.mp4"
         },
         {
           "kind": "concept",
@@ -2546,14 +2546,6 @@
       "claimEpoch": "2026-08-20 / C69",
       "scenes": [
         {
-          "kind": "capture",
-          "id": "scale-cold-open",
-          "voiceover": "Watch the rows column. That is an 8-bit adder: 16 lookup tables and 65,536 possible inputs. Two tables are erased. The repair search sees only 64 rows: 0.10 percent. It finds the missing logic, then Yosys re-synthesizes the result and SAT proves equivalence to behavioural addition across all 65,536 assignments. The erased baseline is REFUTED, so the circuit was genuinely broken. On this fixture, search did not enumerate the domain and the independent proof covers unseen rows. One fixture is not an asymptotic complexity result. Second screen, the failure control. Erase 2 of 8 tables and it proves. 4, it proves. 6, it proves. Erase all 8 at this 120-generation budget and it returns fully binary but wrong, fitness -16. That is not where the method stops: the same fixture proves at 500 generations in episode 3's live gate. Binarity is not correctness, and search budget matters.",
-          "durationHintSec": 83.72,
-          "label": "LIVE RUN · recorded 2026-09-05 · prebuilt test bundle · not a replay",
-          "videoAsset": "episode15-scale-and-boundary.mp4"
-        },
-        {
           "kind": "title",
           "id": "title",
           "voiceover": "The search never saw 65,472 of those input rows, and the proof covers them anyway. That is the result worth sitting with, so here is the machinery behind it. A lookup table in HELUT holds truth-table entries that are normally exact zeros and ones. Melting lets selected entries become floating-point values in between, so a search can move them. Freezing pushes them back to exact binary. Proving means handing the resulting discrete circuit to a tool that had no part in the search and letting it try to break the result. This episode shows the controlled pass, the checker that catches corruption, a low-budget failure control, and the exact sentence where a general claim would outrun the evidence.",
@@ -2561,6 +2553,14 @@
           "eyebrow": "TensorLUT · controlled experiment · boundary included",
           "headline": "Melt. Freeze. Prove.",
           "subhead": "Continuous truth tables are useful only if the discrete circuit survives."
+        },
+        {
+          "kind": "capture",
+          "id": "scale-cold-open",
+          "voiceover": "Watch the rows column. That is an 8-bit adder: 16 lookup tables and 65,536 possible inputs. Two tables are erased. The repair search sees only 64 rows: 0.10 percent. It finds the missing logic, then Yosys re-synthesizes the result and SAT proves equivalence to behavioural addition across all 65,536 assignments. The erased baseline is REFUTED, so the circuit was genuinely broken. On this fixture, search did not enumerate the domain and the independent proof covers unseen rows. One fixture is not an asymptotic complexity result. Second screen, the failure control. Erase 2 of 8 tables and it proves. 4, it proves. 6, it proves. Erase all 8 at this 120-generation budget and it returns fully binary but wrong, fitness -16. That is not where the method stops: the same fixture proves at 500 generations in episode 3's live gate. Binarity is not correctness, and search budget matters.",
+          "durationHintSec": 83.72,
+          "label": "LIVE RUN · recorded 2026-09-05 · prebuilt test bundle · not a replay",
+          "videoAsset": "episode15-scale-and-boundary.mp4"
         },
         {
           "kind": "concept",

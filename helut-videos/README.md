@@ -16,6 +16,7 @@ checking against another HELUT checkout.
 | `Episode02` | **Torus FHE** | Core path: sample types · blind rotation · SING · separate receipts |
 | `Episode03` | **TensorLUT** | Core path: continuous truth tables · bounded snap and emit |
 | `Episode04` | **Enigma application: the P1030680 Bombe** | Chosen cleartext application · historical context · bounded Phase 51.16 result |
+| `Episode16` | **The archival arm** | Selm Merel Wenselaers · Tafel A · rotor VIII · the sweeps her questions ordered |
 | `Episode05` | **E256 architecture** | Separate experimental offshoot · base-256 byte path · host/RTL boundary |
 | `Episode06` | **E256 evolution without hype** | v1 autopsy · offline promotion · evidence ladder · open audit |
 | `Episode07` | **Almost — the near misses** | Capability margins · named levers · withdrawn failures · living ledger |
@@ -55,7 +56,7 @@ Scripts preserve these evidence boundaries:
 
 Every episode carries `claimEpoch`, which must match HELUT `\livingepoch` in
 [`textbook/preamble.tex`](../HELUT/textbook/preamble.tex), currently
-**2026-08-20 / C69**. Descriptions must carry the same `Epoch C…` label.
+**2026-09-26 / C70**. Descriptions must carry the same `Epoch C…` label.
 
 ```bash
 npm run check          # typecheck + HELUT epoch sync + schema/assets/pacing

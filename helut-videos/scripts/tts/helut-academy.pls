@@ -64,6 +64,14 @@
   <lexeme><grapheme>Welchman</grapheme><phoneme>ˈwɛltʃmən</phoneme></lexeme>
   <lexeme><grapheme>Thetis</grapheme><phoneme>ˈθɛtɪs</phoneme></lexeme>
   <lexeme><grapheme>M-Thetis</grapheme><alias>M Thetis</alias></lexeme>
+  <lexeme><grapheme>Kenngruppenbuch</grapheme><alias>ken-groopen-book</alias></lexeme>
+  <lexeme><grapheme>Kenngruppen</grapheme><alias>ken-groopen</alias></lexeme>
+  <lexeme><grapheme>Neustadt</grapheme><alias>noy-shtat</alias></lexeme>
+  <lexeme><grapheme>Quelle</grapheme><alias>kvell-uh</alias></lexeme>
+  <lexeme><grapheme>Forelle</grapheme><alias>for-ell-uh</alias></lexeme>
+  <lexeme><grapheme>Tafel</grapheme><alias>tah-fel</alias></lexeme>
+  <lexeme><grapheme>Tauschtafelplan</grapheme><alias>towsh-tah-fel-plan</alias></lexeme>
+  <lexeme><grapheme>Volksliste</grapheme><alias>folk-list-uh</alias></lexeme>
   <lexeme><grapheme>Bombe</grapheme><alias>bomb</alias></lexeme>
   <lexeme><grapheme>Grund</grapheme><alias>groond</alias></lexeme>
   <lexeme><grapheme>Grundstellung</grapheme><alias>groond shtellung</alias></lexeme>

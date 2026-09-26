@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" role="img" aria-labelledby="t d">
+  <title id="t">Last days of U-534</title>
+  <desc id="d">Route Kiel to Helsingor and Copenhagen to Anholt, with recipient left open.</desc>
+  <defs>
+    <radialGradient id="bg" cx="78%" cy="30%" r="75%">
+      <stop offset="0" stop-color="#173f4a"/>
+      <stop offset="0.55" stop-color="#101c31"/>
+      <stop offset="1" stop-color="#08111f"/>
+    </radialGradient>
+  </defs>
+  <rect width="1920" height="1080" fill="url(#bg)"/>
+  <g transform="translate(1040 150)"><rect width="760" height="166" rx="16" fill="#122b35" stroke="#22a89c" stroke-width="2"/><text x="28" y="28" fill="#22a89c" font-family="Arial,sans-serif" font-size="15" letter-spacing="2">1–5 MAY 1945</text><text x="28" y="64" fill="#f4f6f8" font-family="Arial,sans-serif" font-size="26">Kiel</text><text x="28" y="96" fill="#f4f6f8" font-family="Arial,sans-serif" font-size="26">Helsingør · Copenhagen</text><text x="28" y="128" fill="#f4f6f8" font-family="Arial,sans-serif" font-size="26">Anholt</text></g>
+  <g transform="translate(1040 334)"><rect width="760" height="132" rx="16" fill="#2b2116" stroke="#d4833f" stroke-width="2"/><text x="28" y="28" fill="#d4833f" font-family="Arial,sans-serif" font-size="15" letter-spacing="2">OPEN</text><text x="28" y="64" fill="#f4f6f8" font-family="Arial,sans-serif" font-size="26">Found among U-534 papers</text><text x="28" y="96" fill="#f4f6f8" font-family="Arial,sans-serif" font-size="26">Addressed to U-534: not shown</text></g>
+</svg>

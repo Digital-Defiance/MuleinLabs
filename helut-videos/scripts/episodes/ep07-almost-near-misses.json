@@ -3,8 +3,8 @@
   "compositionId": "Episode07",
   "title": "Almost — The Near Misses",
   "youtubeTitle": "Almost: What HELUT Nearly Does, and the Exact Margin It Misses By",
-  "description": "The most useful episode: HELUT's capability near misses, sorted by the kind of margin they miss by. One flip-flop short, a few bits short, a pass with no headroom, correct but unproven, one decode short, and two failures that turned out to be measurement bugs. Living research, stated as levers rather than limits. Epoch C69.",
-  "claimEpoch": "2026-08-20 / C69",
+  "description": "The most useful episode: HELUT's capability near misses, sorted by the kind of margin they miss by. One flip-flop short, a few bits short, a pass with no headroom, correct but unproven, one decode short, and two failures that turned out to be measurement bugs. Unsigned covering stride seven stays short of the noise bar; balanced digits clear the full adder (C70). Living research, stated as levers rather than limits. Epoch C70.",
+  "claimEpoch": "2026-09-26 / C70",
   "fps": 30,
   "width": 1920,
   "height": 1080,
@@ -34,10 +34,10 @@
       "id": "margin-ruler",
       "kicker": "A few bits short",
       "headline": "Thin margins, both ways",
-      "subhead": "Some configurations clear it by a hair. Others miss by a hair.",
+      "subhead": "Unsigned stride seven stays short. Balanced digits clear the adder.",
       "backgroundAsset": "03-margin-ruler.svg",
-      "voiceover": "Most encrypted results are graded against one bar: an error probability of two to the minus sixty-four. Measured against that bar, the margins are thin in both directions. One configuration clears it with about one and a half orders to spare. Another falls short by roughly four, and only a wider spacing recovers it. A third slides off gradually as the wire dimension grows, from comfortably decodable, to marginal, to a single failed decode. None of those are mysteries. They are dials with known positions.",
-      "durationHintSec": 40
+      "voiceover": "Most encrypted results are graded against one bar: an error probability of two to the minus sixty-four. Measured against that bar, the margins are thin in both directions. One configuration clears it with about one and a half orders to spare. Another falls short by roughly four on unsigned digits. A wider spacing recovers that unsigned setting, and balanced digits at the same stride seven are a separate receipt: the full adder then clears at about minus 72.7, with all eight rows matching. A third slides off gradually as the wire dimension grows, from comfortably decodable, to marginal, to a single failed decode. None of those are mysteries. They are dials with known positions.",
+      "durationHintSec": 52
     },
     {
       "kind": "concept",

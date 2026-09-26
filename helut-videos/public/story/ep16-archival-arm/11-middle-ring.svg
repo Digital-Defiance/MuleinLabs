@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" role="img" aria-labelledby="t d">
+  <title id="t">Middle ring under rotor eight</title>
+  <desc id="d">42 of 336 wheel orders ran with no residual ring gap and no break.</desc>
+  <defs>
+    <radialGradient id="bg" cx="78%" cy="30%" r="75%">
+      <stop offset="0" stop-color="#173f4a"/>
+      <stop offset="0.55" stop-color="#101c31"/>
+      <stop offset="1" stop-color="#08111f"/>
+    </radialGradient>
+  </defs>
+  <rect width="1920" height="1080" fill="url(#bg)"/>
+  <g transform="translate(1040 150)"><rect width="760" height="132" rx="16" fill="#122b35" stroke="#22a89c" stroke-width="2"/><text x="28" y="28" fill="#22a89c" font-family="Arial,sans-serif" font-size="15" letter-spacing="2">RAN</text><text x="28" y="64" fill="#f4f6f8" font-family="Arial,sans-serif" font-size="26">42 of 336 wheel orders</text><text x="28" y="96" fill="#f4f6f8" font-family="Arial,sans-serif" font-size="26">0 raw stops · 0 quarantine</text></g>
+  <g transform="translate(1040 300)"><rect width="760" height="132" rx="16" fill="#33161b" stroke="#e0574c" stroke-width="2"/><text x="28" y="28" fill="#e0574c" font-family="Arial,sans-serif" font-size="15" letter-spacing="2">NOT CLOSED</text><text x="28" y="64" fill="#f4f6f8" font-family="Arial,sans-serif" font-size="26">294 orders remain open</text><text x="28" y="96" fill="#f4f6f8" font-family="Arial,sans-serif" font-size="26">A negative here is not coverage</text></g>
+</svg>

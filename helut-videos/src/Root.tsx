@@ -21,6 +21,7 @@ import ep12 from '../scripts/episodes/ep12-private-majority.json';
 import ep13 from '../scripts/episodes/ep13-ab0cde.json';
 import ep14 from '../scripts/episodes/ep14-skeptics-benchmark.json';
 import ep15 from '../scripts/episodes/ep15-melt-freeze-prove.json';
+import ep16 from '../scripts/episodes/ep16-archival-arm.json';
 
 // Block Studio/render until Fraunces + Outfit are registered.
 void ensureHelutFonts();
@@ -46,6 +47,7 @@ const episodes = [
   load(ep13),
   load(ep14),
   load(ep15),
+  load(ep16),
 ];
 
 export const RemotionRoot: React.FC = () => {

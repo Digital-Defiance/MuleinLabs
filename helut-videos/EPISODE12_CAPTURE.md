@@ -106,7 +106,7 @@ Video assets are public-root relative when passed through Remotion `staticFile()
 
 ## Before release
 
-1. Decide whether the result receives a HELUT claim-sheet row; the video stays pinned to C69 until the source ledger changes.
+1. Decide whether the result receives a HELUT claim-sheet row. The episode pin follows `\livingepoch` (currently C70). This majority result still has no claim-sheet row of its own.
 2. Run `npm run check`.
 3. Run `xmllint --noout public/story/ep12-private-majority/*.svg`.
 4. Run `npm run tts:pending -- --commands`; generating TTS remains a separate billable step requiring an ElevenLabs key.

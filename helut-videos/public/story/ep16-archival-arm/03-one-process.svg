@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" role="img" aria-labelledby="t d">
+  <title id="t">Neustadt and scuttling</title>
+  <desc id="d">Demolition parties remain aboard while crews transfer to Neustadt.</desc>
+  <defs>
+    <radialGradient id="bg" cx="78%" cy="30%" r="75%">
+      <stop offset="0" stop-color="#173f4a"/>
+      <stop offset="0.55" stop-color="#101c31"/>
+      <stop offset="1" stop-color="#08111f"/>
+    </radialGradient>
+  </defs>
+  <rect width="1920" height="1080" fill="url(#bg)"/>
+  <g transform="translate(1040 150)"><rect width="760" height="132" rx="16" fill="#122b35" stroke="#22a89c" stroke-width="2"/><text x="28" y="28" fill="#22a89c" font-family="Arial,sans-serif" font-size="15" letter-spacing="2">ONE PROCESS</text><text x="28" y="64" fill="#f4f6f8" font-family="Arial,sans-serif" font-size="26">Demolition party stays</text><text x="28" y="96" fill="#f4f6f8" font-family="Arial,sans-serif" font-size="26">Crews go to Neustadt</text></g>
+  <g transform="translate(1040 300)"><rect width="760" height="132" rx="16" fill="#33161b" stroke="#e0574c" stroke-width="2"/><text x="28" y="28" fill="#e0574c" font-family="Arial,sans-serif" font-size="15" letter-spacing="2">NOT A CRIB</text><text x="28" y="64" fill="#f4f6f8" font-family="Arial,sans-serif" font-size="26">Do not glue the strings</text><text x="28" y="96" fill="#f4f6f8" font-family="Arial,sans-serif" font-size="26">Do not drop either one</text></g>
+</svg>

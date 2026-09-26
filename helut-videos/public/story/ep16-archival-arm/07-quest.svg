@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" role="img" aria-labelledby="t d">
+  <title id="t">The next document</title>
+  <desc id="d">The quest is a key table, the Kenngruppenbuch, a second Thetis signal, or the Grund table.</desc>
+  <defs>
+    <radialGradient id="bg" cx="78%" cy="30%" r="75%">
+      <stop offset="0" stop-color="#173f4a"/>
+      <stop offset="0.55" stop-color="#101c31"/>
+      <stop offset="1" stop-color="#08111f"/>
+    </radialGradient>
+  </defs>
+  <rect width="1920" height="1080" fill="url(#bg)"/>
+  <g transform="translate(1040 150)"><rect width="760" height="200" rx="16" fill="#122b35" stroke="#22a89c" stroke-width="2"/><text x="28" y="28" fill="#22a89c" font-family="Arial,sans-serif" font-size="15" letter-spacing="2">WOULD MOVE THE SEARCH</text><text x="28" y="64" fill="#f4f6f8" font-family="Arial,sans-serif" font-size="26">1 May key table</text><text x="28" y="96" fill="#f4f6f8" font-family="Arial,sans-serif" font-size="26">Kenngruppenbuch</text><text x="28" y="128" fill="#f4f6f8" font-family="Arial,sans-serif" font-size="26">Second Thetis signal</text><text x="28" y="160" fill="#f4f6f8" font-family="Arial,sans-serif" font-size="26">Grund table</text></g>
+  <g transform="translate(1040 368)"><rect width="760" height="132" rx="16" fill="#2b2116" stroke="#d4833f" stroke-width="2"/><text x="28" y="28" fill="#d4833f" font-family="Arial,sans-serif" font-size="15" letter-spacing="2">GATE</text><text x="28" y="64" fill="#f4f6f8" font-family="Arial,sans-serif" font-size="26">She sees the scope</text><text x="28" y="96" fill="#f4f6f8" font-family="Arial,sans-serif" font-size="26">before the next GPU tranche</text></g>
+</svg>
