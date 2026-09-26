@@ -3,8 +3,8 @@
   "compositionId": "Episode02",
   "title": "Torus FHE",
   "youtubeTitle": "HELUT Torus FHE: From Encrypted Wires to Blind Rotation",
-  "description": "A term-first tour of HELUT's torus fully homomorphic encryption path: encrypted sample types, blind rotation, negacyclic kernels, the SING correctness gate (Stimuli In, Golden out), wavefront scheduling, configuration-specific receipts, and open limits. Epoch C69.",
-  "claimEpoch": "2026-08-20 / C69",
+  "description": "A term-first tour of HELUT's torus fully homomorphic encryption path: encrypted sample types, blind rotation, negacyclic kernels, the SING correctness gate (Stimuli In, Golden out), wavefront scheduling, configuration-specific receipts, and open limits. Unsigned covering stride seven stays short of the noise bar; balanced digits clear the full adder (C70). Epoch C70.",
+  "claimEpoch": "2026-09-26 / C70",
   "fps": 30,
   "width": 1920,
   "height": 1080,
@@ -83,10 +83,11 @@
       "bullets": [
         "Correctness: did encrypted output match clear output?",
         "Noise: did the measured bound clear its stated bar?",
-        "Hardness: which exact dimensions were estimated?"
+        "Hardness: which exact dimensions were estimated?",
+        "Unsigned stride seven stays short; balanced digits clear the adder"
       ],
       "backgroundAsset": "03-three-receipts.svg",
-      "voiceover": "Each published configuration needs three separate answers. Did encrypted output match clear output? Did measured noise stay inside the stated bound? What hardness estimate applies to these exact dimensions? The bar for that noise bound is an error probability of two to the minus sixty-four. One logged configuration clears it with room to spare. A neighbouring one shows why the measurement itself matters: at stride seven it falls short, and stride fourteen does not rescue it by itself either. At 32 samples that same configuration reports minus 48 and does not clear; it only clears once the sample count rises, reaching minus 93.8 at 192 samples. So the bound is sample-starved before it is wrong, and neither result becomes a universal guarantee.",
+      "voiceover": "Each published configuration needs three separate answers. Did encrypted output match clear output? Did measured noise stay inside the stated bound? What hardness estimate applies to these exact dimensions? The bar for that noise bound is an error probability of two to the minus sixty-four. One logged configuration clears it with room to spare. A neighbouring one shows why the measurement itself matters: unsigned digits at stride seven fall short, and raising that unsigned configuration to stride fourteen does not rescue it by itself. At 32 samples it reports minus 48 and does not clear; it only clears once the sample count rises, reaching minus 93.8 at 192 samples. Balanced gadget digits, same covering base and same stride seven, are a different receipt: the full adder then clears at about minus 72.7, and all eight rows match. Neither result is a universal guarantee.",
       "durationHintSec": 48
     },
     {
