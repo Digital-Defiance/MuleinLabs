@@ -3,8 +3,8 @@
   "compositionId": "Episode08",
   "title": "The Encrypted Processor",
   "youtubeTitle": "Running a RISC-V Core Under Encryption: One Tick at a Time",
-  "description": "HELUT's deepest result: a PicoRV32 RISC-V core evaluated under torus FHE. The demo-size ladder from one tick to a store-then-load program, the two levers that cut the cost, one encrypted tick at production polynomial size, the extract-and-key-switch route, and the bounded non-claims. Not Linux, not a production encrypted CPU. Epoch C70.",
-  "claimEpoch": "2026-09-26 / C70",
+  "description": "HELUT's deepest result: a PicoRV32 RISC-V core evaluated under torus FHE. The demo-size ladder from one tick to a store-then-load program, the two levers that cut the cost, one encrypted tick at production polynomial size, the extract-and-key-switch route, and the bounded non-claims. Balanced digits clear the noise bound on the direct route and four flip-flops still disagree (C71). Not Linux, not a production encrypted CPU. Epoch C71.",
+  "claimEpoch": "2026-09-26 / C71",
   "fps": 30,
   "width": 1920,
   "height": 1080,
@@ -97,7 +97,7 @@
       "headline": "Shrink the wire",
       "subhead": "One tick in 114 s. A boot in ~19 minutes.",
       "backgroundAsset": "08-covering-route.svg",
-      "voiceover": "There is a catch. Under the noisier encoding needed for deeper work, the direct route at full native dimension fails. Every combinational table completes, and then a single flip-flop disagrees. The fix was not a bigger machine. Extracting the sample and switching it down to a much smaller wire dimension first, sixty-four instead of 1,024, makes it pass: one tick in 114 seconds, the ten-tick boot in about nineteen minutes, and the instruction fetch in about fifteen. Truncating that extraction instead of properly key-switching it would be unsound, which is exactly why the honest route is the slower one.",
+      "voiceover": "There is a catch. Under the noisier encoding needed for deeper work, the direct route at full native dimension fails. Every combinational table completes, and then a flip-flop disagrees. Balanced gadget digits clear the noise bound on that same processor tick, and four flip-flops still disagree. The fix was not a bigger machine. Extracting the sample and switching it down to a much smaller wire dimension first, sixty-four instead of 1,024, makes it pass: one tick in 114 seconds, the ten-tick boot in about nineteen minutes, and the instruction fetch in about fifteen. Truncating that extraction instead of properly key-switching it would be unsound, which is exactly why the honest route is the slower one.",
       "durationHintSec": 50
     },
     {

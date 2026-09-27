@@ -91,9 +91,7 @@
   <lexeme><grapheme>Lübeck</grapheme><alias>lew-beck</alias></lexeme>
   <lexeme><grapheme>Hörenberg</grapheme><alias>hur-en-berg</alias></lexeme>
   <lexeme><grapheme>Aegir</grapheme><alias>ay-geer</alias></lexeme>
-  <!-- A collaborator's name is not guessed. Ask Selm how she says it, then uncomment
-       these in the same edit as the rest, before the one sync.
-  <lexeme><grapheme>Merel</grapheme><alias>?</alias></lexeme>
-  <lexeme><grapheme>Wenselaers</grapheme><alias>?</alias></lexeme>
-  -->
+  <lexeme><grapheme>Selm</grapheme><alias>selm</alias></lexeme>
+  <lexeme><grapheme>Merel</grapheme><alias>meh-rel</alias></lexeme>
+  <lexeme><grapheme>Wenselaers</grapheme><alias>wen-seh-laars</alias></lexeme>
 </lexicon>
