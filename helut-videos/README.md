@@ -56,7 +56,7 @@ Scripts preserve these evidence boundaries:
 
 Every episode carries `claimEpoch`, which must match HELUT `\livingepoch` in
 [`textbook/preamble.tex`](../HELUT/textbook/preamble.tex), currently
-**2026-09-26 / C70**. Descriptions must carry the same `Epoch C…` label.
+**2026-09-26 / C71**. Descriptions must carry the same `Epoch C…` label.
 
 ```bash
 npm run check          # typecheck + HELUT epoch sync + schema/assets/pacing
